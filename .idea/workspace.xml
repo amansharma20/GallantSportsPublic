@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c4780a7c-b03f-4109-a37f-b2081489c960" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ios/GallantSports/Images.xcassets/splash.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/GallantSports/Images.xcassets/splash.imageset/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/GallantSports/Images.xcassets/splash.imageset/splash2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/GallantSports/Images.xcassets/splash.imageset/splash3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/com/gallantsports/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/com/gallantsports/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/GallantSports.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/GallantSports.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/GallantSports/AppDelegate.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/GallantSports/AppDelegate.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/GallantSports/Images.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/ios/GallantSports/Images.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/GallantSports/Images.xcassets/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/ios/GallantSports/Images.xcassets/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/GallantSports/LaunchScreen.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/ios/GallantSports/LaunchScreen.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Pods/Manifest.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Pods/Manifest.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/React-Core-AccessibilityResources.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/React-Core-AccessibilityResources.xcscheme" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-GallantSports-GallantSportsTests/Pods-GallantSports-GallantSportsTests-acknowledgements.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-GallantSports-GallantSportsTests/Pods-GallantSports-GallantSportsTests-acknowledgements.markdown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-GallantSports-GallantSportsTests/Pods-GallantSports-GallantSportsTests-acknowledgements.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-GallantSports-GallantSportsTests/Pods-GallantSports-GallantSportsTests-acknowledgements.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-GallantSports-GallantSportsTests/Pods-GallantSports-GallantSportsTests.debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-GallantSports-GallantSportsTests/Pods-GallantSports-GallantSportsTests.debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-GallantSports-GallantSportsTests/Pods-GallantSports-GallantSportsTests.release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-GallantSports-GallantSportsTests/Pods-GallantSports-GallantSportsTests.release.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-GallantSports/Pods-GallantSports-acknowledgements.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-GallantSports/Pods-GallantSports-acknowledgements.markdown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-GallantSports/Pods-GallantSports-acknowledgements.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-GallantSports/Pods-GallantSports-acknowledgements.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-GallantSports/Pods-GallantSports.debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-GallantSports/Pods-GallantSports.debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-GallantSports/Pods-GallantSports.release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-GallantSports/Pods-GallantSports.release.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.yarn-integrity" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.yarn-integrity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1xo1ARUkpYozDoVeZzPZyHo0P6Z" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c4780a7c-b03f-4109-a37f-b2081489c960" name="Default Changelist" comment="" />
+      <created>1631006486086</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1631006486086</updated>
+    </task>
+    <servers />
+  </component>
+</project>
