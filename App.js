@@ -1,15 +1,7 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import { SafeAreaView, Text, View } from 'react-native';
-
-import SplashScreen from  "react-native-splash-screen";
+import SplashScreen from "react-native-splash-screen";
+import { Provider } from 'react-redux';
+import ApplicationNavigator from './src/navigation/ApplicationNavigator';
 
 export default function App() {
 
@@ -18,13 +10,7 @@ export default function App() {
   });
 
   return (
-    <SafeAreaView>
-      <View style={{flex: 1, backgroundColor: 'red'}}>
-        <Text> 
-          text
-          </Text>
-      </View>
-    </SafeAreaView>
+      <ApplicationNavigator />
   );
 };
 
