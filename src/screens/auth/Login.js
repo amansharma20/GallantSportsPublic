@@ -64,7 +64,7 @@ export default function Login() {
           <Formik
             validationSchema={schema}
             initialValues={{
-              phone: '',
+              phone: '7011886215',
             }}
             onSubmit={values => login(values)}
           >

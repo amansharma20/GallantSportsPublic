@@ -28,7 +28,7 @@ export default CommonButton;
 
 const styles = StyleSheet.create({
     linearGradient: {
-        height: Responsive.height(60),
+        height: Responsive.height(57),
         borderRadius: 15,
         alignItems: 'center',
         justifyContent: 'center',

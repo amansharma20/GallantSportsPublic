@@ -12,7 +12,7 @@ import OTPInputView from '@twotalltotems/react-native-otp-input';
 import { Timer } from 'react-native-stopwatch-timer';
 
 export default function OtpScreen(props) {
-    console.log(props.route.params.MobileNumber);
+    // console.log(props.route.params.MobileNumber);
     const mobileNumber = props.route.params.MobileNumber;
     const navigation = useNavigation();
 
@@ -32,9 +32,10 @@ export default function OtpScreen(props) {
         //     setHidden(false);
         // }, 30000);
         timerStart;
+        navigation.navigate('PersonalDetails');
     }
 
-    const totalDuration = 3000
+    const totalDuration = 30000
 
     // this.state = {
     //     timerStart: true,

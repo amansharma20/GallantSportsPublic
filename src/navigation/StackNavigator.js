@@ -5,6 +5,7 @@ import Login from '../screens/auth/Login';
 import OnBoardingScreen from '../screens/onBoarding/OnBoardingScreen';
 import SignUpScreen from '../screens/auth/SignUp';
 import OtpScreen from '../screens/auth/OtpScreen';
+import PersonalDetails from '../screens/auth/PersonalDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ export default function StackNavigator() {
             <Stack.Screen name="OnBoardingScreen" component={OnBoardingScreen} />
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="SignUp" component={SignUpScreen} />
+            <Stack.Screen name="PersonalDetails" component={PersonalDetails} />
         </Stack.Navigator>
     );
 }
