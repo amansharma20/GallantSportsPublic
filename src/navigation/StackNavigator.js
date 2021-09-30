@@ -6,22 +6,24 @@ import OnBoardingScreen from '../screens/onBoarding/OnBoardingScreen';
 import SignUpScreen from '../screens/auth/SignUp';
 import OtpScreen from '../screens/auth/OtpScreen';
 import PersonalDetails from '../screens/auth/PersonalDetails';
+import BottomTabBarNavigator from './BottomTabBarNavigator';
 
 const Stack = createNativeStackNavigator();
 
 export default function StackNavigator() {
     return (
         <Stack.Navigator
-        screenOptions={{
-            headerShown: false,
-          }}
+            screenOptions={{
+                headerShown: false,
+            }}
         >
             <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="SignUp" component={SignUpScreen} />
             <Stack.Screen name="OtpScreen" component={OtpScreen} />
             <Stack.Screen name="OnBoardingScreen" component={OnBoardingScreen} />
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="SignUp" component={SignUpScreen} />
             <Stack.Screen name="PersonalDetails" component={PersonalDetails} />
+            <Stack.Screen name="Home" component={BottomTabBarNavigator} />
+            {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
         </Stack.Navigator>
     );
 }

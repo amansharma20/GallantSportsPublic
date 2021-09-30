@@ -12,14 +12,18 @@ import { COLORS, FONTS, SIZES } from '../../../constants';
 import Icons from '../../../constants/Icons';
 import UpcomingActivityItem from '../../components/flatlistItems/UpcomingActivityItem';
 import GOALSDATA from '../../../assets/data/GoalsData';
+import ActivityItems from '../../components/flatlistItems/ActivityItems';
+import ExploreFlatlistItem from '../../components/flatlistItems/ExploreFlatlistItem';
 
 export default function HomeScreen(props) {
-    // console.log(props);
-    console.log(props.route.params.personalDetailsData.FirstName);
-    const firstName = props.route.params.personalDetailsData.FirstName;
+    console.log(props);
+    console.log(props.navigation);
+    // const firstName = props.route.params.personalDetailsData.FirstName;
 
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView
+            showsVerticalScrollIndicator={false}
+            style={styles.container}>
             <View style={styles.headerContainer}>
                 <TouchableOpacity>
                     <Image source={Icons.locationIcon} style={styles.locationIcon} />
@@ -35,14 +39,15 @@ export default function HomeScreen(props) {
             </View>
             <View style={styles.headerTextContainer}>
                 <Text style={styles.hiText}>
-                    Hi, {firstName}
+                    Hi, 
+                    {/* {firstName} */}
                 </Text>
                 <Text style={styles.upcomingActivityText}>
                     Here are your
                     upcoming activities
                 </Text>
             </View>
-            <View style={{paddingVertical: 30, }}>
+            <View style={{ paddingVertical: 30, }}>
                 <FlatList
                     keyExtractor={(item) => item.id.toString()}
                     data={GOALSDATA}
@@ -55,7 +60,50 @@ export default function HomeScreen(props) {
                         />
                     )}
                 />
+            </View>
 
+            <View>
+                <View style={{ paddingLeft: SIZES.padding6 }}>
+                    <Text style={styles.flatlistHeaderText}>
+                        Activity
+                    </Text>
+                </View>
+                <View style={{ paddingTop: 25, paddingBottom: 35 }}>
+                    <FlatList
+                        keyExtractor={(item) => item.id.toString()}
+                        data={GOALSDATA}
+                        horizontal={true}
+                        renderItem={(itemData, item) => (
+                            <ActivityItems
+                                // id={itemData.item.id}
+                                // index={itemData.index}
+                                goal={item}
+                            />
+                        )}
+                    />
+                </View>
+            </View>
+
+            <View>
+                <View style={{ paddingLeft: SIZES.padding6 }}>
+                    <Text style={styles.flatlistHeaderText}>
+                        Explore
+                    </Text>
+                </View>
+                <View style={{ paddingTop: 25, paddingBottom: 35 }}>
+                    <FlatList
+                        keyExtractor={(item) => item.id.toString()}
+                        data={GOALSDATA}
+                        horizontal={true}
+                        renderItem={(itemData, item) => (
+                            <ExploreFlatlistItem
+                                // id={itemData.item.id}
+                                // index={itemData.index}
+                                goal={item}
+                            />
+                        )}
+                    />
+                </View>
             </View>
 
         </ScrollView>
@@ -69,6 +117,7 @@ const styles = StyleSheet.create({
     },
     headerContainer: {
         padding: SIZES.paddingLarge,
+        paddingLeft: SIZES.padding6,
         flexDirection: 'row',
         alignItems: 'center'
     },
@@ -89,7 +138,7 @@ const styles = StyleSheet.create({
         color: COLORS.white,
     },
     headerTextContainer: {
-        paddingHorizontal: SIZES.paddingLarge,
+        paddingHorizontal: SIZES.padding6,
     },
     hiText: {
         fontSize: 18,
@@ -101,4 +150,9 @@ const styles = StyleSheet.create({
         fontFamily: FONTS.satoshi900,
         color: COLORS.white,
     },
+    flatlistHeaderText: {
+        fontSize: SIZES.header,
+        fontFamily: FONTS.satoshi900,
+        color: COLORS.white,
+    }
 });

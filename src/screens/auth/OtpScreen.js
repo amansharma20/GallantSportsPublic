@@ -153,7 +153,7 @@ export default function OtpScreen(props) {
                                 <Text style={styles.resendOtpText}>
                                     Didn’t get OTP?
                                 </Text>
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={() => setHidden(true)}>
                                     <Text style={styles.resendOtpTextBold}>
                                         Resend OTP
                                     </Text>
