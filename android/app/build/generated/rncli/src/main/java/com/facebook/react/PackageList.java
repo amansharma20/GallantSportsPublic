@@ -15,12 +15,16 @@ import java.util.ArrayList;
 import com.reactnativecommunity.clipboard.ClipboardPackage;
 // react-native-linear-gradient
 import com.BV.LinearGradient.LinearGradientPackage;
+// react-native-pager-view
+import com.reactnativepagerview.PagerViewPackage;
 // react-native-safe-area-context
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 // react-native-screens
 import com.swmansion.rnscreens.RNScreensPackage;
 // react-native-splash-screen
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
+// react-native-vector-icons
+import com.oblador.vectoricons.VectorIconsPackage;
 
 public class PackageList {
   private Application application;
@@ -68,9 +72,11 @@ public class PackageList {
       new MainReactPackage(mConfig),
       new ClipboardPackage(),
       new LinearGradientPackage(),
+      new PagerViewPackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage(),
-      new SplashScreenReactPackage()
+      new SplashScreenReactPackage(),
+      new VectorIconsPackage()
     ));
   }
 }

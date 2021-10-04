@@ -4,8 +4,8 @@
     <facet type="android-gradle" name="Android-Gradle">
       <configuration>
         <option name="GRADLE_PROJECT_PATH" value=":app" />
-        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="4.1.0" />
-        <option name="LAST_KNOWN_AGP_VERSION" value="4.1.0" />
+        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="4.1.1" />
+        <option name="LAST_KNOWN_AGP_VERSION" value="4.1.1" />
       </configuration>
     </facet>
     <facet type="android" name="Android">
@@ -61,9 +61,9 @@
     <orderEntry type="library" name="Gradle: com.squareup.okio:okio:2.9.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.10" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.20" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.5.20" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.5.30" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.5.20" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.5.30" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.fbjni:fbjni-java-only:0.2.2" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.flipper:flipper:0.93.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.react:react-native:0.65.1@aar" level="project" />
@@ -133,8 +133,12 @@
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.lifecycle:lifecycle-viewmodel:2.0.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.lifecycle:lifecycle-livedata-core:2.0.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.arch.core:core-runtime:2.0.0@aar" level="project" />
+    <orderEntry type="module" module-name="GallantSports.react-native-pager-view" />
+    <orderEntry type="module" module-name="GallantSports.react-native-community_clipboard" />
+    <orderEntry type="module" module-name="GallantSports.react-native-linear-gradient" />
     <orderEntry type="module" module-name="GallantSports.react-native-safe-area-context" />
     <orderEntry type="module" module-name="GallantSports.react-native-screens" />
     <orderEntry type="module" module-name="GallantSports.react-native-splash-screen" />
+    <orderEntry type="module" module-name="GallantSports.react-native-vector-icons" />
   </component>
 </module>

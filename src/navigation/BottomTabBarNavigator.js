@@ -4,6 +4,7 @@ import HomeScreen from '../screens/home/HomeScreen';
 import Icons from '../../constants/Icons';
 import { FONTS } from '../../constants';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import ScheduleScreen from '../screens/schedule/ScheduleScreen.js';
 
 
 const Tab = createMaterialBottomTabNavigator();
@@ -95,7 +96,7 @@ export default function BottomTabBarNavigator(props, focused) {
                 tabBarInactiveBackgroundColor: 'red',
             })}>
             <Tab.Screen name="Home" component={HomeScreen} />
-            <Tab.Screen name="Schedule" component={HomeScreen} />
+            <Tab.Screen name="Schedule" component={ScheduleScreen} />
             <Tab.Screen name="Profile" component={HomeScreen} />
         </Tab.Navigator>
     );

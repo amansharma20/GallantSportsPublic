@@ -3,8 +3,9 @@
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9f91872452fec9f8cac2b8abc8d752f5/transformed/jetified-imagepipeline-native-2.5.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/443d90ef9c0640fb8f7c88d72bd6ea73/transformed/jetified-imagepipeline-native-2.5.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/443d90ef9c0640fb8f7c88d72bd6ea73/transformed/jetified-imagepipeline-native-2.5.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/443d90ef9c0640fb8f7c88d72bd6ea73/transformed/jetified-imagepipeline-native-2.5.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8a3b9091d4b6c3def79f2ce660243b98/transformed/jetified-imagepipeline-native-2.5.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8a3b9091d4b6c3def79f2ce660243b98/transformed/jetified-imagepipeline-native-2.5.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/8a3b9091d4b6c3def79f2ce660243b98/transformed/jetified-imagepipeline-native-2.5.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.fresco/imagepipeline-native/2.5.0/3c789ca8f8784e986cee0c70514d99bb36d7cab2/imagepipeline-native-2.5.0-javadoc.jar!/" />

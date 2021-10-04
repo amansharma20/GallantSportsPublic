@@ -1,6 +1,7 @@
-#Mon Sep 27 16:35:14 IST 2021
+#Mon Oct 04 12:23:32 IST 2021
 path.1=10/classes.dex
 path.0=classes.dex
+renamed.9=classes10.dex
 renamed.8=classes9.dex
 renamed.7=classes8.dex
 renamed.6=classes7.dex
@@ -8,6 +9,7 @@ renamed.5=classes6.dex
 renamed.4=classes5.dex
 renamed.3=classes4.dex
 renamed.2=classes3.dex
+base.9=C\:\\Users\\amana\\apps\\GallantSports\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\1\\classes.dex
 renamed.1=classes2.dex
 base.8=C\:\\Users\\amana\\apps\\GallantSports\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\14\\classes.dex
 renamed.0=classes.dex
@@ -19,6 +21,7 @@ base.3=C\:\\Users\\amana\\apps\\GallantSports\\android\\app\\build\\intermediate
 base.2=C\:\\Users\\amana\\apps\\GallantSports\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\2\\classes.dex
 base.1=C\:\\Users\\amana\\apps\\GallantSports\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\10\\classes.dex
 base.0=C\:\\Users\\amana\\apps\\GallantSports\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+path.9=1/classes.dex
 path.8=14/classes.dex
 path.7=6/classes.dex
 path.6=14/classes.dex
