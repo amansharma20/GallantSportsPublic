@@ -5,6 +5,7 @@ export const footballIcon = require('../assets/icons/footballIcon.png');
 export const homeIcon = require('../assets/icons/homeIcon.png');
 export const calenderIcon = require('../assets/icons/calenderIcon.png');
 export const profileIcon = require('../assets/icons/profileIcon.png');
+export const profileNext = require('../assets/icons/profileNext.png');
 
 export default {
     tick,
@@ -13,4 +14,5 @@ export default {
     homeIcon,
     calenderIcon,
     profileIcon,
+    profileNext,
 };

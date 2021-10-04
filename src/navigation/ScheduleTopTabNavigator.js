@@ -5,7 +5,7 @@ import { Animated, View, TouchableOpacity } from 'react-native';
 import AllSessions from '../screens/schedule/topTabScreens/AllSessions';
 import Upcoming from '../screens/schedule/topTabScreens/Upcoming';
 import Cancelled from '../screens/schedule/topTabScreens/Cancelled';
-import { COLORS, FONTS } from '../../constants';
+import { COLORS, FONTS, SIZES } from '../../constants';
 import MyTabBar from './TabBar';
 
 const Tab = createMaterialTopTabNavigator();
@@ -25,7 +25,6 @@ function ScheduleTopTabNavigator({ index, descriptors, navigation, position }) {
                 },
                 activeTintColor: '#060417',
                 inactiveTintColor: '#6F7FAF',
-                // tabBarStyle: { backgroundColor: COLORS.background },
                 tabBarStyle: { backgroundColor: COLORS.background},
             }}
         >

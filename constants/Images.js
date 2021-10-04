@@ -4,6 +4,7 @@ export const gallantLogo = require('../assets/images/gallantLogo.png');
 export const success = require('../assets/images/success.png');
 export const cardImage = require('../assets/images/cardImage.png');
 export const basketball = require('../assets/images/basketball.png');
+export const pfpGallant = require('../assets/images/pfpGallant.jpg');
 
 export default {
     splashScreen,
@@ -11,4 +12,5 @@ export default {
     success,
     cardImage,
     basketball,
+    pfpGallant,
 };

@@ -16,7 +16,7 @@ export default function ScheduleScreen() {
                 </Text>
             </View>
             <View style={{ flex: 1, }}>
-                <View style={{ flex: 1,  }}>
+                <View style={{ flex: 1 }}>
                     <ScheduleTopTabNavigator />
                 </View>
             </View>
