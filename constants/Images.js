@@ -5,6 +5,8 @@ export const success = require('../assets/images/success.png');
 export const cardImage = require('../assets/images/cardImage.png');
 export const basketball = require('../assets/images/basketball.png');
 export const pfpGallant = require('../assets/images/pfpGallant.jpg');
+export const star = require('../assets/images/star.png');
+export const badminton = require('../assets/images/badminton.png');
 
 export default {
     splashScreen,
@@ -13,4 +15,6 @@ export default {
     cardImage,
     basketball,
     pfpGallant,
+    star,
+    badminton,
 };

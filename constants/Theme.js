@@ -7,6 +7,7 @@ export const COLORS = {
   textInputTitle: '#999999',
   white: '#FFFFFF',
   modalBackground: 'rgba(196,196,196,0.5)',
+  themePink: '#DB3E6F',
 };
 export const SIZES = {
   // global sizes

@@ -14,11 +14,13 @@ import UpcomingActivityItem from '../../components/flatlistItems/UpcomingActivit
 import GOALSDATA from '../../../assets/data/GoalsData';
 import ActivityItems from '../../components/flatlistItems/ActivityItems';
 import ExploreFlatlistItem from '../../components/flatlistItems/ExploreFlatlistItem';
+import { useNavigation } from '@react-navigation/core';
 
 export default function HomeScreen(props) {
     console.log(props);
     console.log(props.navigation);
     // const firstName = props.route.params.personalDetailsData.FirstName;
+    const navigation = useNavigation();
 
     return (
         <ScrollView
@@ -39,7 +41,7 @@ export default function HomeScreen(props) {
             </View>
             <View style={styles.headerTextContainer}>
                 <Text style={styles.hiText}>
-                    Hi, 
+                    Hi,
                     {/* {firstName} */}
                 </Text>
                 <Text style={styles.upcomingActivityText}>
@@ -85,10 +87,15 @@ export default function HomeScreen(props) {
             </View>
 
             <View>
-                <View style={{ paddingLeft: SIZES.padding6 }}>
+                <View style={{ paddingLeft: SIZES.padding6, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Text style={styles.flatlistHeaderText}>
                         Explore
                     </Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('ExploreNearby')}>
+                        <Text style={[styles.flatlistHeaderText, { color: COLORS.themePink, fontSize: 14, paddingRight: 16 }]}>
+                            More
+                        </Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={{ paddingTop: 25, paddingBottom: 35 }}>
                     <FlatList

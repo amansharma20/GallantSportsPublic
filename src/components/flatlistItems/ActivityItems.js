@@ -18,7 +18,9 @@ const ActivityItems = (props) => {
         <View
             style={styles.container}
         >
-            <TouchableOpacity>
+            <TouchableOpacity 
+            onPress={() => navigation.navigate('ExploreNearby')}
+            >
                 <View style={{
                     backgroundColor: '#444B65', width: 69, height: 87, borderRadius: 15,
                     alignItems: 'center',

@@ -19,14 +19,16 @@ const ExploreFlatlistItem = (props) => {
         <View
             style={styles.container}
         >
-            <TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => navigation.navigate('ArenaDetailsScreen')}
+            >
                 <View style={styles.mainContainer}>
                     <View style={styles.imageContainer}>
                         <Image source={Images.basketball} style={styles.image} />
                     </View>
                     <View style={styles.exploreItemTextContainer}>
                         <Text style={styles.exploreItemText}>
-                        Sportika
+                            The Gallant Club
                         </Text>
                     </View>
                 </View>
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
         fontSize: SIZES.h2,
     },
     image: { width: 232, height: 131, resizeMode: 'cover' },
-    exploreItemTextContainer: { paddingTop: 10},
+    exploreItemTextContainer: { paddingTop: 10 },
 });
 
 export default ExploreFlatlistItem;

@@ -34,6 +34,8 @@ const ScheduleFlatlistItem = (props) => {
 
                 <TouchableOpacity
                     activeOpacity={0.8}
+                    onPress={() => navigation.navigate('YourBookingDetails')}
+
                 >
                     <LinearGradient
                         start={{ x: 0, y: 0 }} colors={[leftBackgroundColor, rightBackgroundColor]} style={styles.linearGradient}>
@@ -54,7 +56,7 @@ const ScheduleFlatlistItem = (props) => {
                             </View>
                             <View>
                                 <Text style={styles.venueText}>
-                                    The Gurgaon Club
+                                    The Gallant Club
                                 </Text>
                                 <Text style={styles.upcomingActivityText}>
                                     Tennis

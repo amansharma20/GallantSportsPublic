@@ -22,11 +22,12 @@ const UpcomingActivityItem = (props) => {
         <View
             style={styles.container}
         >
-            <TouchableOpacity 
-            activeOpacity={0.8}
+            <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => navigation.navigate('YourBookingDetails')}
             >
-                <LinearGradient 
-                 start={{ x: 0, y: 0 }} colors={[leftBackgroundColor, rightBackgroundColor]} style={styles.linearGradient}>
+                <LinearGradient
+                    start={{ x: 0, y: 0 }} colors={[leftBackgroundColor, rightBackgroundColor]} style={styles.linearGradient}>
                     <View style={styles.leftContainer}>
                         <View>
                             <Text style={styles.upcomingActivityText}>
@@ -35,7 +36,7 @@ const UpcomingActivityItem = (props) => {
                         </View>
                         <View>
                             <Text style={styles.venueText}>
-                                The Gurgaon Club
+                                The Gallant Club
                             </Text>
                             <Text style={styles.upcomingActivityText}>
                                 Tennis
