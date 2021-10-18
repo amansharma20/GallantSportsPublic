@@ -9,7 +9,6 @@ import * as yup from 'yup';
 import CommonButton from '../../components/CommonGradientButton';
 import { icons } from '../../../constants';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
-import { Timer } from 'react-native-stopwatch-timer';
 
 export default function OtpScreen(props) {
     // console.log(props.route.params.MobileNumber);
@@ -23,10 +22,6 @@ export default function OtpScreen(props) {
             .matches(/(\d){10}\b/, 'Enter a valid phone number'),
     });
 
-    const [hidden, setHidden] = useState(true);
-    const [timerStart, setTimerStart] = useState(true);
-    const [stopwatchStart, setStopwatchStart] = useState(true);
-
     const onPressConfirm = () => {
         // setTimeout(function timer() {
         //     setHidden(false);
@@ -34,9 +29,6 @@ export default function OtpScreen(props) {
         timerStart;
         navigation.navigate('PersonalDetails');
     }
-
-    const totalDuration = 30000
-
     // this.state = {
     //     timerStart: true,
     //     stopwatchStart: false,
@@ -62,7 +54,24 @@ export default function OtpScreen(props) {
     //     },
     //   );
     // };
-    const handleTimerComplete = () => setHidden(false);
+
+    const [otpTimer, setOtpTimer] = useState(30);
+    useEffect(() => {
+
+        let interval = setInterval(() => {
+
+            setOtpTimer(oldValue => {
+
+                oldValue <= 1 && clearInterval(interval)
+
+                return oldValue - 1
+
+            })
+
+        }, 1000)
+        return () => clearInterval(interval)
+    }, [])
+
 
     return (
         <View style={styles.container}>
@@ -102,7 +111,7 @@ export default function OtpScreen(props) {
                             <>
                                 <View>
                                     <Text style={styles.loginText}>
-                                       Login
+                                        Login
                                     </Text>
                                 </View>
                                 <View style={{}}>
@@ -132,36 +141,27 @@ export default function OtpScreen(props) {
                 </View>
 
                 <View style={{ alignItems: 'center' }}>
-                    {
-                        hidden == true ?
                             <View style={styles.resendOtp}>
-                                <Timer
-                                    totalDuration={totalDuration}
-                                    hour={false}
-                                    start={timerStart}
-                                    handleFinish={handleTimerComplete}
-                                    // getTime={this.getFormattedTime}
-                                    style={{ backgroundColor: 'red' }}
-                                    options={options}
-                                />
-                                <Text>
-                                    s
-                                </Text>
+                                {
+                                    otpTimer > 0 ?
+                                        (
+                                            <Text style={styles.resendOtpText}>
+                                                {otpTimer}s
+                                            </Text>
+                                        ) : (
+                                            <View style={styles.resendOtp}>
+                                                <Text style={styles.resendOtpText}>
+                                                    Didn’t get OTP?
+                                                </Text>
+                                                <TouchableOpacity onPress={() => setOtpTimer(30)}>
+                                                    <Text style={styles.resendOtpTextBold}>
+                                                        Resend OTP
+                                                    </Text>
+                                                </TouchableOpacity>
+                                            </View>
+                                        )
+                                }
                             </View>
-                            :
-                            <View style={styles.resendOtp}>
-                                <Text style={styles.resendOtpText}>
-                                    Didn’t get OTP?
-                                </Text>
-                                <TouchableOpacity onPress={() => setHidden(true)}>
-                                    <Text style={styles.resendOtpTextBold}>
-                                        Resend OTP
-                                    </Text>
-                                </TouchableOpacity>
-
-                            </View>
-
-                    }
                     <View style={{ width: '100%' }}>
                         <CommonButton onPress={(onPressConfirm)} children="Confirm" />
                         <View style={styles.termsTextContainer} />

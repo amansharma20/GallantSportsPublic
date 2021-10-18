@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StatusBar, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, StatusBar, StyleSheet, Image, TextInput } from 'react-native';
 import Images from '../../../constants/Images';
 import { Responsive } from '../../../constants/Layout';
 import { COLORS, FONTS, SIZES } from '../../../constants/Theme';
@@ -25,7 +25,7 @@ export default function Login() {
       MobileNumber: data.phone,
     };
     console.log(signInData);
-    navigation.navigate('OtpScreen',{
+    navigation.navigate('OtpScreen', {
       MobileNumber: data.phone,
     })
     // dispatch(AuthActions.signIn('Account/LoginStart', signInData)).then(
@@ -103,9 +103,9 @@ export default function Login() {
                     <Image source={icons.tick} style={styles.checkMarkIcon} />
                   )}
                 </View>
-                  {errors.phone && touched.phone && (
-                    <Text style={styles.error}>{errors.phone}</Text>
-                  )}
+                {errors.phone && touched.phone && (
+                  <Text style={styles.error}>{errors.phone}</Text>
+                )}
                 <CommonButton
                   style={{ marginTop: 120 }}
                   // onPress={() => navigation.navigate('OtpScreen')}

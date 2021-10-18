@@ -43,8 +43,9 @@ export default function PersonalDetails() {
         setShowSuccessModal(true);
         setTimeout(function () {
             navigation.navigate('Home', {
-                personalDetailsData
+                personalDetailsData,
             });
+            setShowSuccessModal(false)
           }, 1000);
     };
 

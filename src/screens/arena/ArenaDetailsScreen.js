@@ -23,158 +23,164 @@ export default function ArenaDetailsScreen() {
     );
     const [activeSlide, setActiveSlide] = useState(0);
     return (
-        <ScrollView
-            showsVerticalScrollIndicator={false}
-            style={styles.container}>
-            <TouchableOpacity style={{ position: 'absolute', zIndex: 1000, padding: 16 }}>
-                <Image source={icons.backIcon} style={styles.backIconSize} />
-            </TouchableOpacity>
-            <Carousel
-                active
-                data={IMAGEDATA}
-                renderItem={renderImageFlatlist}
-                keyExtractor={(_item, index) => index.toString()}
-                horizontal={true}
-                sliderWidth={SLIDER_WIDTH}
-                itemWidth={ITEM_WIDTH}
-                inactiveSlideShift={0}
-                scrollInterpolator={scrollInterpolator}
-                slideInterpolatedStyle={animatedStyles}
-                useScrollView={true}
-                inactiveSlideScale={1}
-                inactiveSlideOpacity={0.95}
-                onSnapToItem={(index) => setActiveSlide(index)}
-            />
-            <View style={styles.paginationContainer}>
-                <Pagination
-                    dotsLength={IMAGEDATA.length}
-                    activeDotIndex={activeSlide}
-                    dotStyle={styles.dotStyle}
-                    inactiveDotStyle={styles.inactiveDotStyle}
-                    containerStyle={{ width: 30 }}
+        <View style={{flex: 1}}>
+            <ScrollView
+                // contentContainerStyle={{flexGrow: 1, }}
+                showsVerticalScrollIndicator={false}
+                style={styles.container}>
+                <TouchableOpacity onPress={() => navigation.goBack()} style={{ position: 'absolute', zIndex: 1000, padding: 16 }}>
+                    <Image source={icons.backIcon} style={styles.backIconSize} />
+                </TouchableOpacity>
+                <Carousel
+                    active
+                    data={IMAGEDATA}
+                    renderItem={renderImageFlatlist}
+                    keyExtractor={(_item, index) => index.toString()}
+                    horizontal={true}
+                    sliderWidth={SLIDER_WIDTH}
+                    itemWidth={ITEM_WIDTH}
+                    inactiveSlideShift={0}
+                    scrollInterpolator={scrollInterpolator}
+                    slideInterpolatedStyle={animatedStyles}
+                    useScrollView={true}
+                    inactiveSlideScale={1}
+                    inactiveSlideOpacity={0.95}
+                    onSnapToItem={(index) => setActiveSlide(index)}
                 />
-            </View>
-            <View style={styles.detailsContainer}>
-                <View style={styles.mainDetailsContainer}>
-                    <View style={styles.headerTopContainer}>
-                        <Text style={styles.titleText}>
-                            The Gallant Club
-                        </Text>
-                        <View style={styles.ratingContainer}>
-                            <Text style={styles.ratingText}>
-                                4.9
+                <View style={styles.paginationContainer}>
+                    <Pagination
+                        dotsLength={IMAGEDATA.length}
+                        activeDotIndex={activeSlide}
+                        dotStyle={styles.dotStyle}
+                        inactiveDotStyle={styles.inactiveDotStyle}
+                        containerStyle={{ width: 30 }}
+                    />
+                </View>
+                <View style={styles.detailsContainer}>
+                    <View style={styles.mainDetailsContainer}>
+                        <View style={styles.headerTopContainer}>
+                            <Text style={styles.titleText}>
+                                The Gallant Club
                             </Text>
-                            <Image source={images.star} style={styles.starSize} />
+                            <View style={styles.ratingContainer}>
+                                <Text style={styles.ratingText}>
+                                    4.9
+                                </Text>
+                                <Image source={images.star} style={styles.starSize} />
+                            </View>
                         </View>
-                    </View>
-                    <View style={styles.locationContainer}>
-                        <Text style={styles.addressText}>
-                            Sector 46,
-                            Guruguram, Haryana
-                        </Text>
-                        <View style={styles.directionContainer}>
-                            <Image source={icons.directionIcon} style={styles.directionIconSize} />
-                            <Text style={styles.directionText}>
-                                Get Direction
+                        <View style={styles.locationContainer}>
+                            <Text style={styles.addressText}>
+                                Sector 46,
+                                Guruguram, Haryana
+                            </Text>
+                            <TouchableOpacity style={styles.directionContainer}>
+                                <Image source={icons.directionIcon} style={styles.directionIconSize} />
+                                <Text style={styles.directionText}>
+                                    Get Direction
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={styles.descriptionContainer}>
+                            <Text style={styles.bodyText}>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa quis suspendisse pretium et nec.{'\n'}
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa quis suspendisse pretium et nec.
                             </Text>
                         </View>
-                    </View>
-                    <View style={styles.descriptionContainer}>
-                        <Text style={styles.bodyText}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa quis suspendisse pretium et nec.{'\n'}
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa quis suspendisse pretium et nec.
-                        </Text>
-                    </View>
-                    <View style={styles.facilitiesContainer}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <View style={styles.facilityItemContainer}>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                    <Image source={icons.checkMark} style={styles.checkMarkSize} />
-                                    <Text style={styles.facilityItemText}>
-                                        Parking
-                                    </Text>
+                        <View style={styles.facilitiesContainer}>
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={styles.facilityItemContainer}>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <Image source={icons.checkMark} style={styles.checkMarkSize} />
+                                        <Text style={styles.facilityItemText}>
+                                            Parking
+                                        </Text>
+                                    </View>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <Image source={icons.checkMark} style={styles.checkMarkSize} />
+                                        <Text style={styles.facilityItemText}>
+                                            Lockers
+                                        </Text>
+                                    </View>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <Image source={icons.checkMark} style={styles.checkMarkSize} />
+                                        <Text style={styles.facilityItemText}>
+                                            Washrooms
+                                        </Text>
+                                    </View>
                                 </View>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                    <Image source={icons.checkMark} style={styles.checkMarkSize} />
-                                    <Text style={styles.facilityItemText}>
-                                        Lockers
-                                    </Text>
-                                </View>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                    <Image source={icons.checkMark} style={styles.checkMarkSize} />
-                                    <Text style={styles.facilityItemText}>
-                                        Washrooms
-                                    </Text>
-                                </View>
-                            </View>
-                            <View style={styles.facilityItemContainer}>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                    <Image source={icons.checkMark} style={styles.checkMarkSize} />
-                                    <Text style={styles.facilityItemText}>
-                                        Drinking Water
-                                    </Text>
-                                </View>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                    <Image source={icons.checkMark} style={styles.checkMarkSize} />
-                                    <Text style={styles.facilityItemText}>
-                                        Changing Rooms
-                                    </Text>
-                                </View>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                    <Image source={icons.checkMark} style={styles.checkMarkSize} />
-                                    <Text style={styles.facilityItemText}>
-                                        CCTV
-                                    </Text>
+                                <View style={styles.facilityItemContainer}>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <Image source={icons.checkMark} style={styles.checkMarkSize} />
+                                        <Text style={styles.facilityItemText}>
+                                            Drinking Water
+                                        </Text>
+                                    </View>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <Image source={icons.checkMark} style={styles.checkMarkSize} />
+                                        <Text style={styles.facilityItemText}>
+                                            Changing Rooms
+                                        </Text>
+                                    </View>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <Image source={icons.checkMark} style={styles.checkMarkSize} />
+                                        <Text style={styles.facilityItemText}>
+                                            CCTV
+                                        </Text>
+                                    </View>
                                 </View>
                             </View>
                         </View>
-                    </View>
-                    <View style={styles.availableActivitiesContainer}>
-                        <Text style={styles.titleText}>
-                            Available Activities
-                        </Text>
-                        <ScrollView horizontal style={styles.availableActivitiesItems}>
-                            <View style={styles.activityContainer}>
-                                <View style={styles.activityBookedLeftContainer}>
-                                    <Image source={Icons.footballIcon} style={styles.activityIconSize} />
-                                    <Text style={styles.activityText}>
-                                        Football
-                                    </Text>
+                        <View style={styles.availableActivitiesContainer}>
+                            <Text style={styles.titleText}>
+                                Available Activities
+                            </Text>
+                            <ScrollView horizontal style={styles.availableActivitiesItems}>
+                                <View style={styles.activityContainer}>
+                                    <View style={styles.activityBookedLeftContainer}>
+                                        <Image source={Icons.footballIcon} style={styles.activityIconSize} />
+                                        <Text style={styles.activityText}>
+                                            Football
+                                        </Text>
+                                    </View>
                                 </View>
-                            </View>
-                            <View style={styles.activityContainer}>
-                                <View style={styles.activityBookedLeftContainer}>
-                                    <Image source={Icons.badmintonIcon} style={styles.activityIconSize} />
-                                    <Text style={styles.activityText}>
-                                        Badminton
-                                    </Text>
+                                <View style={styles.activityContainer}>
+                                    <View style={styles.activityBookedLeftContainer}>
+                                        <Image source={Icons.badmintonIcon} style={styles.activityIconSize} />
+                                        <Text style={styles.activityText}>
+                                            Badminton
+                                        </Text>
+                                    </View>
                                 </View>
-                            </View>
-                            <View style={styles.activityContainer}>
-                                <View style={styles.activityBookedLeftContainer}>
-                                    <Image source={Icons.ttIcon} style={styles.activityIconSize} />
-                                    <Text style={styles.activityText}>
-                                        TT
-                                    </Text>
+                                <View style={styles.activityContainer}>
+                                    <View style={styles.activityBookedLeftContainer}>
+                                        <Image source={Icons.ttIcon} style={styles.activityIconSize} />
+                                        <Text style={styles.activityText}>
+                                            TT
+                                        </Text>
+                                    </View>
                                 </View>
-                            </View>
-                            <View style={styles.activityContainer}>
-                                <View style={styles.activityBookedLeftContainer}>
-                                    <Image source={Icons.basketBallIcon} style={styles.activityIconSize} />
-                                    <Text style={styles.activityText}>
-                                        Basketball
-                                    </Text>
+                                <View style={styles.activityContainer}>
+                                    <View style={styles.activityBookedLeftContainer}>
+                                        <Image source={Icons.basketBallIcon} style={styles.activityIconSize} />
+                                        <Text style={styles.activityText}>
+                                            Basketball
+                                        </Text>
+                                    </View>
                                 </View>
-                            </View>
-                        </ScrollView>
+                            </ScrollView>
+                        </View>
                     </View>
                 </View>
-            </View>
+
+
+            </ScrollView>
+
+
             <View style={styles.buttonContainer}>
                 <CommonButton onPress={() => console.log('pressed')} children="Book Now" />
             </View>
-
-        </ScrollView>
+        </View>
     );
 }
 
@@ -318,5 +324,8 @@ const styles = StyleSheet.create({
     buttonContainer: {
         paddingBottom: SIZES.padding2,
         paddingHorizontal: SIZES.padding6,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: COLORS.background
     },
 });

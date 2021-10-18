@@ -19,7 +19,7 @@ const ActivityItems = (props) => {
             style={styles.container}
         >
             <TouchableOpacity 
-            onPress={() => navigation.navigate('ExploreNearby')}
+            onPress={() => navigation.navigate('ExploreActivity')}
             >
                 <View style={{
                     backgroundColor: '#444B65', width: 69, height: 87, borderRadius: 15,

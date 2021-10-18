@@ -83,12 +83,12 @@ export default function YourBookingDetails() {
                                 Sector 46,
                                 Guruguram, Haryana
                             </Text>
-                            <View style={styles.directionContainer}>
+                            <TouchableOpacity style={styles.directionContainer}>
                                 <Image source={icons.directionIcon} style={styles.directionIconSize} />
                                 <Text style={styles.directionText}>
                                     Get Direction
                                 </Text>
-                            </View>
+                            </TouchableOpacity>
                         </View>
                         <View style={styles.activityBookedContainer}>
                             <Text style={styles.activityBookedText}>

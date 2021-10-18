@@ -1,175 +1,45 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import { View, ScrollView, Text, StyleSheet, Image, TouchableOpacity, Dimensions } from 'react-native';
+import React from 'react';
+import { View, ScrollView, Text, StyleSheet, Image, TouchableOpacity, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { COLORS, FONTS, icons, images, SIZES } from '../../../constants';
-import Carousel, { Pagination } from 'react-native-snap-carousel';
-import IMAGEDATA from '../../../assets/data/ImageDataDummy';
-import { animatedStyles, scrollInterpolator } from '../../../utils/animations';
-import ExploreNearByImagesFlatlist from '../../components/flatlistItems/ExploreNearByImagesFlatlist';
+import { COLORS, FONTS, icons, SIZES } from '../../../constants';
+import ExploreNearbyFlatlistItems from '../../components/flatlistItems/ExploreNearbyFlatlistItems';
+import GOALSDATA from '../../../assets/data/GoalsData';
 
-const SLIDER_WIDTH = Dimensions.get('window').width;
-// const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
-const ITEM_WIDTH = SLIDER_WIDTH;
 
 export default function ExploreNearby() {
     const navigation = useNavigation();
-    const renderImageFlatlist = (item) => (
-        <ExploreNearByImagesFlatlist item={item} key={item.index}
-        />
-    );
-    const [activeSlide, setActiveSlide] = useState(0);
     return (
-        <ScrollView
+        <View
             showsVerticalScrollIndicator={false}
             style={styles.container}
         >
-            <View style={styles.headerContainer}>
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Image source={icons.backIcon} style={styles.backIcon} />
-                </TouchableOpacity>
-                <Text style={styles.headerText}>
-                    Explore Nearby
-                </Text>
-                <View>
-                </View>
-            </View>
             <View>
-                <View>
-                    <Carousel
-                        data={IMAGEDATA}
-                        renderItem={renderImageFlatlist}
-                        keyExtractor={(_item, index) => index.toString()}
-                        horizontal={true}
-                        sliderWidth={SLIDER_WIDTH}
-                        itemWidth={ITEM_WIDTH}
-                        inactiveSlideShift={0}
-                        scrollInterpolator={scrollInterpolator}
-                        slideInterpolatedStyle={animatedStyles}
-                        useScrollView={true}
-                        inactiveSlideScale={1}
-                        inactiveSlideOpacity={0.95}
-                        onSnapToItem={(index) => setActiveSlide(index)}
-                    />
-                    <View style={styles.paginationContainer}>
-                        <Pagination
-                            dotsLength={IMAGEDATA.length}
-                            activeDotIndex={activeSlide}
-                            dotStyle={styles.dotStyle}
-                            inactiveDotStyle={styles.inactiveDotStyle}
-                            containerStyle={{ width: 30 }}
-                        />
-                    </View>
-                </View>
-                <View style={styles.arenaNameContainer}>
-                    <View>
-                        <Text style={styles.headerText}>
-                            Football Arena
-                        </Text>
-                        <Text style={styles.subText}>
-                            Football
-                        </Text>
-                    </View>
-                    <View style={styles.ratingContainer}>
-                        <Text style={styles.ratingText}>
-                            4.5
-                        </Text>
-                        <Image source={images.star} style={styles.starSize} />
-                    </View>
-                </View>
+                <FlatList
+                    ListHeaderComponent={
+                        <>
+                            <View style={styles.headerContainer}>
+                                <TouchableOpacity onPress={() => navigation.goBack()}>
+                                    <Image source={icons.backIcon} style={styles.backIcon} />
+                                </TouchableOpacity>
+                                <Text style={styles.headerText}>
+                                    Explore Nearby
+                                </Text>
+                                <View>
+                                </View>
+                            </View>
+                        </>
+                    }
+                    keyExtractor={(item) => item.id.toString()}
+                    data={GOALSDATA}
+                    showsVerticalScrollIndicator={false}
+                    renderItem={() => (
+                        <ExploreNearbyFlatlistItems />
+                    )}
+                />
             </View>
-
-            <View>
-                <View>
-                    <Carousel
-                        data={IMAGEDATA}
-                        renderItem={renderImageFlatlist}
-                        keyExtractor={(_item, index) => index.toString()}
-                        horizontal={true}
-                        sliderWidth={SLIDER_WIDTH}
-                        itemWidth={ITEM_WIDTH}
-                        inactiveSlideShift={0}
-                        scrollInterpolator={scrollInterpolator}
-                        slideInterpolatedStyle={animatedStyles}
-                        useScrollView={true}
-                        inactiveSlideScale={1}
-                        inactiveSlideOpacity={0.95}
-                        onSnapToItem={(index) => setActiveSlide(index)}
-                    />
-                    <View style={styles.paginationContainer}>
-                        <Pagination
-                            dotsLength={IMAGEDATA.length}
-                            activeDotIndex={activeSlide}
-                            dotStyle={styles.dotStyle}
-                            inactiveDotStyle={styles.inactiveDotStyle}
-                            containerStyle={{ width: 30 }}
-                        />
-                    </View>
-                </View>
-                <View style={styles.arenaNameContainer}>
-                    <View>
-                        <Text style={styles.headerText}>
-                            The Gurgaon Club
-                        </Text>
-                        <Text style={styles.subText}>
-                            Badminton, Tennis, Basketball & More
-                        </Text>
-                    </View>
-                    <View style={styles.ratingContainer}>
-                        <Text style={styles.ratingText}>
-                            4.6
-                        </Text>
-                        <Image source={images.star} style={styles.starSize} />
-                    </View>
-                </View>
-            </View>
-
-            <View>
-                <View>
-                    <Carousel
-                        data={IMAGEDATA}
-                        renderItem={renderImageFlatlist}
-                        keyExtractor={(_item, index) => index.toString()}
-                        horizontal={true}
-                        sliderWidth={SLIDER_WIDTH}
-                        itemWidth={ITEM_WIDTH}
-                        inactiveSlideShift={0}
-                        scrollInterpolator={scrollInterpolator}
-                        slideInterpolatedStyle={animatedStyles}
-                        useScrollView={true}
-                        inactiveSlideScale={1}
-                        inactiveSlideOpacity={0.95}
-                        onSnapToItem={(index) => setActiveSlide(index)}
-                    />
-                    <View style={styles.paginationContainer}>
-                        <Pagination
-                            dotsLength={IMAGEDATA.length}
-                            activeDotIndex={activeSlide}
-                            dotStyle={styles.dotStyle}
-                            inactiveDotStyle={styles.inactiveDotStyle}
-                            containerStyle={{ width: 30 }}
-                        />
-                    </View>
-                </View>
-                <View style={styles.arenaNameContainer}>
-                    <View>
-                        <Text style={styles.headerText}>
-                            The Gallant Club
-                        </Text>
-                        <Text style={styles.subText}>
-                            Table Tennis, Badminton, Squash & More
-                        </Text>
-                    </View>
-                    <View style={styles.ratingContainer}>
-                        <Text style={styles.ratingText}>
-                            4.9
-                        </Text>
-                        <Image source={images.star} style={styles.starSize} />
-                    </View>
-                </View>
-            </View>
-        </ScrollView>
+        </View>
     );
 }
 

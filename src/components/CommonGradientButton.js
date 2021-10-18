@@ -38,5 +38,5 @@ const styles = StyleSheet.create({
         fontFamily: FONTS.satoshi700,
         fontSize: SIZES.buttonText,
     },
-    TOContainer: { width: '100%' },
+    TOContainer: { width: '100%', marginTop: 20 },
 });

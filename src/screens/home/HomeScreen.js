@@ -51,6 +51,8 @@ export default function HomeScreen(props) {
             </View>
             <View style={{ paddingVertical: 30, }}>
                 <FlatList
+                    showsHorizontalScrollIndicator={false}
+
                     keyExtractor={(item) => item.id.toString()}
                     data={GOALSDATA}
                     horizontal={true}
@@ -72,6 +74,7 @@ export default function HomeScreen(props) {
                 </View>
                 <View style={{ paddingTop: 25, paddingBottom: 35 }}>
                     <FlatList
+                        showsHorizontalScrollIndicator={false}
                         keyExtractor={(item) => item.id.toString()}
                         data={GOALSDATA}
                         horizontal={true}
@@ -99,6 +102,8 @@ export default function HomeScreen(props) {
                 </View>
                 <View style={{ paddingTop: 25, paddingBottom: 35 }}>
                     <FlatList
+                        showsHorizontalScrollIndicator={false}
+
                         keyExtractor={(item) => item.id.toString()}
                         data={GOALSDATA}
                         horizontal={true}
