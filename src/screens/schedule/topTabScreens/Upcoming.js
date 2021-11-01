@@ -4,8 +4,8 @@ import React from 'react';
 import { View, Button, Text, StyleSheet, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, SIZES } from '../../../../constants';
-import GOALSDATA from '../../../../assets/data/GoalsData';
-import ScheduleFlatlistItem from '../../../components/flatlistItems/ScheduleFlatlistItem';
+import GOALSDATA from '../../../../assets/data/ActivitIesData';
+import UpcomingActivityItem from '../../../components/flatlistItems/ScheduleFlatlists/UpcomingActivityItem';
 
 export default function Upcoming() {
     const navigation = useNavigation();
@@ -17,7 +17,7 @@ export default function Upcoming() {
                     data={GOALSDATA}
                     showsVerticalScrollIndicator={false}
                     renderItem={(itemData, item) => (
-                        <ScheduleFlatlistItem
+                        <UpcomingActivityItem
                             id={itemData.item.id}
                             index={itemData.index}
                             item={itemData.item}

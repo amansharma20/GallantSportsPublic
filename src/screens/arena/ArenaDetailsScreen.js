@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import { View, StyleSheet, Dimensions, Image, TouchableOpacity, Text, ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, Dimensions, Image, TouchableOpacity, Text, ScrollView, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import IMAGEDATA from '../../../assets/data/ImageDataDummy';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { COLORS, FONTS, icons, images, SIZES } from '../../../constants';
-import { animatedStyles, scrollInterpolator } from '../../../utils/animations';
+import { animatedStyles, scrollInterpolator } from '../../utils/animations';
 import Icons from '../../../constants/Icons';
 import CommonButton from '../../components/CommonGradientButton';
 import ArenaImagesFlatlist from '../../components/flatlistItems/ArenaImagesFlatlist';
@@ -22,8 +22,31 @@ export default function ArenaDetailsScreen() {
         />
     );
     const [activeSlide, setActiveSlide] = useState(0);
+
+    const [dataSource, setDataSource] = useState([]);
+
+    useEffect(() => {
+        let items = Array.apply(null, Array(6)).map((v, i) => {
+            return {
+            };
+        });
+        setDataSource(items);
+    }, []);
+
+    const renderAvailableActivitiesItem = ({ }) => (
+        <View style={styles.activityContainer}>
+            <View style={styles.activityBookedLeftContainer}>
+                <Image source={Icons.footballIcon} style={styles.activityIconSize} />
+                <Text style={styles.activityText}>
+                    Football
+                </Text>
+            </View>
+        </View>
+    );
+
+
     return (
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 }}>
             <ScrollView
                 // contentContainerStyle={{flexGrow: 1, }}
                 showsVerticalScrollIndicator={false}
@@ -84,91 +107,50 @@ export default function ArenaDetailsScreen() {
                         <View style={styles.descriptionContainer}>
                             <Text style={styles.bodyText}>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa quis suspendisse pretium et nec.{'\n'}
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa quis suspendisse pretium et nec.
                             </Text>
                         </View>
                         <View style={styles.facilitiesContainer}>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                <View style={styles.facilityItemContainer}>
-                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                        <Image source={icons.checkMark} style={styles.checkMarkSize} />
-                                        <Text style={styles.facilityItemText}>
-                                            Parking
-                                        </Text>
-                                    </View>
-                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                        <Image source={icons.checkMark} style={styles.checkMarkSize} />
-                                        <Text style={styles.facilityItemText}>
+                            <FlatList
+                                data={dataSource}
+                                renderItem={({ item }) => (
+                                    <View
+                                        style={{
+                                            flex: 1,
+                                            flexDirection: 'column',
+                                            padding: 10,
+                                            alignItems: 'center'
+                                        }}>
+                                        <Image
+                                            style={styles.imageThumbnail}
+                                            source={images.lockerImage}
+                                        />
+                                        <Text style={styles.facilitiesText}>
                                             Lockers
                                         </Text>
                                     </View>
-                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                        <Image source={icons.checkMark} style={styles.checkMarkSize} />
-                                        <Text style={styles.facilityItemText}>
-                                            Washrooms
-                                        </Text>
-                                    </View>
-                                </View>
-                                <View style={styles.facilityItemContainer}>
-                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                        <Image source={icons.checkMark} style={styles.checkMarkSize} />
-                                        <Text style={styles.facilityItemText}>
-                                            Drinking Water
-                                        </Text>
-                                    </View>
-                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                        <Image source={icons.checkMark} style={styles.checkMarkSize} />
-                                        <Text style={styles.facilityItemText}>
-                                            Changing Rooms
-                                        </Text>
-                                    </View>
-                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                        <Image source={icons.checkMark} style={styles.checkMarkSize} />
-                                        <Text style={styles.facilityItemText}>
-                                            CCTV
-                                        </Text>
-                                    </View>
-                                </View>
-                            </View>
+                                )}
+                                numColumns={3}
+                                keyExtractor={(item, index) => index.toString()}
+                            />
                         </View>
-                        <View style={styles.availableActivitiesContainer}>
-                            <Text style={styles.titleText}>
-                                Available Activities
-                            </Text>
-                            <ScrollView horizontal style={styles.availableActivitiesItems}>
-                                <View style={styles.activityContainer}>
-                                    <View style={styles.activityBookedLeftContainer}>
-                                        <Image source={Icons.footballIcon} style={styles.activityIconSize} />
-                                        <Text style={styles.activityText}>
-                                            Football
-                                        </Text>
-                                    </View>
-                                </View>
-                                <View style={styles.activityContainer}>
-                                    <View style={styles.activityBookedLeftContainer}>
-                                        <Image source={Icons.badmintonIcon} style={styles.activityIconSize} />
-                                        <Text style={styles.activityText}>
-                                            Badminton
-                                        </Text>
-                                    </View>
-                                </View>
-                                <View style={styles.activityContainer}>
-                                    <View style={styles.activityBookedLeftContainer}>
-                                        <Image source={Icons.ttIcon} style={styles.activityIconSize} />
-                                        <Text style={styles.activityText}>
-                                            TT
-                                        </Text>
-                                    </View>
-                                </View>
-                                <View style={styles.activityContainer}>
-                                    <View style={styles.activityBookedLeftContainer}>
-                                        <Image source={Icons.basketBallIcon} style={styles.activityIconSize} />
-                                        <Text style={styles.activityText}>
-                                            Basketball
-                                        </Text>
-                                    </View>
-                                </View>
-                            </ScrollView>
+
+                    </View>
+                    <View style={styles.availableActivitiesContainer}>
+                        <Text style={[styles.titleText, {
+                            paddingHorizontal: SIZES.padding6,
+                        }]}>
+                            Available Activities
+                        </Text>
+                        <View style={styles.availableActivitiesItems}>
+                            <FlatList
+                                data={dataSource}
+                                renderItem={renderAvailableActivitiesItem}
+                                keyExtractor={item => item.id}
+                                horizontal
+                                contentContainerStyle={{
+                                    paddingLeft: SIZES.padding6,
+                                }}
+                            />
                         </View>
                     </View>
                 </View>
@@ -178,7 +160,7 @@ export default function ArenaDetailsScreen() {
 
 
             <View style={styles.buttonContainer}>
-                <CommonButton onPress={() => console.log('pressed')} children="Book Now" />
+                <CommonButton onPress={() => navigation.navigate('ArenaBookingScreen')} children="Book Now" />
             </View>
         </View>
     );
@@ -217,7 +199,6 @@ const styles = StyleSheet.create({
         height: 24,
         resizeMode: 'contain',
     },
-
     headerTopContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -273,22 +254,12 @@ const styles = StyleSheet.create({
         paddingTop: SIZES.padding2,
     },
     bodyText: {
-        fontSize: 14,
-        fontFamily: FONTS.satoshi400,
-        color: COLORS.white,
-        lineHeight: 20,
-        paddingBottom: SIZES.padding2,
-    },
-    facilitiesContainer: {
-
-    },
-    facilityItemContainer: {
-        paddingRight: SIZES.paddingExtraLarge
-    },
-    facilityItemText: {
         fontSize: 16,
         fontFamily: FONTS.satoshi400,
         color: COLORS.white,
+        lineHeight: 17,
+    },
+    facilitiesContainer: {
     },
     checkMarkSize: {
         width: 14,
@@ -297,7 +268,7 @@ const styles = StyleSheet.create({
         marginRight: 8,
     },
     availableActivitiesContainer: {
-        paddingTop: SIZES.padding2,
+        paddingTop: SIZES.padding4,
     },
     availableActivitiesItems: { paddingVertical: 20, flexDirection: 'row', },
     activityContainer: { paddingRight: 18 },
@@ -327,5 +298,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: COLORS.background
+    },
+    imageThumbnail: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 48,
+        width: 48,
+    },
+    facilitiesText: {
+        fontSize: 10,
+        fontFamily: FONTS.satoshi400,
+        color: COLORS.white,
+        paddingTop: 6,
     },
 });

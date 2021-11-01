@@ -5,7 +5,7 @@ import { View, ScrollView, Text, StyleSheet, Image, TouchableOpacity, FlatList }
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, FONTS, icons, SIZES } from '../../../constants';
 import ExploreNearbyFlatlistItems from '../../components/flatlistItems/ExploreNearbyFlatlistItems';
-import GOALSDATA from '../../../assets/data/GoalsData';
+import GOALSDATA from '../../../assets/data/ActivitIesData';
 
 
 export default function ExploreNearby() {

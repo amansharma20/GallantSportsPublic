@@ -12,8 +12,6 @@ const Tab = createMaterialTopTabNavigator();
 
 function ScheduleTopTabNavigator({ index, descriptors, navigation, position }) {
     const isFocused = index === index;
-    console.log(index);
-    console.log(isFocused);
 
     return (
         <Tab.Navigator

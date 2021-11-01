@@ -11,8 +11,16 @@ import com.facebook.react.shell.MainReactPackage;
 import java.util.Arrays;
 import java.util.ArrayList;
 
+// @react-native-async-storage/async-storage
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 // @react-native-community/clipboard
 import com.reactnativecommunity.clipboard.ClipboardPackage;
+// lottie-react-native
+import com.airbnb.android.react.lottie.LottiePackage;
+// react-native-gesture-handler
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+// react-native-keychain
+import com.oblador.keychain.KeychainPackage;
 // react-native-linear-gradient
 import com.BV.LinearGradient.LinearGradientPackage;
 // react-native-pager-view
@@ -70,7 +78,11 @@ public class PackageList {
   public ArrayList<ReactPackage> getPackages() {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(mConfig),
+      new AsyncStoragePackage(),
       new ClipboardPackage(),
+      new LottiePackage(),
+      new RNGestureHandlerPackage(),
+      new KeychainPackage(),
       new LinearGradientPackage(),
       new PagerViewPackage(),
       new SafeAreaContextPackage(),

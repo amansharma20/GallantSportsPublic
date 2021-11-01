@@ -11,7 +11,6 @@ import ProfileScreen from '../screens/profile/ProfileScreen';
 const Tab = createMaterialBottomTabNavigator();
 
 export default function BottomTabBarNavigator(props, focused) {
-    console.log(props)
 
     const [tabBarShowLabel, setTabBarShowLabel] = useState(false);
 

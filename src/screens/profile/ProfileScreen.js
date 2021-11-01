@@ -1,13 +1,17 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, FONTS, icons, images, SIZES } from '../../../constants';
 import Images from '../../../constants/Images';
+import { AuthContext } from '../../navigation/ApplicationNavigator';
+import Toast from 'react-native-toast-message';
 
 export default function ProfileScreen() {
     const navigation = useNavigation();
+    const { signOut } = useContext(AuthContext);
+
     return (
         <ScrollView style={styles.container}>
             <View style={styles.imageContainer}>
@@ -68,13 +72,22 @@ export default function ProfileScreen() {
             </View>
             <View style={styles.footerContainer}>
                 <TouchableOpacity>
-                    <Text style={[styles.footerText, {marginTop: 32}]}>
+                    <Text style={[styles.footerText, { marginTop: 32 }]}>
                         Rate us on play store
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity>
-                    <Text style={[styles.footerText, {marginTop: 20}]}>
+                <TouchableOpacity onPress={async () => {
+                    signOut();
+                    Toast.show({
+                        type: 'error',
+                        text1: 'Bbye👋',
+                        text2: 'You have been logged out.',
+                        visibilityTime: 2000,
+                        autoHide: true,
+                    });
+                }}>
+                    <Text style={[styles.footerText, { marginTop: 20 }]}>
                         Log Out
                     </Text>
                 </TouchableOpacity>

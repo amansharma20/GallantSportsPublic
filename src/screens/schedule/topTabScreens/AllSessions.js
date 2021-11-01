@@ -4,17 +4,17 @@ import React from 'react';
 import { View, Button, Text, StyleSheet, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, SIZES } from '../../../../constants';
-import GOALSDATA from '../../../../assets/data/GoalsData';
+import ACTIVITIESDATA from '../../../../assets/data/ActivitIesData';
 import ScheduleFlatlistItem from '../../../components/flatlistItems/ScheduleFlatlistItem';
 
 export default function AllSessions() {
     const navigation = useNavigation();
     return (
         <View style={styles.container}>
-            <View style={{paddingTop: SIZES.padding6}}>
-            <FlatList
+            <View style={{ paddingTop: SIZES.padding6 }}>
+                <FlatList
                     keyExtractor={(item) => item.id.toString()}
-                    data={GOALSDATA}
+                    data={ACTIVITIESDATA}
                     showsVerticalScrollIndicator={false}
                     renderItem={(itemData, item) => (
                         <ScheduleFlatlistItem

@@ -11,7 +11,6 @@ export default function MyTabBar({ state, descriptors, navigation, position }) {
                 const label = options.tabBarLabel;
 
                 const isFocused = state.index === index;
-                console.log(index);
 
                 const onPress = () => {
                     const event = navigation.emit({

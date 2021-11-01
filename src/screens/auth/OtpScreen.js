@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Text, View, StatusBar, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState, useContext } from 'react';
+import { Text, View, StatusBar, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Images from '../../../constants/Images';
 import { Responsive } from '../../../constants/Layout';
 import { COLORS, FONTS, SIZES } from '../../../constants/Theme';
@@ -7,13 +7,19 @@ import { Formik } from 'formik';
 import { useNavigation } from '@react-navigation/core';
 import * as yup from 'yup';
 import CommonButton from '../../components/CommonGradientButton';
-import { icons } from '../../../constants';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
+import CommonLoading from '../../components/CommonLoading';
+import { AuthActions } from '../../persistence/actions/AuthActions';
+import { AuthContext } from '../../navigation/ApplicationNavigator';
+import MyAsyncStorage from '../../persistence/storage/MyAsyncStorage';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function OtpScreen(props) {
-    // console.log(props.route.params.MobileNumber);
     const mobileNumber = props.route.params.MobileNumber;
     const navigation = useNavigation();
+    const [otp, setOtp] = useState('0000');
+    const { screenName } = props.route.params;
+    const dispatch = useDispatch();
 
     const schema = yup.object().shape({
         phone: yup
@@ -22,63 +28,70 @@ export default function OtpScreen(props) {
             .matches(/(\d){10}\b/, 'Enter a valid phone number'),
     });
 
-    const onPressConfirm = () => {
-        // setTimeout(function timer() {
-        //     setHidden(false);
-        // }, 30000);
-        timerStart;
-        navigation.navigate('PersonalDetails');
-    }
-    // this.state = {
-    //     timerStart: true,
-    //     stopwatchStart: false,
-    //     totalDuration: 90000,
-    //     timerReset: false,
-    //     stopwatchReset: false,
-    //   };
+    const { signIn, singUp } = useContext(AuthContext);
 
-    // const login = data => {
-    //   CommonLoading.show();
-    //   const signInData = {
-    //     MobileNumber: data.phone,
-    //   };
-    //   dispatch(AuthActions.signIn('Account/LoginStart', signInData)).then(
-    //     (response) => {
-    //       CommonLoading.hide();
-    //       if (response && response.success === false) { } else {
-    //         navigation.navigate('OTPScreen', {
-    //           phone: data.phone,
-    //           screenName: 'Login',
-    //         });
-    //       }
-    //     },
-    //   );
-    // };
+    const onPressConfirm = () => {
+        CommonLoading.show();
+        if (screenName == 'Login') {
+            const otpData = {
+                MobileNumber: mobileNumber,
+                Code: otp,
+            };
+            dispatch(AuthActions.signIn('Account/LoginComplete', otpData)).then(
+                (response) => {
+                    setUserStatus(false);
+                    CommonLoading.hide();
+                    if (response && response.success === false) {
+                        console.log('uh')
+                    } else {
+                        let token = 'Bearer ' + response.data;
+                        signIn(token);
+                    }
+                },
+            );
+        } else {
+            const otpData = {
+                MobileNumber: mobileNumber,
+                Code: otp,
+            };
+            setUserStatus(true);
+            dispatch(
+                AuthActions.signup('Account/RegisterCustomerComplete', otpData),
+            ).then((response) => {
+                CommonLoading.hide();
+                if (response && response.success === false) { console.log('fail') } else {
+                    let token = 'Bearer ' + response.data;
+                    singUp(token);
+                }
+            });
+        }
+    }
+
+    const setUserStatus = async (flag) => {
+        await MyAsyncStorage.storeData('newUserStatus', {
+            newUser: flag,
+        });
+    };
 
     const [otpTimer, setOtpTimer] = useState(30);
     useEffect(() => {
-
         let interval = setInterval(() => {
-
             setOtpTimer(oldValue => {
-
                 oldValue <= 1 && clearInterval(interval)
-
                 return oldValue - 1
-
             })
-
         }, 1000)
         return () => clearInterval(interval)
     }, [])
 
+    const signInData = {
+        MobileNumber: mobileNumber,
+    };
 
     return (
         <View style={styles.container}>
             <StatusBar hidden={false} backgroundColor={COLORS.background} barStyle={'light-content'} />
-
             <View style={styles.body}>
-
                 <View style={{ alignItems: 'center' }}>
                     <Image source={Images.gallantLogo} style={styles.logoImage} />
                     <View style={styles.textContainer}>
@@ -89,9 +102,7 @@ export default function OtpScreen(props) {
                             Premium Arenas
                         </Text>
                     </View>
-
                 </View>
-
                 <View style={styles.loginContainer}>
                     <Formik
                         validationSchema={schema}
@@ -110,14 +121,24 @@ export default function OtpScreen(props) {
                         }) => (
                             <>
                                 <View>
-                                    <Text style={styles.loginText}>
+                                    {/* <Text style={styles.loginText}>
                                         Login
-                                    </Text>
+                                    </Text> */}
                                 </View>
-                                <View style={{}}>
+                                <View>
                                     <Text style={styles.phoneNumberText}>
                                         Please enter the 4 digit code
                                     </Text>
+                                    {/* {
+                                        signUpMobile == undefined ?
+                                            <Text style={[styles.phoneNumberText, { fontFamily: FONTS.satoshi700 }]}>
+                                                sent to you at +91 {mobileNumber}.
+                                            </Text>
+                                            :
+                                            <Text style={[styles.phoneNumberText, { fontFamily: FONTS.satoshi700 }]}>
+                                                sent to you at +91 {signUpMobile}.
+                                            </Text>
+                                    } */}
                                     <Text style={[styles.phoneNumberText, { fontFamily: FONTS.satoshi700 }]}>
                                         sent to you at +91 {mobileNumber}.
                                     </Text>
@@ -128,40 +149,43 @@ export default function OtpScreen(props) {
                                         // autoFocusOnLoad
                                         style={styles.otpInputContainer}
                                         codeInputFieldStyle={styles.underlineStyleBase}
-                                    // onCodeFilled={(code => {
-                                    //     setOtp(code);
-                                    //     console.log(`Code is ${code}, you are good to go!`);
-                                    // })}
+                                        onCodeFilled={(code => {
+                                            setOtp(code);
+                                            console.log(`Code is ${code}, you are good to go!`);
+                                        })}
                                     />
                                 </View>
-
                             </>
                         )}
                     </Formik>
                 </View>
-
                 <View style={{ alignItems: 'center' }}>
-                            <View style={styles.resendOtp}>
-                                {
-                                    otpTimer > 0 ?
-                                        (
-                                            <Text style={styles.resendOtpText}>
-                                                {otpTimer}s
+                    <View style={styles.resendOtp}>
+                        {
+                            otpTimer > 0 ?
+                                (
+                                    <Text style={styles.resendOtpText}>
+                                        {otpTimer}s
+                                    </Text>
+                                ) : (
+                                    <View style={styles.resendOtp}>
+                                        <Text style={styles.resendOtpText}>
+                                            Didn’t get OTP?
+                                        </Text>
+                                        <TouchableOpacity onPress={() =>
+                                            setOtpTimer(30)
+                                            ||
+                                            dispatch(AuthActions.signIn('Account/LoginStart', signInData)).then(() => {
+                                                CommonLoading.hide();
+                                            })}>
+                                            <Text style={styles.resendOtpTextBold}>
+                                                Resend OTP
                                             </Text>
-                                        ) : (
-                                            <View style={styles.resendOtp}>
-                                                <Text style={styles.resendOtpText}>
-                                                    Didn’t get OTP?
-                                                </Text>
-                                                <TouchableOpacity onPress={() => setOtpTimer(30)}>
-                                                    <Text style={styles.resendOtpTextBold}>
-                                                        Resend OTP
-                                                    </Text>
-                                                </TouchableOpacity>
-                                            </View>
-                                        )
-                                }
-                            </View>
+                                        </TouchableOpacity>
+                                    </View>
+                                )
+                        }
+                    </View>
                     <View style={{ width: '100%' }}>
                         <CommonButton onPress={(onPressConfirm)} children="Confirm" />
                         <View style={styles.termsTextContainer} />
@@ -172,7 +196,7 @@ export default function OtpScreen(props) {
 
 
             </View>
-        </View>
+        </View >
     );
 };
 

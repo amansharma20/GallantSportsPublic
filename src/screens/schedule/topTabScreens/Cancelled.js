@@ -4,8 +4,8 @@ import React from 'react';
 import { View, Button, Text, StyleSheet, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, SIZES } from '../../../../constants';
-import GOALSDATA from '../../../../assets/data/GoalsData';
-import ScheduleFlatlistItem from '../../../components/flatlistItems/ScheduleFlatlistItem';
+import GOALSDATA from '../../../../assets/data/ActivitIesData';
+import CancelledActivityItem from '../../../components/flatlistItems/ScheduleFlatlists/CancelledActivityItem';
 
 export default function Cancelled() {
     const navigation = useNavigation();
@@ -17,7 +17,7 @@ export default function Cancelled() {
                     data={GOALSDATA}
                     showsVerticalScrollIndicator={false}
                     renderItem={(itemData, item) => (
-                        <ScheduleFlatlistItem
+                        <CancelledActivityItem
                             id={itemData.item.id}
                             index={itemData.index}
                             item={itemData.item}

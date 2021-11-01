@@ -9,61 +9,67 @@
 9        android:targetSdkVersion="30" />
 10
 11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-11-->C:\Users\amana\apps\GallantSports\android\app\src\debug\AndroidManifest.xml:5:5-77
-11-->C:\Users\amana\apps\GallantSports\android\app\src\debug\AndroidManifest.xml:5:22-75
+11-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\debug\AndroidManifest.xml:5:5-77
+11-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\debug\AndroidManifest.xml:5:22-75
 12    <uses-permission android:name="android.permission.INTERNET" />
-12-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:4:5-67
-12-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:4:22-64
+12-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:4:5-67
+12-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:4:22-64
 13    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 13-->[com.facebook.flipper:flipper:0.93.0] C:\Users\amana\.gradle\caches\transforms-3\8cf55bdce16a002612f05f30a64a017a\transformed\jetified-flipper-0.93.0\AndroidManifest.xml:16:5-76
 13-->[com.facebook.flipper:flipper:0.93.0] C:\Users\amana\.gradle\caches\transforms-3\8cf55bdce16a002612f05f30a64a017a\transformed\jetified-flipper-0.93.0\AndroidManifest.xml:16:22-73
-14
-15    <application
-15-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:6:5-24:19
-16        android:name="com.gallantsports.MainApplication"
-16-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:7:7-38
-17        android:allowBackup="false"
-17-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:11:7-34
-18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-18-->[androidx.core:core:1.6.0] C:\Users\amana\.gradle\caches\transforms-3\d9b71328e8ba86dc125344804cb6eb44\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
-19        android:debuggable="true"
-20        android:icon="@mipmap/ic_launcher"
-20-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:9:7-41
-21        android:label="@string/app_name"
-21-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:8:7-39
-22        android:roundIcon="@mipmap/ic_launcher_round"
-22-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:10:7-52
-23        android:testOnly="true"
-24        android:theme="@style/AppTheme"
-24-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:12:7-38
-25        android:usesCleartextTraffic="true" >
-25-->C:\Users\amana\apps\GallantSports\android\app\src\debug\AndroidManifest.xml:8:9-44
-26        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
-26-->C:\Users\amana\apps\GallantSports\android\app\src\debug\AndroidManifest.xml:11:9-86
-26-->C:\Users\amana\apps\GallantSports\android\app\src\debug\AndroidManifest.xml:11:19-83
-27        <activity
-27-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:13:7-23:18
-28            android:name="com.gallantsports.MainActivity"
-28-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:14:9-37
-29            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-29-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:16:9-86
-30            android:label="@string/app_name"
-30-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:15:9-41
-31            android:launchMode="singleTask"
-31-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:17:9-40
-32            android:windowSoftInputMode="adjustResize" >
-32-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:18:9-51
-33            <intent-filter>
-33-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:19:9-22:25
-34                <action android:name="android.intent.action.MAIN" />
-34-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:20:13-65
-34-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:20:21-62
-35
-36                <category android:name="android.intent.category.LAUNCHER" />
-36-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:21:13-73
-36-->C:\Users\amana\apps\GallantSports\android\app\src\main\AndroidManifest.xml:21:23-70
-37            </intent-filter>
-38        </activity>
-39    </application>
-40
-41</manifest>
+14    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+14-->[:react-native-keychain] C:\Users\amana\apps\GallantNew\GallantSports\node_modules\react-native-keychain\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-72
+14-->[:react-native-keychain] C:\Users\amana\apps\GallantNew\GallantSports\node_modules\react-native-keychain\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-69
+15    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+15-->[:react-native-keychain] C:\Users\amana\apps\GallantNew\GallantSports\node_modules\react-native-keychain\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-74
+15-->[:react-native-keychain] C:\Users\amana\apps\GallantNew\GallantSports\node_modules\react-native-keychain\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-71
+16
+17    <application
+17-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:6:5-24:19
+18        android:name="com.gallantsports.MainApplication"
+18-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:7:7-38
+19        android:allowBackup="false"
+19-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:11:7-34
+20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+20-->[androidx.core:core:1.6.0] C:\Users\amana\.gradle\caches\transforms-3\d9b71328e8ba86dc125344804cb6eb44\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
+21        android:debuggable="true"
+22        android:icon="@mipmap/ic_launcher"
+22-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:9:7-41
+23        android:label="@string/app_name"
+23-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:8:7-39
+24        android:roundIcon="@mipmap/ic_launcher_round"
+24-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:10:7-52
+25        android:testOnly="true"
+26        android:theme="@style/AppTheme"
+26-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:12:7-38
+27        android:usesCleartextTraffic="true" >
+27-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\debug\AndroidManifest.xml:8:9-44
+28        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+28-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\debug\AndroidManifest.xml:11:9-86
+28-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\debug\AndroidManifest.xml:11:19-83
+29        <activity
+29-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:13:7-23:18
+30            android:name="com.gallantsports.MainActivity"
+30-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:14:9-37
+31            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+31-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:16:9-86
+32            android:label="@string/app_name"
+32-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:15:9-41
+33            android:launchMode="singleTask"
+33-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:17:9-40
+34            android:windowSoftInputMode="adjustResize" >
+34-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:18:9-51
+35            <intent-filter>
+35-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:19:9-22:25
+36                <action android:name="android.intent.action.MAIN" />
+36-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:20:13-65
+36-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:20:21-62
+37
+38                <category android:name="android.intent.category.LAUNCHER" />
+38-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:21:13-73
+38-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:21:23-70
+39            </intent-filter>
+40        </activity>
+41    </application>
+42
+43</manifest>

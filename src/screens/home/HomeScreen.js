@@ -7,17 +7,17 @@ import {
     TouchableOpacity,
     ScrollView,
     FlatList,
+    StatusBar,
 } from 'react-native';
 import { COLORS, FONTS, SIZES } from '../../../constants';
 import Icons from '../../../constants/Icons';
 import UpcomingActivityItem from '../../components/flatlistItems/UpcomingActivityItem';
-import GOALSDATA from '../../../assets/data/GoalsData';
+import GOALSDATA from '../../../assets/data/ActivitIesData';
 import ActivityItems from '../../components/flatlistItems/ActivityItems';
 import ExploreFlatlistItem from '../../components/flatlistItems/ExploreFlatlistItem';
 import { useNavigation } from '@react-navigation/core';
 
 export default function HomeScreen(props) {
-    console.log(props);
     console.log(props.navigation);
     // const firstName = props.route.params.personalDetailsData.FirstName;
     const navigation = useNavigation();
@@ -26,8 +26,9 @@ export default function HomeScreen(props) {
         <ScrollView
             showsVerticalScrollIndicator={false}
             style={styles.container}>
+            <StatusBar hidden={false} backgroundColor={COLORS.background} barStyle={'light-content'} />
             <View style={styles.headerContainer}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('DetectLocation')}>
                     <Image source={Icons.locationIcon} style={styles.locationIcon} />
                 </TouchableOpacity>
                 <View>
@@ -49,7 +50,7 @@ export default function HomeScreen(props) {
                     upcoming activities
                 </Text>
             </View>
-            <View style={{ paddingVertical: 30, }}>
+            <View style={{ paddingVertical: 30 }}>
                 <FlatList
                     showsHorizontalScrollIndicator={false}
 

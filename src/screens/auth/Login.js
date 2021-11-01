@@ -8,9 +8,15 @@ import { useNavigation } from '@react-navigation/core';
 import * as yup from 'yup';
 import CommonButton from '../../components/CommonGradientButton';
 import { icons } from '../../../constants';
+import { Divider } from 'react-native-elements';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useDispatch } from 'react-redux';
+import CommonLoading from '../../components/CommonLoading';
+import { AuthActions } from '../../persistence/actions/AuthActions';
 
 export default function Login() {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const schema = yup.object().shape({
     phone: yup
@@ -20,7 +26,7 @@ export default function Login() {
   });
 
   const login = data => {
-    // CommonLoading.show();
+    CommonLoading.show();
     const signInData = {
       MobileNumber: data.phone,
     };
@@ -28,17 +34,17 @@ export default function Login() {
     navigation.navigate('OtpScreen', {
       MobileNumber: data.phone,
     })
-    // dispatch(AuthActions.signIn('Account/LoginStart', signInData)).then(
-    //   (response) => {
-    //     CommonLoading.hide();
-    //     if (response && response.success === false) { } else {
-    //       navigation.navigate('OTPScreen', {
-    //         phone: data.phone,
-    //         screenName: 'Login',
-    //       });
-    //     }
-    //   },
-    // );
+    dispatch(AuthActions.signIn('Account/LoginStart', signInData)).then(
+      (response) => {
+        CommonLoading.hide();
+        if (response && response.success === false) { console.log('error') } else {
+          navigation.navigate('OtpScreen', {
+            MobileNumber: data.phone,
+            screenName: 'Login',
+          });
+        }
+      },
+    );
   };
 
   return (
@@ -64,7 +70,7 @@ export default function Login() {
           <Formik
             validationSchema={schema}
             initialValues={{
-              phone: '7011886215',
+              phone: '',
             }}
             onSubmit={values => login(values)}
           >
@@ -99,13 +105,30 @@ export default function Login() {
                     placeholderTextColor="#B4B4B4"
                     maxLength={10}
                   />
-                  {!errors.phone && touched.phone && (
+                  {/* {!errors.phone && touched.phone && (
                     <Image source={icons.tick} style={styles.checkMarkIcon} />
-                  )}
+                  )} */}
                 </View>
+                <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: -35, }}>
+                  <Divider orientation="horizontal" style={{ width: '85%' }} />
+                </View>
+
                 {errors.phone && touched.phone && (
                   <Text style={styles.error}>{errors.phone}</Text>
                 )}
+
+                <View style={styles.redirectToSignUpContainer}>
+                  <Text style={[styles.phoneNumberText, { textAlign: 'center', paddingTop: 0 }]}>
+                    Don't have an account?
+                  </Text>
+                  <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+                    <Text style={[styles.phoneNumberText, { textAlign: 'center', fontFamily: FONTS.satoshi900, paddingTop: 0, marginLeft: 4 }]}>
+                      Register now.🥰
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+
+
                 <CommonButton
                   style={{ marginTop: 120 }}
                   // onPress={() => navigation.navigate('OtpScreen')}
@@ -184,8 +207,8 @@ const styles = StyleSheet.create({
     height: Responsive.height(50),
     fontFamily: FONTS.satoshi400,
     width: '100%',
-    borderBottomWidth: 1,
-    borderBottomColor: COLORS.white,
+    // borderBottomWidth: 1,
+    // borderBottomColor: COLORS.white,
   },
   checkMarkContainer: {
     flexDirection: 'row',
@@ -207,6 +230,7 @@ const styles = StyleSheet.create({
     // padding: 4,
     color: '#cc0000',
   },
+  redirectToSignUpContainer: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20 },
   phoneNumberText: {
     color: COLORS.white,
     fontFamily: FONTS.satoshi500,
