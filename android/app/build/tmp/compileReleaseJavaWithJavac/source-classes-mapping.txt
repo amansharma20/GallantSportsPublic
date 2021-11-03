@@ -1,0 +1,9 @@
+com/gallantsports/BuildConfig.java
+ com.gallantsports.BuildConfig
+com/gallantsports/MainApplication.java
+ com.gallantsports.MainApplication
+ com.gallantsports.MainApplication$1
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
+com/gallantsports/MainActivity.java
+ com.gallantsports.MainActivity
