@@ -9,6 +9,7 @@ import ArenaBookingScreen from '../screens/arena/ArenaBookingScreen';
 import YourBookingDetails from '../screens/Booking/YourBookingDetails';
 import DetectLocation from '../screens/location/DetectLocation';
 import SearchLocation from '../screens/location/SearchLocation';
+import EditProfile from '../screens/profile/EditProfile';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ export default function HomeNavigator() {
             <Stack.Screen name="ArenaBookingScreen" component={ArenaBookingScreen} />
             <Stack.Screen name="DetectLocation" component={DetectLocation} />
             <Stack.Screen name="SearchLocation" component={SearchLocation} />
+            <Stack.Screen name="EditProfile" component={EditProfile} />
         </Stack.Navigator>
     );
 }
