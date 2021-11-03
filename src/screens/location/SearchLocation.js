@@ -8,6 +8,9 @@ import { Formik } from 'formik';
 import { Divider } from 'react-native-elements';
 import { Responsive } from '../../../constants/Layout';
 import * as yup from 'yup';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+
+const GOOGLE_PLACES_API_KEY = 'AIzaSyCnZBgYngvXzzdd5wTPBhluSBjOP2w7n4M'; // never save your real api key in a snack!
 
 export default function SearchLocation() {
     const navigation = useNavigation();
@@ -58,7 +61,59 @@ export default function SearchLocation() {
                             touched,
                         }) => (
                             <>
-                                <TextInput
+                                <View style={{paddingTop:20}}>
+                                    <GooglePlacesAutocomplete
+                                        placeholder="search"
+                                        fetchDetails={true}
+                                        listViewDisplayed='true'
+                                        isRowScrollable={true}
+                                        autoFocus={false}
+                                        getDefaultValue={() => {
+                                            return ''; // text input default value
+                                        }}
+                                        query={{
+                                            key: GOOGLE_PLACES_API_KEY,
+                                            language: 'en', // language of the results
+                                        }}
+                                        renderDescription={row => row.description}
+                                        onPress={(data, details = null) => {
+                                            console.log(data)
+                                            // setPickupAddress(data.description);
+                                            // setPickupAddressLatitude(JSON.stringify(details.geometry.location.lat));
+                                            // setPickupAddressLongitude(JSON.stringify(details.geometry.location.lng));
+                                        }}
+                                        styles={{
+                                            poweredContainer: {
+                                                display: 'none',
+                                            },
+                                            row: {
+                                                backgroundColor: '#0E142E',
+                                                padding: 13,
+                                                height: 44,
+                                                flexDirection: 'row',
+                                            },
+                                            description: {
+                                                fontSize:12,
+                                                color:'white'
+                                            },
+                                            textInputContainer: {
+                                                flexDirection: 'row',
+                                              },
+                                            listView: { position: 'absolute' },
+                                            textInput: {
+                                                backgroundColor: 'white',
+                                                height: 45,
+                                                color:'black',
+                                                borderRadius: 5,
+                                                paddingVertical: 5,
+                                                paddingHorizontal: 10,
+                                                fontSize: 12,
+                                            },
+                                        }}
+                                    />
+                                </View>
+
+                                {/* <TextInput
                                     name="search"
                                     style={styles.searchInput}
                                     onChangeText={handleChange('search')}
@@ -69,16 +124,16 @@ export default function SearchLocation() {
                                     placeholderTextColor="#B4B4B4"
                                     maxLength={10}
                                     returnKeyType="search"
-                                />
+                                /> */}
                             </>
                         )}
                     </Formik>
-                    <TouchableOpacity style={{flexDirection: 'row', marginTop: 16, alignItems: 'center'}}>
+                    {/* <TouchableOpacity style={{ flexDirection: 'row', marginTop: 50, alignItems: 'center' }}>
                         <Image source={icons.useCurrentLocation} style={styles.searchIcon} />
-                        <Text style={{marginLeft: 15, color: '#DB3E6F', fontSize: 18, fontFamily: FONTS.satoshi700}}>
+                        <Text style={{ marginLeft: 15, color: '#DB3E6F', fontSize: 18, fontFamily: FONTS.satoshi700 }}>
                             Use current location
                         </Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
 
 
@@ -122,5 +177,12 @@ const styles = StyleSheet.create({
         borderBottomColor: COLORS.white,
         borderBottomWidth: 1,
         marginLeft: 8
+    },
+
+    serachContainer: {
+        flex: 1,
+        padding: 10,
+        paddingTop: 10,
+        backgroundColor: '#ecf0f1',
     },
 });

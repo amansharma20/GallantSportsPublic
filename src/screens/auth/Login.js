@@ -9,7 +9,7 @@ import * as yup from 'yup';
 import CommonButton from '../../components/CommonGradientButton';
 import { icons } from '../../../constants';
 import { Divider } from 'react-native-elements';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch } from 'react-redux';
 import CommonLoading from '../../components/CommonLoading';
 import { AuthActions } from '../../persistence/actions/AuthActions';
@@ -48,7 +48,8 @@ export default function Login() {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView>
+ <View style={styles.container}>
       <StatusBar hidden={false} backgroundColor={COLORS.background} barStyle={'light-content'} />
 
       <View style={styles.body}>
@@ -121,16 +122,16 @@ export default function Login() {
                   <Text style={[styles.phoneNumberText, { textAlign: 'center', paddingTop: 0 }]}>
                     Don't have an account?
                   </Text>
-                  <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+                  <TouchableOpacity onPress={() => navigation.navigate('SearchLocation')}>
                     <Text style={[styles.phoneNumberText, { textAlign: 'center', fontFamily: FONTS.satoshi900, paddingTop: 0, marginLeft: 4 }]}>
-                      Register now.🥰
+                      Register now.
                     </Text>
                   </TouchableOpacity>
                 </View>
 
 
                 <CommonButton
-                  style={{ marginTop: 120 }}
+                  style={{ marginTop: 100 }}
                   // onPress={() => navigation.navigate('OtpScreen')}
                   onPress={handleSubmit}
                   children="Confirm" />
@@ -158,9 +159,10 @@ export default function Login() {
 
           </View>
         </View>
-
       </View>
     </View>
+    </ScrollView>
+   
   );
 };
 
@@ -228,7 +230,9 @@ const styles = StyleSheet.create({
   },
   error: {
     // padding: 4,
-    color: '#cc0000',
+    fontSize:10,
+    paddingLeft:25,
+    color: '#FFFFFF',
   },
   redirectToSignUpContainer: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20 },
   phoneNumberText: {

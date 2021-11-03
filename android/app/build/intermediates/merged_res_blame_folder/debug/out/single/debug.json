@@ -1,66 +1,66 @@
 [
     {
-        "merged": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+        "merged": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+        "merged": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_splash.png.flat",
+        "source": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\src\\main\\res\\mipmap-hdpi\\splash.png"
     },
     {
-        "merged": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+        "merged": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_splash.png.flat",
-        "source": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xhdpi\\splash.png"
+        "merged": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_splash.png.flat",
-        "source": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\src\\main\\res\\mipmap-hdpi\\splash.png"
+        "merged": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+        "merged": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_splash.png.flat",
+        "source": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\splash.png"
     },
     {
-        "merged": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+        "merged": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_splash.png.flat",
+        "source": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\splash.png"
     },
     {
-        "merged": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+        "merged": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_launch_screen.xml.flat",
-        "source": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\src\\main\\res\\layout\\launch_screen.xml"
+        "merged": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+        "merged": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_splash.png.flat",
-        "source": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\src\\main\\res\\mipmap-mdpi\\splash.png"
+        "merged": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_splash.png.flat",
+        "source": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xhdpi\\splash.png"
     },
     {
-        "merged": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_splash.png.flat",
-        "source": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\splash.png"
+        "merged": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_splash.png.flat",
+        "source": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\src\\main\\res\\mipmap-mdpi\\splash.png"
     },
     {
-        "merged": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+        "merged": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_launch_screen.xml.flat",
+        "source": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\src\\main\\res\\layout\\launch_screen.xml"
     },
     {
-        "merged": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_splash.png.flat",
-        "source": "C:\\Users\\amana\\apps\\GallantNew\\GallantSports\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\splash.png"
+        "merged": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "D:\\ReactProjects\\Gallant\\GallantSports\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     }
 ]
