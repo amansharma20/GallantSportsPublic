@@ -7,15 +7,22 @@ import { COLORS, FONTS, icons, images, SIZES } from '../../../constants';
 import Images from '../../../constants/Images';
 import { AuthContext } from '../../navigation/ApplicationNavigator';
 import Toast from 'react-native-toast-message';
+import Icons from '../../../constants/Icons';
 
 export default function ProfileScreen() {
     const navigation = useNavigation();
     const { signOut } = useContext(AuthContext);
 
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
             <View style={styles.imageContainer}>
+                <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'flex-end', paddingHorizontal: 20 }}>
+                    <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
+                        <Image source={Icons.editProfile} style={styles.editProfile} />
+                    </TouchableOpacity>
+                </View>
                 <Image source={Images.pfpGallant} style={styles.profilePicture} />
+
                 <Text style={styles.nameText}>
                     Aman Sharma
                 </Text>
@@ -105,6 +112,7 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.background,
     },
     profilePicture: { width: 134, height: 134, borderRadius: 99, borderWidth: 2, borderColor: '#DB3E6F' },
+    editProfile: { width: 30, height: 30, resizeMode: 'contain' },
     imageContainer: {
         alignItems: 'center',
         paddingVertical: SIZES.paddingLarge,

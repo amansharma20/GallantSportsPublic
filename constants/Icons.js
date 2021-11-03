@@ -13,6 +13,8 @@ export const checkMark = require('../assets/icons/checkMark.png');
 export const badmintonIcon = require('../assets/icons/badmintonIcon.png');
 export const ttIcon = require('../assets/icons/ttIcon.png');
 export const basketBallIcon = require('../assets/icons/basketBallIcon.png');
+export const editProfile = require('../assets/icons/editProfile.png');
+export const pfp = require('../assets/icons/pfp.png');
 
 export default {
     tick,
@@ -29,4 +31,6 @@ export default {
     badmintonIcon,
     ttIcon,
     basketBallIcon,
+    editProfile,
+    pfp
 };

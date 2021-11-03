@@ -14,11 +14,11 @@
 11-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:4:5-67
 11-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:4:22-64
 12    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
-12-->[:react-native-keychain] C:\Users\amana\apps\GallantNew\GallantSports\node_modules\react-native-keychain\android\build\intermediates\library_manifest\release\AndroidManifest.xml:11:5-72
-12-->[:react-native-keychain] C:\Users\amana\apps\GallantNew\GallantSports\node_modules\react-native-keychain\android\build\intermediates\library_manifest\release\AndroidManifest.xml:11:22-69
+12-->[:react-native-keychain] C:\Users\amana\apps\GallantNew\GallantSports\node_modules\react-native-keychain\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-72
+12-->[:react-native-keychain] C:\Users\amana\apps\GallantNew\GallantSports\node_modules\react-native-keychain\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:9:22-69
 13    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
-13-->[:react-native-keychain] C:\Users\amana\apps\GallantNew\GallantSports\node_modules\react-native-keychain\android\build\intermediates\library_manifest\release\AndroidManifest.xml:12:5-74
-13-->[:react-native-keychain] C:\Users\amana\apps\GallantNew\GallantSports\node_modules\react-native-keychain\android\build\intermediates\library_manifest\release\AndroidManifest.xml:12:22-71
+13-->[:react-native-keychain] C:\Users\amana\apps\GallantNew\GallantSports\node_modules\react-native-keychain\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:10:5-74
+13-->[:react-native-keychain] C:\Users\amana\apps\GallantNew\GallantSports\node_modules\react-native-keychain\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:10:22-71
 14
 15    <application
 15-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:6:5-24:19
@@ -27,7 +27,7 @@
 17        android:allowBackup="false"
 17-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:11:7-34
 18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-18-->[androidx.core:core:1.6.0] C:\Users\amana\.gradle\caches\transforms-3\acd79010379517d4491b0ee8ea07d5f6\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
+18-->[androidx.core:core:1.6.0] C:\Users\amana\.gradle\caches\transforms-3\d9b71328e8ba86dc125344804cb6eb44\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
 19        android:icon="@mipmap/ic_launcher"
 19-->C:\Users\amana\apps\GallantNew\GallantSports\android\app\src\main\AndroidManifest.xml:9:7-41
 20        android:label="@string/app_name"
