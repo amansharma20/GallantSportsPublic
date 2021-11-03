@@ -37,7 +37,7 @@ export default function SearchLocation() {
             </View>
             <View style={{ paddingRight: 40, flexDirection: 'row', paddingLeft: 20 }}>
                 <View style={{
-                    height: Responsive.height(50),
+                    height: Responsive.height(550),
                     alignItems: 'center',
                     justifyContent: 'center',
                     marginTop: 20
@@ -61,57 +61,40 @@ export default function SearchLocation() {
                             touched,
                         }) => (
                             <>
-                                <View style={{paddingTop:20}}>
-                                    <GooglePlacesAutocomplete
-                                        placeholder="search"
-                                        fetchDetails={true}
-                                        listViewDisplayed='true'
-                                        isRowScrollable={true}
-                                        autoFocus={false}
-                                        getDefaultValue={() => {
-                                            return ''; // text input default value
-                                        }}
-                                        query={{
-                                            key: GOOGLE_PLACES_API_KEY,
-                                            language: 'en', // language of the results
-                                        }}
-                                        renderDescription={row => row.description}
-                                        onPress={(data, details = null) => {
-                                            console.log(data)
-                                            // setPickupAddress(data.description);
-                                            // setPickupAddressLatitude(JSON.stringify(details.geometry.location.lat));
-                                            // setPickupAddressLongitude(JSON.stringify(details.geometry.location.lng));
-                                        }}
-                                        styles={{
-                                            poweredContainer: {
-                                                display: 'none',
-                                            },
-                                            row: {
-                                                backgroundColor: '#0E142E',
-                                                padding: 13,
-                                                height: 44,
-                                                flexDirection: 'row',
-                                            },
-                                            description: {
-                                                fontSize:12,
-                                                color:'white'
-                                            },
-                                            textInputContainer: {
-                                                flexDirection: 'row',
-                                              },
-                                            listView: { position: 'absolute' },
-                                            textInput: {
-                                                backgroundColor: 'white',
-                                                height: 45,
-                                                color:'black',
-                                                borderRadius: 5,
-                                                paddingVertical: 5,
-                                                paddingHorizontal: 10,
-                                                fontSize: 12,
-                                            },
-                                        }}
-                                    />
-                                </View>
+                                <GooglePlacesAutocomplete
+                                    placeholder="Search your address"
+                                    fetchDetails={true}
+                                    query={{
+                                        key: GOOGLE_PLACES_API_KEY,
+                                        language: 'en', // language of the results
+                                    }}
+                                    onPress={(data, details = null) => {
+                                        console.log(data)
+                                    }}
+                                    styles={{
+                                        textInputContainer: {
+                                            paddingTop: 20,
+                                            backgroundColor: 'transparent',
+                                        },
+                                        poweredContainer: {
+                                            display: 'none'
+                                        },
+                                        row:{
+                                            backgroundColor:'#0E142E'
+                                        },
+                                        description: { fontSize: 12, color:'white' },
+                                        textInput: {
+                                            backgroundColor: '#EAEAEA',
+                                            color: '#282828',
+                                            height: 45,
+                                            borderRadius: 5,
+                                            paddingVertical: 5,
+                                            paddingHorizontal: 10,
+                                            fontSize: 14,
+                                            flex: 1,
+                                        },
+                                    }}
+                                />
 
                                 {/* <TextInput
                                     name="search"

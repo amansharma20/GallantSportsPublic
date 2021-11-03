@@ -16,10 +16,21 @@ import GOALSDATA from '../../../assets/data/ActivitIesData';
 import ActivityItems from '../../components/flatlistItems/ActivityItems';
 import ExploreFlatlistItem from '../../components/flatlistItems/ExploreFlatlistItem';
 import { useNavigation } from '@react-navigation/core';
+import { GQLQuery } from '../../persistence/query/Query';
+import { useQuery } from '@apollo/client';
 
 export default function HomeScreen(props) {
     console.log(props.navigation);
     // const firstName = props.route.params.personalDetailsData.FirstName;
+    const { data: acitivity, error: errorActivity } = useQuery(GQLQuery.GET_ACTIVITIES);
+    const { data: explore, error: errorExplore } = useQuery(GQLQuery.GET_EXPLORE);
+
+    const Acitivities = acitivity && acitivity.ActivityQuery && acitivity.ActivityQuery.GetActivity;
+
+    // const ExploreArena = explore && explore.ActivityQuery && explore.ActivityQuery.GetActivity;
+    console.log(explore)
+    console.log(errorExplore)
+
     const navigation = useNavigation();
 
     return (
@@ -76,14 +87,12 @@ export default function HomeScreen(props) {
                 <View style={{ paddingTop: 25, paddingBottom: 35 }}>
                     <FlatList
                         showsHorizontalScrollIndicator={false}
-                        keyExtractor={(item) => item.id.toString()}
-                        data={GOALSDATA}
+                        keyExtractor={(item) => item.Id.toString()}
+                        data={Acitivities}
                         horizontal={true}
-                        renderItem={(itemData, item) => (
+                        renderItem={(item, index) => (
                             <ActivityItems
-                                // id={itemData.item.id}
-                                // index={itemData.index}
-                                goal={item}
+                                activity={item}
                             />
                         )}
                     />

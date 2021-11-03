@@ -122,7 +122,7 @@ export default function Login() {
                   <Text style={[styles.phoneNumberText, { textAlign: 'center', paddingTop: 0 }]}>
                     Don't have an account?
                   </Text>
-                  <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+                  <TouchableOpacity onPress={() => navigation.navigate('SearchLocation')}>
                     <Text style={[styles.phoneNumberText, { textAlign: 'center', fontFamily: FONTS.satoshi900, paddingTop: 0, marginLeft: 4 }]}>
                       Register now.
                     </Text>
