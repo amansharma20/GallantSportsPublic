@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import {Dimensions} from 'react-native';
+import {Dimensions, Platform} from 'react-native';
 const {width, height} = Dimensions.get('window');
 
 export const COLORS = {
@@ -39,11 +39,26 @@ export const SIZES = {
   height,
 };
 export const FONTS = {
-  satoshi900: 'Satoshi-Black',
-  satoshi700: 'Satoshi-Bold',
-  satoshi500: 'Satoshi-Medium',
-  satoshi400: 'Satoshi-Regular',
-  satoshi300: 'Satoshi-Light',
+  satoshi900: Platform.select({
+    ios: 'Helvetica-Bold',
+    android:'Satoshi-Black'
+  }),
+  satoshi700: Platform.select({
+    ios: 'Helvetica-Bold',
+    android:'Satoshi-Bold'
+  }),
+  satoshi500: Platform.select({
+    ios: 'Helvetica-Medium',
+    android:'Satoshi-Medium'
+  }),
+  satoshi400: Platform.select({
+    ios: 'Helvetica',
+    android:'Satoshi-Regular'
+  }),
+  satoshi300: Platform.select({
+    ios: 'Helvetica-Light',
+    android:'Satoshi-Light'
+  })
 };
 
 const appTheme = {COLORS, SIZES, FONTS};
