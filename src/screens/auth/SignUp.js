@@ -49,11 +49,17 @@ export default function SignUp() {
             AuthActions.signup('Account/RegisterCustomerStart', signUpData),
         ).then((response) => {
             CommonLoading.hide();
-            if (response && response.success === false) { console.log('uh') } else {
+            if (response && response.success === false) 
+            { console.log('uh') } 
+            else {
                 setShowSuccessModal(true);
                 setTimeout(function () {
                     navigation.navigate('OtpScreen', {
-                        signUpData,
+                        email: data.email,
+                        phone: data.phone,
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        screenName: 'signUp',
                     });
                     setShowSuccessModal(false)
                 }, 1000);

@@ -15,7 +15,9 @@ import MyAsyncStorage from '../../persistence/storage/MyAsyncStorage';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function OtpScreen(props) {
-    const mobileNumber = props.route.params.MobileNumber;
+
+    const { phone } = props.route.params;
+
     const navigation = useNavigation();
     const [otp, setOtp] = useState('0000');
     const { screenName } = props.route.params;
@@ -32,9 +34,10 @@ export default function OtpScreen(props) {
 
     const onPressConfirm = () => {
         CommonLoading.show();
+
         if (screenName == 'Login') {
             const otpData = {
-                MobileNumber: mobileNumber,
+                MobileNumber: phone,
                 Code: otp,
             };
             dispatch(AuthActions.signIn('Account/LoginComplete', otpData)).then(
@@ -43,23 +46,30 @@ export default function OtpScreen(props) {
                     CommonLoading.hide();
                     if (response && response.success === false) {
                         console.log('uh')
-                    } else {
+                    } 
+                    else {
                         let token = 'Bearer ' + response.data;
                         signIn(token);
                     }
                 },
             );
-        } else {
+        }
+        else {
             const otpData = {
-                MobileNumber: mobileNumber,
+                MobileNumber: phone,
                 Code: otp,
             };
+            
             setUserStatus(true);
             dispatch(
                 AuthActions.signup('Account/RegisterCustomerComplete', otpData),
             ).then((response) => {
                 CommonLoading.hide();
-                if (response && response.success === false) { console.log('fail') } else {
+                if (response && response.success === false) 
+                { 
+                    console.log('fail') 
+                } 
+                else {
                     let token = 'Bearer ' + response.data;
                     singUp(token);
                 }
@@ -85,7 +95,7 @@ export default function OtpScreen(props) {
     }, [])
 
     const signInData = {
-        MobileNumber: mobileNumber,
+        MobileNumber: phone,
     };
 
     return (
@@ -140,7 +150,7 @@ export default function OtpScreen(props) {
                                             </Text>
                                     } */}
                                     <Text style={[styles.phoneNumberText, { fontFamily: FONTS.satoshi700 }]}>
-                                        sent to you at +91 {mobileNumber}.
+                                        sent to you at +91-{phone}.
                                     </Text>
                                 </View>
                                 <View style={styles.otpContainer}>

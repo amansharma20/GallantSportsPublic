@@ -88,13 +88,13 @@ export default function ProfileScreen() {
                     signOut();
                     Toast.show({
                         type: 'error',
-                        text1: 'Bbye👋',
+                        text1: 'Log Out',
                         text2: 'You have been logged out.',
                         visibilityTime: 2000,
                         autoHide: true,
                     });
                 }}>
-                    <Text style={[styles.footerText, { marginTop: 20 }]}>
+                    <Text style={[styles.footerText, { marginVertical: 20 }]}>
                         Log Out
                     </Text>
                 </TouchableOpacity>
@@ -111,26 +111,43 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: COLORS.background,
     },
-    profilePicture: { width: 134, height: 134, borderRadius: 99, borderWidth: 2, borderColor: '#DB3E6F' },
-    editProfile: { width: 30, height: 30, resizeMode: 'contain' },
+
+    profilePicture: { 
+        width: 100, 
+        height: 100, 
+        borderRadius: 99, 
+        borderWidth: 2, 
+        borderColor: '#DB3E6F' 
+    },
+
+    editProfile: {
+        width: 25, 
+        height: 25, 
+        resizeMode: 'contain'
+     },
+
     imageContainer: {
         alignItems: 'center',
         paddingVertical: SIZES.paddingLarge,
     },
+
     nameText: {
         paddingTop: 10,
         fontFamily: FONTS.satoshi900,
         fontSize: 24,
         color: COLORS.white
     },
+
     locationText: {
         fontSize: 14,
         fontFamily: FONTS.satoshi500,
         color: COLORS.white,
     },
+
     mainContainer: {
         paddingHorizontal: SIZES.padding6,
     },
+
     mainContainerBody: {
         backgroundColor: '#444B65',
         paddingHorizontal: 20,
@@ -141,15 +158,23 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 18,
     },
+
     itemText: {
         fontSize: 18,
         fontFamily: FONTS.satoshi500,
         color: COLORS.white,
     },
-    nextButton: { width: 18, height: 18, resizeMode: 'contain' },
+
+    nextButton: {
+        width: 18, 
+        height: 18, 
+        resizeMode: 'contain'
+     },
+
     footerContainer: {
         paddingLeft: SIZES.paddingExtraLarge,
     },
+
     footerText: {
         fontSize: 18,
         fontFamily: FONTS.satoshi500,
