@@ -1,13 +1,14 @@
 /* eslint-disable prettier/prettier */
 export default {
-    id: [
-      '1',
-      '2',
-      '3',
-    ],
-    images: [
-      'https://i.ibb.co/LtdgT67/Microsoft-Teams-image-25.png',
-      'https://i.ibb.co/qYBXM8W/Microsoft-Teams-image-26.png',
-      'https://i.ibb.co/FVRK39s/Microsoft-Teams-image-27.png',
-    ],
-  };
+  id: [
+    '1',
+    '2',
+    '3',
+  ],
+
+  images: [
+    'https://ibb.co/YB7tJM3',
+    'https://ibb.co/p2NxzkL',
+    'https://ibb.co/dJx5dZTl',
+  ],
+};

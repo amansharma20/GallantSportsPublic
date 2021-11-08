@@ -2,7 +2,6 @@ import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/home/HomeScreen';
 import Login from '../screens/auth/Login';
-import OnBoardingScreen from '../screens/onBoarding/OnBoardingScreen';
 import SignUpScreen from '../screens/auth/SignUp';
 import OtpScreen from '../screens/auth/OtpScreen';
 import SignUp from '../screens/auth/SignUp';
@@ -25,7 +24,6 @@ export default function StackNavigator() {
         >
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="SignUp" component={SignUp} />
-            <Stack.Screen name="OnBoardingScreen" component={OnBoardingScreen} />
             <Stack.Screen name="YourBookingDetails" component={YourBookingDetails} />
             <Stack.Screen name="ExploreNearby" component={ExploreNearby} />
             <Stack.Screen name="ArenaDetailsScreen" component={ArenaDetailsScreen} />

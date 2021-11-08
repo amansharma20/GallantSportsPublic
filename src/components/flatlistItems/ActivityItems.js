@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { applicationProperties } from '../../application.properties';
+import { FONTS } from '../../../constants';
 
 const ActivityItems = (props) => {
     const activities = props.activity
@@ -27,7 +28,7 @@ const ActivityItems = (props) => {
                     <View style={{ justifyContent: 'space-between', alignItems: 'center' }}>
                         <Image source={{ uri: applicationProperties.imageUrl + activities.item.ActivityIconStoragePath }} 
                          style={{ width: 30, height: 30, resizeMode: 'contain', marginTop: 20 }} />
-                        <Text style={{ paddingVertical: 5, paddingHorizontal: 5, fontSize: 10, color: 'white', flexWrap:'wrap', fontWeight:'bold'}}>
+                        <Text style={{ paddingVertical: 5, paddingHorizontal: 5, fontSize: 10, color: 'white', fontFamily: FONTS.satoshi700, textAlign: 'center'}}>
                             {activities.item.Name}
                         </Text>
                     </View>

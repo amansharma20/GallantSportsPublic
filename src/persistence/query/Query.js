@@ -95,4 +95,43 @@ query MyQuery ($ActivityId: Long!){
   }
 }`,
 
+GET_ACTIVITY_BY_ARENA_ID: gql`
+query MyQuery ($ArenaId: Long!){
+  ActivityArenaQuery {
+    GetActivityByArenaId(ArenaId: $ArenaId) {
+      Activity {
+        Id
+        Name
+        ActivityIconStoragePath
+      }
+      ActivityId
+      Arena {
+        Id
+        Name
+        Address
+        ArenaImageStoragePath
+        CCTV
+        ChangingRooms
+        City
+        Country
+        CreatedDateTimeUtc
+        Description
+        DrinkingWater
+        Latitude
+        Longitude
+        Lockers
+        Parking
+        PhoneNumber
+        PinCode
+        Rating
+        State
+        UpdatedDateTimeUtc
+        Washrooms
+      }
+      ArenaId
+      Id
+    }
+  }
+}`,
+
 };

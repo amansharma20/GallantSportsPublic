@@ -10,6 +10,9 @@ import { animatedStyles, scrollInterpolator } from '../../utils/animations';
 import Icons from '../../../constants/Icons';
 import CommonButton from '../../components/CommonGradientButton';
 import ArenaImagesFlatlist from '../../components/flatlistItems/ArenaImagesFlatlist';
+import { GQLQuery } from '../../persistence/query/Query';
+import { useQuery } from '@apollo/client';
+import { applicationProperties } from '../../application.properties';
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 // const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
@@ -18,11 +21,15 @@ const ITEM_WIDTH = SLIDER_WIDTH;
 
 export default function ArenaDetailsScreen(props) {
 
-
     const ArenaDetail = props.route.params.arenaDetails
-
-
     const navigation = useNavigation();
+
+    const { data: data2 } = useQuery(GQLQuery.GET_ACTIVITY_BY_ARENA_ID, {
+        variables: {
+            ArenaId: ArenaDetail.item.ArenaId,
+        },
+    });
+    const activityList = data2 && data2.ActivityArenaQuery && data2.ActivityArenaQuery.GetActivityByArenaId && data2.ActivityArenaQuery.GetActivityByArenaId;
 
     const renderImageFlatlist = (item) => (
         <ArenaImagesFlatlist item={item} key={item.index}
@@ -40,12 +47,12 @@ export default function ArenaDetailsScreen(props) {
         setDataSource(items);
     }, []);
 
-    const renderAvailableActivitiesItem = ({ }) => (
+    const renderAvailableActivitiesItem = ({item }) => (
         <View style={styles.activityContainer}>
             <View style={styles.activityBookedLeftContainer}>
-                <Image source={Icons.footballIcon} style={styles.activityIconSize} />
+                <Image source={{ uri: applicationProperties.imageUrl + item.Activity.ActivityIconStoragePath }} style={styles.activityIconSize} />
                 <Text style={styles.activityText}>
-                    Football
+                    {item.Activity.Name}
                 </Text>
             </View>
         </View>
@@ -150,7 +157,7 @@ export default function ArenaDetailsScreen(props) {
                             </Text>
                             <View style={styles.availableActivitiesItems}>
                                 <FlatList
-                                    data={dataSource}
+                                    data={activityList}
                                     renderItem={renderAvailableActivitiesItem}
                                     keyExtractor={item => item.id}
                                     horizontal
@@ -161,10 +168,7 @@ export default function ArenaDetailsScreen(props) {
                             </View>
                         </View>
                     </View>
-
-
                 </View>
-
             </ScrollView>
 
 
@@ -297,10 +301,12 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     activityText: {
-        fontSize: 10,
-        color: COLORS.white,
-        fontFamily: FONTS.satoshi500,
+       fontSize: 9, 
+       color: 'white', 
+       fontFamily: FONTS.satoshi700, 
+       textAlign: 'center'
     },
+
     buttonContainer: {
         paddingBottom: SIZES.padding2,
         paddingHorizontal: SIZES.padding6,
