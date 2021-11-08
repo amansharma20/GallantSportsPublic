@@ -8,30 +8,29 @@ import {
     Image
 } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
-import { Responsive } from '../../../constants/Layout';
-import { COLORS, FONTS, images, SIZES } from '../../../constants';
-import Icons from '../../../constants/Icons';
+import { applicationProperties } from '../../application.properties';
 
 const ActivityItems = (props) => {
+    const activities = props.activity
     const navigation = useNavigation();
+
     return (
-        <View
-            style={styles.container}
-        >
-            <TouchableOpacity 
-            onPress={() => navigation.navigate('ExploreActivity')}
-            >
+        <View style={styles.container}>
+
+            <TouchableOpacity
+                onPress={() => navigation.navigate('ExploreActivity', 
+                {ActivityList: activities})}>
                 <View style={{
                     backgroundColor: '#444B65', width: 69, height: 87, borderRadius: 15,
                     alignItems: 'center',
                 }}>
-                    <View style={{justifyContent: 'space-around', alignItems: 'center'}}>
-                        <Image source={Icons.footballIcon} style={{ width: 30, height: 30, resizeMode: 'contain', marginTop: 20 }} />
-                        <Text style={{paddingTop: 20, paddingBottom: 6}}>
-                        Football
+                    <View style={{ justifyContent: 'space-between', alignItems: 'center' }}>
+                        <Image source={{ uri: applicationProperties.imageUrl + activities.item.ActivityIconStoragePath }} 
+                         style={{ width: 30, height: 30, resizeMode: 'contain', marginTop: 20 }} />
+                        <Text style={{ paddingVertical: 5, paddingHorizontal: 5, fontSize: 10, color: 'white', flexWrap:'wrap', fontWeight:'bold'}}>
+                            {activities.item.Name}
                         </Text>
                     </View>
-
                 </View>
             </TouchableOpacity>
         </View>

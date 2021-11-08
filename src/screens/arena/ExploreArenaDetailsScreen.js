@@ -16,11 +16,9 @@ const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = SLIDER_WIDTH;
 
 
-export default function ArenaDetailsScreen(props) {
+export default function ExpolreArenaDetailsScreen(props) {
 
-
-    const ArenaDetail = props.route.params.arenaDetails
-
+    const arenaDetail = props.route.params.expolreArenaDetails
 
     const navigation = useNavigation();
 
@@ -91,18 +89,18 @@ export default function ArenaDetailsScreen(props) {
                         <View style={styles.mainDetailsContainer}>
                             <View style={styles.headerTopContainer}>
                                 <Text style={styles.titleText}>
-                                    {ArenaDetail.item.Arena.Name}
+                                    {arenaDetail.item.Name}
                                 </Text>
                                 <View style={styles.ratingContainer}>
                                     <Text style={styles.ratingText}>
-                                        {ArenaDetail.item.Arena.Rating}
+                                        {arenaDetail.item.Rating}
                                     </Text>
                                     <Image source={images.star} style={styles.starSize} />
                                 </View>
                             </View>
                             <View style={styles.locationContainer}>
                                 <Text style={styles.addressText}>
-                                    {ArenaDetail.item.Arena.Address}
+                                    {arenaDetail.item.Address}
                                 </Text>
                                 <TouchableOpacity style={styles.directionContainer}>
                                     <Image source={icons.directionIcon} style={styles.directionIconSize} />
@@ -113,7 +111,7 @@ export default function ArenaDetailsScreen(props) {
                             </View>
                             <View style={styles.descriptionContainer}>
                                 <Text style={styles.bodyText}>
-                                    {ArenaDetail.item.Arena.Description}
+                                    {arenaDetail.item.Description}
                                 </Text>
                             </View>
                             <View style={styles.facilitiesContainer}>

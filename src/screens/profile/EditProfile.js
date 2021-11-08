@@ -113,7 +113,7 @@ export default function EditProfile() {
         >
             <StatusBar hidden={false} backgroundColor={COLORS.background} barStyle={'light-content'} />
 
-            <View style={{ paddingHorizontal: 16, paddingVertical: 20 }}>
+            <View style={{ paddingHorizontal: 16, paddingVertical: 20, paddingBottom:0 }}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Image source={Icons.backIcon} style={{ width: 25, height: 25, resizeMode: 'contain' }} />
                 </TouchableOpacity>
@@ -314,37 +314,51 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.background,
         justifyContent: 'space-between',
     },
-    profilePicture: { width: 134, height: 134, borderRadius: 99, borderWidth: 2, borderColor: '#DB3E6F' },
+    profilePicture: {
+        width: 100,
+        height: 100,
+        borderRadius: 99,
+        borderWidth: 2,
+        borderColor: '#DB3E6F'
+    },
+
     headerMain: {
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 24,
     },
+
     logoImage: {
         width: Responsive.width(136),
         height: Responsive.height(146),
     },
+
     textContainer: {
         flexDirection: 'row',
         paddingTop: SIZES.padding1,
     },
+
     logoText: {
         fontFamily: FONTS.satoshi400,
         color: '#FFFFFF',
         marginRight: 3,
         fontSize: Responsive.font(SIZES.h2),
     },
+
     loginContainer: {
         // backgroundColor: 'red'
     },
+
     headerText: {
         fontSize: SIZES.header,
         fontFamily: FONTS.satoshi900,
         color: COLORS.white,
     },
+
     textInputTitleContainer: {
         marginTop: 12
     },
+
     textInput: {
         marginTop: SIZES.h1,
         color: COLORS.white,
@@ -355,12 +369,14 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: COLORS.white,
     },
+
     checkMarkContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         height: 10,
         marginBottom: 10,
     },
+
     checkMarkIcon: {
         width: 20,
         height: 20,
@@ -369,20 +385,24 @@ const styles = StyleSheet.create({
         tintColor: '#FFFFFF',
         marginTop: 30
     },
+
     error: {
         // padding: 4,
         color: '#cc0000',
         marginBottom: -24,
     },
+
     errorContainer: {
         marginTop: 18,
     },
+
     textInputTitle: {
         color: COLORS.white,
         fontFamily: FONTS.satoshi700,
         fontSize: SIZES.h3,
         paddingTop: SIZES.padding2,
     },
+
     textInputTitleFirstName: {
         color: COLORS.white,
         fontFamily: FONTS.satoshi700,
@@ -393,22 +413,26 @@ const styles = StyleSheet.create({
         // flexDirection: 'row',
         paddingTop: SIZES.h3,
     },
+
     termsText: {
         color: COLORS.white,
         textAlign: 'center',
         fontSize: 12,
         fontFamily: FONTS.satoshi400,
     },
+
     successText: {
         color: COLORS.white,
         fontFamily: FONTS.satoshi900,
         fontSize: SIZES.largeTitle,
     },
+
     successSubText: {
         color: COLORS.white,
         fontFamily: FONTS.satoshi500,
         fontSize: SIZES.h2,
     },
+
     modalBody: {
         backgroundColor: COLORS.background,
         alignItems: 'center',
@@ -418,12 +442,14 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         elevation: 5
     },
+
     modalContainer: {
         backgroundColor: COLORS.modalBackground,
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
     },
+
     modalImage: {
         width: 100,
         height: 100,

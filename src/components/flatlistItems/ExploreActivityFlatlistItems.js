@@ -9,44 +9,37 @@ import {
     Dimensions
 } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
-import { Responsive } from '../../../constants/Layout';
 import { COLORS, FONTS, images, SIZES } from '../../../constants';
-import Icons from '../../../constants/Icons';
-import Images from '../../../constants/Images';
-import { animatedStyles, scrollInterpolator } from '../../../utils/animations';
-import ExploreNearByImagesFlatlist from './ExploreNearByImagesFlatlist';
-import Carousel, { Pagination } from 'react-native-snap-carousel';
-import IMAGEDATA from '../../../assets/data/ImageDataDummy';
+import { applicationProperties } from '../../application.properties';
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = SLIDER_WIDTH;
 
 const ExploreActivityFlatlistItems = (props) => {
+    const arenaList = props.arenas
     const navigation = useNavigation();
-    const renderImageFlatlist = (item) => (
-        <ExploreNearByImagesFlatlist item={item} key={item.index}
-        />
-    );
-    const [activeSlide, setActiveSlide] = useState(0);
+
     return (
-        <TouchableOpacity onPress={() => navigation.navigate('ArenaDetailsScreen')}>
+        <TouchableOpacity onPress={() => navigation.navigate('ArenaDetailsScreen',
+         {arenaDetails: arenaList}
+         )}>
             <View>
                 <View>
-                    <Image source={images.neeraj} style={{ width: '100%', height: 159 }} />
+                    <Image source={{ uri: applicationProperties.imageUrl + arenaList.item.Arena.ArenaImageStoragePath }} style={{ width: '100%', height: 159 }} />
                 </View>
             </View>
             <View style={styles.arenaNameContainer}>
                 <View>
                     <Text style={styles.headerText}>
-                        Football Arena
+                        {arenaList.item.Arena.Name}
                     </Text>
                     <Text style={styles.subText}>
-                        Football
+                    {arenaList.item.Activity.Name}
                     </Text>
                 </View>
                 <View style={styles.ratingContainer}>
                     <Text style={styles.ratingText}>
-                        4.5
+                    {arenaList.item.Arena.Rating}
                     </Text>
                     <Image source={images.star} style={styles.starSize} />
                 </View>

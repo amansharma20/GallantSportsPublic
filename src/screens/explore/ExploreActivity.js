@@ -4,39 +4,46 @@ import React from 'react';
 import { View, ScrollView, Text, StyleSheet, Image, TouchableOpacity, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, FONTS, icons, SIZES } from '../../../constants';
-import ExploreNearbyFlatlistItems from '../../components/flatlistItems/ExploreNearbyFlatlistItems';
-import GOALSDATA from '../../../assets/data/ActivitIesData';
 import ExploreActivityFlatlistItems from '../../components/flatlistItems/ExploreActivityFlatlistItems';
+import { GQLQuery } from '../../persistence/query/Query';
+import { useQuery } from '@apollo/client';
 
 
-export default function ExploreActivity() {
+export default function ExploreActivity(props) {
+
+
+    const activityLists = props.route.params.ActivityList
+
+    const { data: data2 } = useQuery(GQLQuery.GET_ARENA_BY_ACTIVITY_ID, {
+        variables: {
+            ActivityId: activityLists.item.Id,
+        },
+    });
+    const arenaList = data2 && data2.ActivityArenaQuery && data2.ActivityArenaQuery.GetArenaByActivityId && data2.ActivityArenaQuery.GetArenaByActivityId;
+
     const navigation = useNavigation();
     return (
         <View
             showsVerticalScrollIndicator={false}
-            style={styles.container}
-        >
+            style={styles.container}>
             <View>
+                <View style={styles.headerContainer}>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                        <Image source={icons.backIcon} style={styles.backIcon} />
+                    </TouchableOpacity>
+                    <Text style={styles.headerText}>
+                        Explore Activity
+                    </Text>
+                    <View>
+                    </View>
+                </View>
                 <FlatList
-                    ListHeaderComponent={
-                        <>
-                            <View style={styles.headerContainer}>
-                                <TouchableOpacity onPress={() => navigation.goBack()}>
-                                    <Image source={icons.backIcon} style={styles.backIcon} />
-                                </TouchableOpacity>
-                                <Text style={styles.headerText}>
-                                    Explore Activity
-                                </Text>
-                                <View>
-                                </View>
-                            </View>
-                        </>
-                    }
-                    keyExtractor={(item) => item.id.toString()}
-                    data={GOALSDATA}
                     showsVerticalScrollIndicator={false}
-                    renderItem={() => (
-                        <ExploreActivityFlatlistItems />
+                    keyExtractor={item => item.id}
+                    data={arenaList}
+                    renderItem={(item, index) => (
+                        <ExploreActivityFlatlistItems
+                            arenas={item} />
                     )}
                 />
             </View>

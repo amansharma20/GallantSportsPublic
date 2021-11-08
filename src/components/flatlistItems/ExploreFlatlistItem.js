@@ -12,23 +12,25 @@ import { Responsive } from '../../../constants/Layout';
 import { COLORS, FONTS, images, SIZES } from '../../../constants';
 import Icons from '../../../constants/Icons';
 import Images from '../../../constants/Images';
+import { applicationProperties } from '../../application.properties';
 
 const ExploreFlatlistItem = (props) => {
+    const arenaDetail = props.goal
+
     const navigation = useNavigation();
     return (
         <View
-            style={styles.container}
-        >
-            <TouchableOpacity
-                onPress={() => navigation.navigate('ArenaDetailsScreen')}
-            >
+            style={styles.container}>
+            <TouchableOpacity onPress={() => navigation.navigate('ExpolreArenaDetailsScreen',
+                { expolreArenaDetails: arenaDetail }
+            )}>
                 <View style={styles.mainContainer}>
                     <View style={styles.imageContainer}>
-                        <Image source={Images.basketball} style={styles.image} />
+                        <Image source={{ uri: applicationProperties.imageUrl + arenaDetail.item.ArenaImageStoragePath }} style={styles.image} />
                     </View>
                     <View style={styles.exploreItemTextContainer}>
                         <Text style={styles.exploreItemText}>
-                            The Gallant Club
+                            {arenaDetail.item.Name}
                         </Text>
                     </View>
                 </View>

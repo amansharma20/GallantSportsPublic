@@ -21,15 +21,16 @@ import { useQuery } from '@apollo/client';
 
 export default function HomeScreen(props) {
     console.log(props.navigation);
-    // const firstName = props.route.params.personalDetailsData.FirstName;
+
     const { data: acitivity, error: errorActivity } = useQuery(GQLQuery.GET_ACTIVITIES);
     const { data: explore, error: errorExplore } = useQuery(GQLQuery.GET_EXPLORE);
+    const { data: customerDetailsData, error: CustomerDetailsError } = useQuery(GQLQuery.GET_CUSTOMER_USER_DETAILS);
+
+    const customerUserDetails = customerDetailsData && customerDetailsData.CustomerUserQuery && customerDetailsData.CustomerUserQuery.GetCustomerUserDetails;
 
     const Acitivities = acitivity && acitivity.ActivityQuery && acitivity.ActivityQuery.GetActivity;
 
-    // const ExploreArena = explore && explore.ActivityQuery && explore.ActivityQuery.GetActivity;
-    console.log(explore)
-    console.log(errorExplore)
+    const ExploreArena = explore && explore.ArenaQuery && explore.ArenaQuery.GetArena;
 
     const navigation = useNavigation();
 
@@ -53,8 +54,7 @@ export default function HomeScreen(props) {
             </View>
             <View style={styles.headerTextContainer}>
                 <Text style={styles.hiText}>
-                    Hi,
-                    {/* {firstName} */}
+                    Hi, {customerUserDetails && customerUserDetails.FirstName}
                 </Text>
                 <Text style={styles.upcomingActivityText}>
                     Here are your
@@ -64,7 +64,6 @@ export default function HomeScreen(props) {
             <View style={{ paddingVertical: 30 }}>
                 <FlatList
                     showsHorizontalScrollIndicator={false}
-
                     keyExtractor={(item) => item.id.toString()}
                     data={GOALSDATA}
                     horizontal={true}
@@ -87,7 +86,7 @@ export default function HomeScreen(props) {
                 <View style={{ paddingTop: 25, paddingBottom: 35 }}>
                     <FlatList
                         showsHorizontalScrollIndicator={false}
-                        keyExtractor={(item) => item.Id.toString()}
+                        keyExtractor={item => item.id}
                         data={Acitivities}
                         horizontal={true}
                         renderItem={(item, index) => (
@@ -113,14 +112,11 @@ export default function HomeScreen(props) {
                 <View style={{ paddingTop: 25, paddingBottom: 35 }}>
                     <FlatList
                         showsHorizontalScrollIndicator={false}
-
-                        keyExtractor={(item) => item.id.toString()}
-                        data={GOALSDATA}
+                        keyExtractor={item => item.id}
+                        data={ExploreArena}
                         horizontal={true}
-                        renderItem={(itemData, item) => (
+                        renderItem={(item, index) => (
                             <ExploreFlatlistItem
-                                // id={itemData.item.id}
-                                // index={itemData.index}
                                 goal={item}
                             />
                         )}

@@ -8,6 +8,7 @@ import OtpScreen from '../screens/auth/OtpScreen';
 import SignUp from '../screens/auth/SignUp';
 import BottomTabBarNavigator from './BottomTabBarNavigator';
 import ArenaDetailsScreen from '../screens/arena/ArenaDetailsScreen';
+import ExpolreArenaDetailsScreen from '../screens/arena/ExploreArenaDetailsScreen';
 import ExploreNearby from '../screens/explore/ExploreNearby';
 import ExploreActivity from '../screens/explore/ExploreActivity';
 import ArenaBookingScreen from '../screens/arena/ArenaBookingScreen';
@@ -28,6 +29,7 @@ export default function StackNavigator() {
             <Stack.Screen name="YourBookingDetails" component={YourBookingDetails} />
             <Stack.Screen name="ExploreNearby" component={ExploreNearby} />
             <Stack.Screen name="ArenaDetailsScreen" component={ArenaDetailsScreen} />
+            <Stack.Screen name="ExpolreArenaDetailsScreen" component={ExpolreArenaDetailsScreen} />
             <Stack.Screen name="OtpScreen" component={OtpScreen} />
             <Stack.Screen name="Home" component={BottomTabBarNavigator} />
             <Stack.Screen name="ExploreActivity" component={ExploreActivity} />

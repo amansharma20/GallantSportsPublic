@@ -13,35 +13,86 @@ CreatedDateTimeUtc
 UpdatedDateTimeUtc
 }
 }
-}
-`,
+}`,
 
 GET_EXPLORE: gql`
 query MyQuery {
-ArenaQuery {
-GetArena {
-Id
-Name
-Parking
-PhoneNumber
-PinCode
-Rating
-State
-Washrooms
-Longitude
-Lockers
-Latitude
-DrinkingWater
-Description
-Country
-City
-ChangingRooms
-CCTV
-ArenaImageStoragePath
-Address
-CreatedDateTimeUtc
-UpdatedDateTimeUtc
-}
-}}`,
+  ArenaQuery {
+    GetArena {
+      Address
+      ArenaImageStoragePath
+      CCTV
+      ChangingRooms
+      City
+      Country
+      CreatedDateTimeUtc
+      Description
+      DrinkingWater
+      Id
+      Latitude
+      Lockers
+      Longitude
+      Name
+      Parking
+      PhoneNumber
+      PinCode
+      Rating
+      State
+      UpdatedDateTimeUtc
+      Washrooms
+    }
+  }
+}`,
+
+GET_CUSTOMER_USER_DETAILS: gql`
+query MyQuery {
+  CustomerUserQuery {
+    GetCustomerUserDetails {
+      FirstName
+      Id
+      LastName
+      ProfilePictureStoragePath
+    }
+  }
+}`,
+
+GET_ARENA_BY_ACTIVITY_ID: gql`
+query MyQuery ($ActivityId: Long!){
+  ActivityArenaQuery {
+    GetArenaByActivityId(ActivityId: $ActivityId) {
+      Activity {
+        Id
+        ActivityIconStoragePath
+        Name
+      }
+      ActivityId
+      Arena {
+        Id
+        Name
+        Address
+        ArenaImageStoragePath
+        CCTV
+        ChangingRooms
+        City
+        Country
+        CreatedDateTimeUtc
+        Description
+        DrinkingWater
+        Latitude
+        Lockers
+        Longitude
+        Parking
+        PhoneNumber
+        PinCode
+        Rating
+        State
+        UpdatedDateTimeUtc
+        Washrooms
+      }
+      ArenaId
+      Id
+    }
+  }
+}`,
 
 };
