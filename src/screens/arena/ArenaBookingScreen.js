@@ -10,7 +10,6 @@ import {
   FlatList,
   TouchableWithoutFeedback,
   Modal,
-  TextInput,
   ScrollView
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -44,7 +43,7 @@ export default function ArenaBookingScreen(props) {
 
   const [dataSource, setDataSource] = useState([]);
   useEffect(() => {
-    let items = Array.apply(null, Array(6)).map((v, i) => {
+    let items = Array.apply(null, Array(6)).map(() => {
       return {
       };
     });
@@ -56,10 +55,12 @@ export default function ArenaBookingScreen(props) {
     return formattedDate;
   };
 
-  const renderAvailableActivitiesItem = ({ item }) => (
-    <TouchableWithoutFeedback onPress={() => setSelectedItem(item)}>
+  const [selectedActivity, setSelectedActivity] = useState(0);
+  
+  const renderAvailableActivitiesItem = ({ item, index }) => (
+    <TouchableWithoutFeedback onPress={() => setSelectedActivity(index)}>
       <View style={styles.activityContainer}>
-        <View style={styles.activityBookedLeftContainer}>
+        <View style={selectedActivity == index ? styles.selectedActivityStyle : styles.activityBookedLeftContainer}>
           <Image source={{ uri: applicationProperties.imageUrl + item.Activity.ActivityIconStoragePath }} style={styles.activityIconSize} />
           <Text style={styles.activityText}>
             {item.Activity.Name}
@@ -87,7 +88,6 @@ export default function ArenaBookingScreen(props) {
             <Text style={[styles.headerText, { paddingHorizontal: SIZES.padding6 }]}>
               Select Activity
             </Text>
-
             <View style={styles.availableActivitiesContainer}>
               <View style={styles.availableActivitiesItems}>
                 <FlatList
@@ -158,7 +158,7 @@ export default function ArenaBookingScreen(props) {
         <CommonButton onPress={() => navigation.navigate('BookingSummary',
           {
             bookingDetails: {
-              "Activity": selectedItem,
+              "Activity": activityList[selectedActivity],
               "ArenaId": ArenaId,
               "Bookingdate": date,
               "Needacoach": checkboxState,
@@ -287,4 +287,14 @@ const styles = StyleSheet.create({
     width: 100,
     color: 'black',
   },
+  selectedActivityStyle: {
+    width: 69,
+    height: 87,
+    backgroundColor: '#DB3E6F',
+    borderRadius: 15,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  }
 });

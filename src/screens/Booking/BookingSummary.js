@@ -1,22 +1,23 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { View, TouchableOpacity, Text, StyleSheet, Image, FlatList } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, FONTS, icons, SIZES } from '../../../constants';
-import Icons from '../../../constants/Icons';
 import { ScrollView } from 'react-native-gesture-handler';
 import CommonButton from '../../components/CommonGradientButton';
 import { applicationProperties } from '../../application.properties';
 import { GQLQuery } from '../../persistence/query/Query';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { format } from 'date-fns';
+import { GQLMutation } from '../../persistence/mutation/Mutation';
 
 export default function BookingSummary(props) {
     const bookingDetail = props.route.params.bookingDetails
     const arenaid = props.route.params.bookingDetails.Activity.Activity.Id;
     const activityid = props.route.params.bookingDetails.ArenaId;
     const navigation = useNavigation();
+
 
     const [dataSource, setDataSource] = useState([]);
     useEffect(() => {
@@ -39,12 +40,36 @@ export default function BookingSummary(props) {
         },
     });
     const getBookingCharges = BookingChargesData && BookingChargesData.ActivityArenaChargesQuery && BookingChargesData.ActivityArenaChargesQuery.GetActivityArenaCharges;
-
-    console.log('bookingDetail')
-    console.log(getBookingCharges)
-    console.log('bookingDetail')
-
     const [needacoach, setacoach] = useState(bookingDetail.Needacoach)
+
+    const [addBooking, { data: bookingResponse, error: bookingError, loading }] = useMutation(GQLMutation.CREATE_BOOKING);
+
+    const submitBooking = () => {
+
+        addBooking({
+            variables: {
+                ArenaId: arenaid,
+                ActivityArenaId: activityid,
+                BookingDateTime: new Date().toISOString(),
+                NeedCoach: needacoach,
+            }
+        });
+    }
+
+
+    console.log(bookingResponse)
+    console.log(bookingError)
+
+    if(loading){
+        return<Text>Loading</Text>
+    }
+
+
+
+
+    function getTotalAmountWithGST(total, gst) {
+        return (total * gst / 100) + total
+    }
 
     return (
         <View style={styles.container}>
@@ -147,7 +172,7 @@ export default function BookingSummary(props) {
                                 Activity Price
                             </Text>
                             <Text style={{ color: 'white', fontSize: 16 }}>
-                            { getBookingCharges && getBookingCharges.AmountPerHr}
+                                {getBookingCharges && getBookingCharges[0].AmountPerHr}
                             </Text>
                         </View>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 20, paddingTop: 20 }}>
@@ -155,7 +180,7 @@ export default function BookingSummary(props) {
                                 GST
                             </Text>
                             <Text style={{ color: 'white', fontSize: 16 }}>
-                                ₹ 50
+                                {getBookingCharges && getBookingCharges[0].GST} %
                             </Text>
                         </View>
                     </View>
@@ -164,13 +189,13 @@ export default function BookingSummary(props) {
                             Total Amount
                         </Text>
                         <Text style={{ color: '#DB3E6F', fontSize: 45, alignSelf: 'center', fontWeight: 'bold' }}>
-                            ₹500
+                            ₹{getTotalAmountWithGST(getBookingCharges && getBookingCharges[0].AmountPerHr, getBookingCharges && getBookingCharges[0].GST)}
                         </Text>
                     </View>
                 </View>
             </ScrollView>
             <View style={styles.buttonContainer}>
-                <CommonButton onPress={() => navigation.navigate('ArenaBookingScreen')} children="Book Now" />
+                <CommonButton onPress={submitBooking} children="Book Now" />
             </View>
         </View>
 
