@@ -17,6 +17,8 @@ import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.reactnativecommunity.clipboard.ClipboardPackage;
 // lottie-react-native
 import com.airbnb.android.react.lottie.LottiePackage;
+// react-native-date-picker
+import com.henninghall.date_picker.DatePickerPackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 // react-native-keychain
@@ -81,6 +83,7 @@ public class PackageList {
       new AsyncStoragePackage(),
       new ClipboardPackage(),
       new LottiePackage(),
+      new DatePickerPackage(),
       new RNGestureHandlerPackage(),
       new KeychainPackage(),
       new LinearGradientPackage(),

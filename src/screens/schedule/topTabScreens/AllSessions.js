@@ -6,22 +6,26 @@ import { useNavigation } from '@react-navigation/native';
 import { COLORS, SIZES } from '../../../../constants';
 import ACTIVITIESDATA from '../../../../assets/data/ActivitIesData';
 import ScheduleFlatlistItem from '../../../components/flatlistItems/ScheduleFlatlistItem';
+import { GQLQuery } from '../../../persistence/query/Query';
+import { useQuery } from '@apollo/client';
+
 
 export default function AllSessions() {
+
+    const { data: customerAllBookingData, error: customerAllBookingError } = useQuery(GQLQuery.GET_CUSTOMER_ALL_BOOKINGS);
+    const customerAllBookings = customerAllBookingData && customerAllBookingData.BookingQuery && customerAllBookingData.BookingQuery.GetCustomerAllBookings;
+
     const navigation = useNavigation();
     return (
         <View style={styles.container}>
             <View style={{ paddingTop: SIZES.padding6 }}>
                 <FlatList
-                    keyExtractor={(item) => item.id.toString()}
-                    data={ACTIVITIESDATA}
+                data={customerAllBookings}
+                    keyExtractor={item => item.id}
                     showsVerticalScrollIndicator={false}
-                    renderItem={(itemData, item) => (
+                    renderItem={(item, index) => (
                         <ScheduleFlatlistItem
-                            id={itemData.item.id}
-                            index={itemData.index}
-                            item={itemData.item}
-                        />
+                            bookings={item}/>
                     )}
                 />
             </View>

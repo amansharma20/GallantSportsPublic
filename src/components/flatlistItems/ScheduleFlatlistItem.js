@@ -11,8 +11,15 @@ import { useNavigation } from '@react-navigation/core';
 import { Responsive } from '../../../constants/Layout';
 import LinearGradient from 'react-native-linear-gradient';
 import { COLORS, FONTS, images, SIZES } from '../../../constants';
+import { format } from "date-fns";
 
 const ScheduleFlatlistItem = (props) => {
+    const allBookings = props.bookings
+
+    console.log('allBookings')
+    console.log(allBookings)
+    console.log('allBookings')
+
     const navigation = useNavigation();
     const isToday = false;
     const isCancelled = false;
@@ -21,22 +28,26 @@ const ScheduleFlatlistItem = (props) => {
     const rightBackgroundColor = (even === 0) ? '#DB3E6F' : '#7B91F8';
     const item = props.item;
 
+    var date = new Date(allBookings.item.BookingDateTime);
+    var formattedDate = format(date, "dd MMM");
+    var formattedTime = format(date, "H:mma");
+
+    var today = new Date();
+    date = today.getDate() + "/" + parseInt(today.getMonth() + 1) + "/" + today.getFullYear();
+
     return (
         <View
-            style={styles.container}
-        >
+            style={styles.container}>
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                 <View style={{ paddingRight: 15 }}>
                     <Text style={{ fontSize: SIZES.h5, fontFamily: FONTS.satoshi900, color: COLORS.white, textAlign: 'center' }}>
-                        {item.date}
+                        {formattedDate}
                     </Text>
                 </View>
 
                 <TouchableOpacity
                     activeOpacity={0.8}
-                    onPress={() => navigation.navigate('YourBookingDetails')}
-
-                >
+                    onPress={() => navigation.navigate('YourBookingDetails')}>
                     <LinearGradient
                         start={{ x: 0, y: 0 }} colors={[leftBackgroundColor, rightBackgroundColor]} style={styles.linearGradient}>
                         <View style={styles.leftContainer}>
@@ -56,15 +67,15 @@ const ScheduleFlatlistItem = (props) => {
                             </View>
                             <View>
                                 <Text style={styles.venueText}>
-                                    The Gallant Club
+                                    {allBookings.item.ActivityArena.Arena.Name}
                                 </Text>
                                 <Text style={styles.upcomingActivityText}>
-                                    Tennis
+                                    {allBookings.item.ActivityArena.Activity.Name}
                                 </Text>
                             </View>
                             <View>
                                 <Text style={styles.upcomingActivityText}>
-                                    7.00 PM
+                                    {formattedTime}
                                 </Text>
                             </View>
                         </View>
@@ -74,9 +85,6 @@ const ScheduleFlatlistItem = (props) => {
                     </LinearGradient>
                 </TouchableOpacity>
             </View>
-
-
-
         </View>
     )
 };

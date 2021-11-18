@@ -18,7 +18,7 @@ const ITEM_WIDTH = SLIDER_WIDTH;
 const ExploreActivityFlatlistItems = (props) => {
     const arenaList = props.arenas
     const navigation = useNavigation();
-
+   
     return (
         <TouchableOpacity onPress={() => navigation.navigate('ArenaDetailsScreen',
          {arenaDetails: arenaList}

@@ -122,8 +122,7 @@ export default function ApplicationNavigator() {
         ) : (
           <>
             <Stack.Screen
-              name="HomeNavigator"
-              component={HomeNavigator}
+              name="HomeNavigator" component={HomeNavigator}
             />
           </>
         )}

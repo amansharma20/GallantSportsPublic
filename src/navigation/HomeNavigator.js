@@ -11,6 +11,8 @@ import YourBookingDetails from '../screens/Booking/YourBookingDetails';
 import DetectLocation from '../screens/location/DetectLocation';
 import SearchLocation from '../screens/location/SearchLocation';
 import EditProfile from '../screens/profile/EditProfile';
+import BookingSummary from '../screens/Booking/BookingSummary';
+import BookingScreen from '../screens/Booking/BookingScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +33,8 @@ export default function HomeNavigator() {
             <Stack.Screen name="DetectLocation" component={DetectLocation} />
             <Stack.Screen name="SearchLocation" component={SearchLocation} />
             <Stack.Screen name="EditProfile" component={EditProfile} />
+            <Stack.Screen name="BookingSummary" component={BookingSummary} />
+            <Stack.Screen name="BookingScreen" component={BookingScreen} />
         </Stack.Navigator>
     );
 }

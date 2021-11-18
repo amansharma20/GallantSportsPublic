@@ -71,8 +71,7 @@ export default function HomeScreen(props) {
                         <UpcomingActivityItem
                             id={itemData.item.id}
                             index={itemData.index}
-                            goal={item}
-                        />
+                            goal={item} />
                     )}
                 />
             </View>

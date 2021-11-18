@@ -72,11 +72,7 @@ export default function SignUp() {
 
     return (
         <View style={styles.container}>
-            <ScrollView
-                contentContainerStyle={{ paddingBottom: 40 }}
-                showsVerticalScrollIndicator={false}
-            // style={styles.container}
-            >
+            <ScrollView contentContainerStyle={{ paddingBottom: 30 }} showsVerticalScrollIndicator={false}>
                 <StatusBar hidden={false} backgroundColor={COLORS.background} barStyle={'light-content'} />
 
                 <View style={styles.body}>
@@ -227,7 +223,7 @@ export default function SignUp() {
                                         )}
                                     </View>
 
-                                    <View style={{ marginTop: 60, paddingHorizontal: 34 }}>
+                                    <View style={{ marginTop: 30, paddingHorizontal: 34 }}>
                                         <CommonButton
                                             onPress={handleSubmit}
                                             children="Confirm" />
@@ -291,31 +287,38 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingVertical: 24,
     },
+
     logoImage: {
-        width: Responsive.width(136),
-        height: Responsive.height(146),
+        width: Responsive.width(120),
+        height: Responsive.height(130),
     },
+
     textContainer: {
         flexDirection: 'row',
         paddingTop: SIZES.padding1,
     },
+
     logoText: {
         fontFamily: FONTS.satoshi400,
         color: '#FFFFFF',
         marginRight: 3,
         fontSize: Responsive.font(SIZES.h2),
     },
+
     loginContainer: {
         // backgroundColor: 'red'
     },
+
     headerText: {
         fontSize: SIZES.header,
         fontFamily: FONTS.satoshi900,
         color: COLORS.white,
     },
+
     textInputTitleContainer: {
         marginTop: 12
     },
+
     textInput: {
         marginTop: SIZES.h1,
         color: COLORS.white,
@@ -326,12 +329,14 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: COLORS.white,
     },
+
     checkMarkContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         height: 10,
         marginBottom: 10,
     },
+
     checkMarkIcon: {
         width: 20,
         height: 20,
@@ -340,24 +345,28 @@ const styles = StyleSheet.create({
         tintColor: '#FFFFFF',
         marginTop: 30
     },
+
     error: {
         // padding: 4,
         color: '#cc0000',
+        fontSize: 12,
         marginBottom: -24,
     },
+
     errorContainer: {
         marginTop: 18,
     },
+
     textInputTitle: {
         color: COLORS.white,
         fontFamily: FONTS.satoshi700,
-        fontSize: SIZES.h3,
+        fontSize: SIZES.h4,
         paddingTop: SIZES.padding2,
     },
     textInputTitleFirstName: {
         color: COLORS.white,
         fontFamily: FONTS.satoshi700,
-        fontSize: SIZES.h3,
+        fontSize: SIZES.h4,
         // paddingTop: SIZES.padding2,
     },
     termsTextContainer: {

@@ -12,6 +12,9 @@ import ExploreNearby from '../screens/explore/ExploreNearby';
 import ExploreActivity from '../screens/explore/ExploreActivity';
 import ArenaBookingScreen from '../screens/arena/ArenaBookingScreen';
 import YourBookingDetails from '../screens/Booking/YourBookingDetails';
+import BookingSummary from '../screens/Booking/BookingSummary';
+import BookingScreen from '../screens/Booking/BookingScreen';
+import WelcomeScreen from '../screens/auth/WelcomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +25,7 @@ export default function StackNavigator() {
                 headerShown: false,
             }}
         >
+            <Stack.Screen name="Welcome" component={WelcomeScreen} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="SignUp" component={SignUp} />
             <Stack.Screen name="YourBookingDetails" component={YourBookingDetails} />
@@ -32,6 +36,8 @@ export default function StackNavigator() {
             <Stack.Screen name="Home" component={BottomTabBarNavigator} />
             <Stack.Screen name="ExploreActivity" component={ExploreActivity} />
             <Stack.Screen name="ArenaBookingScreen" component={ArenaBookingScreen} />
+            <Stack.Screen name="BookingSummary" component={BookingSummary} />
+            <Stack.Screen name="BookingScreen" component={BookingScreen} />
         </Stack.Navigator>
     );
 }

@@ -30,14 +30,10 @@ export default function ExpolreArenaDetailsScreen(props) {
             ArenaId: arenaDetail.item.Id,
         },
     });
-    const activityList = data2 && data2.ActivityArenaQuery && data2.ActivityArenaQuery.GetActivityByArenaId && data2.ActivityArenaQuery.GetActivityByArenaId;
+    const activityList = data2 && data2.ActivityArenaQuery && data2.ActivityArenaQuery.GetActivityByArenaId;
 
-    console.log('activityList')
-    console.log(activityList)
-    console.log('activityList')
     const renderImageFlatlist = (item) => (
-        <ArenaImagesFlatlist item={item} key={item.index}
-        />
+        <ArenaImagesFlatlist item={item} key={item.index} />
     );
     const [activeSlide, setActiveSlide] = useState(0);
 
@@ -51,12 +47,12 @@ export default function ExpolreArenaDetailsScreen(props) {
         setDataSource(items);
     }, []);
 
-    const renderAvailableActivitiesItem = ({ item}) => (
+    const renderAvailableActivitiesItem = ({ item }) => (
         <View style={styles.activityContainer}>
             <View style={styles.activityBookedLeftContainer}>
                 <Image source={{ uri: applicationProperties.imageUrl + item.Activity.ActivityIconStoragePath }} style={styles.activityIconSize} />
                 <Text style={styles.activityText}>
-                {item.Activity.Name}
+                    {item.Activity.Name}
                 </Text>
             </View>
         </View>
@@ -73,7 +69,10 @@ export default function ExpolreArenaDetailsScreen(props) {
                     <TouchableOpacity onPress={() => navigation.goBack()} style={{ position: 'absolute', zIndex: 1000, padding: 16 }}>
                         <Image source={icons.backIcon} style={styles.backIconSize} />
                     </TouchableOpacity>
-                    <Carousel
+                    <View>
+                        <Image source={{ uri: applicationProperties.imageUrl + arenaDetail.item.ArenaImageStoragePath }} style={{ width: '100%', height: 200 }} />
+                    </View>
+                    {/* <Carousel
                         active
                         data={IMAGEDATA}
                         renderItem={renderImageFlatlist}
@@ -88,8 +87,8 @@ export default function ExpolreArenaDetailsScreen(props) {
                         inactiveSlideScale={1}
                         inactiveSlideOpacity={0.95}
                         onSnapToItem={(index) => setActiveSlide(index)}
-                    />
-                    <View style={styles.paginationContainer}>
+                    /> */}
+                    {/* <View style={styles.paginationContainer}>
                         <Pagination
                             dotsLength={IMAGEDATA.length}
                             activeDotIndex={activeSlide}
@@ -97,7 +96,7 @@ export default function ExpolreArenaDetailsScreen(props) {
                             inactiveDotStyle={styles.inactiveDotStyle}
                             containerStyle={{ width: 30 }}
                         />
-                    </View>
+                    </View> */}
                     <View style={styles.detailsContainer}>
                         <View style={styles.mainDetailsContainer}>
                             <View style={styles.headerTopContainer}>
@@ -180,7 +179,13 @@ export default function ExpolreArenaDetailsScreen(props) {
 
 
             <View style={styles.buttonContainer}>
-                <CommonButton onPress={() => navigation.navigate('ArenaBookingScreen')} children="Book Now" />
+                <CommonButton onPress={() => navigation.navigate('ArenaBookingScreen',
+                    {
+                        ArenaDetails: {
+                            "ArenaDetails": arenaDetail
+                        }
+                    })}
+                    children="Book Now" />
             </View>
         </View>
     );
@@ -308,10 +313,10 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     activityText: {
-      fontSize: 9, 
-      color: 'white', 
-      fontFamily: FONTS.satoshi700, 
-      textAlign: 'center'
+        fontSize: 9,
+        color: 'white',
+        fontFamily: FONTS.satoshi700,
+        textAlign: 'center'
     },
 
     buttonContainer: {

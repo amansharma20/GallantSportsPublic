@@ -11,29 +11,38 @@ import { useNavigation } from '@react-navigation/core';
 import { Responsive } from '../../../../constants/Layout';
 import LinearGradient from 'react-native-linear-gradient';
 import { COLORS, FONTS, images, SIZES } from '../../../../constants/';
+import { format } from "date-fns";
 
 const UpcomingActivityItem = (props) => {
+    const upcomingBooking = props.upcomingBookings
+
     const navigation = useNavigation();
+
     const leftBackgroundColor = '#444B65';
     const rightBackgroundColor = '#444B65';
     const item = props.item;
 
+    var date = new Date(upcomingBooking.item.BookingDateTime);
+    var formattedDate = format(date, "dd MMM");
+    var formattedTime = format(date, "H:mma");
+
+    console.log('upcomingBooking')
+    console.log(formattedDate)
+    console.log('upcomingBooking')
+
     return (
         <View
-            style={styles.container}
-        >
+            style={styles.container}>
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                 <View style={{ paddingRight: 15 }}>
                     <Text style={{ fontSize: SIZES.h5, fontFamily: FONTS.satoshi900, color: COLORS.white, textAlign: 'center' }}>
-                        {item.date}
+                        {formattedDate}
                     </Text>
                 </View>
 
                 <TouchableOpacity
                     activeOpacity={0.8}
-                    onPress={() => navigation.navigate('YourBookingDetails')}
-
-                >
+                    onPress={() => navigation.navigate('YourBookingDetails')}>
                     <LinearGradient
                         start={{ x: 0, y: 0 }} colors={[leftBackgroundColor, rightBackgroundColor]} style={styles.linearGradient}>
                         <View style={styles.leftContainer}>
@@ -44,15 +53,15 @@ const UpcomingActivityItem = (props) => {
                             </View>
                             <View>
                                 <Text style={styles.venueText}>
-                                    The Gallant Club
+                                    {upcomingBooking.item.ActivityArena.Arena.Name}
                                 </Text>
                                 <Text style={styles.upcomingActivityText}>
-                                    Tennis
+                                {upcomingBooking.item.ActivityArena.Activity.Name}
                                 </Text>
                             </View>
                             <View>
                                 <Text style={styles.upcomingActivityText}>
-                                    7.00 PM
+                                    {formattedTime}
                                 </Text>
                             </View>
                         </View>

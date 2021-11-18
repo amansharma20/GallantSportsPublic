@@ -12,7 +12,7 @@ export default function Splash() {
     const navigation = useNavigation();
     return (
         <View style={styles.container}>
-                <Image source={Images.splashScreen} style={styles.splash} />
+            <Image source={Images.gallantLogo} style={styles.splash} />
         </View>
     );
 }
@@ -23,5 +23,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
     },
     background: { height: screenHeight / 1.25, resizeMode: 'cover', width: screenWidth },
-    splash: { height: screenHeight, resizeMode: 'cover', width: screenWidth },
+
+    splash: {
+        height: 100,
+        width: 260,
+        justifyContent: 'center',
+        alignSelf: 'center',
+        paddingTop: 300,
+    },
 });

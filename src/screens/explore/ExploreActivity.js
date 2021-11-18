@@ -11,8 +11,11 @@ import { useQuery } from '@apollo/client';
 
 export default function ExploreActivity(props) {
 
-
     const activityLists = props.route.params.ActivityList
+
+    console.log('activityLists')
+    console.log(activityLists)
+    console.log('activityLists')
 
     const { data: data2 } = useQuery(GQLQuery.GET_ARENA_BY_ACTIVITY_ID, {
         variables: {
@@ -20,7 +23,7 @@ export default function ExploreActivity(props) {
         },
     });
     const arenaList = data2 && data2.ActivityArenaQuery && data2.ActivityArenaQuery.GetArenaByActivityId && data2.ActivityArenaQuery.GetArenaByActivityId;
-
+    
     const navigation = useNavigation();
     return (
         <View

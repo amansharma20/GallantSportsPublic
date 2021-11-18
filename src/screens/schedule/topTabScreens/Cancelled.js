@@ -6,21 +6,26 @@ import { useNavigation } from '@react-navigation/native';
 import { COLORS, SIZES } from '../../../../constants';
 import GOALSDATA from '../../../../assets/data/ActivitIesData';
 import CancelledActivityItem from '../../../components/flatlistItems/ScheduleFlatlists/CancelledActivityItem';
+import { GQLQuery } from '../../../persistence/query/Query';
+import { useQuery } from '@apollo/client';
 
 export default function Cancelled() {
     const navigation = useNavigation();
+
+    const { data: customerCancelBookingData, error: customerCancelBookingError } = useQuery(GQLQuery.GET_CUSTOMER_CANCEL_BOOKINGS);
+    const customerCancelBookings = customerCancelBookingData && customerCancelBookingData.BookingQuery && customerCancelBookingData.BookingQuery.GetCustomerCancelledBookings;
+
+
     return (
         <View style={styles.container}>
             <View style={{paddingTop: SIZES.padding6}}>
             <FlatList
-                    keyExtractor={(item) => item.id.toString()}
+                    keyExtractor={item => item.id}
                     data={GOALSDATA}
                     showsVerticalScrollIndicator={false}
-                    renderItem={(itemData, item) => (
+                    renderItem={(item, index) => (
                         <CancelledActivityItem
-                            id={itemData.item.id}
-                            index={itemData.index}
-                            item={itemData.item}
+                            cancelBookings={item}
                         />
                     )}
                 />

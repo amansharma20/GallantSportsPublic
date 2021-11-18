@@ -47,7 +47,7 @@ export default function ArenaDetailsScreen(props) {
         setDataSource(items);
     }, []);
 
-    const renderAvailableActivitiesItem = ({item }) => (
+    const renderAvailableActivitiesItem = ({ item }) => (
         <View style={styles.activityContainer}>
             <View style={styles.activityBookedLeftContainer}>
                 <Image source={{ uri: applicationProperties.imageUrl + item.Activity.ActivityIconStoragePath }} style={styles.activityIconSize} />
@@ -69,7 +69,10 @@ export default function ArenaDetailsScreen(props) {
                     <TouchableOpacity onPress={() => navigation.goBack()} style={{ position: 'absolute', zIndex: 1000, padding: 16 }}>
                         <Image source={icons.backIcon} style={styles.backIconSize} />
                     </TouchableOpacity>
-                    <Carousel
+                    <View>
+                        <Image source={{ uri: applicationProperties.imageUrl + ArenaDetail.item.Arena.ArenaImageStoragePath }} style={{ width: '100%', height: 200 }} />
+                    </View>
+                    {/* <Carousel
                         active
                         data={IMAGEDATA}
                         renderItem={renderImageFlatlist}
@@ -84,8 +87,8 @@ export default function ArenaDetailsScreen(props) {
                         inactiveSlideScale={1}
                         inactiveSlideOpacity={0.95}
                         onSnapToItem={(index) => setActiveSlide(index)}
-                    />
-                    <View style={styles.paginationContainer}>
+                    /> */}
+                    {/* <View style={styles.paginationContainer}>
                         <Pagination
                             dotsLength={IMAGEDATA.length}
                             activeDotIndex={activeSlide}
@@ -93,7 +96,7 @@ export default function ArenaDetailsScreen(props) {
                             inactiveDotStyle={styles.inactiveDotStyle}
                             containerStyle={{ width: 30 }}
                         />
-                    </View>
+                    </View> */}
                     <View style={styles.detailsContainer}>
                         <View style={styles.mainDetailsContainer}>
                             <View style={styles.headerTopContainer}>
@@ -111,7 +114,7 @@ export default function ArenaDetailsScreen(props) {
                                 <Text style={styles.addressText}>
                                     {ArenaDetail.item.Arena.Address}
                                 </Text>
-                                <TouchableOpacity style={styles.directionContainer}>
+                                <TouchableOpacity onPress={() => Linking.openURL('google.navigation:q=100+101')} style={styles.directionContainer}>
                                     <Image source={icons.directionIcon} style={styles.directionIconSize} />
                                     <Text style={styles.directionText}>
                                         Get Direction
@@ -301,10 +304,10 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     activityText: {
-       fontSize: 9, 
-       color: 'white', 
-       fontFamily: FONTS.satoshi700, 
-       textAlign: 'center'
+        fontSize: 9,
+        color: 'white',
+        fontFamily: FONTS.satoshi700,
+        textAlign: 'center'
     },
 
     buttonContainer: {

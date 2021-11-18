@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const GQLQuery = {
 
-GET_ACTIVITIES: gql`
+  GET_ACTIVITIES: gql`
 query MyQuery {
 ActivityQuery {
 GetActivity {
@@ -15,7 +15,7 @@ UpdatedDateTimeUtc
 }
 }`,
 
-GET_EXPLORE: gql`
+  GET_EXPLORE: gql`
 query MyQuery {
   ArenaQuery {
     GetArena {
@@ -29,9 +29,7 @@ query MyQuery {
       Description
       DrinkingWater
       Id
-      Latitude
       Lockers
-      Longitude
       Name
       Parking
       PhoneNumber
@@ -44,7 +42,7 @@ query MyQuery {
   }
 }`,
 
-GET_CUSTOMER_USER_DETAILS: gql`
+  GET_CUSTOMER_USER_DETAILS: gql`
 query MyQuery {
   CustomerUserQuery {
     GetCustomerUserDetails {
@@ -56,82 +54,178 @@ query MyQuery {
   }
 }`,
 
-GET_ARENA_BY_ACTIVITY_ID: gql`
-query MyQuery ($ActivityId: Long!){
-  ActivityArenaQuery {
-    GetArenaByActivityId(ActivityId: $ActivityId) {
-      Activity {
-        Id
-        ActivityIconStoragePath
-        Name
-      }
-      ActivityId
-      Arena {
-        Id
-        Name
+  GET_ARENA_BY_ACTIVITY_ID: gql`
+  query($ActivityId: Long!){
+    ActivityArenaQuery{
+      GetArenaByActivityId(ActivityId:$ActivityId){
+        Arena{
         Address
         ArenaImageStoragePath
         CCTV
         ChangingRooms
         City
         Country
-        CreatedDateTimeUtc
         Description
         DrinkingWater
+        Id
         Latitude
         Lockers
         Longitude
+        Name
         Parking
         PhoneNumber
         PinCode
         Rating
         State
-        UpdatedDateTimeUtc
         Washrooms
+              }
+        Activity{
+          ActivityIconStoragePath
+          Id
+          Name
+        }
       }
-      ArenaId
-      Id
     }
-  }
-}`,
+  }`,
 
-GET_ACTIVITY_BY_ARENA_ID: gql`
-query MyQuery ($ArenaId: Long!){
-  ActivityArenaQuery {
-    GetActivityByArenaId(ArenaId: $ArenaId) {
-      Activity {
-        Id
-        Name
-        ActivityIconStoragePath
+  GET_ACTIVITY_BY_ARENA_ID: gql`
+  query($ArenaId: Long!){
+    ActivityArenaQuery{
+      GetActivityByArenaId(ArenaId: $ArenaId){
+        Activity{
+          Id
+          Name
+          ActivityIconStoragePath
+        }
       }
-      ActivityId
-      Arena {
-        Id
-        Name
-        Address
-        ArenaImageStoragePath
-        CCTV
-        ChangingRooms
-        City
-        Country
+    }
+  }`,
+
+  GET_CUSTOMER_ALL_BOOKINGS: gql`
+  query {
+    BookingQuery {
+      GetCustomerAllBookings {
+        ActivityArena {
+          Arena {
+            Id
+            ArenaImageStoragePath
+            Name
+            Description
+            Address
+            Rating
+            WhatToBring
+          }
+          Activity {
+            Id
+            Name
+            ActivityIconStoragePath
+          }
+        }
+        Amount
+        BookingDateTime
         CreatedDateTimeUtc
-        Description
-        DrinkingWater
-        Latitude
-        Longitude
-        Lockers
-        Parking
-        PhoneNumber
-        PinCode
-        Rating
-        State
+        Duration
+        GST
+        Id
+        NeedCoach
+        ReferenceNumber
         UpdatedDateTimeUtc
-        Washrooms
+        CustomerUser {
+          FirstName
+          LastName
+        }
       }
-      ArenaId
-      Id
     }
-  }
-}`,
+  }`,
 
+  GET_CUSTOMER_UPCOMING_BOOKINGS: gql`
+  query myquery {
+    BookingQuery {
+      GetCustomerUpcomingBookings {
+        ActivityArena {
+          Arena {
+            Id
+            ArenaImageStoragePath
+            Name
+            Description
+            Address
+            Rating
+            WhatToBring
+          }
+          Activity {
+            Id
+            Name
+            ActivityIconStoragePath
+          }
+        }
+        Amount
+        BookingDateTime
+        CreatedDateTimeUtc
+        Duration
+        GST
+        Id
+        NeedCoach
+        ReferenceNumber
+        UpdatedDateTimeUtc
+        CustomerUser {
+          FirstName
+          LastName
+        }
+      }
+    }
+  }`,
+
+  GET_CUSTOMER_CANCEL_BOOKINGS: gql`
+  query myquery {
+    BookingQuery {
+      GetCustomerCancelledBookings {
+        ActivityArena {
+          Arena {
+            Id
+            ArenaImageStoragePath
+            Name
+            Description
+            Address
+            Rating
+            WhatToBring
+          }
+          Activity {
+            Id
+            Name
+            ActivityIconStoragePath
+          }
+        }
+        Amount
+        BookingDateTime
+        CreatedDateTimeUtc
+        Duration
+        GST
+        Id
+        NeedCoach
+        ReferenceNumber
+        UpdatedDateTimeUtc
+        CustomerUser {
+          FirstName
+          LastName
+        }
+      }
+    }
+  }`,
+
+  GET_BOOKING_CHARGES_BY_ACTIVITYID_OR_ARENAID: gql`
+  query myquery {
+    ActivityArenaChargesQuery {
+      GetActivityArenaCharges(ArenaId: 1, ActivityId: 1) {
+        AmountPerHr
+        GST
+        Arena {
+          Name
+          WhatToBring
+        }
+        Activity {
+          Name
+        }
+      }
+    }
+  }`
 };

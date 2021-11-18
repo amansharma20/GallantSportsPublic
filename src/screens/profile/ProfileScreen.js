@@ -8,11 +8,16 @@ import Images from '../../../constants/Images';
 import { AuthContext } from '../../navigation/ApplicationNavigator';
 import Toast from 'react-native-toast-message';
 import Icons from '../../../constants/Icons';
+import { GQLQuery } from '../../persistence/query/Query';
+import { useQuery } from '@apollo/client';
 
 export default function ProfileScreen() {
     const navigation = useNavigation();
     const { signOut } = useContext(AuthContext);
 
+    const { data: customerDetailsData, error: CustomerDetailsError } = useQuery(GQLQuery.GET_CUSTOMER_USER_DETAILS);
+
+    const customerUserDetails = customerDetailsData && customerDetailsData.CustomerUserQuery && customerDetailsData.CustomerUserQuery.GetCustomerUserDetails;
     return (
         <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
             <View style={styles.imageContainer}>
@@ -24,7 +29,7 @@ export default function ProfileScreen() {
                 <Image source={Images.pfpGallant} style={styles.profilePicture} />
 
                 <Text style={styles.nameText}>
-                    Aman Sharma
+                {customerUserDetails && customerUserDetails.FirstName} {customerUserDetails && customerUserDetails.LastName} 
                 </Text>
                 <Text style={styles.locationText}>
                     Gurugram, Haryana
@@ -112,19 +117,19 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.background,
     },
 
-    profilePicture: { 
-        width: 100, 
-        height: 100, 
-        borderRadius: 99, 
-        borderWidth: 2, 
-        borderColor: '#DB3E6F' 
+    profilePicture: {
+        width: 100,
+        height: 100,
+        borderRadius: 99,
+        borderWidth: 2,
+        borderColor: '#DB3E6F'
     },
 
     editProfile: {
-        width: 25, 
-        height: 25, 
+        width: 25,
+        height: 25,
         resizeMode: 'contain'
-     },
+    },
 
     imageContainer: {
         alignItems: 'center',
@@ -166,10 +171,10 @@ const styles = StyleSheet.create({
     },
 
     nextButton: {
-        width: 18, 
-        height: 18, 
+        width: 18,
+        height: 18,
         resizeMode: 'contain'
-     },
+    },
 
     footerContainer: {
         paddingLeft: SIZES.paddingExtraLarge,

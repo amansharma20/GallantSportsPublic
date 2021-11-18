@@ -5,9 +5,9 @@ import { View, Button, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, FONTS, SIZES } from '../../../constants';
 import ScheduleTopTabNavigator from '../../navigation/ScheduleTopTabNavigator';
-
 export default function ScheduleScreen() {
     const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>

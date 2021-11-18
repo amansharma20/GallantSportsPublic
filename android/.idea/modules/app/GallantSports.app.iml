@@ -138,6 +138,7 @@
     <orderEntry type="module" module-name="GallantSports.react-native-async-storage_async-storage" />
     <orderEntry type="module" module-name="GallantSports.react-native-community_clipboard" />
     <orderEntry type="module" module-name="GallantSports.lottie-react-native" />
+    <orderEntry type="module" module-name="GallantSports.react-native-date-picker" />
     <orderEntry type="module" module-name="GallantSports.react-native-gesture-handler" />
     <orderEntry type="module" module-name="GallantSports.react-native-keychain" />
     <orderEntry type="module" module-name="GallantSports.react-native-linear-gradient" />

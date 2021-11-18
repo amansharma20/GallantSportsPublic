@@ -9,6 +9,7 @@ import SearchLocation from '../screens/location/SearchLocation';
 import checkIfFirstLaunch from '../screens/auth/FirstLaunch';
 import DynamicOnBoarding from '../screens/onBoarding/DynamicOnBoarding';
 import StaticOnBoarding from '../screens/onBoarding/StaticOnBoarding';
+import WelcomeScreen from '../screens/auth/WelcomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,10 +33,11 @@ export default function AuthNavigator() {
             screenOptions={{
                 headerShown: false,
             }}
-            initialRouteName={firstLaunch ? 'DynamicOnBoarding' : 'Login'}
+            // initialRouteName={firstLaunch ? 'DynamicOnBoarding' : 'Login'}
         >
             
-            <Stack.Screen name="DynamicOnBoarding" component={DynamicOnBoarding} />
+            {/* <Stack.Screen name="DynamicOnBoarding" component={DynamicOnBoarding} /> */}
+            <Stack.Screen name="Welcome" component={WelcomeScreen} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="SignUp" component={SignUp} />
             <Stack.Screen name="OtpScreen" component={OtpScreen} />
@@ -44,4 +46,3 @@ export default function AuthNavigator() {
         </Stack.Navigator>
     );
 }
-
