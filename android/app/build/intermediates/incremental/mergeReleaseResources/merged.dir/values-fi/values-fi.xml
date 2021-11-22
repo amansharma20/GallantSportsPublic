@@ -27,7 +27,10 @@
     <string msgid="2650565705514630347" name="abc_shareactionprovider_share_with">"Jaa…"</string>
     <string msgid="9009661856846212431" name="abc_shareactionprovider_share_with_application">"Jaa: <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
     <string msgid="6389460216547290468" name="abc_toolbar_collapse_description">"Tiivistä"</string>
+    <string name="ampm_description">Valitse am/pm</string>
     <string msgid="5912733858573823945" name="confirm_device_credential_password">"Käytä salasanaa"</string>
+    <string name="date_description">Valitse Päivämäärä</string>
+    <string name="day_description">Valitse Päivä</string>
     <string msgid="4776854077120974966" name="default_error_msg">"Tuntematon virhe"</string>
     <string msgid="1072308044213194243" name="fingerprint_dialog_touch_sensor">"Kosketa sormenjälkitunnistinta"</string>
     <string msgid="8216738333501875566" name="fingerprint_error_hw_not_available">"Sormenjälkilaitteisto ei ole käytettävissä."</string>
@@ -39,6 +42,14 @@
     <string msgid="3791785319221634505" name="generic_error_no_device_credential">"PIN-koodia, kuviota tai salasanaa ei ole lisätty."</string>
     <string msgid="1807436368654974044" name="generic_error_no_keyguard">"Tämä laite ei tue PIN-koodia, kuviota eikä salasanaa."</string>
     <string msgid="7309881387583143581" name="generic_error_user_canceled">"Käyttäjä peruutti todennuksen."</string>
+    <string name="hour_description">Valitse Tunti</string>
+    <string name="hour_tag">Tunti:</string>
+    <string name="minutes_description">Valitse Minuutit</string>
+    <string name="minutes_tag">Minuutit</string>
+    <string name="month_description">Valitse Kuukausi</string>
+    <string name="overlay">Päivämääränvalitsin</string>
     <string msgid="730395136688082741" name="search_menu_title">"Haku"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="time_tag">Kello on</string>
+    <string name="year_description">Valitse Vuosi</string>
 </resources>

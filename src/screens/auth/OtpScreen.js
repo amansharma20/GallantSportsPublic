@@ -46,7 +46,7 @@ export default function OtpScreen(props) {
                     CommonLoading.hide();
                     if (response && response.success === false) {
                         console.log('uh')
-                    } 
+                    }
                     else {
                         let token = 'Bearer ' + response.data;
                         signIn(token);
@@ -59,16 +59,15 @@ export default function OtpScreen(props) {
                 MobileNumber: phone,
                 Code: otp,
             };
-            
+
             setUserStatus(true);
             dispatch(
                 AuthActions.signup('Account/RegisterCustomerComplete', otpData),
             ).then((response) => {
                 CommonLoading.hide();
-                if (response && response.success === false) 
-                { 
-                    console.log('fail') 
-                } 
+                if (response && response.success === false) {
+                    console.log('fail')
+                }
                 else {
                     let token = 'Bearer ' + response.data;
                     singUp(token);
@@ -109,7 +108,7 @@ export default function OtpScreen(props) {
                             Let’s play sports at
                         </Text>
                         <Text style={[styles.logoText, { fontFamily: FONTS.satoshi700 }]}>
-                            Premium Arenas
+                            Premium Arena's
                         </Text>
                     </View>
                 </View>
@@ -131,24 +130,12 @@ export default function OtpScreen(props) {
                         }) => (
                             <>
                                 <View>
-                                    {/* <Text style={styles.loginText}>
-                                        Login
-                                    </Text> */}
+                                    <Text style={[styles.logoText, { fontFamily: FONTS.satoshi700, fontSize: 28, paddingBottom: 30 }]}>OTP Verification</Text>
                                 </View>
                                 <View>
                                     <Text style={styles.phoneNumberText}>
                                         Please enter the 4 digit code
                                     </Text>
-                                    {/* {
-                                        signUpMobile == undefined ?
-                                            <Text style={[styles.phoneNumberText, { fontFamily: FONTS.satoshi700 }]}>
-                                                sent to you at +91 {mobileNumber}.
-                                            </Text>
-                                            :
-                                            <Text style={[styles.phoneNumberText, { fontFamily: FONTS.satoshi700 }]}>
-                                                sent to you at +91 {signUpMobile}.
-                                            </Text>
-                                    } */}
                                     <Text style={[styles.phoneNumberText, { fontFamily: FONTS.satoshi700 }]}>
                                         sent to you at +91-{phone}.
                                     </Text>
@@ -200,11 +187,7 @@ export default function OtpScreen(props) {
                         <CommonButton onPress={(onPressConfirm)} children="Confirm" />
                         <View style={styles.termsTextContainer} />
                     </View>
-
                 </View>
-
-
-
             </View>
         </View >
     );
@@ -284,7 +267,7 @@ const styles = StyleSheet.create({
     },
     termsTextContainer: {
         // flexDirection: 'row',
-        paddingTop: SIZES.h3,
+        paddingTop: 0,
     },
     termsText: {
         color: COLORS.background,
@@ -296,6 +279,7 @@ const styles = StyleSheet.create({
     otpInputContainer: {
         width: '80%',
         height: 100,
+        paddingTop:30
     },
     underlineStyleBase: {
         color: COLORS.white,

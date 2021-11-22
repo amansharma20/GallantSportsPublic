@@ -14,5 +14,13 @@ export const GQLMutation = {
                     BookingDateTime
             }
         }
-    }`
+    }`,
+    
+    CANCEL_BOOKING: gql`
+    mutation ($BookingId: Long!){
+        BookingMutation {
+            CancelBooking(BookingId: $BookingId)
+        }
+    }
+    `
 };

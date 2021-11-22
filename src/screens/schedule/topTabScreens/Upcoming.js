@@ -4,7 +4,6 @@ import React from 'react';
 import { View, Button, Text, StyleSheet, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, SIZES } from '../../../../constants';
-import GOALSDATA from '../../../../assets/data/ActivitIesData';
 import UpcomingActivityItem from '../../../components/flatlistItems/ScheduleFlatlists/UpcomingActivityItem';
 import { GQLQuery } from '../../../persistence/query/Query';
 import { useQuery } from '@apollo/client';

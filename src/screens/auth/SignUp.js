@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import {
     Text,
     View,
@@ -26,15 +26,27 @@ export default function SignUp() {
     const dispatch = useDispatch();
 
     const schema = yup.object().shape({
-        firstName: yup.string().required('First Name' + ' ' + 'is required'),
-        lastName: yup.string().required('Last Name' + ' ' + 'is required'),
-        email: yup.string().required('Email' + ' ' + 'is required'),
-        phone: yup.number().required('Date of Birth' + ' ' + 'is required'),
+        firstName: yup
+            .string()
+            .required('First Name' + ' ' + 'is required'),
+        lastName: yup
+            .string()
+            .required('Last Name' + ' ' + 'is required'),
+        email: yup
+            .string()
+            .required('This field is' + ' ' + 'required.')
+            .matches(emailRegExp, 'Enter a valid email id.'),
         phone: yup
             .string()
             .required('This field is' + ' ' + 'required.')
             .matches(/(\d){10}\b/, 'Enter a valid phone number'),
     });
+
+    const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+
+    const lastNameRef = useRef();
+    const emailRef = useRef();
+    const phoneRef = useRef();
 
     const signup = data => {
         CommonLoading.show();
@@ -49,8 +61,7 @@ export default function SignUp() {
             AuthActions.signup('Account/RegisterCustomerStart', signUpData),
         ).then((response) => {
             CommonLoading.hide();
-            if (response && response.success === false) 
-            { console.log('uh') } 
+            if (response && response.success === false) { console.log('uh') }
             else {
                 setShowSuccessModal(true);
                 setTimeout(function () {
@@ -84,7 +95,7 @@ export default function SignUp() {
                                 Let’s play sports at
                             </Text>
                             <Text style={[styles.logoText, { fontFamily: FONTS.satoshi700 }]}>
-                                Premium Arenas
+                                Premium Arena's
                             </Text>
                         </View>
 
@@ -92,7 +103,7 @@ export default function SignUp() {
 
                     <View style={styles.headerMain}>
                         <Text style={styles.headerText}>
-                            Register with us
+                            Register
                         </Text>
                         <Text style={[styles.headerText, { fontFamily: FONTS.satoshi400, textAlign: 'center', fontSize: SIZES.h2 }]}>
                             Tell us a bit more about yourself
@@ -130,6 +141,9 @@ export default function SignUp() {
                                             <TextInput
                                                 name="firstName"
                                                 style={styles.textInput}
+                                                onSubmitEditing={() => {
+                                                    lastNameRef.current.focus();
+                                                }}
                                                 onChangeText={handleChange('firstName')}
                                                 onBlur={handleBlur('firstName')}
                                                 value={values.firstName}
@@ -154,6 +168,10 @@ export default function SignUp() {
                                         <View style={styles.checkMarkContainer}>
                                             <TextInput
                                                 name="lastName"
+                                                onSubmitEditing={() => {
+                                                    emailRef.current.focus();
+                                                }}
+                                                ref={lastNameRef}
                                                 style={styles.textInput}
                                                 onChangeText={handleChange('lastName')}
                                                 onBlur={handleBlur('lastName')}
@@ -179,6 +197,10 @@ export default function SignUp() {
                                         <View style={styles.checkMarkContainer}>
                                             <TextInput
                                                 name="email"
+                                                onSubmitEditing={() => {
+                                                   phoneRef.current.focus();
+                                                }}
+                                                ref={emailRef}
                                                 style={styles.textInput}
                                                 onChangeText={handleChange('email')}
                                                 onBlur={handleBlur('email')}
@@ -188,13 +210,13 @@ export default function SignUp() {
                                             {!errors.email && touched.email && (
                                                 <Image source={icons.tick} style={styles.checkMarkIcon} />
                                             )}
+                                            {errors.email && touched.email && (
+                                                <View style={styles.errorContainer}>
+                                                    <Text style={styles.error}>{errors.email}</Text>
+                                                </View>
+                                            )}
                                         </View>
-                                        {errors.email && touched.email && (
-                                            <View style={styles.errorContainer}>
-                                                <Text style={styles.error}>{errors.email}</Text>
-                                            </View>
 
-                                        )}
 
                                         <View style={styles.textInputTitleContainer}>
                                             <Text style={styles.textInputTitle}>
@@ -205,6 +227,7 @@ export default function SignUp() {
                                             <TextInput
                                                 name="phone"
                                                 style={styles.textInput}
+                                                ref={phoneRef}
                                                 onChangeText={handleChange('phone')}
                                                 onBlur={handleBlur('phone')}
                                                 value={values.phone}
@@ -289,8 +312,8 @@ const styles = StyleSheet.create({
     },
 
     logoImage: {
-        width: Responsive.width(120),
-        height: Responsive.height(130),
+        width: Responsive.width(110),
+        height: Responsive.height(140),
     },
 
     textContainer: {
@@ -321,6 +344,7 @@ const styles = StyleSheet.create({
 
     textInput: {
         marginTop: SIZES.h1,
+        paddingBottom: 0,
         color: COLORS.white,
         fontSize: SIZES.h2,
         height: Responsive.height(50),

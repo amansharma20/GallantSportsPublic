@@ -21,17 +21,20 @@ export default function Login() {
   return (
     <View style={styles.container}>
 
-      <View style={{ paddingTop: 80 }}>
+      <View style={{ paddingTop: 40 }}>
         <View style={{ alignItems: 'center' }}>
           <Image source={Images.gallantLogo} style={styles.logoImage} />
         </View>
 
         <View style={styles.textContainer}>
           <Text style={styles.logoText}>Let’s play sports at</Text>
-          <Text style={[styles.logoText, { fontFamily: FONTS.satoshi700 }]}>Premium Arenas</Text>
+          <Text style={[styles.logoText, { fontFamily: FONTS.satoshi700 }]}>Premium Arena's</Text>
         </View>
       </View>
 
+      <View>
+        <Text style={[styles.logoText, { fontFamily: FONTS.satoshi700, alignSelf: 'center', fontSize: 30 }]}>Welcome</Text>
+      </View>
       <View style={{ paddingHorizontal: 30, paddingBottom: 60 }}>
         <CommonButton
           onPress={() => navigation.navigate('Login')}
@@ -62,8 +65,8 @@ const styles = StyleSheet.create({
   },
 
   logoImage: {
-    width: Responsive.width(136),
-    height: Responsive.height(146),
+    width: Responsive.width(126),
+    height: Responsive.height(170),
   },
 
   textContainer: {

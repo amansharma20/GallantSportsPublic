@@ -1,32 +1,76 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { View, Button, Text, StyleSheet, Image, TouchableOpacity, Dimensions, ScrollView } from 'react-native';
+import { View, Button, Text, StyleSheet, Image, TouchableOpacity, Dimensions, ScrollView, Linking, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, FONTS, icons, images, SIZES } from '../../../constants';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import BookingImagesFlatlist from '../../components/flatlistItems/BookingImagesFlatlist';
 import IMAGEDATA from '../../../assets/data/ImageDataDummy';
 import { animatedStyles, scrollInterpolator } from '../../utils/animations';
+import { applicationProperties } from '../../application.properties';
+import { format } from "date-fns";
+import CommonButton from '../../components/CommonGradientButton';
+import { GQLMutation } from '../../persistence/mutation/Mutation';
+import { useMutation, useQuery } from '@apollo/client';
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 // const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
 const ITEM_WIDTH = SLIDER_WIDTH;
 
 
-export default function YourBookingDetails() {
+export default function YourBookingDetails(props) {
     const navigation = useNavigation();
+
+    const bookingDetail = props.route.params.bookingDetails
+    console.log('bookingDetail')
+    console.log(bookingDetail)
+    console.log('bookingDetail')
+    const lat = bookingDetail.item.ActivityArena.Arena.Latitude
+    const lng = bookingDetail.item.ActivityArena.Arena.Longitude
+
+    // CANCEL BOOKING MUTATION
+    const [bookingCancel, { data: cancelBookingResponse, error: cancelBookingError, loading }] = useMutation(GQLMutation.CANCEL_BOOKING);
+
+    const cancelBooking = () => {
+        bookingCancel({
+            variables: {
+                BookingId: bookingDetail.item.Id,
+            }
+        });
+        console.log('booking cancel failed')
+        if (cancelBookingResponse == null) {
+            console.log('uh')
+        }
+        else {
+            setShowCancelledModal(true);
+        }
+    }
+
     const renderImageFlatlist = (item) => (
-        <BookingImagesFlatlist item={item} key={item.index}
-        />
+        <BookingImagesFlatlist item={item} key={item.index} />
     );
     const [activeSlide, setActiveSlide] = useState(0);
+
+    const openGps = (lat, lng) => {
+        var scheme = Platform.OS === 'ios' ? 'maps:' : 'geo:';
+        var url = scheme + `${lat},${lng}`;
+        Linking.openURL(url);
+    }
+
+    var bookingTime = new Date(bookingDetail.item.BookingDateTime);
+    var bookingDate = new Date(bookingDetail.item.BookingDateTime);
+
+    var formattedDate = format(bookingDate, "dd MMM");
+    var formattedTime = format(bookingTime, "H:mm a");
+
+    const [showCancelModal, setShowCancelModal] = useState(false);
+    const [showCancelledModal, setShowCancelledModal] = useState(false);
 
     return (
         <ScrollView
             showsVerticalScrollIndicator={false}
-            style={styles.container}
-        >
+            style={styles.container}>
             <View style={styles.headerContainer}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Image source={icons.backIcon} style={styles.backIcon} />
@@ -38,7 +82,7 @@ export default function YourBookingDetails() {
                 </View>
             </View>
             <View>
-                <Carousel
+                {/* <Carousel
                     active
                     data={IMAGEDATA}
                     renderItem={renderImageFlatlist}
@@ -62,28 +106,28 @@ export default function YourBookingDetails() {
                         inactiveDotStyle={styles.inactiveDotStyle}
                         containerStyle={{ width: 30 }}
                     />
-                </View>
+                </View> */}
+                <Image source={{ uri: applicationProperties.imageUrl + bookingDetail.item.ActivityArena.Arena.ArenaImageStoragePath }} style={{ width: '100%', height: 200 }} />
             </View>
             <View style={styles.detailsContainer}>
                 <View style={styles.mainDetailsContainer}>
                     <View>
                         <View style={styles.headerTopContainer}>
                             <Text style={styles.titleText}>
-                                The Gallant Club
+                                {bookingDetail.item.ActivityArena.Arena.Name}
                             </Text>
                             <View style={styles.ratingContainer}>
                                 <Text style={styles.ratingText}>
-                                    4.9
+                                    {bookingDetail.item.ActivityArena.Arena.Rating}
                                 </Text>
                                 <Image source={images.star} style={styles.starSize} />
                             </View>
                         </View>
                         <View style={styles.locationContainer}>
                             <Text style={styles.addressText}>
-                                Sector 46,
-                                Guruguram, Haryana
+                                {bookingDetail.item.ActivityArena.Arena.Address}
                             </Text>
-                            <TouchableOpacity style={styles.directionContainer}>
+                            <TouchableOpacity onPress={() => openGps(lat, lng)} style={styles.directionContainer}>
                                 <Image source={icons.directionIcon} style={styles.directionIconSize} />
                                 <Text style={styles.directionText}>
                                     Get Direction
@@ -96,9 +140,9 @@ export default function YourBookingDetails() {
                             </Text>
                             <View style={styles.activityBookedMainContainer}>
                                 <View style={styles.activityBookedLeftContainer}>
-                                    <Image source={images.badminton} style={styles.activityIconSize} />
+                                    <Image source={{ uri: applicationProperties.imageUrl + bookingDetail.item.ActivityArena.Activity.ActivityIconStoragePath }} style={styles.activityIconSize} />
                                     <Text style={styles.activityText}>
-                                        Badminton
+                                        {bookingDetail.item.ActivityArena.Activity.Name}
                                     </Text>
                                 </View>
                                 <View style={styles.activityBookedByDetails}>
@@ -107,7 +151,7 @@ export default function YourBookingDetails() {
                                             Booked by
                                         </Text>
                                         <Text style={styles.bookedContentLeftText}>
-                                            Aman Sharma
+                                            {bookingDetail.item.CustomerUser.FirstName} {bookingDetail.item.CustomerUser.LastName}
                                         </Text>
                                     </View>
                                     <View style={styles.bookedActivityContentContainer}>
@@ -115,12 +159,12 @@ export default function YourBookingDetails() {
                                             Booked ID
                                         </Text>
                                         <Text style={styles.bookedContentLeftText}>
-                                            GLNTPLY38899
+                                            {bookingDetail.item.ReferenceNumber}
                                         </Text>
                                     </View>
                                     <View style={styles.dateTimeContainer}>
                                         <Text style={[styles.bookedContentText, { paddingRight: 0 }]}>
-                                            13 Sept | 7.00 PM
+                                            {formattedDate} | {formattedTime}
                                         </Text>
                                     </View>
                                 </View>
@@ -131,8 +175,7 @@ export default function YourBookingDetails() {
                                 <Text style={styles.whatToBringText}>What to bring</Text>
                             </View>
                             <Text style={styles.bodyText}>
-                                Only sports shoes will be allowed.{'\n'}
-                                You are expected to bring your own water bottle, towel etc.
+                                {bookingDetail.item.ActivityArena.Arena.WhatToBring}
                             </Text>
                         </View>
 
@@ -147,7 +190,7 @@ export default function YourBookingDetails() {
                             <Image source={icons.pinkNextButton} style={[styles.pinkNextButtonSize, { tintColor: COLORS.white }]} />
                         </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={styles.bottomContent}>
+                    <TouchableOpacity onPress={() => { setShowCancelModal(true); }} style={styles.bottomContent}>
                         <Text style={styles.cancelText}>
                             Cancel this booking
                         </Text>
@@ -161,6 +204,79 @@ export default function YourBookingDetails() {
                     </TouchableOpacity>
                 </View>
             </View>
+            {showCancelModal && (
+                <Modal
+                    animationType="fade"
+                    transparent={true}
+                    showModal={showCancelModal}
+                    backgroundColor="black"
+                    onRequestClose={() => setShowCancelModal(false)}
+                    statusBarTranslucent>
+                    <View style={styles.modalContainer}>
+                        <TouchableOpacity onPress={() => { setShowCancelModal(false); }}>
+                            <Image source={icons.popupClose} style={{ justifyContent: 'center', height: 35, width: 35, alignSelf: 'center', marginBottom: 20 }} />
+                        </TouchableOpacity>
+                        <View style={styles.modalBody}>
+
+                            <View style={{ alignSelf: 'flex-start' }}>
+                                <Text style={styles.cancelButtonText}>
+                                    Cancel Booking
+                                </Text>
+                            </View>
+                            <View style={{ alignSelf: 'flex-start' }}>
+                                <Text style={styles.successSubText}>
+                                    Are you sure you want to cancel this booking
+                                </Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', alignSelf: 'flex-start', paddingTop: 20 }}>
+                                <Image source={{ uri: applicationProperties.imageUrl + bookingDetail.item.ActivityArena.Activity.ActivityIconStoragePath }} style={styles.activityIconSize} />
+                                <View style={{ alignSelf: 'flex-start' }}>
+                                    <Text style={styles.modalActivitytextContainer}>
+                                        {bookingDetail.item.ActivityArena.Activity.Name}
+                                    </Text>
+                                    <Text style={{
+                                        fontSize: 16, color: 'white', alignSelf: 'flex-start', color: COLORS.white,
+                                        fontFamily: FONTS.satoshi500, paddingHorizontal: 20, paddingTop: 5
+                                    }}>
+                                        {formattedDate} | {formattedTime}
+                                    </Text>
+                                </View>
+                            </View>
+
+                        </View>
+                        <View style={styles.buttonContainer}>
+                            <CommonButton onPress={cancelBooking} children="Proceed to cancel" />
+                        </View>
+                    </View>
+                </Modal>
+            )}
+            {showCancelledModal && (
+                <Modal
+                    animationType="fade"
+                    transparent={true}
+                    showModal={showCancelledModal}
+                    backgroundColor="black"
+                    onRequestClose={() => setShowCancelledModal(false)}
+                    statusBarTranslucent>
+                    <View style={styles.modalContainer}>
+                        <View style={styles.modalBody}>
+                            <View>
+                                <Image source={Images.success} style={styles.modalImage} />
+                            </View>
+                            <View style={{ paddingVertical: 20 }}>
+                                <Text style={styles.successText}>
+                                    Success!
+                                </Text>
+                            </View>
+                            <View>
+                                <Text style={styles.successSubText}>
+                                    Your account has been Cancelled.
+                                </Text>
+                            </View>
+                        </View>
+                    </View>
+                </Modal>
+            )}
         </ScrollView>
     );
 }
@@ -175,7 +291,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: SIZES.padding6,
-        paddingVertical: SIZES.paddingLarge,
+        paddingVertical: 20,
     },
     headerText: {
         fontSize: SIZES.header,
@@ -358,5 +474,47 @@ const styles = StyleSheet.create({
         width: 18,
         height: 18,
         resizeMode: 'contain',
+    },
+    modalBody: {
+        backgroundColor: COLORS.background,
+        alignItems: 'center',
+        paddingHorizontal: 26,
+        paddingVertical: 50,
+        paddingTop: 20,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+        justifyContent: 'space-between',
+        elevation: 5
+    },
+    modalContainer: {
+        backgroundColor: COLORS.modalBackground,
+        flex: 1,
+        alignItems: 'stretch',
+        justifyContent: 'flex-end',
+    },
+    cancelButtonText: {
+        color: COLORS.white,
+        fontFamily: FONTS.satoshi900,
+        fontSize: 25,
+        alignSelf: 'flex-start'
+    },
+    successSubText: {
+        color: COLORS.white,
+        fontFamily: FONTS.satoshi500,
+        fontSize: 18,
+        alignSelf: 'flex-start'
+    },
+    buttonContainer: {
+        paddingBottom: SIZES.padding2,
+        paddingHorizontal: SIZES.padding6,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: COLORS.background
+    },
+    modalActivitytextContainer: {
+        fontSize: 18,
+        paddingHorizontal: 20,
+        color: COLORS.white,
+        fontFamily: FONTS.satoshi500,
     },
 });

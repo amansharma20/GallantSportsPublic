@@ -2,17 +2,19 @@ import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignUp from '../screens/auth/SignUp';
 import BottomTabBarNavigator from './BottomTabBarNavigator';
-import ArenaDetailsScreen from '../screens/arena/ArenaDetailsScreen';
-import ExpolreArenaDetailsScreen from '../screens/arena/ExploreArenaDetailsScreen';
+import ArenaDetailsScreen from '../screens/activityBookingFlow/ArenaDetailsScreen';
+import ExpolreArenaDetailsScreen from '../screens/exploreBookingFlow/ExploreArenaDetailsScreen';
 import ExploreNearby from '../screens/explore/ExploreNearby';
-import ExploreActivity from '../screens/explore/ExploreActivity';
-import ArenaBookingScreen from '../screens/arena/ArenaBookingScreen';
+import ExploreActivity from '../screens/activityBookingFlow/ExploreActivity';
+import ArenaBookingScreen from '../screens/activityBookingFlow/ArenaBookingScreen';
 import YourBookingDetails from '../screens/Booking/YourBookingDetails';
 import DetectLocation from '../screens/location/DetectLocation';
 import SearchLocation from '../screens/location/SearchLocation';
 import EditProfile from '../screens/profile/EditProfile';
 import BookingSummary from '../screens/Booking/BookingSummary';
 import BookingScreen from '../screens/Booking/BookingScreen';
+import BookingComplete from '../screens/Booking/BookingComplete';
+import ExploreArenaBookingScreen from '../screens/exploreBookingFlow/ExploreArenaBookingScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +37,8 @@ export default function HomeNavigator() {
             <Stack.Screen name="EditProfile" component={EditProfile} />
             <Stack.Screen name="BookingSummary" component={BookingSummary} />
             <Stack.Screen name="BookingScreen" component={BookingScreen} />
+            <Stack.Screen name="BookingComplete" component={BookingComplete} />
+            <Stack.Screen name="ExploreArenaBookingScreen" component={ExploreArenaBookingScreen} />
         </Stack.Navigator>
     );
 }

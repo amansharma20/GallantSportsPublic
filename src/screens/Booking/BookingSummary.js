@@ -13,11 +13,13 @@ import { format } from 'date-fns';
 import { GQLMutation } from '../../persistence/mutation/Mutation';
 
 export default function BookingSummary(props) {
+    const navigation = useNavigation();
+
     const bookingDetail = props.route.params.bookingDetails
     const arenaid = props.route.params.bookingDetails.Activity.Activity.Id;
     const activityid = props.route.params.bookingDetails.ArenaId;
-    const navigation = useNavigation();
 
+    const [needacoach, setacoach] = useState(bookingDetail.Needacoach)
 
     const [dataSource, setDataSource] = useState([]);
     useEffect(() => {
@@ -31,6 +33,7 @@ export default function BookingSummary(props) {
     // GET CUSTOMER USER DETAILS
     const { data: customerDetailsData, error: CustomerDetailsError } = useQuery(GQLQuery.GET_CUSTOMER_USER_DETAILS);
     const customerUserDetails = customerDetailsData && customerDetailsData.CustomerUserQuery && customerDetailsData.CustomerUserQuery.GetCustomerUserDetails;
+    const name = customerUserDetails.FirstName;
 
     // GET BOOKING CHARGES BY ARENA ID OR ACTIVITY ID
     const { data: BookingChargesData, error: BookingChargesError } = useQuery(GQLQuery.GET_BOOKING_CHARGES_BY_ACTIVITYID_OR_ARENAID, {
@@ -40,12 +43,12 @@ export default function BookingSummary(props) {
         },
     });
     const getBookingCharges = BookingChargesData && BookingChargesData.ActivityArenaChargesQuery && BookingChargesData.ActivityArenaChargesQuery.GetActivityArenaCharges;
-    const [needacoach, setacoach] = useState(bookingDetail.Needacoach)
+   
 
+    // CREATE BOOKING
     const [addBooking, { data: bookingResponse, error: bookingError, loading }] = useMutation(GQLMutation.CREATE_BOOKING);
 
     const submitBooking = () => {
-
         addBooking({
             variables: {
                 ArenaId: arenaid,
@@ -54,18 +57,13 @@ export default function BookingSummary(props) {
                 NeedCoach: needacoach,
             }
         });
+        if (bookingResponse != null) {
+            navigation.navigate('BookingComplete', { "Name": name })
+        }
+        else {
+            console.log('booking failed')
+        }
     }
-
-
-    console.log(bookingResponse)
-    console.log(bookingError)
-
-    if(loading){
-        return<Text>Loading</Text>
-    }
-
-
-
 
     function getTotalAmountWithGST(total, gst) {
         return (total * gst / 100) + total

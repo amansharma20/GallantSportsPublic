@@ -29,7 +29,9 @@ query MyQuery {
       Description
       DrinkingWater
       Id
+      Latitude
       Lockers
+      Longitude
       Name
       Parking
       PhoneNumber
@@ -127,6 +129,7 @@ query MyQuery {
         Duration
         GST
         Id
+        Status
         NeedCoach
         ReferenceNumber
         UpdatedDateTimeUtc
@@ -164,6 +167,7 @@ query MyQuery {
         Duration
         GST
         Id
+        Status
         NeedCoach
         ReferenceNumber
         UpdatedDateTimeUtc
@@ -201,6 +205,7 @@ query MyQuery {
         Duration
         GST
         Id
+        Status
         NeedCoach
         ReferenceNumber
         UpdatedDateTimeUtc

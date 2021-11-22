@@ -15,13 +15,12 @@ export default function Cancelled() {
     const { data: customerCancelBookingData, error: customerCancelBookingError } = useQuery(GQLQuery.GET_CUSTOMER_CANCEL_BOOKINGS);
     const customerCancelBookings = customerCancelBookingData && customerCancelBookingData.BookingQuery && customerCancelBookingData.BookingQuery.GetCustomerCancelledBookings;
 
-
     return (
         <View style={styles.container}>
-            <View style={{paddingTop: SIZES.padding6}}>
-            <FlatList
+            <View style={{ paddingTop: SIZES.padding6 }}>
+                <FlatList
                     keyExtractor={item => item.id}
-                    data={GOALSDATA}
+                    data={customerCancelBookings}
                     showsVerticalScrollIndicator={false}
                     renderItem={(item, index) => (
                         <CancelledActivityItem
