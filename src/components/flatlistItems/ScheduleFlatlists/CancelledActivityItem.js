@@ -16,19 +16,17 @@ import { format } from "date-fns";
 const CancelledActivityItem = (props) => {
     const navigation = useNavigation();
 
-    const cancelBooking = props.cancelBookings
-
-    console.log('cancelBooking')
-    console.log(cancelBooking)
-    console.log('cancelBooking')
+    const Bookings = props.cancelBookings
 
     const leftBackgroundColor = '#320000';
     const rightBackgroundColor = '#320000';
     const item = props.item;
 
-    var date = new Date(cancelBooking.item.BookingDateTime);
-    var formattedDate = format(date, "dd MMM");
-    var formattedTime = format(date, "H:mma");
+    var bookingTime = new Date(Bookings.item.BookingDateTime);
+    var bookingDate = new Date(Bookings.item.BookingDateTime);
+
+    var formattedDate = format(bookingDate, "dd MMM");
+    var formattedTime = format(bookingTime, "H:mm a");
 
     return (
         <View
@@ -53,15 +51,15 @@ const CancelledActivityItem = (props) => {
                             </View>
                             <View>
                                 <Text style={styles.venueText}>
-                                    The Gallant Club
+                                    {Bookings.item.ActivityArena.Arena.Name}
                                 </Text>
                                 <Text style={styles.activityText}>
-                                    Tennis
+                                    {Bookings.item.ActivityArena.Activity.Name}
                                 </Text>
                             </View>
                             <View>
                                 <Text style={styles.activityText}>
-                                    7.00 PM
+                                    {formattedTime}
                                 </Text>
                             </View>
                         </View>
@@ -95,7 +93,7 @@ const styles = StyleSheet.create({
     imageContainer: { justifyContent: 'center' },
     imageSize: { width: 80, height: 80 },
     cancelledActivityText: {
-        color: COLORS.red,
+        color: 'white',
         fontSize: 12,
         fontFamily: FONTS.satoshi700,
     },

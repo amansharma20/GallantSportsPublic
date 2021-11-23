@@ -11,21 +11,32 @@ import { useNavigation } from '@react-navigation/core';
 import { Responsive } from '../../../constants/Layout';
 import LinearGradient from 'react-native-linear-gradient';
 import { COLORS, FONTS, images, SIZES } from '../../../constants';
+import { format } from "date-fns";
 
 const UpcomingActivityItem = (props) => {
+    const upcomingactivity = props.upcomingBookings
+
     const navigation = useNavigation();
     const even = props.index % 2;
     const leftBackgroundColor = (even === 0) ? '#7E0027' : '#273575';
     const rightBackgroundColor = (even === 0) ? '#DB3E6F' : '#7B91F8';
     console.log(even);
+
+    var bookingTime = new Date(upcomingactivity.item.BookingDateTime);
+    var bookingDate = new Date(upcomingactivity.item.BookingDateTime);
+
+    var formattedDate = format(bookingDate, "dd MMM");
+    var formattedTime = format(bookingTime, "H:mma");
+
+
     return (
-        <View
-            style={styles.container}
-        >
+        <View style={styles.container}>
             <TouchableOpacity
                 activeOpacity={0.8}
-                onPress={() => navigation.navigate('YourBookingDetails')}
-            >
+                onPress={() => navigation.navigate('YourBookingDetails', 
+                {
+                    bookingDetails :upcomingactivity,
+                })}>
                 <LinearGradient
                     start={{ x: 0, y: 0 }} colors={[leftBackgroundColor, rightBackgroundColor]} style={styles.linearGradient}>
                     <View style={styles.leftContainer}>
@@ -36,15 +47,15 @@ const UpcomingActivityItem = (props) => {
                         </View>
                         <View>
                             <Text style={styles.venueText}>
-                                The Gallant Club
+                            {upcomingactivity.item.ActivityArena.Arena.Name}
                             </Text>
                             <Text style={styles.upcomingActivityText}>
-                                Tennis
+                            {upcomingactivity.item.ActivityArena.Activity.Name}
                             </Text>
                         </View>
                         <View>
                             <Text style={styles.upcomingActivityText}>
-                                13 Sept | 7.00 PM
+                                {formattedDate} | {formattedTime}
                             </Text>
                         </View>
                     </View>

@@ -16,6 +16,7 @@ export const basketBallIcon = require('../assets/icons/basketBallIcon.png');
 export const editProfile = require('../assets/icons/editProfile.png');
 export const pfp = require('../assets/icons/pfp.png');
 export const checkbox = require('../assets/icons/checkbox.png');
+export const popupClose = require('../assets/icons/popupClose.png');
 
 export default {
     tick,
@@ -34,5 +35,6 @@ export default {
     basketBallIcon,
     editProfile,
     pfp,
-    checkbox
+    checkbox,
+    popupClose
 };

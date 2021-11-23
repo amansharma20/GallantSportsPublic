@@ -14,7 +14,7 @@ import { COLORS, FONTS, images, SIZES } from '../../../../constants/';
 import { format } from "date-fns";
 
 const UpcomingActivityItem = (props) => {
-    const upcomingBooking = props.upcomingBookings
+    const Bookings = props.upcomingBookings
 
     const navigation = useNavigation();
 
@@ -22,13 +22,11 @@ const UpcomingActivityItem = (props) => {
     const rightBackgroundColor = '#444B65';
     const item = props.item;
 
-    var date = new Date(upcomingBooking.item.BookingDateTime);
-    var formattedDate = format(date, "dd MMM");
-    var formattedTime = format(date, "H:mma");
+    var bookingTime = new Date(Bookings.item.BookingDateTime);
+    var bookingDate = new Date(Bookings.item.BookingDateTime);
 
-    console.log('upcomingBooking')
-    console.log(formattedDate)
-    console.log('upcomingBooking')
+    var formattedDate = format(bookingDate, "dd MMM");
+    var formattedTime = format(bookingTime, "H:mma");
 
     return (
         <View
@@ -42,7 +40,13 @@ const UpcomingActivityItem = (props) => {
 
                 <TouchableOpacity
                     activeOpacity={0.8}
-                    onPress={() => navigation.navigate('YourBookingDetails')}>
+                    onPress={() => navigation.navigate('YourBookingDetails',
+                        {
+                            Bookings:
+                            {
+                                "BookingDetail": bookingDetails
+                            }
+                        })}>
                     <LinearGradient
                         start={{ x: 0, y: 0 }} colors={[leftBackgroundColor, rightBackgroundColor]} style={styles.linearGradient}>
                         <View style={styles.leftContainer}>
@@ -53,10 +57,10 @@ const UpcomingActivityItem = (props) => {
                             </View>
                             <View>
                                 <Text style={styles.venueText}>
-                                    {upcomingBooking.item.ActivityArena.Arena.Name}
+                                    {Bookings.item.ActivityArena.Arena.Name}
                                 </Text>
                                 <Text style={styles.upcomingActivityText}>
-                                {upcomingBooking.item.ActivityArena.Activity.Name}
+                                    {Bookings.item.ActivityArena.Activity.Name}
                                 </Text>
                             </View>
                             <View>
@@ -71,10 +75,7 @@ const UpcomingActivityItem = (props) => {
                     </LinearGradient>
                 </TouchableOpacity>
             </View>
-
-
-
-        </View>
+        </View >
     )
 };
 

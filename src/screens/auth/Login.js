@@ -61,7 +61,7 @@ export default function Login() {
                 Let’s play sports at
               </Text>
               <Text style={[styles.logoText, { fontFamily: FONTS.satoshi700 }]}>
-                Premium Arenas
+                Premium Arena's
               </Text>
             </View>
 
@@ -118,7 +118,7 @@ export default function Login() {
                     <Text style={styles.error}>{errors.phone}</Text>
                   )}
 
-                  <View style={styles.redirectToSignUpContainer}>
+                  {/* <View style={styles.redirectToSignUpContainer}>
                     <Text style={[styles.phoneNumberText, { textAlign: 'center', paddingTop: 0 }]}>
                       Don't have an account?
                     </Text>
@@ -127,14 +127,14 @@ export default function Login() {
                         Register now.
                       </Text>
                     </TouchableOpacity>
-                  </View>
+                  </View> */}
 
 
                   <CommonButton
                     style={{ marginTop: 80 }}
                     // onPress={() => navigation.navigate('BookingSummary')}
                     onPress={handleSubmit}
-                    children="Confirm" />
+                    children="Get OTP" />
                 </>
               )}
             </Formik>
@@ -177,14 +177,14 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     padding: SIZES.paddingLarge,
-    paddingTop: SIZES.paddingExtraLarge,
+    paddingTop: 30,
     backgroundColor: COLORS.background,
     justifyContent: 'space-between',
   },
 
   logoImage: {
     width: Responsive.width(136),
-    height: Responsive.height(146),
+    height: Responsive.height(170),
   },
 
   textContainer: {
@@ -200,7 +200,8 @@ const styles = StyleSheet.create({
   },
 
   loginText: {
-    fontSize: SIZES.largeTitle,
+    paddingTop: 40,
+    fontSize: 34,
     fontFamily: FONTS.satoshi900,
     color: COLORS.white,
   },

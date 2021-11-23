@@ -29,6 +29,6 @@ const styles = StyleSheet.create({
         width: 260,
         justifyContent: 'center',
         alignSelf: 'center',
-        paddingTop: 300,
+        marginTop: 200,
     },
 });

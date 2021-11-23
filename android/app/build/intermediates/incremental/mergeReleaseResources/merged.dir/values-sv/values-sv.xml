@@ -27,7 +27,10 @@
     <string msgid="2650565705514630347" name="abc_shareactionprovider_share_with">"Dela med"</string>
     <string msgid="9009661856846212431" name="abc_shareactionprovider_share_with_application">"Dela med <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
     <string msgid="6389460216547290468" name="abc_toolbar_collapse_description">"Komprimera"</string>
+    <string name="ampm_description">Välj am/pm</string>
     <string msgid="5912733858573823945" name="confirm_device_credential_password">"Använd lösenord"</string>
+    <string name="date_description">Välj ett datum</string>
+    <string name="day_description">Välj en dag</string>
     <string msgid="4776854077120974966" name="default_error_msg">"Okänt fel"</string>
     <string msgid="1072308044213194243" name="fingerprint_dialog_touch_sensor">"Tryck på fingeravtryckssensorn"</string>
     <string msgid="8216738333501875566" name="fingerprint_error_hw_not_available">"Det finns ingen maskinvara för fingeravtryck."</string>
@@ -39,6 +42,14 @@
     <string msgid="3791785319221634505" name="generic_error_no_device_credential">"Pinkod, grafiskt lösenord eller lösenord har inte angetts."</string>
     <string msgid="1807436368654974044" name="generic_error_no_keyguard">"Enheten har inte stöd för pinkod, lösenord eller grafiskt lösenord."</string>
     <string msgid="7309881387583143581" name="generic_error_user_canceled">"Användaren har avbrutit autentiseringen."</string>
+    <string name="hour_description">Välj en timme</string>
+    <string name="hour_tag">Timme:</string>
+    <string name="minutes_description">Välj minuter</string>
+    <string name="minutes_tag">Minuter</string>
+    <string name="month_description">Välj en månad</string>
+    <string name="overlay">Datumväljare på</string>
     <string msgid="730395136688082741" name="search_menu_title">"Sök"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="time_tag">Tiden är</string>
+    <string name="year_description">Välj ett år</string>
 </resources>

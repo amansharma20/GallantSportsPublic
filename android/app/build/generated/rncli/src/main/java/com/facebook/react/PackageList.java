@@ -21,6 +21,8 @@ import com.airbnb.android.react.lottie.LottiePackage;
 import com.henninghall.date_picker.DatePickerPackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+// react-native-get-location
+import com.github.douglasjunior.reactNativeGetLocation.ReactNativeGetLocationPackage;
 // react-native-keychain
 import com.oblador.keychain.KeychainPackage;
 // react-native-linear-gradient
@@ -85,6 +87,7 @@ public class PackageList {
       new LottiePackage(),
       new DatePickerPackage(),
       new RNGestureHandlerPackage(),
+      new ReactNativeGetLocationPackage(),
       new KeychainPackage(),
       new LinearGradientPackage(),
       new PagerViewPackage(),

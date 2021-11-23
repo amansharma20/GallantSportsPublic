@@ -5,7 +5,7 @@ import {
     TouchableOpacity,
     Text,
     View,
-    Image
+    Image,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { Responsive } from '../../../constants/Layout';
@@ -14,11 +14,8 @@ import { COLORS, FONTS, images, SIZES } from '../../../constants';
 import { format } from "date-fns";
 
 const ScheduleFlatlistItem = (props) => {
-    const allBookings = props.bookings
+    const Bookings = props.bookings
 
-    console.log('allBookings')
-    console.log(allBookings)
-    console.log('allBookings')
 
     const navigation = useNavigation();
     const isToday = false;
@@ -28,12 +25,11 @@ const ScheduleFlatlistItem = (props) => {
     const rightBackgroundColor = (even === 0) ? '#DB3E6F' : '#7B91F8';
     const item = props.item;
 
-    var date = new Date(allBookings.item.BookingDateTime);
-    var formattedDate = format(date, "dd MMM");
-    var formattedTime = format(date, "H:mma");
+    var bookingTime = new Date(Bookings.item.BookingDateTime);
+    var bookingDate = new Date(Bookings.item.BookingDateTime);
 
-    var today = new Date();
-    date = today.getDate() + "/" + parseInt(today.getMonth() + 1) + "/" + today.getFullYear();
+    var formattedDate = format(bookingDate, "dd MMM");
+    var formattedTime = format(bookingTime, "H:mma");
 
     return (
         <View
@@ -67,10 +63,10 @@ const ScheduleFlatlistItem = (props) => {
                             </View>
                             <View>
                                 <Text style={styles.venueText}>
-                                    {allBookings.item.ActivityArena.Arena.Name}
+                                    {Bookings.item.ActivityArena.Arena.Name}
                                 </Text>
                                 <Text style={styles.upcomingActivityText}>
-                                    {allBookings.item.ActivityArena.Activity.Name}
+                                    {Bookings.item.ActivityArena.Activity.Name}
                                 </Text>
                             </View>
                             <View>

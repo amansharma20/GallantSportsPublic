@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Text,
     Image,
@@ -18,21 +18,54 @@ import ExploreFlatlistItem from '../../components/flatlistItems/ExploreFlatlistI
 import { useNavigation } from '@react-navigation/core';
 import { GQLQuery } from '../../persistence/query/Query';
 import { useQuery } from '@apollo/client';
+import GetLocation from 'react-native-get-location'
 
 export default function HomeScreen(props) {
-    console.log(props.navigation);
+    const navigation = useNavigation();
 
-    const { data: acitivity, error: errorActivity } = useQuery(GQLQuery.GET_ACTIVITIES);
-    const { data: explore, error: errorExplore } = useQuery(GQLQuery.GET_EXPLORE);
+    // GET CUSTOMER USER DETAILS
     const { data: customerDetailsData, error: CustomerDetailsError } = useQuery(GQLQuery.GET_CUSTOMER_USER_DETAILS);
-
     const customerUserDetails = customerDetailsData && customerDetailsData.CustomerUserQuery && customerDetailsData.CustomerUserQuery.GetCustomerUserDetails;
 
+    // GET UPCOMING ACTIVITY
+    const { data: customerUpcomingBookingData, error: customerUpcomingBookingError } = useQuery(GQLQuery.GET_CUSTOMER_UPCOMING_BOOKINGS);
+    const customerUpcomingBookings = customerUpcomingBookingData && customerUpcomingBookingData.BookingQuery && customerUpcomingBookingData.BookingQuery.GetCustomerUpcomingBookings;
+    console.log(customerUpcomingBookings)
+
+    // GET ACTIVITY UNDER ACTIVITY CAROUSEL
+    const { data: acitivity, error: errorActivity } = useQuery(GQLQuery.GET_ACTIVITIES);
     const Acitivities = acitivity && acitivity.ActivityQuery && acitivity.ActivityQuery.GetActivity;
 
+    // GET ARENA UNDER EXPLORE CAROUSEL
+    const { data: explore, error: errorExplore } = useQuery(GQLQuery.GET_EXPLORE);
     const ExploreArena = explore && explore.ArenaQuery && explore.ArenaQuery.GetArena;
 
-    const navigation = useNavigation();
+    // const [latlong, setLatLong] = useState(null);
+    
+    useEffect(() => {
+        getUserCurrentLocation()
+    });
+
+    const getUserCurrentLocation = () => {
+        return (
+            GetLocation.getCurrentPosition({
+                enableHighAccuracy: true,
+                timeout: 15000,
+            })
+                .then(location => {
+                    setLatLong(location)
+                    console.log(location);
+                })
+                .catch(error => {
+                    const { code, message } = error;
+                    console.warn(code, message);
+                })
+
+        );
+    }
+
+
+
 
     return (
         <ScrollView
@@ -64,14 +97,12 @@ export default function HomeScreen(props) {
             <View style={{ paddingVertical: 30 }}>
                 <FlatList
                     showsHorizontalScrollIndicator={false}
-                    keyExtractor={(item) => item.id.toString()}
-                    data={GOALSDATA}
+                    keyExtractor={item => item.id}
+                    data={customerUpcomingBookings}
                     horizontal={true}
-                    renderItem={(itemData, item) => (
+                    renderItem={(item, index) => (
                         <UpcomingActivityItem
-                            id={itemData.item.id}
-                            index={itemData.index}
-                            goal={item} />
+                            upcomingBookings={item} />
                     )}
                 />
             </View>
