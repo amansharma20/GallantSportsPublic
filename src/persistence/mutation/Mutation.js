@@ -9,7 +9,7 @@ export const GQLMutation = {
                 ActivityArenaId: $ActivityArenaId,
                 BookingDateTime: $BookingDateTime,
                 NeedCoach: $NeedCoach
-            ) {
+            ) {     Id
                     Amount
                     BookingDateTime
             }
@@ -22,5 +22,26 @@ export const GQLMutation = {
             CancelBooking(BookingId: $BookingId)
         }
     }
+    `,
+    START_PAYMENT:gql`
+    mutation($BookingId: Long){
+        BookingMutation{
+          StartBookingPayment(BookingId: $BookingId){
+            Amount
+            RazorpayOrderId
+          }
+        }
+      }
+    `,
+    COMPLETE_PAYMENT: gql`
+    mutation($RazorpayOrderId: String!,$RazorpayPaymentId:String!,$RazorpaySignature:String!){
+            BookingMutation{
+                CompleteBookingPayment(
+                    RazorpayOrderId:$RazorpayOrderId,
+                    RazorpayPaymentId:$RazorpayPaymentId,
+                    RazorpaySignature:$RazorpaySignature
+                    )
+            }
+        }
     `
 };
