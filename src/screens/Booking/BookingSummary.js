@@ -16,8 +16,8 @@ export default function BookingSummary(props) {
     const navigation = useNavigation();
 
     const bookingDetail = props.route.params.bookingDetails
-    const arenaid = bookingDetail.Activity.Activity.Id;
-    const activityid = bookingDetail.ArenaId;
+    const arenaId = bookingDetail.Activity.Activity.Id;
+    const activityId = bookingDetail.ArenaId;
 
     const [needacoach, setacoach] = useState(bookingDetail.Needacoach)
 
@@ -50,16 +50,19 @@ export default function BookingSummary(props) {
     const submitBooking = () => {
         addBooking({
             variables: {
-                ArenaId: arenaid,
-                ActivityArenaId: activityid,
-                BookingDateTime: new Date().toISOString(),
+                ArenaId: arenaId,
+                ActivityArenaId: activityId,
+                BookingDateTime: bookingDetail.Bookingdate,
                 NeedCoach: needacoach,
             }
+
         });
         if (bookingResponse != null) {
-            navigation.navigate('BookingComplete', { "Name": name })
+
+            navigation.navigate('BookingComplete')
         }
         else {
+            console.log(bookingError)
             console.log('booking failed')
         }
     }
@@ -192,7 +195,7 @@ export default function BookingSummary(props) {
                 </View>
             </ScrollView>
             <View style={styles.buttonContainer}>
-                <CommonButton onPress={submitBooking} children="Book Now" />
+                <CommonButton onPress={submitBooking} children="Pay Now" />
             </View>
         </View>
 

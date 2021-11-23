@@ -30,7 +30,9 @@ export default function HomeScreen(props) {
     // GET UPCOMING ACTIVITY
     const { data: customerUpcomingBookingData, error: customerUpcomingBookingError } = useQuery(GQLQuery.GET_CUSTOMER_UPCOMING_BOOKINGS);
     const customerUpcomingBookings = customerUpcomingBookingData && customerUpcomingBookingData.BookingQuery && customerUpcomingBookingData.BookingQuery.GetCustomerUpcomingBookings;
+    console.log('customerUpcomingBookings')
     console.log(customerUpcomingBookings)
+    console.log('customerUpcomingBookings')
 
     // GET ACTIVITY UNDER ACTIVITY CAROUSEL
     const { data: acitivity, error: errorActivity } = useQuery(GQLQuery.GET_ACTIVITIES);

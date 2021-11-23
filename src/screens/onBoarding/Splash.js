@@ -25,8 +25,9 @@ const styles = StyleSheet.create({
     background: { height: screenHeight / 1.25, resizeMode: 'cover', width: screenWidth },
 
     splash: {
-        height: 100,
-        width: 260,
+        height: 200,
+        width: 500,
+        resizeMode:'contain',
         justifyContent: 'center',
         alignSelf: 'center',
         marginTop: 200,
