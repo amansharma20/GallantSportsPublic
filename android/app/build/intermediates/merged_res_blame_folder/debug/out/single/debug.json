@@ -36,6 +36,10 @@
         "source": "/Users/shanu/Desktop/GallantSports/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
     },
     {
+        "merged": "/Users/shanu/Desktop/GallantSports/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/Users/shanu/Desktop/GallantSports/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
         "merged": "/Users/shanu/Desktop/GallantSports/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_splash.png.flat",
         "source": "/Users/shanu/Desktop/GallantSports/android/app/src/main/res/mipmap-xhdpi/splash.png"
     },
@@ -44,16 +48,12 @@
         "source": "/Users/shanu/Desktop/GallantSports/android/app/src/main/res/mipmap-xxxhdpi/splash.png"
     },
     {
-        "merged": "/Users/shanu/Desktop/GallantSports/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "/Users/shanu/Desktop/GallantSports/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+        "merged": "/Users/shanu/Desktop/GallantSports/android/app/build/intermediates/res/merged/debug/layout_launch_screen.xml.flat",
+        "source": "/Users/shanu/Desktop/GallantSports/android/app/src/main/res/layout/launch_screen.xml"
     },
     {
         "merged": "/Users/shanu/Desktop/GallantSports/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
         "source": "/Users/shanu/Desktop/GallantSports/android/app/src/main/res/mipmap-hdpi/ic_launcher.png"
-    },
-    {
-        "merged": "/Users/shanu/Desktop/GallantSports/android/app/build/intermediates/res/merged/debug/layout_launch_screen.xml.flat",
-        "source": "/Users/shanu/Desktop/GallantSports/android/app/src/main/res/layout/launch_screen.xml"
     },
     {
         "merged": "/Users/shanu/Desktop/GallantSports/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_splash.png.flat",

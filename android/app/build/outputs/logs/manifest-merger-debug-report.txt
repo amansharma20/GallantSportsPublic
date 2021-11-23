@@ -8,6 +8,7 @@ MERGED from /Users/shanu/Desktop/GallantSports/android/app/src/main/AndroidManif
 MERGED from [com.facebook.flipper:flipper:0.93.0] /Users/shanu/.gradle/caches/transforms-3/8cf55bdce16a002612f05f30a64a017a/transformed/jetified-flipper-0.93.0/AndroidManifest.xml:8:1-18:12
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.93.0] /Users/shanu/.gradle/caches/transforms-3/6ac5e08a3d747ccd42a04f95db527b1e/transformed/jetified-flipper-network-plugin-0.93.0/AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.93.0] /Users/shanu/.gradle/caches/transforms-3/594e574e0e6998dd29b825080f234440/transformed/jetified-flipper-fresco-plugin-0.93.0/AndroidManifest.xml:8:1-15:12
+MERGED from [:react-native-razorpay] /Users/shanu/Desktop/GallantSports/node_modules/react-native-razorpay/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:react-native-async-storage_async-storage] /Users/shanu/Desktop/GallantSports/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-community_clipboard] /Users/shanu/Desktop/GallantSports/node_modules/@react-native-community/clipboard/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:lottie-react-native] /Users/shanu/Desktop/GallantSports/node_modules/lottie-react-native/src/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-11:12
@@ -51,6 +52,16 @@ MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /Users/shanu/.gradle/
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/shanu/.gradle/caches/transforms-3/100f9afd43163cea733b7e119bfb7ca1/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/shanu/.gradle/caches/transforms-3/4c96dbb520598e1771fc20da1c78c465/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/shanu/.gradle/caches/transforms-3/c1ef5a205b6e6ceae33d16827732bc34/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:2:1-36:12
+MERGED from [com.google.android.gms:play-services-auth:17.0.0] /Users/shanu/.gradle/caches/transforms-3/68dc87b5788d787c91621a826ff18816/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:17:1-39:12
+MERGED from [com.google.android.gms:play-services-wallet:18.1.3] /Users/shanu/.gradle/caches/transforms-3/4130704f505bad95be22549651667249/transformed/jetified-play-services-wallet-18.1.3/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.1.0] /Users/shanu/.gradle/caches/transforms-3/ee5b8bb2e760fbb9f0e0967893eeb963/transformed/jetified-play-services-auth-api-phone-17.1.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] /Users/shanu/.gradle/caches/transforms-3/7ceb879aeb4c567815b1b364b7cace14/transformed/jetified-play-services-auth-base-17.0.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-identity:17.0.0] /Users/shanu/.gradle/caches/transforms-3/8203d388f28f486bf416f36fb3dc4be8/transformed/jetified-play-services-identity-17.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/shanu/.gradle/caches/transforms-3/a200cf77db3a5c88e1dfdbfa31b5050b/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:17:1-38:12
+MERGED from [com.google.android.gms:play-services-base:17.5.0] /Users/shanu/.gradle/caches/transforms-3/a601e5ad579c1edc69ea679a99634264/transformed/jetified-play-services-base-17.5.0/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:17.2.1] /Users/shanu/.gradle/caches/transforms-3/3eeb5f780b12973b1456b9947afd1586/transformed/jetified-play-services-tasks-17.2.1/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:17.6.0] /Users/shanu/.gradle/caches/transforms-3/aa76189210186514cdca35b858e4e43c/transformed/jetified-play-services-basement-17.6.0/AndroidManifest.xml:17:1-28:12
 MERGED from [androidx.fragment:fragment:1.3.2] /Users/shanu/.gradle/caches/transforms-3/e4367f4bc45f4f5e1266003692d45723/transformed/fragment-1.3.2/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/shanu/.gradle/caches/transforms-3/b2eec485abde1d0f24da7ddb092dc0cd/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.core:core-ktx:1.6.0] /Users/shanu/.gradle/caches/transforms-3/98de6488e1d327efb908ed1b1b560098/transformed/jetified-core-ktx-1.6.0/AndroidManifest.xml:2:1-9:12
@@ -114,6 +125,10 @@ MERGED from [com.facebook.flipper:flipper:0.93.0] /Users/shanu/.gradle/caches/tr
 MERGED from [com.facebook.flipper:flipper:0.93.0] /Users/shanu/.gradle/caches/transforms-3/8cf55bdce16a002612f05f30a64a017a/transformed/jetified-flipper-0.93.0/AndroidManifest.xml:15:5-67
 MERGED from [:lottie-react-native] /Users/shanu/Desktop/GallantSports/node_modules/lottie-react-native/src/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-67
 MERGED from [:lottie-react-native] /Users/shanu/Desktop/GallantSports/node_modules/lottie-react-native/src/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-67
+MERGED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:9:5-67
+MERGED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:9:5-67
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/shanu/.gradle/caches/transforms-3/a200cf77db3a5c88e1dfdbfa31b5050b/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/shanu/.gradle/caches/transforms-3/a200cf77db3a5c88e1dfdbfa31b5050b/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:24:5-67
 	android:name
 		ADDED from /Users/shanu/Desktop/GallantSports/android/app/src/main/AndroidManifest.xml:4:22-64
 uses-permission#android.permission.ACCESS_FINE_LOCATION
@@ -130,6 +145,8 @@ application
 ADDED from /Users/shanu/Desktop/GallantSports/android/app/src/main/AndroidManifest.xml:11:5-29:19
 MERGED from /Users/shanu/Desktop/GallantSports/android/app/src/main/AndroidManifest.xml:11:5-29:19
 MERGED from /Users/shanu/Desktop/GallantSports/android/app/src/main/AndroidManifest.xml:11:5-29:19
+MERGED from [:react-native-razorpay] /Users/shanu/Desktop/GallantSports/node_modules/react-native-razorpay/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-13:19
+MERGED from [:react-native-razorpay] /Users/shanu/Desktop/GallantSports/node_modules/react-native-razorpay/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-13:19
 MERGED from [:react-native-splash-screen] /Users/shanu/Desktop/GallantSports/node_modules/react-native-splash-screen/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-10:19
 MERGED from [:react-native-splash-screen] /Users/shanu/Desktop/GallantSports/node_modules/react-native-splash-screen/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-10:19
 MERGED from [com.facebook.react:react-native:0.65.1] /Users/shanu/.gradle/caches/transforms-3/7cdf8de9c37004713d4017747f452054/transformed/jetified-react-native-0.65.1/AndroidManifest.xml:9:5-20
@@ -140,6 +157,20 @@ MERGED from [com.airbnb.android:lottie:4.0.0] /Users/shanu/.gradle/caches/transf
 MERGED from [com.airbnb.android:lottie:4.0.0] /Users/shanu/.gradle/caches/transforms-3/1ce38535edce186e160647d3ff362842/transformed/jetified-lottie-4.0.0/AndroidManifest.xml:9:5-20
 MERGED from [com.google.android.material:material:1.1.0] /Users/shanu/.gradle/caches/transforms-3/d9a3ea39a981c7afa2f0112a00415ec8/transformed/material-1.1.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.1.0] /Users/shanu/.gradle/caches/transforms-3/d9a3ea39a981c7afa2f0112a00415ec8/transformed/material-1.1.0/AndroidManifest.xml:22:5-20
+MERGED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:11:5-34:19
+MERGED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:11:5-34:19
+MERGED from [com.google.android.gms:play-services-auth:17.0.0] /Users/shanu/.gradle/caches/transforms-3/68dc87b5788d787c91621a826ff18816/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:22:5-37:19
+MERGED from [com.google.android.gms:play-services-auth:17.0.0] /Users/shanu/.gradle/caches/transforms-3/68dc87b5788d787c91621a826ff18816/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:22:5-37:19
+MERGED from [com.google.android.gms:play-services-identity:17.0.0] /Users/shanu/.gradle/caches/transforms-3/8203d388f28f486bf416f36fb3dc4be8/transformed/jetified-play-services-identity-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-identity:17.0.0] /Users/shanu/.gradle/caches/transforms-3/8203d388f28f486bf416f36fb3dc4be8/transformed/jetified-play-services-identity-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/shanu/.gradle/caches/transforms-3/a200cf77db3a5c88e1dfdbfa31b5050b/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:30:5-36:19
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/shanu/.gradle/caches/transforms-3/a200cf77db3a5c88e1dfdbfa31b5050b/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:30:5-36:19
+MERGED from [com.google.android.gms:play-services-base:17.5.0] /Users/shanu/.gradle/caches/transforms-3/a601e5ad579c1edc69ea679a99634264/transformed/jetified-play-services-base-17.5.0/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:17.5.0] /Users/shanu/.gradle/caches/transforms-3/a601e5ad579c1edc69ea679a99634264/transformed/jetified-play-services-base-17.5.0/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:17.2.1] /Users/shanu/.gradle/caches/transforms-3/3eeb5f780b12973b1456b9947afd1586/transformed/jetified-play-services-tasks-17.2.1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:17.2.1] /Users/shanu/.gradle/caches/transforms-3/3eeb5f780b12973b1456b9947afd1586/transformed/jetified-play-services-tasks-17.2.1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:17.6.0] /Users/shanu/.gradle/caches/transforms-3/aa76189210186514cdca35b858e4e43c/transformed/jetified-play-services-basement-17.6.0/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:17.6.0] /Users/shanu/.gradle/caches/transforms-3/aa76189210186514cdca35b858e4e43c/transformed/jetified-play-services-basement-17.6.0/AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.core:core:1.6.0] /Users/shanu/.gradle/caches/transforms-3/d9b71328e8ba86dc125344804cb6eb44/transformed/core-1.6.0/AndroidManifest.xml:24:5-89
 MERGED from [androidx.core:core:1.6.0] /Users/shanu/.gradle/caches/transforms-3/d9b71328e8ba86dc125344804cb6eb44/transformed/core-1.6.0/AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/shanu/.gradle/caches/transforms-3/94c7c92f0d98d56b6d7d25165faa3647/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
@@ -204,6 +235,8 @@ MERGED from [com.facebook.flipper:flipper-network-plugin:0.93.0] /Users/shanu/.g
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.93.0] /Users/shanu/.gradle/caches/transforms-3/6ac5e08a3d747ccd42a04f95db527b1e/transformed/jetified-flipper-network-plugin-0.93.0/AndroidManifest.xml:11:5-13:41
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.93.0] /Users/shanu/.gradle/caches/transforms-3/594e574e0e6998dd29b825080f234440/transformed/jetified-flipper-fresco-plugin-0.93.0/AndroidManifest.xml:11:5-13:41
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.93.0] /Users/shanu/.gradle/caches/transforms-3/594e574e0e6998dd29b825080f234440/transformed/jetified-flipper-fresco-plugin-0.93.0/AndroidManifest.xml:11:5-13:41
+MERGED from [:react-native-razorpay] /Users/shanu/Desktop/GallantSports/node_modules/react-native-razorpay/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-razorpay] /Users/shanu/Desktop/GallantSports/node_modules/react-native-razorpay/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-async-storage_async-storage] /Users/shanu/Desktop/GallantSports/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-async-storage_async-storage] /Users/shanu/Desktop/GallantSports/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_clipboard] /Users/shanu/Desktop/GallantSports/node_modules/@react-native-community/clipboard/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
@@ -290,6 +323,26 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/shanu/.gradle/cach
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/shanu/.gradle/caches/transforms-3/4c96dbb520598e1771fc20da1c78c465/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/shanu/.gradle/caches/transforms-3/c1ef5a205b6e6ceae33d16827732bc34/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/shanu/.gradle/caches/transforms-3/c1ef5a205b6e6ceae33d16827732bc34/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:5:5-7:41
+MERGED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.gms:play-services-auth:17.0.0] /Users/shanu/.gradle/caches/transforms-3/68dc87b5788d787c91621a826ff18816/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:17.0.0] /Users/shanu/.gradle/caches/transforms-3/68dc87b5788d787c91621a826ff18816/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-wallet:18.1.3] /Users/shanu/.gradle/caches/transforms-3/4130704f505bad95be22549651667249/transformed/jetified-play-services-wallet-18.1.3/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-wallet:18.1.3] /Users/shanu/.gradle/caches/transforms-3/4130704f505bad95be22549651667249/transformed/jetified-play-services-wallet-18.1.3/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.1.0] /Users/shanu/.gradle/caches/transforms-3/ee5b8bb2e760fbb9f0e0967893eeb963/transformed/jetified-play-services-auth-api-phone-17.1.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.1.0] /Users/shanu/.gradle/caches/transforms-3/ee5b8bb2e760fbb9f0e0967893eeb963/transformed/jetified-play-services-auth-api-phone-17.1.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] /Users/shanu/.gradle/caches/transforms-3/7ceb879aeb4c567815b1b364b7cace14/transformed/jetified-play-services-auth-base-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] /Users/shanu/.gradle/caches/transforms-3/7ceb879aeb4c567815b1b364b7cace14/transformed/jetified-play-services-auth-base-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-identity:17.0.0] /Users/shanu/.gradle/caches/transforms-3/8203d388f28f486bf416f36fb3dc4be8/transformed/jetified-play-services-identity-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-identity:17.0.0] /Users/shanu/.gradle/caches/transforms-3/8203d388f28f486bf416f36fb3dc4be8/transformed/jetified-play-services-identity-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/shanu/.gradle/caches/transforms-3/a200cf77db3a5c88e1dfdbfa31b5050b/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/shanu/.gradle/caches/transforms-3/a200cf77db3a5c88e1dfdbfa31b5050b/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:17.5.0] /Users/shanu/.gradle/caches/transforms-3/a601e5ad579c1edc69ea679a99634264/transformed/jetified-play-services-base-17.5.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:17.5.0] /Users/shanu/.gradle/caches/transforms-3/a601e5ad579c1edc69ea679a99634264/transformed/jetified-play-services-base-17.5.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.2.1] /Users/shanu/.gradle/caches/transforms-3/3eeb5f780b12973b1456b9947afd1586/transformed/jetified-play-services-tasks-17.2.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.2.1] /Users/shanu/.gradle/caches/transforms-3/3eeb5f780b12973b1456b9947afd1586/transformed/jetified-play-services-tasks-17.2.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.6.0] /Users/shanu/.gradle/caches/transforms-3/aa76189210186514cdca35b858e4e43c/transformed/jetified-play-services-basement-17.6.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.6.0] /Users/shanu/.gradle/caches/transforms-3/aa76189210186514cdca35b858e4e43c/transformed/jetified-play-services-basement-17.6.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.fragment:fragment:1.3.2] /Users/shanu/.gradle/caches/transforms-3/e4367f4bc45f4f5e1266003692d45723/transformed/fragment-1.3.2/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.3.2] /Users/shanu/.gradle/caches/transforms-3/e4367f4bc45f4f5e1266003692d45723/transformed/fragment-1.3.2/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/shanu/.gradle/caches/transforms-3/b2eec485abde1d0f24da7ddb092dc0cd/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
@@ -384,6 +437,16 @@ uses-permission#android.permission.ACCESS_WIFI_STATE
 ADDED from [com.facebook.flipper:flipper:0.93.0] /Users/shanu/.gradle/caches/transforms-3/8cf55bdce16a002612f05f30a64a017a/transformed/jetified-flipper-0.93.0/AndroidManifest.xml:16:5-76
 	android:name
 		ADDED from [com.facebook.flipper:flipper:0.93.0] /Users/shanu/.gradle/caches/transforms-3/8cf55bdce16a002612f05f30a64a017a/transformed/jetified-flipper-0.93.0/AndroidManifest.xml:16:22-73
+activity#com.razorpay.CheckoutActivity
+ADDED from [:react-native-razorpay] /Users/shanu/Desktop/GallantSports/node_modules/react-native-razorpay/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-12:86
+MERGED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:18:9-29:20
+MERGED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:18:9-29:20
+	android:configChanges
+		ADDED from [:react-native-razorpay] /Users/shanu/Desktop/GallantSports/node_modules/react-native-razorpay/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-83
+	android:theme
+		ADDED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:21:13-49
+	android:name
+		ADDED from [:react-native-razorpay] /Users/shanu/Desktop/GallantSports/node_modules/react-native-razorpay/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-57
 uses-permission#android.permission.USE_BIOMETRIC
 ADDED from [:react-native-keychain] /Users/shanu/Desktop/GallantSports/node_modules/react-native-keychain/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-72
 MERGED from [androidx.biometric:biometric:1.1.0] /Users/shanu/.gradle/caches/transforms-3/a121337bc90910baa8c2f55d66692f42/transformed/biometric-1.1.0/AndroidManifest.xml:24:5-72
@@ -396,3 +459,75 @@ MERGED from [androidx.biometric:biometric:1.1.0] /Users/shanu/.gradle/caches/tra
 MERGED from [androidx.biometric:biometric:1.1.0] /Users/shanu/.gradle/caches/transforms-3/a121337bc90910baa8c2f55d66692f42/transformed/biometric-1.1.0/AndroidManifest.xml:27:5-74
 	android:name
 		ADDED from [:react-native-keychain] /Users/shanu/Desktop/GallantSports/node_modules/react-native-keychain/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:22-71
+receiver#com.razorpay.RzpTokenReceiver
+ADDED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:12:9-16:20
+	android:name
+		ADDED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:12:19-63
+intent-filter#action:name:rzp.device_token.share
+ADDED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:13:13-15:29
+action#rzp.device_token.share
+ADDED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:14:17-65
+	android:name
+		ADDED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:14:25-62
+intent-filter#action:name:android.intent.action.MAIN+data:host:rzp.io+data:scheme:io.rzp
+ADDED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:22:13-28:29
+data
+ADDED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:25:17-27:47
+	android:host
+		ADDED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:26:21-42
+	android:scheme
+		ADDED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:27:21-44
+meta-data#com.razorpay.plugin.googlepay_all
+ADDED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:31:9-33:58
+	android:value
+		ADDED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:33:13-55
+	android:name
+		ADDED from [com.razorpay:checkout:1.6.15] /Users/shanu/.gradle/caches/transforms-3/4b849d2dc274b56956f61d31fb18b68e/transformed/jetified-checkout-1.6.15/AndroidManifest.xml:32:13-61
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/shanu/.gradle/caches/transforms-3/68dc87b5788d787c91621a826ff18816/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:23:9-27:75
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/shanu/.gradle/caches/transforms-3/68dc87b5788d787c91621a826ff18816/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:25:13-46
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/shanu/.gradle/caches/transforms-3/68dc87b5788d787c91621a826ff18816/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:26:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/shanu/.gradle/caches/transforms-3/68dc87b5788d787c91621a826ff18816/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:27:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/shanu/.gradle/caches/transforms-3/68dc87b5788d787c91621a826ff18816/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:24:13-93
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/shanu/.gradle/caches/transforms-3/68dc87b5788d787c91621a826ff18816/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:33:9-36:110
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/shanu/.gradle/caches/transforms-3/68dc87b5788d787c91621a826ff18816/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:35:13-36
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/shanu/.gradle/caches/transforms-3/68dc87b5788d787c91621a826ff18816/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:36:13-107
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/shanu/.gradle/caches/transforms-3/68dc87b5788d787c91621a826ff18816/transformed/jetified-play-services-auth-17.0.0/AndroidManifest.xml:34:13-89
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/shanu/.gradle/caches/transforms-3/a200cf77db3a5c88e1dfdbfa31b5050b/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:23:5-79
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/shanu/.gradle/caches/transforms-3/a200cf77db3a5c88e1dfdbfa31b5050b/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:23:22-76
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/shanu/.gradle/caches/transforms-3/a200cf77db3a5c88e1dfdbfa31b5050b/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:26:5-28:35
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/shanu/.gradle/caches/transforms-3/a200cf77db3a5c88e1dfdbfa31b5050b/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:27:9-41
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/shanu/.gradle/caches/transforms-3/a200cf77db3a5c88e1dfdbfa31b5050b/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:28:9-32
+uses-library#org.apache.http.legacy
+ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/shanu/.gradle/caches/transforms-3/a200cf77db3a5c88e1dfdbfa31b5050b/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:33:9-35:40
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/shanu/.gradle/caches/transforms-3/a200cf77db3a5c88e1dfdbfa31b5050b/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:35:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/shanu/.gradle/caches/transforms-3/a200cf77db3a5c88e1dfdbfa31b5050b/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:34:13-50
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:17.5.0] /Users/shanu/.gradle/caches/transforms-3/a601e5ad579c1edc69ea679a99634264/transformed/jetified-play-services-base-17.5.0/AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:17.5.0] /Users/shanu/.gradle/caches/transforms-3/a601e5ad579c1edc69ea679a99634264/transformed/jetified-play-services-base-17.5.0/AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:17.5.0] /Users/shanu/.gradle/caches/transforms-3/a601e5ad579c1edc69ea679a99634264/transformed/jetified-play-services-base-17.5.0/AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:17.5.0] /Users/shanu/.gradle/caches/transforms-3/a601e5ad579c1edc69ea679a99634264/transformed/jetified-play-services-base-17.5.0/AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:17.6.0] /Users/shanu/.gradle/caches/transforms-3/aa76189210186514cdca35b858e4e43c/transformed/jetified-play-services-basement-17.6.0/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:17.6.0] /Users/shanu/.gradle/caches/transforms-3/aa76189210186514cdca35b858e4e43c/transformed/jetified-play-services-basement-17.6.0/AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:17.6.0] /Users/shanu/.gradle/caches/transforms-3/aa76189210186514cdca35b858e4e43c/transformed/jetified-play-services-basement-17.6.0/AndroidManifest.xml:24:13-58
