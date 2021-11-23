@@ -28,17 +28,12 @@ export default function ExploreArenaBookingScreen(props) {
     const activities = props.route.params.arenaDetails
     const ArenaId = activities.item.Id;
 
-    console.log('data')
-    console.log(activities)
-    console.log('data')
-
     const { data: data2 } = useQuery(GQLQuery.GET_ACTIVITY_BY_ARENA_ID, {
         variables: {
             ArenaId: activities.item.Id,
         },
     });
     const activityList = data2 && data2.ActivityArenaQuery && data2.ActivityArenaQuery.GetActivityByArenaId;
-
 
     const [checkboxState, setCheckboxState] = React.useState(false);
     const [showModal, setShowModal] = useState(false);

@@ -218,14 +218,13 @@ query MyQuery {
   }`,
 
   GET_BOOKING_CHARGES_BY_ACTIVITYID_OR_ARENAID: gql`
-  query myquery {
+  query myquery ($ArenaId: Long!,$ActivityId: Long!){
     ActivityArenaChargesQuery {
-      GetActivityArenaCharges(ArenaId: 1, ActivityId: 1) {
+      GetActivityArenaCharges(ArenaId: $ArenaId, ActivityId: $ActivityId) {
         AmountPerHr
         GST
         Arena {
           Name
-          WhatToBring
         }
         Activity {
           Name

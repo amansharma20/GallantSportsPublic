@@ -8,6 +8,9 @@ export const pfpGallant = require('../assets/images/pfpGallant.jpg');
 export const star = require('../assets/images/star.png');
 export const badminton = require('../assets/images/badminton.png');
 export const neeraj = require('../assets/images/neeraj.jpg');
+export const onboardingfirst = require('../assets/images/onboardingfirst.png');
+export const onboardingsecond = require('../assets/images/onboardingsecond.png');
+export const onboardingthird = require('../assets/images/onboardingthird.png');
 
 export default {
     splashScreen,
@@ -19,4 +22,7 @@ export default {
     star,
     badminton,
     neeraj,
+    onboardingfirst,
+    onboardingsecond,
+    onboardingthird,
 };

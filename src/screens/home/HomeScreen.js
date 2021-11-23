@@ -40,7 +40,7 @@ export default function HomeScreen(props) {
     const { data: explore, error: errorExplore } = useQuery(GQLQuery.GET_EXPLORE);
     const ExploreArena = explore && explore.ArenaQuery && explore.ArenaQuery.GetArena;
 
-    // const [latlong, setLatLong] = useState(null);
+     //const [latlong, setLatLong] = useState(null);
     
     useEffect(() => {
         getUserCurrentLocation()
@@ -53,8 +53,8 @@ export default function HomeScreen(props) {
                 timeout: 15000,
             })
                 .then(location => {
-                    setLatLong(location)
                     console.log(location);
+                    setLatLong(location)
                 })
                 .catch(error => {
                     const { code, message } = error;

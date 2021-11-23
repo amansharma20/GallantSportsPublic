@@ -17,6 +17,7 @@ import BookingScreen from '../screens/Booking/BookingScreen';
 import WelcomeScreen from '../screens/auth/WelcomeScreen';
 import BookingComplete from '../screens/Booking/BookingComplete';
 import ExploreArenaBookingScreen from '../screens/exploreBookingFlow/ExploreArenaBookingScreen';
+import OnBoarding from '../screens/onBoarding/OnBoarding';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,7 @@ export default function StackNavigator() {
             screenOptions={{
                 headerShown: false,
             }}>
+            <Stack.Screen name="Welcome" component={WelcomeScreen} />
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="SignUp" component={SignUp} />
@@ -40,7 +42,7 @@ export default function StackNavigator() {
             <Stack.Screen name="BookingSummary" component={BookingSummary} />
             <Stack.Screen name="BookingScreen" component={BookingScreen} />
             <Stack.Screen name="BookingComplete" component={BookingComplete} />
-            <Stack.Screen name="ExploreArenaBookingScreen" component={ExploreArenaBookingScreen} />
+            <Stack.Screen name="OnBoarding" component={OnBoarding} />
         </Stack.Navigator>
     );
 }

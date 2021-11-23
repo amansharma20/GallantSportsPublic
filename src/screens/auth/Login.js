@@ -118,18 +118,6 @@ export default function Login() {
                     <Text style={styles.error}>{errors.phone}</Text>
                   )}
 
-                  {/* <View style={styles.redirectToSignUpContainer}>
-                    <Text style={[styles.phoneNumberText, { textAlign: 'center', paddingTop: 0 }]}>
-                      Don't have an account?
-                    </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-                      <Text style={[styles.phoneNumberText, { textAlign: 'center', fontFamily: FONTS.satoshi900, paddingTop: 0, marginLeft: 4 }]}>
-                        Register now.
-                      </Text>
-                    </TouchableOpacity>
-                  </View> */}
-
-
                   <CommonButton
                     style={{ marginTop: 80 }}
                     // onPress={() => navigation.navigate('BookingSummary')}
@@ -156,7 +144,6 @@ export default function Login() {
                   Privacy Policy.
                 </Text>
               </View>
-
             </View>
           </View>
         </View>

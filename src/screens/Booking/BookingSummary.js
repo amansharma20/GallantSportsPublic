@@ -16,8 +16,8 @@ export default function BookingSummary(props) {
     const navigation = useNavigation();
 
     const bookingDetail = props.route.params.bookingDetails
-    const arenaid = props.route.params.bookingDetails.Activity.Activity.Id;
-    const activityid = props.route.params.bookingDetails.ArenaId;
+    const arenaid = bookingDetail.Activity.Activity.Id;
+    const activityid = bookingDetail.ArenaId;
 
     const [needacoach, setacoach] = useState(bookingDetail.Needacoach)
 
@@ -38,12 +38,11 @@ export default function BookingSummary(props) {
     // GET BOOKING CHARGES BY ARENA ID OR ACTIVITY ID
     const { data: BookingChargesData, error: BookingChargesError } = useQuery(GQLQuery.GET_BOOKING_CHARGES_BY_ACTIVITYID_OR_ARENAID, {
         variables: {
-            ArenaId: arenaid,
-            ActivityId: activityid,
+            ArenaId: bookingDetail.Activity.Activity.Id,
+            ActivityId: bookingDetail.ArenaId,
         },
     });
     const getBookingCharges = BookingChargesData && BookingChargesData.ActivityArenaChargesQuery && BookingChargesData.ActivityArenaChargesQuery.GetActivityArenaCharges;
-   
 
     // CREATE BOOKING
     const [addBooking, { data: bookingResponse, error: bookingError, loading }] = useMutation(GQLMutation.CREATE_BOOKING);
