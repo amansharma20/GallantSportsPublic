@@ -1,18 +1,28 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Button, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, FONTS, SIZES } from '../../../constants';
 import LottieView from 'lottie-react-native';
 import CommonButton from '../../components/CommonGradientButton';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import GetLocation from 'react-native-get-location';
 
-export default function DetectLocation() {
+export default function DetectLocation(props) {
+    console.log(props)
     const navigation = useNavigation();
+    const [userCurrentLocation, setCurrentLocation] = useState();
     return (
         <View style={styles.container}>
             <View style={styles.body}>
+
+                <TouchableOpacity onPress={() => {
+                    navigation.goBack()
+                    props.route.params.onGoBack(userCurrentLocation)
+                }}>
+                    <Text>Back</Text>
+                </TouchableOpacity>
 
                 <View style={styles.contentContainer}>
                     <View style={styles.lottieContainer}>
@@ -33,11 +43,23 @@ export default function DetectLocation() {
                         </Text>
                     </View>
                     <View style={styles.bottomContentContainer}>
-                        <CommonButton children="Detect current location" style={{ fontSize: 22, width: '100%' }} />
+                        <CommonButton children="Detect current location" style={{ fontSize: 22, width: '100%' }} onPress={() => {
+                            GetLocation.getCurrentPosition({
+                                enableHighAccuracy: true,
+                                timeout: 15000,
+                            })
+                                .then(location => {
+                                    setCurrentLocation(location);
+                                })
+                                .catch(error => {
+                                    const { code, message } = error;
+                                    console.warn(code, message);
+                                })
+                        }} />
                         <TouchableOpacity onPress={() => navigation.navigate('SearchLocation')}
-                         style={{
-                            marginTop: SIZES.padding6,
-                        }}>
+                            style={{
+                                marginTop: SIZES.padding6,
+                            }}>
                             <Text style={styles.headerText}>
                                 Select location manually
                             </Text>
