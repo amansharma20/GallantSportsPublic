@@ -8,8 +8,11 @@ import ExploreNearbyFlatlistItems from '../../components/flatlistItems/ExploreNe
 import GOALSDATA from '../../../assets/data/ActivitIesData';
 
 
-export default function ExploreNearby() {
+export default function ExploreNearby(props) {
     const navigation = useNavigation();
+    console.log('props');
+    console.log(props.route.params.currentLocation);
+    console.log('props');
     return (
         <View
             showsVerticalScrollIndicator={false}

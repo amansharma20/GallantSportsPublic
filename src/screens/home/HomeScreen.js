@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Text,
     Image,
@@ -12,7 +12,6 @@ import {
 import { COLORS, FONTS, SIZES } from '../../../constants';
 import Icons from '../../../constants/Icons';
 import UpcomingActivityItem from '../../components/flatlistItems/UpcomingActivityItem';
-import GOALSDATA from '../../../assets/data/ActivitIesData';
 import ActivityItems from '../../components/flatlistItems/ActivityItems';
 import ExploreFlatlistItem from '../../components/flatlistItems/ExploreFlatlistItem';
 import { useNavigation } from '@react-navigation/core';
@@ -41,31 +40,11 @@ export default function HomeScreen(props) {
     const ExploreArena = explore && explore.ArenaQuery && explore.ArenaQuery.GetArena;
 
     // const [latlong, setLatLong] = useState(null);
-    
-    useEffect(() => {
-        getUserCurrentLocation()
-    });
+    const [userCurrentLocation, setCurrentLocation] = useState();
 
-    const getUserCurrentLocation = () => {
-        return (
-            GetLocation.getCurrentPosition({
-                enableHighAccuracy: true,
-                timeout: 15000,
-            })
-                .then(location => {
-                    setLatLong(location)
-                    console.log(location);
-                })
-                .catch(error => {
-                    const { code, message } = error;
-                    console.warn(code, message);
-                })
-
-        );
+    const detectLocation = (data) => {
+        setCurrentLocation(data)
     }
-
-
-
 
     return (
         <ScrollView
@@ -73,7 +52,9 @@ export default function HomeScreen(props) {
             style={styles.container}>
             <StatusBar hidden={false} backgroundColor={COLORS.background} barStyle={'light-content'} />
             <View style={styles.headerContainer}>
-                <TouchableOpacity onPress={() => navigation.navigate('DetectLocation')}>
+                <TouchableOpacity onPress={() => navigation.navigate('DetectLocation', {
+                    onGoBack: detectLocation
+                })}>
                     <Image source={Icons.locationIcon} style={styles.locationIcon} />
                 </TouchableOpacity>
                 <View>
@@ -133,7 +114,9 @@ export default function HomeScreen(props) {
                     <Text style={styles.flatlistHeaderText}>
                         Explore
                     </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('ExploreNearby')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('ExploreNearby', {
+                        currentLocation: userCurrentLocation
+                    })}>
                         <Text style={[styles.flatlistHeaderText, { color: COLORS.themePink, fontSize: 14, paddingRight: 16 }]}>
                             More
                         </Text>
