@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignUp from '../screens/auth/SignUp';
 import BottomTabBarNavigator from './BottomTabBarNavigator';
 import ArenaDetailsScreen from '../screens/activityBookingFlow/ArenaDetailsScreen';
-import ExpolreArenaDetailsScreen from '../screens/exploreBookingFlow/ExploreArenaDetailsScreen';
+import ExploreArenaDetailsScreen from '../screens/exploreBookingFlow/ExploreArenaDetailsScreen';
 import ExploreNearby from '../screens/explore/ExploreNearby';
 import ExploreActivity from '../screens/activityBookingFlow/ExploreActivity';
 import ArenaBookingScreen from '../screens/activityBookingFlow/ArenaBookingScreen';
@@ -15,6 +15,7 @@ import BookingSummary from '../screens/Booking/BookingSummary';
 import BookingScreen from '../screens/Booking/BookingScreen';
 import BookingComplete from '../screens/Booking/BookingComplete';
 import ExploreArenaBookingScreen from '../screens/exploreBookingFlow/ExploreArenaBookingScreen';
+import SelectMembership from '../screens/membership/SelectMembership';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,11 +26,12 @@ export default function HomeNavigator() {
                 headerShown: false,
             }}
         >
+            <Stack.Screen name="SelectMembership" component={SelectMembership} />
             <Stack.Screen name="Home" component={BottomTabBarNavigator} />
             <Stack.Screen name="YourBookingDetails" component={YourBookingDetails} />
             <Stack.Screen name="ExploreNearby" component={ExploreNearby} />
             <Stack.Screen name="ArenaDetailsScreen" component={ArenaDetailsScreen} />
-            <Stack.Screen name="ExpolreArenaDetailsScreen" component={ExpolreArenaDetailsScreen} />
+            <Stack.Screen name="ExploreArenaDetailsScreen" component={ExploreArenaDetailsScreen} />
             <Stack.Screen name="ExploreActivity" component={ExploreActivity} />
             <Stack.Screen name="ArenaBookingScreen" component={ArenaBookingScreen} />
             <Stack.Screen name="DetectLocation" component={DetectLocation} />

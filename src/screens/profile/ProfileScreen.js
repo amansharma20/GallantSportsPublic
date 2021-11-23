@@ -29,7 +29,7 @@ export default function ProfileScreen() {
                 <Image source={Images.pfpGallant} style={styles.profilePicture} />
 
                 <Text style={styles.nameText}>
-                {customerUserDetails && customerUserDetails.FirstName} {customerUserDetails && customerUserDetails.LastName} 
+                    {customerUserDetails && customerUserDetails.FirstName} {customerUserDetails && customerUserDetails.LastName}
                 </Text>
                 <Text style={styles.locationText}>
                     Gurugram, Haryana
@@ -40,6 +40,15 @@ export default function ProfileScreen() {
                 <View style={styles.mainContainerBody}>
                     <Text style={styles.itemText}>
                         Your Bookings
+                    </Text>
+                    <TouchableOpacity>
+                        <Image source={icons.profileNext} style={styles.nextButton} />
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.mainContainerBody}>
+                    <Text style={styles.itemText}>
+                        Membership
                     </Text>
                     <TouchableOpacity>
                         <Image source={icons.profileNext} style={styles.nextButton} />
