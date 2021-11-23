@@ -29,9 +29,6 @@ export default function HomeScreen(props) {
     // GET UPCOMING ACTIVITY
     const { data: customerUpcomingBookingData, error: customerUpcomingBookingError } = useQuery(GQLQuery.GET_CUSTOMER_UPCOMING_BOOKINGS);
     const customerUpcomingBookings = customerUpcomingBookingData && customerUpcomingBookingData.BookingQuery && customerUpcomingBookingData.BookingQuery.GetCustomerUpcomingBookings;
-    console.log('customerUpcomingBookings')
-    console.log(customerUpcomingBookings)
-    console.log('customerUpcomingBookings')
 
     // GET ACTIVITY UNDER ACTIVITY CAROUSEL
     const { data: acitivity, error: errorActivity } = useQuery(GQLQuery.GET_ACTIVITIES);
@@ -41,36 +38,14 @@ export default function HomeScreen(props) {
     const { data: explore, error: errorExplore } = useQuery(GQLQuery.GET_EXPLORE);
     const ExploreArena = explore && explore.ArenaQuery && explore.ArenaQuery.GetArena;
 
-<<<<<<< HEAD
-     //const [latlong, setLatLong] = useState(null);
-    
-    useEffect(() => {
-        getUserCurrentLocation()
-    });
-
-    const getUserCurrentLocation = () => {
-        return (
-            GetLocation.getCurrentPosition({
-                enableHighAccuracy: true,
-                timeout: 15000,
-            })
-                .then(location => {
-                    console.log(location);
-                    setLatLong(location)
-                })
-                .catch(error => {
-                    const { code, message } = error;
-                    console.warn(code, message);
-                })
-
-        );
-=======
     // const [latlong, setLatLong] = useState(null);
     const [userCurrentLocation, setCurrentLocation] = useState();
 
     const detectLocation = (data) => {
         setCurrentLocation(data)
->>>>>>> refs/remotes/origin/master
+        console.log('data')
+        console.log(data)
+        console.log('data')
     }
 
     return (
@@ -80,7 +55,8 @@ export default function HomeScreen(props) {
             <StatusBar hidden={false} backgroundColor={COLORS.background} barStyle={'light-content'} />
             <View style={styles.headerContainer}>
                 <TouchableOpacity onPress={() => navigation.navigate('DetectLocation', {
-                    onGoBack: detectLocation
+                    onGoBack: detectLocation,
+                    customerUserDetail: customerUserDetails
                 })}>
                     <Image source={Icons.locationIcon} style={styles.locationIcon} />
                 </TouchableOpacity>

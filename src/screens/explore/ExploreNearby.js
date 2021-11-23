@@ -6,18 +6,30 @@ import { useNavigation } from '@react-navigation/native';
 import { COLORS, FONTS, icons, SIZES } from '../../../constants';
 import ExploreNearbyFlatlistItems from '../../components/flatlistItems/ExploreNearbyFlatlistItems';
 import GOALSDATA from '../../../assets/data/ActivitIesData';
+import { GQLQuery } from '../../persistence/query/Query';
+import { useQuery } from '@apollo/client';
 
 
 export default function ExploreNearby(props) {
     const navigation = useNavigation();
-    console.log('props');
-    console.log(props.route.params.currentLocation);
-    console.log('props');
+    const userLocation = props.route.params.currentLocation
+    console.log(userLocation)
+    const Latitude = userLocation.latitude
+    const Longitude = userLocation.longitude
+
+    // GET NEARBY ARENA
+    const { data: NearByArenaData, error: NearByArenaError } = useQuery(GQLQuery.GET_NEAREST_ARENA, {
+        variables: {
+            Latitude: Latitude,
+            Longitude: Longitude,
+        },
+    });
+    const nearByArenas = NearByArenaData && NearByArenaData.NearestArenaQuery && NearByArenaData.NearestArenaQuery.FindNearByArena;
+
     return (
         <View
             showsVerticalScrollIndicator={false}
-            style={styles.container}
-        >
+            style={styles.container}>
             <View>
                 <FlatList
                     ListHeaderComponent={
@@ -34,11 +46,12 @@ export default function ExploreNearby(props) {
                             </View>
                         </>
                     }
-                    keyExtractor={(item) => item.id.toString()}
-                    data={GOALSDATA}
+                    keyExtractor={item => item.id}
+                    data={nearByArenas}
                     showsVerticalScrollIndicator={false}
-                    renderItem={() => (
-                        <ExploreNearbyFlatlistItems />
+                    renderItem={(item, index) => (
+                        <ExploreNearbyFlatlistItems 
+                        nearArenas={item}/>
                     )}
                 />
             </View>

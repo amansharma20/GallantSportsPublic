@@ -221,6 +221,7 @@ query MyQuery {
   query myquery ($ArenaId: Long!,$ActivityId: Long!){
     ActivityArenaChargesQuery {
       GetActivityArenaCharges(ArenaId: $ArenaId, ActivityId: $ActivityId) {
+        Id
         AmountPerHr
         GST
         Arena {
@@ -231,5 +232,21 @@ query MyQuery {
         }
       }
     }
+  }`,
+
+  GET_NEAREST_ARENA: gql`
+  query($Latitude : String!,$Longitude : String!) {
+    NearestArenaQuery {
+      FindNearByArena(Latitude: $Latitude, Longitude: $Longitude) {
+            Id
+            ArenaImageStoragePath
+            Name
+            Description
+            Address
+            Rating
+            WhatToBring
+      }
+    }
   }`
+
 };

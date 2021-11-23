@@ -18,12 +18,21 @@ import { animatedStyles, scrollInterpolator } from '../../../utils/animations';
 import ExploreNearByImagesFlatlist from './ExploreNearByImagesFlatlist';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import IMAGEDATA from '../../../assets/data/ImageDataDummy';
+import { applicationProperties } from '../../application.properties';
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = SLIDER_WIDTH;
 
 const ExploreNearbyFlatlistItems = (props) => {
     const navigation = useNavigation();
+
+
+    const NeraByArenaData = props.nearArenas
+
+    console.log('nearByArenas')
+    console.log(NeraByArenaData)
+    console.log('nearByArenas')
+
     const renderImageFlatlist = (item) => (
         <ExploreNearByImagesFlatlist item={item} key={item.index}
         />
@@ -32,20 +41,17 @@ const ExploreNearbyFlatlistItems = (props) => {
     return (
         <TouchableOpacity onPress={() => navigation.navigate('ArenaDetailsScreen')}>
             <View>
-                <Image source={images.neeraj} style={{width: '100%', height: 159}}/>
+                <Image source={{ uri: applicationProperties.imageUrl + NeraByArenaData.item.ArenaImageStoragePath }} style={{ width: '100%', height: 159 }} />
             </View>
             <View style={styles.arenaNameContainer}>
                 <View>
                     <Text style={styles.headerText}>
-                        Football Arena
-                    </Text>
-                    <Text style={styles.subText}>
-                        Football
+                        {NeraByArenaData.item.Name}
                     </Text>
                 </View>
                 <View style={styles.ratingContainer}>
                     <Text style={styles.ratingText}>
-                        4.5
+                        {NeraByArenaData.item.Rating}
                     </Text>
                     <Image source={images.star} style={styles.starSize} />
                 </View>
