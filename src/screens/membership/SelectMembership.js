@@ -1,10 +1,11 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, StatusBar, TouchableOpacity, Image, FlatList } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, TouchableOpacity, Image, FlatList, Modal, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, FONTS, icons, images, SIZES } from '../../../constants';
 import CommonButton from '../../components/CommonGradientButton';
+import Images from '../../../constants/Images';
 
 const THREEDAYS = [
     {
@@ -64,6 +65,8 @@ export default function SelectMembership() {
 
     const [selectedIdForThreeDays, setSelectedIdForThreeDays] = useState(null);
     const [selectedIdForSixDays, setSelectedIdForSixDays] = useState(null);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     const renderItem = ({ item }) => {
         const backgroundColor = item.id === selectedIdForThreeDays ? "#DB3E6F" : COLORS.background;
@@ -142,7 +145,89 @@ export default function SelectMembership() {
                     columnWrapperStyle={{ justifyContent: 'space-between', marginVertical: 10 }}
                 />
             </View>
-            <CommonButton children="Buy Now" />
+            <CommonButton onPress={() => setModalVisible(!modalVisible)} children="Buy Now" />
+            <Modal
+                animationType="slide"
+                transparent={true}
+                statusBarTranslucent={true}
+                visible={modalVisible}
+            >
+                <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={styles.crossContainer}>
+                    <Image source={icons.modalCross} style={{ width: 45, height: 45, resizeMode: 'contain' }} />
+                </TouchableOpacity>
+                <View style={styles.modalBackground}>
+                    <View style={styles.modalView}>
+                        <Text style={styles.modalText}>Gallant Play Premium</Text>
+                        <View style={styles.dateContainer}>
+                            <Text style={styles.dateText}>
+                                Pick a plan start date
+                            </Text>
+                            <Image source={icons.calender} style={styles.calenderIcon} />
+                        </View>
+                        <View style={[styles.dateContainer, { marginBottom: 20 }]}>
+                            <View>
+                                <Text style={[styles.dateText, { fontSize: 14 }]}>
+                                    1 x Premium
+                                </Text>
+                                <Text style={[styles.dateText, { fontFamily: FONTS.satoshi400, fontSize: 14 }]}>
+                                    1 months Validity
+                                </Text>
+                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                    <Image source={icons.promoIcon} style={styles.promoIcon} />
+                                    <Text style={[styles.dateText, { fontFamily: FONTS.satoshi500, color: COLORS.themePink, fontSize: 14 }]}>
+                                        Apply Promo Code
+                                    </Text>
+                                </View>
+                            </View>
+                            <Text style={[styles.dateText, { fontSize: 16, fontFamily: FONTS.satoshi400 }]}>
+                                ₹4,000
+                            </Text>
+                        </View>
+                        <View style={[styles.dateContainer]}>
+                            <View>
+                                <Text style={[styles.dateText, { fontSize: 16 }]}>
+                                    Total Cost
+                                </Text>
+                            </View>
+                            <Text style={[styles.dateText, { fontSize: 16, fontFamily: FONTS.satoshi700 }]}>
+                                ₹4,000
+                            </Text>
+                        </View>
+                        <CommonButton
+                            onPress={() => setShowSuccessModal(true) || setModalVisible(!modalVisible)}
+                            children="Proceed"
+                        />
+                    </View>
+                </View>
+            </Modal>
+            {showSuccessModal && (
+                <Modal
+                    animationType="fade"
+                    transparent={true}
+                    showModal={showSuccessModal}
+                    backgroundColor="black"
+                    onRequestClose={() => setShowSuccessModal(false)}
+                    statusBarTranslucent
+                >
+                    <View style={styles.modalContainer}>
+                        <View style={styles.modalBody}>
+                            <View>
+                                <Image source={Images.success} style={styles.modalImage} />
+                            </View>
+                            <View style={{ paddingVertical: 20 }}>
+                                <Text style={styles.successText}>
+                                    Congratulations
+                                </Text>
+                            </View>
+                            <View>
+                                <Text style={styles.successSubText}>
+                                    Your account has been created
+                                </Text>
+                            </View>
+                        </View>
+                    </View>
+                </Modal>
+            )}
         </View>
     );
 }
@@ -198,5 +283,95 @@ const styles = StyleSheet.create({
     amountText: {
         fontSize: 18,
         fontFamily: FONTS.satoshi700
+    },
+    modalBackground: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        backgroundColor: COLORS.modalBackground,
+    },
+    crossContainer: {
+        paddingTop: '30%',
+        flex: 1,
+        justifyContent: 'flex-end',
+        backgroundColor: COLORS.modalBackground,
+        alignItems: 'center'
+    },
+    modalView: {
+        backgroundColor: COLORS.background,
+        borderRadius: 20,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+        padding: 20
+    },
+    button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+    },
+    buttonOpen: {
+        backgroundColor: "#F194FF",
+    },
+    buttonClose: {
+        backgroundColor: "#2196F3",
+    },
+    textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+    },
+    modalText: {
+        fontSize: 24,
+        fontFamily: FONTS.satoshi700,
+        color: COLORS.white
+    },
+    dateContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingVertical: 10
+    },
+    dateText: {
+        fontSize: 16,
+        fontFamily: FONTS.satoshi700,
+        color: COLORS.white
+    },
+    calenderIcon: { width: 20, height: 20, resizeMode: 'contain' },
+    promoIcon: { width: 16, height: 16, resizeMode: 'contain', marginRight: 4, tintColor: COLORS.themePink },
+
+    modalBody: {
+        backgroundColor: COLORS.background,
+        alignItems: 'center',
+        paddingHorizontal: 26,
+        paddingVertical: 50,
+        borderRadius: 15,
+        justifyContent: 'space-between',
+        elevation: 5
+    },
+    modalContainer: {
+        backgroundColor: COLORS.modalBackground,
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    modalImage: {
+        width: 100,
+        height: 100,
+        resizeMode: 'contain',
+    },
+    successText: {
+        color: COLORS.white,
+        fontFamily: FONTS.satoshi900,
+        fontSize: 24,
+    },
+    successSubText: {
+        color: COLORS.white,
+        fontFamily: FONTS.satoshi500,
+        fontSize: SIZES.h2,
     },
 });

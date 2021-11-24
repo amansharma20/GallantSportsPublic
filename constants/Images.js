@@ -7,6 +7,7 @@ export const basketball = require('../assets/images/basketball.png');
 export const pfpGallant = require('../assets/images/pfpGallant.jpg');
 export const star = require('../assets/images/star.png');
 export const badminton = require('../assets/images/badminton.png');
+export const premiumFeatures = require('../assets/images/premiumFeatures.png');
 export const neeraj = require('../assets/images/neeraj.jpg');
 
 export default {
@@ -19,4 +20,5 @@ export default {
     star,
     badminton,
     neeraj,
+    premiumFeatures,
 };

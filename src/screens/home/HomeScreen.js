@@ -19,6 +19,8 @@ import { useNavigation } from '@react-navigation/core';
 import { GQLQuery } from '../../persistence/query/Query';
 import { useQuery } from '@apollo/client';
 import GetLocation from 'react-native-get-location'
+import LinearGradient from 'react-native-linear-gradient';
+import { Responsive } from '../../../constants/Layout';
 
 export default function HomeScreen(props) {
     const navigation = useNavigation();
@@ -41,7 +43,7 @@ export default function HomeScreen(props) {
     const ExploreArena = explore && explore.ArenaQuery && explore.ArenaQuery.GetArena;
 
     // const [latlong, setLatLong] = useState(null);
-    
+
     useEffect(() => {
         getUserCurrentLocation()
     });
@@ -68,99 +70,111 @@ export default function HomeScreen(props) {
 
 
     return (
-        <ScrollView
-            showsVerticalScrollIndicator={false}
-            style={styles.container}>
-            <StatusBar hidden={false} backgroundColor={COLORS.background} barStyle={'light-content'} />
-            <View style={styles.headerContainer}>
-                <TouchableOpacity onPress={() => navigation.navigate('DetectLocation')}>
-                    <Image source={Icons.locationIcon} style={styles.locationIcon} />
-                </TouchableOpacity>
-                <View>
-                    <Text style={styles.locationHeaderText}>
-                        Sector 48
-                    </Text>
-                    <Text style={styles.locationSubText}>
-                        Gurugram
-                    </Text>
-                </View>
-            </View>
-            <View style={styles.headerTextContainer}>
-                <Text style={styles.hiText}>
-                    Hi, {customerUserDetails && customerUserDetails.FirstName}
-                </Text>
-                <Text style={styles.upcomingActivityText}>
-                    Here are your
-                    upcoming activities
-                </Text>
-            </View>
-            <View style={{ paddingVertical: 30 }}>
-                <FlatList
-                    showsHorizontalScrollIndicator={false}
-                    keyExtractor={item => item.id}
-                    data={customerUpcomingBookings}
-                    horizontal={true}
-                    renderItem={(item, index) => (
-                        <UpcomingActivityItem
-                            upcomingBookings={item} />
-                    )}
-                />
-            </View>
+        <View style={{
+            flex: 1
+        }}>
 
-            <View>
-                <View style={{ paddingLeft: SIZES.padding6 }}>
-                    <Text style={styles.flatlistHeaderText}>
-                        Activity
-                    </Text>
-                </View>
-                <View style={{ paddingTop: 25, paddingBottom: 35 }}>
-                    <FlatList
-                        showsHorizontalScrollIndicator={false}
-                        keyExtractor={item => item.id}
-                        data={Acitivities}
-                        horizontal={true}
-                        renderItem={(item, index) => (
-                            <ActivityItems
-                                activity={item}
-                            />
-                        )}
-                    />
-                </View>
-            </View>
-
-            <View>
-                <View style={{ paddingLeft: SIZES.padding6, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Text style={styles.flatlistHeaderText}>
-                        Explore
-                    </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('ExploreNearby')}>
-                        <Text style={[styles.flatlistHeaderText, { color: COLORS.themePink, fontSize: 14, paddingRight: 16 }]}>
-                            More
-                        </Text>
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                style={styles.container}>
+                <StatusBar hidden={false} backgroundColor={COLORS.background} barStyle={'light-content'} />
+                <View style={styles.headerContainer}>
+                    <TouchableOpacity onPress={() => navigation.navigate('DetectLocation')}>
+                        <Image source={Icons.locationIcon} style={styles.locationIcon} />
                     </TouchableOpacity>
+                    <View>
+                        <Text style={styles.locationHeaderText}>
+                            Sector 48
+                        </Text>
+                        <Text style={styles.locationSubText}>
+                            Gurugram
+                        </Text>
+                    </View>
                 </View>
-                <View style={{ paddingTop: 25, paddingBottom: 35 }}>
+                <View style={styles.headerTextContainer}>
+                    <Text style={styles.hiText}>
+                        Hi, {customerUserDetails && customerUserDetails.FirstName}
+                    </Text>
+                    <Text style={styles.upcomingActivityText}>
+                        Here are your
+                        upcoming activities
+                    </Text>
+                </View>
+                <View style={{ paddingVertical: 30 }}>
                     <FlatList
                         showsHorizontalScrollIndicator={false}
                         keyExtractor={item => item.id}
-                        data={ExploreArena}
+                        data={customerUpcomingBookings}
                         horizontal={true}
                         renderItem={(item, index) => (
-                            <ExploreFlatlistItem
-                                goal={item}
-                            />
+                            <UpcomingActivityItem
+                                upcomingBookings={item} />
                         )}
                     />
                 </View>
-            </View>
 
-        </ScrollView>
+                <View>
+                    <View style={{ paddingLeft: SIZES.padding6 }}>
+                        <Text style={styles.flatlistHeaderText}>
+                            Activity
+                        </Text>
+                    </View>
+                    <View style={{ paddingTop: 25, paddingBottom: 35 }}>
+                        <FlatList
+                            showsHorizontalScrollIndicator={false}
+                            keyExtractor={item => item.id}
+                            data={Acitivities}
+                            horizontal={true}
+                            renderItem={(item, index) => (
+                                <ActivityItems
+                                    activity={item}
+                                />
+                            )}
+                        />
+                    </View>
+                </View>
+
+                <View>
+                    <View style={{ paddingLeft: SIZES.padding6, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <Text style={styles.flatlistHeaderText}>
+                            Explore
+                        </Text>
+                        <TouchableOpacity onPress={() => navigation.navigate('ExploreNearby')}>
+                            <Text style={[styles.flatlistHeaderText, { color: COLORS.themePink, fontSize: 14, paddingRight: 16 }]}>
+                                More
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ paddingTop: 25, paddingBottom: 35 }}>
+                        <FlatList
+                            showsHorizontalScrollIndicator={false}
+                            keyExtractor={item => item.id}
+                            data={ExploreArena}
+                            horizontal={true}
+                            renderItem={(item, index) => (
+                                <ExploreFlatlistItem
+                                    goal={item}
+                                />
+                            )}
+                        />
+                    </View>
+                </View>
+
+            </ScrollView>
+            <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('PremiumFeatures')}>
+                <LinearGradient start={{ x: 0, y: 0 }} colors={['#7E0027', '#DB3E6F']} style={styles.linearGradient}>
+                    <Text style={styles.buttonText}>
+                        Become A Member
+                    </Text>
+                </LinearGradient>
+            </TouchableOpacity>
+        </View>
+
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: COLORS.background,
     },
     headerContainer: {
@@ -202,5 +216,16 @@ const styles = StyleSheet.create({
         fontSize: SIZES.header,
         fontFamily: FONTS.satoshi900,
         color: COLORS.white,
-    }
+    },
+    linearGradient: {
+        height: Responsive.height(57),
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    buttonText: {
+        color: COLORS.white,
+        fontFamily: FONTS.satoshi500,
+        fontSize: SIZES.buttonText,
+    },
+    TOContainer: { width: '100%', marginTop: 20 },
 });

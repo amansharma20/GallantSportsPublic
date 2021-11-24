@@ -16,6 +16,7 @@ import BookingScreen from '../screens/Booking/BookingScreen';
 import BookingComplete from '../screens/Booking/BookingComplete';
 import ExploreArenaBookingScreen from '../screens/exploreBookingFlow/ExploreArenaBookingScreen';
 import SelectMembership from '../screens/membership/SelectMembership';
+import PremiumFeatures from '../screens/membership/PremiumFeatures';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,8 +27,8 @@ export default function HomeNavigator() {
                 headerShown: false,
             }}
         >
-            <Stack.Screen name="SelectMembership" component={SelectMembership} />
             <Stack.Screen name="Home" component={BottomTabBarNavigator} />
+            <Stack.Screen name="SelectMembership" component={SelectMembership} />
             <Stack.Screen name="YourBookingDetails" component={YourBookingDetails} />
             <Stack.Screen name="ExploreNearby" component={ExploreNearby} />
             <Stack.Screen name="ArenaDetailsScreen" component={ArenaDetailsScreen} />
@@ -41,6 +42,7 @@ export default function HomeNavigator() {
             <Stack.Screen name="BookingScreen" component={BookingScreen} />
             <Stack.Screen name="BookingComplete" component={BookingComplete} />
             <Stack.Screen name="ExploreArenaBookingScreen" component={ExploreArenaBookingScreen} />
+            <Stack.Screen name="PremiumFeatures" component={PremiumFeatures} />
         </Stack.Navigator>
     );
 }
