@@ -16,6 +16,9 @@ export const basketBallIcon = require('../assets/icons/basketBallIcon.png');
 export const editProfile = require('../assets/icons/editProfile.png');
 export const pfp = require('../assets/icons/pfp.png');
 export const checkbox = require('../assets/icons/checkbox.png');
+export const calender = require('../assets/icons/calender.png');
+export const promoIcon = require('../assets/icons/promoIcon.png');
+export const modalCross = require('../assets/icons/modalCross.png');
 export const popupClose = require('../assets/icons/popupClose.png');
 export const cctv = require('../assets/icons/cctv.png');
 export const changingrooms = require('../assets/icons/changingrooms.png');
@@ -49,4 +52,7 @@ export default {
     lockers,
     parking,
     washrooms,
+    calender,
+    promoIcon,
+    modalCross,
 };

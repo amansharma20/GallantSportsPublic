@@ -10,6 +10,8 @@ import Toast from 'react-native-toast-message';
 import Icons from '../../../constants/Icons';
 import { GQLQuery } from '../../persistence/query/Query';
 import { useQuery } from '@apollo/client';
+import { Responsive } from '../../../constants/Layout';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default function ProfileScreen() {
     const navigation = useNavigation();
@@ -29,17 +31,46 @@ export default function ProfileScreen() {
                 <Image source={Images.pfpGallant} style={styles.profilePicture} />
 
                 <Text style={styles.nameText}>
-                {customerUserDetails && customerUserDetails.FirstName} {customerUserDetails && customerUserDetails.LastName} 
+                    {customerUserDetails && customerUserDetails.FirstName} {customerUserDetails && customerUserDetails.LastName}
                 </Text>
                 <Text style={styles.locationText}>
                     Gurugram, Haryana
                 </Text>
             </View>
             <View style={styles.mainContainer}>
+                <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('PremiumFeatures')}>
+                    <LinearGradient start={{ x: 0, y: 0 }} colors={['#7E0027', '#DB3E6F']} style={styles.linearGradient}>
+                        <View style={{ alignItems: 'center' }}>
+                            <Text style={[styles.itemText, { fontSize: 24, fontFamily: FONTS.satoshi700 }]}>
+                                GALLANT PLAY
+                            </Text>
+                            <Text style={styles.itemText}>
+                                P R E M I U M
+                            </Text>
+                        </View>
+
+
+                        <Text style={[styles.itemText, { fontSize: 14, fontFamily: FONTS.satoshi700 }]}>
+                            Access to all sports in our all arenas
+                        </Text>
+                        {/* <Text style={[styles.itemText, { fontSize: 14, fontFamily: FONTS.satoshi700 }]}>
+                            Ends in 15 days
+                        </Text> */}
+                    </LinearGradient>
+                </TouchableOpacity>
+
+                <View style={[styles.mainContainerBody, { marginTop: 20 }]}>
+                    <Text style={styles.itemText}>
+                        Your Bookings
+                    </Text>
+                    <TouchableOpacity>
+                        <Image source={icons.profileNext} style={styles.nextButton} />
+                    </TouchableOpacity>
+                </View>
 
                 <View style={styles.mainContainerBody}>
                     <Text style={styles.itemText}>
-                        Your Bookings
+                        Membership
                     </Text>
                     <TouchableOpacity>
                         <Image source={icons.profileNext} style={styles.nextButton} />
@@ -162,6 +193,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 18,
+    },
+    linearGradient: {
+        height: Responsive.height(120),
+        borderRadius: 15,
+        paddingVertical: 10,
+        justifyContent: 'space-evenly',
+        alignItems: 'center'
     },
 
     itemText: {

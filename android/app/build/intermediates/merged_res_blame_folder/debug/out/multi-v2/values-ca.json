@@ -1,10 +1,17 @@
 {
     "logs": [
         {
+<<<<<<< HEAD
+            "outputFile": "D:\\apps\\GallantSports\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ca\\values-ca.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\amana\\.gradle\\caches\\transforms-3\\2b33f08a78071dc79c67b5b0c82c3366\\transformed\\appcompat-1.1.0\\res\\values-ca\\values-ca.xml",
+=======
             "outputFile": "/Users/shanu/Desktop/GallantSports/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ca/values-ca.xml",
             "map": [
                 {
                     "source": "/Users/shanu/.gradle/caches/transforms-3/aa76189210186514cdca35b858e4e43c/transformed/jetified-play-services-basement-17.6.0/res/values-ca/values.xml",
+>>>>>>> refs/remotes/origin/master
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -55,6 +62,9 @@
                     }
                 },
                 {
+<<<<<<< HEAD
+                    "source": "C:\\Users\\amana\\.gradle\\caches\\transforms-3\\a121337bc90910baa8c2f55d66692f42\\transformed\\biometric-1.1.0\\res\\values-ca\\values-ca.xml",
+=======
                     "source": "/Users/shanu/.gradle/caches/transforms-3/d9b71328e8ba86dc125344804cb6eb44/transformed/core-1.6.0/res/values-ca/values-ca.xml",
                     "from": {
                         "startLines": "2",
@@ -73,6 +83,7 @@
                 },
                 {
                     "source": "/Users/shanu/.gradle/caches/transforms-3/a601e5ad579c1edc69ea679a99634264/transformed/jetified-play-services-base-17.5.0/res/values-ca/values.xml",
+>>>>>>> refs/remotes/origin/master
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -103,6 +114,23 @@
                         "startOffsets": "105,223,328,435,518,624,750,834,914,1005,1097,1190,1285,1384,1477,1570,1664,1755,1846,1926,2037,2145,2243,2353,2458,2566,2726,7114",
                         "endColumns": "117,104,106,82,105,125,83,79,90,91,92,94,98,92,92,93,90,90,79,110,107,97,109,104,107,159,98,80",
                         "endOffsets": "218,323,430,513,619,745,829,909,1000,1092,1185,1280,1379,1472,1565,1659,1750,1841,1921,2032,2140,2238,2348,2453,2561,2721,2820,7190"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\amana\\.gradle\\caches\\transforms-3\\d9b71328e8ba86dc125344804cb6eb44\\transformed\\core-1.6.0\\res\\values-ca\\values-ca.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "42",
+                        "startColumns": "4",
+                        "startOffsets": "4458",
+                        "endColumns": "100",
+                        "endOffsets": "4554"
                     }
                 }
             ]

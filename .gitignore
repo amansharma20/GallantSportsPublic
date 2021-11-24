@@ -59,3 +59,23 @@ buck-out/
 /ios/Pods/
 
 node_modules
+/template/ios/Pods/
+/template/ios/Podfile.lock
+/packages/rn-tester/Gemfile.lock
+
+# Ignore RNTester specific Pods, but keep the __offline_mirrors__ here.
+/packages/rn-tester/Pods/*
+!/packages/rn-tester/Pods/__offline_mirrors__
+
+# react-native-codegen
+/React/FBReactNativeSpec/FBReactNativeSpec
+/packages/react-native-codegen/lib
+/ReactCommon/react/renderer/components/rncore/
+
+# Visual studio
+.vscode
+.vs
+
+# Android memory profiler files
+*.hprof
+node_modules

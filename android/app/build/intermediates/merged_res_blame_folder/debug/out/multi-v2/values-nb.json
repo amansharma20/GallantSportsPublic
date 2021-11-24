@@ -1,10 +1,17 @@
 {
     "logs": [
         {
+<<<<<<< HEAD
+            "outputFile": "D:\\apps\\GallantSports\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-nb\\values-nb.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\amana\\.gradle\\caches\\transforms-3\\2b33f08a78071dc79c67b5b0c82c3366\\transformed\\appcompat-1.1.0\\res\\values-nb\\values-nb.xml",
+=======
             "outputFile": "/Users/shanu/Desktop/GallantSports/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-nb/values-nb.xml",
             "map": [
                 {
                     "source": "/Users/shanu/.gradle/caches/transforms-3/a121337bc90910baa8c2f55d66692f42/transformed/biometric-1.1.0/res/values-nb/values-nb.xml",
+>>>>>>> refs/remotes/origin/master
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,7 +28,28 @@
                     }
                 },
                 {
+<<<<<<< HEAD
+                    "source": "C:\\Users\\amana\\.gradle\\caches\\transforms-3\\d9b71328e8ba86dc125344804cb6eb44\\transformed\\core-1.6.0\\res\\values-nb\\values-nb.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "51",
+                        "startColumns": "4",
+                        "startOffsets": "4803",
+                        "endColumns": "100",
+                        "endOffsets": "4899"
+                    }
+                },
+                {
+                    "source": "D:\\apps\\GallantSports\\node_modules\\react-native-date-picker\\android\\build\\intermediates\\packaged_res\\debug\\values-nb\\values-nb.xml",
+=======
                     "source": "/Users/shanu/Desktop/GallantSports/node_modules/react-native-date-picker/android/build/intermediates/packaged_res/debug/values-nb/values-nb.xml",
+>>>>>>> refs/remotes/origin/master
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
@@ -38,7 +66,11 @@
                     }
                 },
                 {
+<<<<<<< HEAD
+                    "source": "C:\\Users\\amana\\.gradle\\caches\\transforms-3\\a121337bc90910baa8c2f55d66692f42\\transformed\\biometric-1.1.0\\res\\values-nb\\values-nb.xml",
+=======
                     "source": "/Users/shanu/.gradle/caches/transforms-3/a601e5ad579c1edc69ea679a99634264/transformed/jetified-play-services-base-17.5.0/res/values-nb/values.xml",
+>>>>>>> refs/remotes/origin/master
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -104,6 +136,8 @@
                         "endColumns": "102,94,113,85,99,112,76,75,90,91,93,93,100,92,94,97,90,90,76,102,97,95,103,98,100,152,96,78",
                         "endOffsets": "203,298,412,498,598,711,788,864,955,1047,1141,1235,1336,1429,1524,1622,1713,1804,1881,1984,2082,2178,2282,2381,2482,2635,2732,7500"
                     }
+<<<<<<< HEAD
+=======
                 },
                 {
                     "source": "/Users/shanu/.gradle/caches/transforms-3/d9b71328e8ba86dc125344804cb6eb44/transformed/core-1.6.0/res/values-nb/values-nb.xml",
@@ -121,6 +155,7 @@
                         "endColumns": "100",
                         "endOffsets": "7601"
                     }
+>>>>>>> refs/remotes/origin/master
                 }
             ]
         }

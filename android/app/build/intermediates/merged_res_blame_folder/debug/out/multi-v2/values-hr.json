@@ -1,10 +1,17 @@
 {
     "logs": [
         {
+<<<<<<< HEAD
+            "outputFile": "D:\\apps\\GallantSports\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hr\\values-hr.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\amana\\.gradle\\caches\\transforms-3\\a121337bc90910baa8c2f55d66692f42\\transformed\\biometric-1.1.0\\res\\values-hr\\values-hr.xml",
+=======
             "outputFile": "/Users/shanu/Desktop/GallantSports/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hr/values-hr.xml",
             "map": [
                 {
                     "source": "/Users/shanu/.gradle/caches/transforms-3/4130704f505bad95be22549651667249/transformed/jetified-play-services-wallet-18.1.3/res/values-hr/values.xml",
+>>>>>>> refs/remotes/origin/master
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -72,7 +79,11 @@
                     }
                 },
                 {
+<<<<<<< HEAD
+                    "source": "C:\\Users\\amana\\.gradle\\caches\\transforms-3\\d9b71328e8ba86dc125344804cb6eb44\\transformed\\core-1.6.0\\res\\values-hr\\values-hr.xml",
+=======
                     "source": "/Users/shanu/.gradle/caches/transforms-3/d9b71328e8ba86dc125344804cb6eb44/transformed/core-1.6.0/res/values-hr/values-hr.xml",
+>>>>>>> refs/remotes/origin/master
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -89,7 +100,11 @@
                     }
                 },
                 {
+<<<<<<< HEAD
+                    "source": "C:\\Users\\amana\\.gradle\\caches\\transforms-3\\2b33f08a78071dc79c67b5b0c82c3366\\transformed\\appcompat-1.1.0\\res\\values-hr\\values-hr.xml",
+=======
                     "source": "/Users/shanu/.gradle/caches/transforms-3/a121337bc90910baa8c2f55d66692f42/transformed/biometric-1.1.0/res/values-hr/values-hr.xml",
+>>>>>>> refs/remotes/origin/master
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
