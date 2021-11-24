@@ -7,7 +7,6 @@ import OtpScreen from '../screens/auth/OtpScreen';
 import SignUp from '../screens/auth/SignUp';
 import BottomTabBarNavigator from './BottomTabBarNavigator';
 import ArenaDetailsScreen from '../screens/activityBookingFlow/ArenaDetailsScreen';
-import ExpolreArenaDetailsScreen from '../screens/exploreBookingFlow/ExploreArenaDetailsScreen';
 import ExploreNearby from '../screens/explore/ExploreNearby';
 import ExploreActivity from '../screens/activityBookingFlow/ExploreActivity';
 import ArenaBookingScreen from '../screens/activityBookingFlow/ArenaBookingScreen';
@@ -15,9 +14,12 @@ import YourBookingDetails from '../screens/Booking/YourBookingDetails';
 import BookingSummary from '../screens/Booking/BookingSummary';
 import WelcomeScreen from '../screens/auth/WelcomeScreen';
 import BookingComplete from '../screens/Booking/BookingComplete';
-import ExploreArenaBookingScreen from '../screens/exploreBookingFlow/ExploreArenaBookingScreen';
 import OnBoarding from '../screens/onBoarding/OnBoarding';
 import ScheduleBookingDetails from '../screens/schedule/ScheduleBookingDetails';
+import TermsOfUse from '../screens/profile/TermsOfUse';
+import Support from '../screens/profile/Support';
+import FAQ from '../screens/profile/FAQ';
+import ExpolreArenaDetailsScreen from '../screens/exploreBookingFlow/ExploreArenaDetailsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +44,9 @@ export default function StackNavigator() {
             <Stack.Screen name="BookingComplete" component={BookingComplete} />
             <Stack.Screen name="OnBoarding" component={OnBoarding} />
             <Stack.Screen name="ScheduleBookingDetails" component={ScheduleBookingDetails} />
+            <Stack.Screen name="TermsOfUse" component={TermsOfUse} />
+            <Stack.Screen name="Support" component={Support} />
+            <Stack.Screen name="FAQ" component={FAQ} />
         </Stack.Navigator>
     );
 }

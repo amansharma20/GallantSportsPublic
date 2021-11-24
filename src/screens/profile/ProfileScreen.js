@@ -77,7 +77,7 @@ export default function ProfileScreen() {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.mainContainerBody}>
+                <View onStartShouldSetResponder={() => navigation.navigate('Support')} style={styles.mainContainerBody}>
                     <Text style={styles.itemText}>
                         Support
                     </Text>
@@ -86,7 +86,7 @@ export default function ProfileScreen() {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.mainContainerBody}>
+                <View onStartShouldSetResponder={() => navigation.navigate('FAQ')}  style={styles.mainContainerBody}>
                     <Text style={styles.itemText}>
                         FAQ’s
                     </Text>
@@ -95,7 +95,7 @@ export default function ProfileScreen() {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.mainContainerBody}>
+                <View onStartShouldSetResponder={() => navigation.navigate('TermsOfUse')} style={styles.mainContainerBody}>
                     <Text style={styles.itemText}>
                         Terms of use
                     </Text>
@@ -134,9 +134,6 @@ export default function ProfileScreen() {
                         Log Out
                     </Text>
                 </TouchableOpacity>
-
-
-
             </View>
         </ScrollView>
     );

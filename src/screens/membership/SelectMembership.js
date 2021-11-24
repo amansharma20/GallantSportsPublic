@@ -1,12 +1,14 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, StatusBar, TouchableOpacity, Image, FlatList, Modal, Pressable } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, TouchableOpacity, Image, FlatList, Modal, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, FONTS, icons, images, SIZES } from '../../../constants';
 import CommonButton from '../../components/CommonGradientButton';
 import Images from '../../../constants/Images';
 import { ScrollView } from 'react-native-gesture-handler';
+// import { ScreenHeight } from 'react-native-elements/dist/helpers';
+
 
 const THREEDAYS = [
     {
@@ -96,9 +98,10 @@ export default function SelectMembership() {
             />
         );
     };
+    const screenHeight = Dimensions.get('screen').height;
 
     return (
-        <View style={styles.container}>
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{height: screenHeight}} style={styles.container}>
             <StatusBar hidden={false} backgroundColor={COLORS.background} barStyle={'light-content'} />
             <View style={styles.headerContainer}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -229,7 +232,7 @@ export default function SelectMembership() {
                     </View>
                 </Modal>
             )}
-        </View>
+        </ScrollView>
     );
 }
 

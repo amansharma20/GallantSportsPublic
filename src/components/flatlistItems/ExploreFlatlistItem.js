@@ -21,8 +21,11 @@ const ExploreFlatlistItem = (props) => {
     return (
         <View
             style={styles.container}>
-            <TouchableOpacity onPress={() => navigation.navigate('ExpolreArenaDetailsScreen',
-                { expolreArenaDetails: arenaDetail }
+            <TouchableOpacity
+            onPress={() => navigation.navigate('ExpolreArenaDetailsScreen',
+                {
+                    expolreArenaDetails: arenaDetail
+                }
             )}>
                 <View style={styles.mainContainer}>
                     <View style={styles.imageContainer}>

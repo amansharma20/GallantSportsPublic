@@ -3,7 +3,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignUp from '../screens/auth/SignUp';
 import BottomTabBarNavigator from './BottomTabBarNavigator';
 import ArenaDetailsScreen from '../screens/activityBookingFlow/ArenaDetailsScreen';
-import ExploreArenaDetailsScreen from '../screens/exploreBookingFlow/ExploreArenaDetailsScreen';
 import ExploreNearby from '../screens/explore/ExploreNearby';
 import ExploreActivity from '../screens/activityBookingFlow/ExploreActivity';
 import ArenaBookingScreen from '../screens/activityBookingFlow/ArenaBookingScreen';
@@ -17,6 +16,10 @@ import ExploreArenaBookingScreen from '../screens/exploreBookingFlow/ExploreAren
 import ScheduleBookingDetails from '../screens/schedule/ScheduleBookingDetails';
 import SelectMembership from '../screens/membership/SelectMembership';
 import PremiumFeatures from '../screens/membership/PremiumFeatures';
+import TermsOfUse from '../screens/profile/TermsOfUse';
+import Support from '../screens/profile/Support';
+import FAQ from '../screens/profile/FAQ';
+import ExpolreArenaDetailsScreen from '../screens/exploreBookingFlow/ExploreArenaDetailsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,7 +34,7 @@ export default function HomeNavigator() {
             <Stack.Screen name="YourBookingDetails" component={YourBookingDetails} />
             <Stack.Screen name="ExploreNearby" component={ExploreNearby} />
             <Stack.Screen name="ArenaDetailsScreen" component={ArenaDetailsScreen} />
-            <Stack.Screen name="ExploreArenaDetailsScreen" component={ExploreArenaDetailsScreen} />
+            <Stack.Screen name="ExpolreArenaDetailsScreen" component={ExpolreArenaDetailsScreen} />
             <Stack.Screen name="ExploreActivity" component={ExploreActivity} />
             <Stack.Screen name="ArenaBookingScreen" component={ArenaBookingScreen} />
             <Stack.Screen name="DetectLocation" component={DetectLocation} />
@@ -42,6 +45,9 @@ export default function HomeNavigator() {
             <Stack.Screen name="ExploreArenaBookingScreen" component={ExploreArenaBookingScreen} />
             <Stack.Screen name="ScheduleBookingDetails" component={ScheduleBookingDetails} />
             <Stack.Screen name="PremiumFeatures" component={PremiumFeatures} />
+            <Stack.Screen name="TermsOfUse" component={TermsOfUse} />
+            <Stack.Screen name="Support" component={Support} />
+            <Stack.Screen name="FAQ" component={FAQ} />
         </Stack.Navigator>
     );
 }

@@ -46,10 +46,10 @@ export default function HomeScreen(props) {
     const detectLocation = (data) => {
         setCurrentLocation(data)
     }
-    
+
     useEffect(() => {
         getOneTimeLocation();
-      }, []);
+    }, []);
 
     const getOneTimeLocation = () => {
 
@@ -77,7 +77,10 @@ export default function HomeScreen(props) {
                 style={styles.container}>
                 <StatusBar hidden={false} backgroundColor={COLORS.background} barStyle={'light-content'} />
                 <View style={styles.headerContainer}>
-                    <TouchableOpacity onPress={() => navigation.navigate('DetectLocation')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('DetectLocation', {
+                        onGoBack: detectLocation,
+                        customerUserDetail: customerUserDetails
+                    })}>
                         <Image source={Icons.locationIcon} style={styles.locationIcon} />
                     </TouchableOpacity>
                     <View>
@@ -137,7 +140,9 @@ export default function HomeScreen(props) {
                         <Text style={styles.flatlistHeaderText}>
                             Explore
                         </Text>
-                        <TouchableOpacity onPress={() => navigation.navigate('ExploreNearby')}>
+                        <TouchableOpacity onPress={() => navigation.navigate('ExploreNearby', {
+                            currentLocation: userCurrentLocation
+                        })}>
                             <Text style={[styles.flatlistHeaderText, { color: COLORS.themePink, fontSize: 14, paddingRight: 16 }]}>
                                 More
                             </Text>
