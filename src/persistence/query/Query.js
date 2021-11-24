@@ -245,6 +245,8 @@ query MyQuery {
             Address
             Rating
             WhatToBring
+            Latitude
+            Longitude
       }
     }
   }`,

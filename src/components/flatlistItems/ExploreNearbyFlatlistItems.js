@@ -39,7 +39,10 @@ const ExploreNearbyFlatlistItems = (props) => {
     );
     const [activeSlide, setActiveSlide] = useState(0);
     return (
-        <TouchableOpacity onPress={() => navigation.navigate('ArenaDetailsScreen')}>
+        <TouchableOpacity onPress={() => navigation.navigate('ExpolreArenaDetailsScreen',
+            {
+                expolreArenaDetails: NeraByArenaData
+            })}>
             <View>
                 <Image source={{ uri: applicationProperties.imageUrl + NeraByArenaData.item.ArenaImageStoragePath }} style={{ width: '100%', height: 159 }} />
             </View>
