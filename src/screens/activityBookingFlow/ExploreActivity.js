@@ -19,33 +19,35 @@ export default function ExploreActivity(props) {
         },
     });
     const arenaList = data2 && data2.ActivityArenaQuery && data2.ActivityArenaQuery.GetArenaByActivityId && data2.ActivityArenaQuery.GetArenaByActivityId;
-    
+
     const navigation = useNavigation();
     return (
         <View
             showsVerticalScrollIndicator={false}
             style={styles.container}>
-            <View>
-                <View style={styles.headerContainer}>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <Image source={icons.backIcon} style={styles.backIcon} />
-                    </TouchableOpacity>
-                    <Text style={styles.headerText}>
-                        Explore Activity
-                    </Text>
-                    <View>
+            <ScrollView>
+                <View>
+                    <View style={styles.headerContainer}>
+                        <TouchableOpacity onPress={() => navigation.goBack()}>
+                            <Image source={icons.backIcon} style={styles.backIcon} />
+                        </TouchableOpacity>
+                        <Text style={styles.headerText}>
+                            Explore Activity
+                        </Text>
+                        <View>
+                        </View>
                     </View>
+                    <FlatList
+                        showsVerticalScrollIndicator={false}
+                        keyExtractor={item => item.id}
+                        data={arenaList}
+                        renderItem={(item, index) => (
+                            <ExploreActivityFlatlistItems
+                                arenas={item} />
+                        )}
+                    />
                 </View>
-                <FlatList
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={item => item.id}
-                    data={arenaList}
-                    renderItem={(item, index) => (
-                        <ExploreActivityFlatlistItems
-                            arenas={item} />
-                    )}
-                />
-            </View>
+            </ScrollView>
         </View>
     );
 }

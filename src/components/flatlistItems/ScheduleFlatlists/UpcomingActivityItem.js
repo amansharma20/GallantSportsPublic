@@ -15,7 +15,6 @@ import { format } from "date-fns";
 
 const UpcomingActivityItem = (props) => {
     const Bookings = props.upcomingBookings
-
     const navigation = useNavigation();
 
     const leftBackgroundColor = '#444B65';
@@ -26,7 +25,7 @@ const UpcomingActivityItem = (props) => {
     var bookingDate = new Date(Bookings.item.BookingDateTime);
 
     var formattedDate = format(bookingDate, "dd MMM");
-    var formattedTime = format(bookingTime, "H:mma");
+    var formattedTime = format(bookingTime, "H:mm a");
 
     return (
         <View
@@ -40,12 +39,9 @@ const UpcomingActivityItem = (props) => {
 
                 <TouchableOpacity
                     activeOpacity={0.8}
-                    onPress={() => navigation.navigate('YourBookingDetails',
+                    onPress={() => navigation.navigate('ScheduleBookingDetails',
                         {
-                            Bookings:
-                            {
-                                "BookingDetail": bookingDetails
-                            }
+                            bookingDetails: Bookings
                         })}>
                     <LinearGradient
                         start={{ x: 0, y: 0 }} colors={[leftBackgroundColor, rightBackgroundColor]} style={styles.linearGradient}>
@@ -56,10 +52,10 @@ const UpcomingActivityItem = (props) => {
                                 </Text>
                             </View>
                             <View>
-                                <Text style={styles.venueText}>
+                                <Text style={styles.venueText} numberOfLines={1}>
                                     {Bookings.item.ActivityArena.Arena.Name}
                                 </Text>
-                                <Text style={styles.upcomingActivityText}>
+                                <Text style={styles.upcomingActivityText} numberOfLines={1}>
                                     {Bookings.item.ActivityArena.Activity.Name}
                                 </Text>
                             </View>

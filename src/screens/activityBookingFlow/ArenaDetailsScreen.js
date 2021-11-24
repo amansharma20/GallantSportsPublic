@@ -148,7 +148,7 @@ export default function ArenaDetailsScreen(props) {
                                             }}>
                                             <Image
                                                 style={styles.imageThumbnail}
-                                                source={images.lockerImage}
+                                                source={icons.lockers}
                                             />
                                             <Text style={styles.facilitiesText}>
                                                 Lockers

@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { View, TouchableOpacity,TouchableHighlight, Text, StyleSheet, Image, Modal } from 'react-native';
+import { View, TouchableOpacity, TouchableHighlight, Text, StyleSheet, Image, Modal, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, FONTS, icons, SIZES, images } from '../../../constants';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -18,9 +18,11 @@ export default function BookingSummary(props) {
     const navigation = useNavigation();
 
     const bookingDetail = props.route.params.bookingDetails
-    const arenaId = bookingDetail.Activity.Activity.Id;
-    const activityId = bookingDetail.ArenaId;
+    const arenaId = bookingDetail.ArenaId;
+    const activityId = bookingDetail.Activity.Activity.Id;
+
     const [needacoach, setacoach] = useState(bookingDetail.Needacoach)
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     const [dataSource, setDataSource] = useState([]);
     useEffect(() => {
@@ -39,18 +41,23 @@ export default function BookingSummary(props) {
     // GET BOOKING CHARGES BY ARENA ID OR ACTIVITY ID
     const { data: BookingChargesData, error: BookingChargesError } = useQuery(GQLQuery.GET_BOOKING_CHARGES_BY_ACTIVITYID_OR_ARENAID, {
         variables: {
-            ArenaId: bookingDetail.Activity.Activity.Id,
-            ActivityId: bookingDetail.ArenaId,
+            ArenaId: bookingDetail.ArenaId,
+            ActivityId: bookingDetail.Activity.Activity.Id,
         },
     });
     const getBookingCharges = BookingChargesData && BookingChargesData.ActivityArenaChargesQuery && BookingChargesData.ActivityArenaChargesQuery.GetActivityArenaCharges;
     const arenaActivityId = getBookingCharges && getBookingCharges[0].Id;
 
 
+    console.log('getBookingCharges')
+    console.log(getBookingCharges)
+    console.log('getBookingCharges')
+
     // CREATE BOOKING
     const [addBooking, { data: bookingResponse, error: bookingError, loading }] = useMutation(GQLMutation.CREATE_BOOKING);
 
     const submitBooking = () => {
+        console.log('HJHjsh')
         addBooking({
             variables: {
                 ArenaId: arenaId,
@@ -59,13 +66,51 @@ export default function BookingSummary(props) {
                 NeedCoach: needacoach,
             }
         });
-        if (bookingResponse != null) {
-            console.log('Book now')
-            setShowSuccessModal(true)
-        }
+
     }
 
-    function starPayment(){
+
+    const [startPaymentMutation, { data: paymentResponse, error: paymentError }] = useMutation(GQLMutation.START_PAYMENT);
+
+
+
+    const [completePaymentMutation, { data: completResponse, error: completeError }] = useMutation(GQLMutation.COMPLETE_PAYMENT);
+    if (bookingResponse != null) {
+        console.log(bookingResponse && bookingResponse.BookingMutation && bookingResponse.BookingMutation.CreateBooking)
+        const NewBooking = bookingResponse && bookingResponse.BookingMutation && bookingResponse.BookingMutation.CreateBooking;
+        Alert.alert(
+            '',
+            'Pay Now',
+            [
+                { text: 'Cancel', onPress: () => console.log('Cancel Pressed!') },
+                {
+                    text: 'Pay', onPress: () => {
+                        startPaymentMutation({
+                            variables: {
+                                BookingId: NewBooking.Id,
+                            }
+                        });
+                        console.log('Cancel Presssssed!')
+                    }
+                },
+            ],
+            { cancelable: false }
+        )
+    }
+
+    console.log(paymentResponse)
+    console.log('paymentError')
+    console.log(paymentError)
+    console.log('paymentError')
+
+
+    if (paymentResponse != null) {
+        console.log(paymentResponse && paymentResponse.BookingMutation && paymentResponse.BookingMutation.StartBookingPayment)
+        const CompletePaymentStatus = paymentResponse && paymentResponse.BookingMutation && paymentResponse.BookingMutation.StartBookingPayment;
+        payBookingCharges(CompletePaymentStatus.RazorpayOrderId);
+    }
+
+    function starPayment() {
         var options = {
             description: 'Credits towards consultation',
             image: 'https://i.imgur.com/3g7nmJC.png',
@@ -84,18 +129,58 @@ export default function BookingSummary(props) {
         RazorpayCheckout.open(options).then((data) => {
             // handle success
             alert(`Success: ${data.razorpay_payment_id}`);
+            setShowSuccessModal(true)
         }).catch((error) => {
 
             // handle failure
-            alert(`Error: ${error} | ${error.description}`);
+            setShowSuccessModal(true)
+           // alert(`Error: ${error} | ${error.description}`);
         });
-    }
     }
     function getTotalAmountWithGST(total, gst) {
         return (total * gst / 100) + total
     }
 
-    const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+    function payBookingCharges(id) {
+        var options = {
+            description: 'Credits towards consultation',
+            image: 'https://i.imgur.com/3g7nmJC.png',
+            currency: 'INR',
+            key: 'rzp_test_Y9bTZYEbWEjHlK',
+            amount: '5000',
+            name: 'Acme Corp',
+            order_id: id,//Replace this with an order_id created using Orders API.
+            prefill: {
+                email: 'gaurav.kumar@example.com',
+                contact: '9191919191',
+                name: 'Gaurav Kumar'
+            },
+            theme: { color: '#53a20e' }
+        }
+        RazorpayCheckout.open(options).then((data) => {
+            // handle success
+            console.log(data)
+
+            completePaymentMutation({
+                variables: {
+                    RazorpayOrderId: data.razorpay_order_id,
+                    RazorpayPaymentId: data.razorpay_payment_id,
+                    RazorpaySignature: data.razorpay_signature,
+                }
+            });
+
+            // alert(`Success: ${data.razorpay_payment_id}`);
+        }).catch((error) => {
+            console.log(error)
+            // handle failure
+            setShowSuccessModal(true)
+            //alert(`Error: ${error} | ${error.description}`);
+        });
+    }
+
+    console.log(completResponse)
+    console.log(completeError)
 
     return (
         <View style={styles.container}>
@@ -119,14 +204,14 @@ export default function BookingSummary(props) {
                         <View style={styles.availableActivitiesContainer}>
                             <View style={styles.availableActivitiesItems}>
                                 {/* <FlatList
-                                    data={dataSource}
-                                    renderItem={renderAvailableActivitiesItem}
-                                    keyExtractor={item => item.id}
-                                    horizontal
-                                    contentContainerStyle={{
-                                        paddingLeft: SIZES.padding6,
-                                    }}
-                                /> */}
+                                        data={dataSource}
+                                        renderItem={renderAvailableActivitiesItem}
+                                        keyExtractor={item => item.id}
+                                        horizontal
+                                        contentContainerStyle={{
+                                            paddingLeft: SIZES.padding6,
+                                        }}
+                                    /> */}
                                 <View style={styles.activityBookedLeftContainer}>
                                     <Image source={{ uri: applicationProperties.imageUrl + bookingDetail.Activity.Activity?.ActivityIconStoragePath }} style={styles.activityIconSize} />
                                     <Text style={styles.activityText}>
@@ -167,13 +252,13 @@ export default function BookingSummary(props) {
                                 </Text>
                             </View>
                             {/* <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 20, paddingTop: 20 }}>
-                                <Text style={{ color: 'white', fontSize: 16 }}>
-                                    Duration
-                                </Text>
-                                <Text style={{ color: 'white', fontSize: 16 }}>
-                                    02 hrs
-                                </Text>
-                            </View> */}
+                                    <Text style={{ color: 'white', fontSize: 16 }}>
+                                        Duration
+                                    </Text>
+                                    <Text style={{ color: 'white', fontSize: 16 }}>
+                                        02 hrs
+                                    </Text>
+                                </View> */}
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 20, paddingTop: 20 }}>
                                 <Text style={{ color: 'white', fontSize: 16 }}>
                                     Coach
@@ -184,8 +269,8 @@ export default function BookingSummary(props) {
                                     </Text> :
                                     <Text style={{ color: 'white', fontSize: 16 }}>
                                         No
-                                    </Text>}
-
+                                    </Text>
+                                }
                             </View>
                         </View>
                         <View style={{ paddingTop: 20 }}>
@@ -221,7 +306,7 @@ export default function BookingSummary(props) {
                 </View>
             </ScrollView>
             <View style={styles.buttonContainer}>
-                <CommonButton onPress={submitBooking} children="Book Now" />
+                <CommonButton onPress={submitBooking} children="Pay Now" />
             </View>
             {showSuccessModal && (
                 <Modal
@@ -249,15 +334,14 @@ export default function BookingSummary(props) {
                             <View style={{ width: 100 }}>
                                 <CommonButton onPress={() => navigation.navigate('Home')} children="OK" />
                             </View>
-
                         </View>
-
                     </View>
                 </Modal>
             )}
         </View>
     );
 }
+
 
 const styles = StyleSheet.create({
     container: {

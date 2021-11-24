@@ -23,9 +23,6 @@ export default function YourBookingDetails(props) {
     const navigation = useNavigation();
 
     const bookingDetail = props.route.params.bookingDetails
-    console.log('bookingDetail')
-    console.log(bookingDetail)
-    console.log('bookingDetail')
     const lat = bookingDetail.item.ActivityArena.Arena.Latitude
     const lng = bookingDetail.item.ActivityArena.Arena.Longitude
 

@@ -16,7 +16,6 @@ import { format } from "date-fns";
 const ScheduleFlatlistItem = (props) => {
     const Bookings = props.bookings
 
-
     const navigation = useNavigation();
     const isToday = false;
     const isCancelled = false;
@@ -29,11 +28,10 @@ const ScheduleFlatlistItem = (props) => {
     var bookingDate = new Date(Bookings.item.BookingDateTime);
 
     var formattedDate = format(bookingDate, "dd MMM");
-    var formattedTime = format(bookingTime, "H:mma");
+    var formattedTime = format(bookingTime, "H:mm a");
 
     return (
-        <View
-            style={styles.container}>
+        <View style={styles.container}>
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                 <View style={{ paddingRight: 15 }}>
                     <Text style={{ fontSize: SIZES.h5, fontFamily: FONTS.satoshi900, color: COLORS.white, textAlign: 'center' }}>
@@ -43,7 +41,10 @@ const ScheduleFlatlistItem = (props) => {
 
                 <TouchableOpacity
                     activeOpacity={0.8}
-                    onPress={() => navigation.navigate('YourBookingDetails')}>
+                    onPress={() => navigation.navigate('ScheduleBookingDetails',
+                        {
+                            bookingDetails: Bookings
+                        })}>
                     <LinearGradient
                         start={{ x: 0, y: 0 }} colors={[leftBackgroundColor, rightBackgroundColor]} style={styles.linearGradient}>
                         <View style={styles.leftContainer}>

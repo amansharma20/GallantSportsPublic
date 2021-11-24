@@ -46,10 +46,10 @@ const UpcomingActivityItem = (props) => {
                             </Text>
                         </View>
                         <View>
-                            <Text style={styles.venueText}>
+                            <Text style={styles.venueText} numberOfLines={1}>
                             {upcomingactivity.item.ActivityArena.Arena.Name}
                             </Text>
-                            <Text style={styles.upcomingActivityText}>
+                            <Text style={styles.upcomingActivityText} numberOfLines={1}>
                             {upcomingactivity.item.ActivityArena.Activity.Name}
                             </Text>
                         </View>
@@ -64,8 +64,6 @@ const UpcomingActivityItem = (props) => {
                     </View>
                 </LinearGradient>
             </TouchableOpacity>
-
-
         </View>
     )
 };

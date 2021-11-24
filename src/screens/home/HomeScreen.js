@@ -43,10 +43,27 @@ export default function HomeScreen(props) {
 
     const detectLocation = (data) => {
         setCurrentLocation(data)
-        console.log('data')
-        console.log(data)
-        console.log('data')
     }
+    
+    useEffect(() => {
+        getOneTimeLocation();
+      }, []);
+
+    const getOneTimeLocation = () => {
+
+        GetLocation.getCurrentPosition({
+            enableHighAccuracy: true,
+            timeout: 15000,
+        })
+            .then(location => {
+                setCurrentLocation(location);
+            })
+            .catch(error => {
+                const { code, message } = error;
+                console.warn(code, message);
+            })
+    }
+
 
     return (
         <ScrollView

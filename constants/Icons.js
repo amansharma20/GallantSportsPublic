@@ -17,6 +17,12 @@ export const editProfile = require('../assets/icons/editProfile.png');
 export const pfp = require('../assets/icons/pfp.png');
 export const checkbox = require('../assets/icons/checkbox.png');
 export const popupClose = require('../assets/icons/popupClose.png');
+export const cctv = require('../assets/icons/cctv.png');
+export const changingrooms = require('../assets/icons/changingrooms.png');
+export const drinkingWater = require('../assets/icons/drinkingWater.png');
+export const lockers = require('../assets/icons/lockers.png');
+export const parking = require('../assets/icons/parking.png');
+export const washrooms = require('../assets/icons/washrooms.png');
 
 export default {
     tick,
@@ -36,5 +42,11 @@ export default {
     editProfile,
     pfp,
     checkbox,
-    popupClose
+    popupClose,
+    cctv,
+    changingrooms,
+    drinkingWater,
+    lockers,
+    parking,
+    washrooms,
 };

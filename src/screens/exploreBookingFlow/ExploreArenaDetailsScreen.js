@@ -143,10 +143,10 @@ export default function ExpolreArenaDetailsScreen(props) {
                                             }}>
                                             <Image
                                                 style={styles.imageThumbnail}
-                                                source={images.lockerImage}
+                                                source={icons.lockers}
                                             />
                                             <Text style={styles.facilitiesText}>
-                                                Lockers
+                                                Drinking Water
                                             </Text>
                                         </View>
                                     )}

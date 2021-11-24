@@ -50,7 +50,7 @@ export default function ArenaBookingScreen(props) {
   }, []);
 
   const formatedDate = (date) => {
-    var formattedDate = format(date, 'dd MMMM yyyy | hh:mm a');
+    var formattedDate = format(date, 'dd MMMM yyyy | hh a');
     return formattedDate;
   };
 
@@ -206,7 +206,6 @@ const styles = StyleSheet.create({
 
   availableActivitiesItems: {
     paddingVertical: 20,
-    paddingHorizontal: 20,
     flexDirection: 'row'
   },
 

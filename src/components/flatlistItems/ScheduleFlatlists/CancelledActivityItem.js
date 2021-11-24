@@ -17,7 +17,6 @@ const CancelledActivityItem = (props) => {
     const navigation = useNavigation();
 
     const Bookings = props.cancelBookings
-
     const leftBackgroundColor = '#320000';
     const rightBackgroundColor = '#320000';
     const item = props.item;
@@ -40,7 +39,10 @@ const CancelledActivityItem = (props) => {
 
                 <TouchableOpacity
                     activeOpacity={0.8}
-                    onPress={() => navigation.navigate('YourBookingDetails')}>
+                    onPress={() => navigation.navigate('ScheduleBookingDetails',
+                        {
+                            bookingDetails: Bookings
+                        })}>
                     <LinearGradient
                         start={{ x: 0, y: 0 }} colors={[leftBackgroundColor, rightBackgroundColor]} style={styles.linearGradient}>
                         <View style={styles.leftContainer}>

@@ -247,6 +247,19 @@ query MyQuery {
             WhatToBring
       }
     }
-  }`
+  }`,
+
+  GET_ALL_MEMBERSHIP_PLAN: gql`
+  query myquery {
+    MembershipPlanQuery {
+      GetAllMembershipPlan {
+        Id
+        Type
+        Duration
+        Amount
+        GstPercentage
+      }
+    }
+  }`,
 
 };
