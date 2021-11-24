@@ -41,14 +41,7 @@ export default function HomeScreen(props) {
     const ExploreArena = explore && explore.ArenaQuery && explore.ArenaQuery.GetArena;
 
     // const [latlong, setLatLong] = useState(null);
-<<<<<<< HEAD
-
-    useEffect(() => {
-        getUserCurrentLocation()
-    });
-=======
     const [userCurrentLocation, setCurrentLocation] = useState();
->>>>>>> refs/remotes/origin/master
 
     const detectLocation = (data) => {
         setCurrentLocation(data)
@@ -58,7 +51,6 @@ export default function HomeScreen(props) {
     }
 
     return (
-<<<<<<< HEAD
         <View style={{
             flex: 1
         }}>
@@ -79,26 +71,6 @@ export default function HomeScreen(props) {
                             Gurugram
                         </Text>
                     </View>
-=======
-        <ScrollView
-            showsVerticalScrollIndicator={false}
-            style={styles.container}>
-            <StatusBar hidden={false} backgroundColor={COLORS.background} barStyle={'light-content'} />
-            <View style={styles.headerContainer}>
-                <TouchableOpacity onPress={() => navigation.navigate('DetectLocation', {
-                    onGoBack: detectLocation,
-                    customerUserDetail: customerUserDetails
-                })}>
-                    <Image source={Icons.locationIcon} style={styles.locationIcon} />
-                </TouchableOpacity>
-                <View>
-                    <Text style={styles.locationHeaderText}>
-                        Sector 48
-                    </Text>
-                    <Text style={styles.locationSubText}>
-                        Gurugram
-                    </Text>
->>>>>>> refs/remotes/origin/master
                 </View>
                 <View style={styles.headerTextContainer}>
                     <Text style={styles.hiText}>
@@ -122,23 +94,10 @@ export default function HomeScreen(props) {
                     />
                 </View>
 
-<<<<<<< HEAD
                 <View>
                     <View style={{ paddingLeft: SIZES.padding6 }}>
                         <Text style={styles.flatlistHeaderText}>
                             Activity
-=======
-            <View>
-                <View style={{ paddingLeft: SIZES.padding6, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Text style={styles.flatlistHeaderText}>
-                        Explore
-                    </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('ExploreNearby', {
-                        currentLocation: userCurrentLocation
-                    })}>
-                        <Text style={[styles.flatlistHeaderText, { color: COLORS.themePink, fontSize: 14, paddingRight: 16 }]}>
-                            More
->>>>>>> refs/remotes/origin/master
                         </Text>
                     </View>
                     <View style={{ paddingTop: 25, paddingBottom: 35 }}>

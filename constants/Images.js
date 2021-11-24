@@ -23,11 +23,8 @@ export default {
     star,
     badminton,
     neeraj,
-<<<<<<< HEAD
     premiumFeatures,
-=======
     onboardingfirst,
     onboardingsecond,
     onboardingthird,
->>>>>>> refs/remotes/origin/master
 };
