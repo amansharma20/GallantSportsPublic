@@ -9,6 +9,9 @@ export const star = require('../assets/images/star.png');
 export const badminton = require('../assets/images/badminton.png');
 export const premiumFeatures = require('../assets/images/premiumFeatures.png');
 export const neeraj = require('../assets/images/neeraj.jpg');
+export const onboardingfirst = require('../assets/images/onboardingfirst.png');
+export const onboardingsecond = require('../assets/images/onboardingsecond.png');
+export const onboardingthird = require('../assets/images/onboardingthird.png');
 
 export default {
     splashScreen,
@@ -20,5 +23,11 @@ export default {
     star,
     badminton,
     neeraj,
+<<<<<<< HEAD
     premiumFeatures,
+=======
+    onboardingfirst,
+    onboardingsecond,
+    onboardingthird,
+>>>>>>> refs/remotes/origin/master
 };

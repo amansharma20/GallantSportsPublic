@@ -12,7 +12,6 @@ import DetectLocation from '../screens/location/DetectLocation';
 import SearchLocation from '../screens/location/SearchLocation';
 import EditProfile from '../screens/profile/EditProfile';
 import BookingSummary from '../screens/Booking/BookingSummary';
-import BookingScreen from '../screens/Booking/BookingScreen';
 import BookingComplete from '../screens/Booking/BookingComplete';
 import ExploreArenaBookingScreen from '../screens/exploreBookingFlow/ExploreArenaBookingScreen';
 import SelectMembership from '../screens/membership/SelectMembership';
@@ -39,7 +38,6 @@ export default function HomeNavigator() {
             <Stack.Screen name="SearchLocation" component={SearchLocation} />
             <Stack.Screen name="EditProfile" component={EditProfile} />
             <Stack.Screen name="BookingSummary" component={BookingSummary} />
-            <Stack.Screen name="BookingScreen" component={BookingScreen} />
             <Stack.Screen name="BookingComplete" component={BookingComplete} />
             <Stack.Screen name="ExploreArenaBookingScreen" component={ExploreArenaBookingScreen} />
             <Stack.Screen name="PremiumFeatures" component={PremiumFeatures} />

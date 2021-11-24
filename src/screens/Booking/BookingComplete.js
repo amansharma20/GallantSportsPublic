@@ -12,7 +12,7 @@ import { format } from 'date-fns';
 
 export default function BookingComplete(props) {
 
-    const response = props.route.params.name
+    const response = props
     const navigation = useNavigation();
     console.log(response)
 

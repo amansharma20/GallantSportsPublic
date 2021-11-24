@@ -29,6 +29,8 @@ import com.oblador.keychain.KeychainPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 // react-native-pager-view
 import com.reactnativepagerview.PagerViewPackage;
+// react-native-razorpay
+import com.razorpay.rn.RazorpayPackage;
 // react-native-safe-area-context
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 // react-native-screens
@@ -91,6 +93,7 @@ public class PackageList {
       new KeychainPackage(),
       new LinearGradientPackage(),
       new PagerViewPackage(),
+      new RazorpayPackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage(),
       new SplashScreenReactPackage(),

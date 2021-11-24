@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Text,
     Image,
@@ -12,7 +12,6 @@ import {
 import { COLORS, FONTS, SIZES } from '../../../constants';
 import Icons from '../../../constants/Icons';
 import UpcomingActivityItem from '../../components/flatlistItems/UpcomingActivityItem';
-import GOALSDATA from '../../../assets/data/ActivitIesData';
 import ActivityItems from '../../components/flatlistItems/ActivityItems';
 import ExploreFlatlistItem from '../../components/flatlistItems/ExploreFlatlistItem';
 import { useNavigation } from '@react-navigation/core';
@@ -32,7 +31,6 @@ export default function HomeScreen(props) {
     // GET UPCOMING ACTIVITY
     const { data: customerUpcomingBookingData, error: customerUpcomingBookingError } = useQuery(GQLQuery.GET_CUSTOMER_UPCOMING_BOOKINGS);
     const customerUpcomingBookings = customerUpcomingBookingData && customerUpcomingBookingData.BookingQuery && customerUpcomingBookingData.BookingQuery.GetCustomerUpcomingBookings;
-    console.log(customerUpcomingBookings)
 
     // GET ACTIVITY UNDER ACTIVITY CAROUSEL
     const { data: acitivity, error: errorActivity } = useQuery(GQLQuery.GET_ACTIVITIES);
@@ -43,33 +41,24 @@ export default function HomeScreen(props) {
     const ExploreArena = explore && explore.ArenaQuery && explore.ArenaQuery.GetArena;
 
     // const [latlong, setLatLong] = useState(null);
+<<<<<<< HEAD
 
     useEffect(() => {
         getUserCurrentLocation()
     });
+=======
+    const [userCurrentLocation, setCurrentLocation] = useState();
+>>>>>>> refs/remotes/origin/master
 
-    const getUserCurrentLocation = () => {
-        return (
-            GetLocation.getCurrentPosition({
-                enableHighAccuracy: true,
-                timeout: 15000,
-            })
-                .then(location => {
-                    setLatLong(location)
-                    console.log(location);
-                })
-                .catch(error => {
-                    const { code, message } = error;
-                    console.warn(code, message);
-                })
-
-        );
+    const detectLocation = (data) => {
+        setCurrentLocation(data)
+        console.log('data')
+        console.log(data)
+        console.log('data')
     }
 
-
-
-
     return (
+<<<<<<< HEAD
         <View style={{
             flex: 1
         }}>
@@ -90,6 +79,26 @@ export default function HomeScreen(props) {
                             Gurugram
                         </Text>
                     </View>
+=======
+        <ScrollView
+            showsVerticalScrollIndicator={false}
+            style={styles.container}>
+            <StatusBar hidden={false} backgroundColor={COLORS.background} barStyle={'light-content'} />
+            <View style={styles.headerContainer}>
+                <TouchableOpacity onPress={() => navigation.navigate('DetectLocation', {
+                    onGoBack: detectLocation,
+                    customerUserDetail: customerUserDetails
+                })}>
+                    <Image source={Icons.locationIcon} style={styles.locationIcon} />
+                </TouchableOpacity>
+                <View>
+                    <Text style={styles.locationHeaderText}>
+                        Sector 48
+                    </Text>
+                    <Text style={styles.locationSubText}>
+                        Gurugram
+                    </Text>
+>>>>>>> refs/remotes/origin/master
                 </View>
                 <View style={styles.headerTextContainer}>
                     <Text style={styles.hiText}>
@@ -113,10 +122,23 @@ export default function HomeScreen(props) {
                     />
                 </View>
 
+<<<<<<< HEAD
                 <View>
                     <View style={{ paddingLeft: SIZES.padding6 }}>
                         <Text style={styles.flatlistHeaderText}>
                             Activity
+=======
+            <View>
+                <View style={{ paddingLeft: SIZES.padding6, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Text style={styles.flatlistHeaderText}>
+                        Explore
+                    </Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('ExploreNearby', {
+                        currentLocation: userCurrentLocation
+                    })}>
+                        <Text style={[styles.flatlistHeaderText, { color: COLORS.themePink, fontSize: 14, paddingRight: 16 }]}>
+                            More
+>>>>>>> refs/remotes/origin/master
                         </Text>
                     </View>
                     <View style={{ paddingTop: 25, paddingBottom: 35 }}>

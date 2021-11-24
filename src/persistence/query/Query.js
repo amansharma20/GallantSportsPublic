@@ -218,19 +218,35 @@ query MyQuery {
   }`,
 
   GET_BOOKING_CHARGES_BY_ACTIVITYID_OR_ARENAID: gql`
-  query myquery {
+  query myquery ($ArenaId: Long!,$ActivityId: Long!){
     ActivityArenaChargesQuery {
-      GetActivityArenaCharges(ArenaId: 1, ActivityId: 1) {
+      GetActivityArenaCharges(ArenaId: $ArenaId, ActivityId: $ActivityId) {
+        Id
         AmountPerHr
         GST
         Arena {
           Name
-          WhatToBring
         }
         Activity {
           Name
         }
       }
     }
+  }`,
+
+  GET_NEAREST_ARENA: gql`
+  query($Latitude : String!,$Longitude : String!) {
+    NearestArenaQuery {
+      FindNearByArena(Latitude: $Latitude, Longitude: $Longitude) {
+            Id
+            ArenaImageStoragePath
+            Name
+            Description
+            Address
+            Rating
+            WhatToBring
+      }
+    }
   }`
+
 };

@@ -1,25 +1,27 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { View, TouchableOpacity, Text, StyleSheet, Image } from 'react-native';
+import { View, TouchableOpacity, TouchableHighlight, Text, StyleSheet, Image, Modal, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { COLORS, FONTS, icons, SIZES } from '../../../constants';
+import { COLORS, FONTS, icons, SIZES, images } from '../../../constants';
 import { ScrollView } from 'react-native-gesture-handler';
 import CommonButton from '../../components/CommonGradientButton';
 import { applicationProperties } from '../../application.properties';
 import { GQLQuery } from '../../persistence/query/Query';
 import { useMutation, useQuery } from '@apollo/client';
 import { format } from 'date-fns';
+import Images from '../../../constants/Images';
 import { GQLMutation } from '../../persistence/mutation/Mutation';
+import RazorpayCheckout from 'react-native-razorpay';
 
 export default function BookingSummary(props) {
     const navigation = useNavigation();
 
     const bookingDetail = props.route.params.bookingDetails
-    const arenaid = props.route.params.bookingDetails.Activity.Activity.Id;
-    const activityid = props.route.params.bookingDetails.ArenaId;
-
+    const arenaId = bookingDetail.Activity.Activity.Id;
+    const activityId = bookingDetail.ArenaId;
     const [needacoach, setacoach] = useState(bookingDetail.Needacoach)
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     const [dataSource, setDataSource] = useState([]);
     useEffect(() => {
@@ -33,41 +35,122 @@ export default function BookingSummary(props) {
     // GET CUSTOMER USER DETAILS
     const { data: customerDetailsData, error: CustomerDetailsError } = useQuery(GQLQuery.GET_CUSTOMER_USER_DETAILS);
     const customerUserDetails = customerDetailsData && customerDetailsData.CustomerUserQuery && customerDetailsData.CustomerUserQuery.GetCustomerUserDetails;
-    const name = customerUserDetails.FirstName;
+
 
     // GET BOOKING CHARGES BY ARENA ID OR ACTIVITY ID
     const { data: BookingChargesData, error: BookingChargesError } = useQuery(GQLQuery.GET_BOOKING_CHARGES_BY_ACTIVITYID_OR_ARENAID, {
         variables: {
-            ArenaId: arenaid,
-            ActivityId: activityid,
+            ArenaId: bookingDetail.Activity.Activity.Id,
+            ActivityId: bookingDetail.ArenaId,
         },
     });
     const getBookingCharges = BookingChargesData && BookingChargesData.ActivityArenaChargesQuery && BookingChargesData.ActivityArenaChargesQuery.GetActivityArenaCharges;
-   
+    const arenaActivityId = getBookingCharges && getBookingCharges[0].Id;
+
 
     // CREATE BOOKING
     const [addBooking, { data: bookingResponse, error: bookingError, loading }] = useMutation(GQLMutation.CREATE_BOOKING);
 
     const submitBooking = () => {
+        console.log('HJHjsh')
         addBooking({
             variables: {
-                ArenaId: arenaid,
-                ActivityArenaId: activityid,
-                BookingDateTime: new Date().toISOString(),
+                ArenaId: arenaId,
+                ActivityArenaId: arenaActivityId,
+                BookingDateTime: bookingDetail.Bookingdate.toISOString(),
                 NeedCoach: needacoach,
             }
         });
-        if (bookingResponse != null) {
-            navigation.navigate('BookingComplete', { "Name": name })
-        }
-        else {
-            console.log('booking failed')
-        }
+
+    }
+
+
+    const [startPaymentMutation, { data: paymentResponse, error: paymentError }] = useMutation(GQLMutation.START_PAYMENT);
+
+ 
+
+    const [completePaymentMutation, { data: completResponse, error: completeError }] = useMutation(GQLMutation.COMPLETE_PAYMENT);
+    if (bookingResponse != null) {
+        console.log(bookingResponse && bookingResponse.BookingMutation && bookingResponse.BookingMutation.CreateBooking)
+        const NewBooking = bookingResponse && bookingResponse.BookingMutation && bookingResponse.BookingMutation.CreateBooking;
+        Alert.alert(
+            '',
+            'Pay Now',
+            [
+                { text: 'Cancel', onPress: () => console.log('Cancel Pressed!') },
+                {
+                    text: 'Pay', onPress: () => {
+                        startPaymentMutation({
+                            variables: {
+                                BookingId: NewBooking.Id,
+                            }
+                        });
+                        console.log('Cancel Presssssed!')
+                    }
+                },
+            ],
+            { cancelable: false }
+        )
+    }
+
+
+    console.log(paymentResponse)
+    console.log('paymentError')
+    console.log(paymentError)
+    console.log('paymentError')
+
+
+    if (paymentResponse != null) {
+        console.log(paymentResponse && paymentResponse.BookingMutation && paymentResponse.BookingMutation.StartBookingPayment)
+        const CompletePaymentStatus = paymentResponse && paymentResponse.BookingMutation && paymentResponse.BookingMutation.StartBookingPayment;
+        payBookingCharges(CompletePaymentStatus.RazorpayOrderId);
     }
 
     function getTotalAmountWithGST(total, gst) {
         return (total * gst / 100) + total
     }
+
+
+    function payBookingCharges(id) {
+        var options = {
+            description: 'Credits towards consultation',
+            image: 'https://i.imgur.com/3g7nmJC.png',
+            currency: 'INR',
+            key: 'rzp_test_Y9bTZYEbWEjHlK',
+            amount: '5000',
+            name: 'Acme Corp',
+            order_id: id,//Replace this with an order_id created using Orders API.
+            prefill: {
+                email: 'gaurav.kumar@example.com',
+                contact: '9191919191',
+                name: 'Gaurav Kumar'
+            },
+            theme: { color: '#53a20e' }
+        }
+        RazorpayCheckout.open(options).then((data) => {
+            // handle success
+            console.log(data)
+
+            completePaymentMutation({
+                variables: {
+                    RazorpayOrderId: data.razorpay_order_id,
+                    RazorpayPaymentId: data.razorpay_payment_id,
+                    RazorpaySignature: data.razorpay_signature,
+                }
+            });
+
+           // alert(`Success: ${data.razorpay_payment_id}`);
+        }).catch((error) => {
+            console.log(error)
+            // handle failure
+            alert(`Error: ${error} | ${error.description}`);
+        });
+
+
+    }
+
+    console.log(completResponse)
+    console.log(completeError)
 
     return (
         <View style={styles.container}>
@@ -193,10 +276,42 @@ export default function BookingSummary(props) {
                 </View>
             </ScrollView>
             <View style={styles.buttonContainer}>
-                <CommonButton onPress={submitBooking} children="Book Now" />
+                <CommonButton onPress={submitBooking} children="Pay Now" />
             </View>
-        </View>
+            {showSuccessModal && (
+                <Modal
+                    animationType="fade"
+                    transparent={true}
+                    showModal={showSuccessModal}
+                    backgroundColor="black"
+                    onRequestClose={() => setShowSuccessModal(false)}
+                    statusBarTranslucent
+                >
+                    <View style={styles.modalContainer}>
+                        <View style={styles.modalBody}>
+                            <View>
+                                <Image source={Images.success} style={styles.modalImage} />
+                            </View>
+                            <View style={{ paddingVertical: 20 }}>
+                                <Text style={styles.successText}>
+                                    Success!
+                                </Text>
+                            </View>
+                            <View>
+                                <Text style={styles.successSubText}>
+                                    Your booking has been Completed
+                                </Text>
+                            </View>
+                            <View style={{ width: 100 }}>
+                                <CommonButton onPress={() => navigation.navigate('Home')} children="OK" />
+                            </View>
 
+                        </View>
+
+                    </View>
+                </Modal>
+            )}
+        </View>
     );
 }
 
@@ -264,5 +379,35 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: COLORS.background
+    },
+    successText: {
+        color: COLORS.white,
+        fontFamily: FONTS.satoshi900,
+        fontSize: SIZES.largeTitle,
+    },
+    successSubText: {
+        color: COLORS.white,
+        fontFamily: FONTS.satoshi500,
+        fontSize: SIZES.h2,
+    },
+    modalBody: {
+        backgroundColor: COLORS.background,
+        alignItems: 'center',
+        paddingHorizontal: 26,
+        paddingVertical: 50,
+        borderRadius: 15,
+        justifyContent: 'space-between',
+        elevation: 5
+    },
+    modalContainer: {
+        backgroundColor: COLORS.modalBackground,
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    modalImage: {
+        width: 100,
+        height: 100,
+        resizeMode: 'contain',
     },
 });
