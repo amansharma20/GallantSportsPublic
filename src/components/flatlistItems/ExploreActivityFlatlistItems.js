@@ -18,28 +18,28 @@ const ITEM_WIDTH = SLIDER_WIDTH;
 const ExploreActivityFlatlistItems = (props) => {
     const arenaList = props.arenas
     const navigation = useNavigation();
-   
+
     return (
         <TouchableOpacity onPress={() => navigation.navigate('ArenaDetailsScreen',
-         {arenaDetails: arenaList}
-         )}>
+            { arenaDetails: arenaList }
+        )}>
             <View>
                 <View>
                     <Image source={{ uri: applicationProperties.imageUrl + arenaList.item.Arena.ArenaImageStoragePath }} style={{ width: '100%', height: 159 }} />
                 </View>
             </View>
             <View style={styles.arenaNameContainer}>
-                <View>
+                <View style={{ width: '80%' }}>
                     <Text style={styles.headerText}>
                         {arenaList.item.Arena.Name}
                     </Text>
                     <Text style={styles.subText}>
-                    {arenaList.item.Activity.Name}
+                        {arenaList.item.Activity.Name}
                     </Text>
                 </View>
                 <View style={styles.ratingContainer}>
                     <Text style={styles.ratingText}>
-                    {arenaList.item.Arena.Rating}
+                        {arenaList.item.Arena.Rating}
                     </Text>
                     <Image source={images.star} style={styles.starSize} />
                 </View>

@@ -80,5 +80,20 @@ export const GQLMutation = {
             )
           }
         }`,
-        
+
+  PROFILE_UPDATE: gql`
+        mutation($FirstName: String!, $LastName: String!, $DateOfBirth: DateTime, $Email: String!, $PhoneNumber: String!,$Gender: String!) {
+          ProfileDetailsMutation {
+            ProfileDetail(
+              FirstName: $FirstName,
+              LastName:  $LastName,
+              DateOfBirth: $DateOfBirth,
+              Email: $Email,
+              PhoneNumber: $PhoneNumber,
+              Gender: $Gender,
+            )
+          }
+        }
+        `
+
 };

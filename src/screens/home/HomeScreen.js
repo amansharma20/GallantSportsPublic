@@ -20,6 +20,9 @@ import { useQuery } from '@apollo/client';
 import GetLocation from 'react-native-get-location'
 import LinearGradient from 'react-native-linear-gradient';
 import { Responsive } from '../../../constants/Layout';
+import Geocoder from 'react-native-geocoding';
+
+Geocoder.init("AIzaSyCnZBgYngvXzzdd5wTPBhluSBjOP2w7n4M"); // use a valid API key
 
 export default function HomeScreen(props) {
     const navigation = useNavigation();
@@ -42,9 +45,12 @@ export default function HomeScreen(props) {
 
     // const [latlong, setLatLong] = useState(null);
     const [userCurrentLocation, setCurrentLocation] = useState();
+    const [userCurrentAddress, setCurrentAddress] = useState('');
 
     const detectLocation = (data) => {
         setCurrentLocation(data)
+        setCurrentAddress(description)
+        console.log(data)
     }
 
     useEffect(() => {
@@ -52,13 +58,18 @@ export default function HomeScreen(props) {
     }, []);
 
     const getOneTimeLocation = () => {
-
         GetLocation.getCurrentPosition({
             enableHighAccuracy: true,
             timeout: 15000,
         })
             .then(location => {
                 setCurrentLocation(location);
+
+                Geocoder.from(location.latitude, location.longitude).then(json => {
+                    var addressComponent = json.results[0].formatted_address;
+                    setCurrentAddress(addressComponent)
+                    // Alert.alert(this.state.addressComponent)
+                })
             })
             .catch(error => {
                 const { code, message } = error;
@@ -85,11 +96,11 @@ export default function HomeScreen(props) {
                     </TouchableOpacity>
                     <View>
                         <Text style={styles.locationHeaderText}>
-                            Sector 48
+                            {userCurrentAddress}
                         </Text>
-                        <Text style={styles.locationSubText}>
+                        {/* <Text style={styles.locationSubText}>
                             Gurugram
-                        </Text>
+                        </Text> */}
                     </View>
                 </View>
                 <View style={styles.headerTextContainer}>
@@ -194,7 +205,8 @@ const styles = StyleSheet.create({
     },
     locationHeaderText: {
         fontFamily: FONTS.satoshi700,
-        fontSize: 18,
+        fontSize: 14,
+        paddingRight:20,
         color: COLORS.white,
     },
     locationSubText: {

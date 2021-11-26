@@ -48,11 +48,6 @@ export default function BookingSummary(props) {
     const getBookingCharges = BookingChargesData && BookingChargesData.ActivityArenaChargesQuery && BookingChargesData.ActivityArenaChargesQuery.GetActivityArenaCharges;
     const arenaActivityId = getBookingCharges && getBookingCharges[0].Id;
 
-
-    console.log('getBookingCharges')
-    console.log(getBookingCharges)
-    console.log('getBookingCharges')
-
     // CREATE BOOKING
     const [addBooking, { data: bookingResponse, error: bookingError, loading }] = useMutation(GQLMutation.CREATE_BOOKING);
 
@@ -66,7 +61,6 @@ export default function BookingSummary(props) {
                 NeedCoach: needacoach,
             }
         });
-
     }
 
 

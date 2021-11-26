@@ -136,6 +136,7 @@
     <orderEntry type="library" name="Gradle: com.facebook.fresco:imagepipeline-okhttp3:2.5.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: org.webkit:android-jsc:r250230@aar" level="project" />
     <orderEntry type="module" module-name="GallantSports.react-native-pager-view" />
+    <orderEntry type="module" module-name="GallantSports.react-native-razorpay" />
     <orderEntry type="module" module-name="GallantSports.react-native-async-storage_async-storage" />
     <orderEntry type="module" module-name="GallantSports.react-native-community_clipboard" />
     <orderEntry type="module" module-name="GallantSports.lottie-react-native" />
@@ -144,7 +145,6 @@
     <orderEntry type="module" module-name="GallantSports.react-native-get-location" />
     <orderEntry type="module" module-name="GallantSports.react-native-keychain" />
     <orderEntry type="module" module-name="GallantSports.react-native-linear-gradient" />
-    <orderEntry type="module" module-name="GallantSports.react-native-razorpay" />
     <orderEntry type="module" module-name="GallantSports.react-native-safe-area-context" />
     <orderEntry type="module" module-name="GallantSports.react-native-screens" />
     <orderEntry type="module" module-name="GallantSports.react-native-splash-screen" />

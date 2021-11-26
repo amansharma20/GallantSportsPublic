@@ -24,7 +24,7 @@ import { useQuery } from '@apollo/client';
 
 export default function ArenaBookingScreen(props) {
   const navigation = useNavigation();
-  
+
   const activities = props.route.params.arenaDetails
   const ArenaId = activities.item.Arena.Id;
 
@@ -55,7 +55,7 @@ export default function ArenaBookingScreen(props) {
   };
 
   const [selectedActivity, setSelectedActivity] = useState(0);
-
+  
   const renderAvailableActivitiesItem = ({ item, index }) => (
     <TouchableWithoutFeedback onPress={() => setSelectedActivity(index)}>
       <View style={styles.activityContainer}>

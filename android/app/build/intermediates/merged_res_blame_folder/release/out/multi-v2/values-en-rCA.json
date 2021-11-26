@@ -21,6 +21,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\DEEP RAO\\.gradle\\caches\\transforms-3\\4130704f505bad95be22549651667249\\transformed\\jetified-play-services-wallet-18.1.3\\res\\values-en-rCA\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "206",
+                        "endColumns": "70",
+                        "endOffsets": "276"
+                    },
+                    "to": {
+                        "startLines": "43",
+                        "startColumns": "4",
+                        "startOffsets": "4390",
+                        "endColumns": "74",
+                        "endOffsets": "4460"
+                    }
+                },
+                {
                     "source": "C:\\Users\\DEEP RAO\\.gradle\\caches\\transforms-3\\a121337bc90910baa8c2f55d66692f42\\transformed\\biometric-1.1.0\\res\\values-en-rCA\\values-en-rCA.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13",

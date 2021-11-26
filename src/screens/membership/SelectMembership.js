@@ -7,61 +7,9 @@ import { COLORS, FONTS, icons, images, SIZES } from '../../../constants';
 import CommonButton from '../../components/CommonGradientButton';
 import Images from '../../../constants/Images';
 import { ScrollView } from 'react-native-gesture-handler';
+import { GQLQuery } from '../../persistence/query/Query';
+import { useQuery } from '@apollo/client';
 // import { ScreenHeight } from 'react-native-elements/dist/helpers';
-
-
-const THREEDAYS = [
-    {
-        id: "0",
-        months: "1 Month",
-        amount: '₹ 4,000',
-    },
-    {
-        id: "1",
-        months: "3 Month",
-        amount: '₹ 10,000',
-    },
-    {
-        id: "2",
-        months: "6 Month",
-        amount: '₹ 16,000',
-    },
-    {
-        id: "3",
-        months: "12 Month",
-        amount: '₹ 25,000',
-    },
-];
-
-const SIXDAYS = [
-    {
-        id: "4",
-        months: "1 Month",
-        amount: '₹ 7,000',
-    },
-    {
-        id: "5",
-        months: "3 Month",
-        amount: '₹ 17,500',
-    },
-    {
-        id: "6",
-        months: "6 Month",
-        amount: '₹ 28,000',
-    },
-    {
-        id: "8",
-        months: "12 Month",
-        amount: '₹ 42,000',
-    },
-];
-
-const Item = ({ item, onPress, backgroundColor, textColor }) => (
-    <TouchableOpacity onPress={onPress} style={[styles.threeDayItem, backgroundColor]}>
-        <Text style={[styles.monthsText, textColor]}>{item.months}</Text>
-        <Text style={[styles.amountText, textColor]}>{item.amount}</Text>
-    </TouchableOpacity>
-);
 
 export default function SelectMembership() {
     const navigation = useNavigation();
@@ -71,37 +19,68 @@ export default function SelectMembership() {
     const [modalVisible, setModalVisible] = useState(false);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-    const renderItem = ({ item }) => {
-        const backgroundColor = item.id === selectedIdForThreeDays ? "#DB3E6F" : COLORS.background;
-        const color = item.id === selectedIdForThreeDays ? 'white' : 'white';
+    const Item = ({ item, onPress, backgroundColor, textColor }) => (
+        
+        console.log('selectedIdForThreeDays'),
+        console.log(onPress),
+        console.log('selectedIdForThreeDays'),
+        <TouchableOpacity onPress={onPress} style={[styles.threeDayItem, backgroundColor]}>
+            <View>
+                <Text style={[styles.monthsText, textColor]}>{item.Duration}</Text>
+                <Text style={[styles.amountText, textColor]}>{item.Amount}</Text>
+            </View>
+        </TouchableOpacity>
+    );
 
-        return (
-            <Item
-                item={item}
-                onPress={() => setSelectedIdForThreeDays(item.id)}
-                backgroundColor={{ backgroundColor }}
-                textColor={{ color }}
-            />
-        );
+    // GET ALL MEMBERSHIP PLANS
+    const { data: MembershipPlanData, error: MembershipPlanError } = useQuery(GQLQuery.GET_ALL_MEMBERSHIP_PLAN);
+    const getAllMembershipPlans = MembershipPlanData && MembershipPlanData.MembershipPlanQuery && MembershipPlanData.MembershipPlanQuery.GetAllMembershipPlan;
+
+    const [selectedItem, setSelectedItem] = useState();
+
+    const renderItem = ({ item }) => {
+        const backgroundColor = item.Id === selectedIdForThreeDays ? "#DB3E6F" : COLORS.background;
+        const color = item.Id === selectedIdForThreeDays ? 'white' : 'white';
+
+        if (item.Type == 'ThreeDaysWeek') {
+            return (
+                <Item
+                    item={item}
+                    onPress={() => {setSelectedIdForThreeDays(item.Id)
+                        setSelectedItem(item)
+                    }}
+                    backgroundColor={{ backgroundColor }}
+                    textColor={{ color }}
+                />
+            );
+        }
     };
 
-    const renderItem2 = ({ item }) => {
-        const backgroundColor = item.id === selectedIdForSixDays ? "#DB3E6F" : COLORS.background;
-        const color = item.id === selectedIdForSixDays ? 'white' : 'white';
 
-        return (
-            <Item
-                item={item}
-                onPress={() => setSelectedIdForSixDays(item.id)}
-                backgroundColor={{ backgroundColor }}
-                textColor={{ color }}
-            />
-        );
+
+    const renderItem2 = ({ item }) => {
+        const backgroundColor = item.Id === selectedIdForThreeDays ? "#DB3E6F" : COLORS.background;
+        const color = item.Id === selectedIdForThreeDays ? 'white' : 'white';
+
+        if (item.Type == 'SixDaysWeek') {
+            return (
+                <Item
+                    item={item}
+                    onPress={() => {
+                        
+                        setSelectedItem(item)
+                        
+                        setSelectedIdForThreeDays(item.Id)}}
+                    backgroundColor={{ backgroundColor }}
+                    textColor={{ color }}
+                />
+            );
+        }
     };
     const screenHeight = Dimensions.get('screen').height;
 
     return (
-        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{height: screenHeight}} style={styles.container}>
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ height: screenHeight + 200 }} style={styles.container}>
             <StatusBar hidden={false} backgroundColor={COLORS.background} barStyle={'light-content'} />
             <View style={styles.headerContainer}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -119,17 +98,17 @@ export default function SelectMembership() {
                 Select your membership
             </Text>
             {/*  */}
-            <View>
+            <View style={{ backgroundColor: 'transparent' }}>
                 <Text style={styles.subTitleText}>
                     3 Days a week (1 hr slot)
                 </Text>
                 <FlatList
-                    data={THREEDAYS}
+                    data={getAllMembershipPlans}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.id}
                     extraData={selectedIdForThreeDays}
                     numColumns={2}
-                    contentContainerStyle={{ marginTop: 10 }}
+                    // contentContainerStyle={{ marginTop: 10 }}
                     columnWrapperStyle={{ justifyContent: 'space-between', marginVertical: 10 }}
                 />
             </View>
@@ -140,10 +119,10 @@ export default function SelectMembership() {
                     6 Days a week (1 hr slot)
                 </Text>
                 <FlatList
-                    data={SIXDAYS}
+                    data={getAllMembershipPlans}
                     renderItem={renderItem2}
                     keyExtractor={(item) => item.id}
-                    extraData={selectedIdForSixDays}
+                    extraData={selectedIdForThreeDays}
                     numColumns={2}
                     contentContainerStyle={{ marginTop: 10 }}
                     columnWrapperStyle={{ justifyContent: 'space-between', marginVertical: 10 }}
@@ -154,8 +133,7 @@ export default function SelectMembership() {
                 animationType="slide"
                 transparent={true}
                 statusBarTranslucent={true}
-                visible={modalVisible}
-            >
+                visible={modalVisible}>
                 <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={styles.crossContainer}>
                     <Image source={icons.modalCross} style={{ width: 45, height: 45, resizeMode: 'contain' }} />
                 </TouchableOpacity>

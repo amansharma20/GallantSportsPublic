@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Image, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, FONTS, icons, SIZES } from '../../../constants';
@@ -23,6 +23,9 @@ export default function SearchLocation() {
     const search = data => {
         console.log('search clicked');
     };
+    
+    const [userCurrentLocation, setCurrentLocation] = useState();
+
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
@@ -45,58 +48,45 @@ export default function SearchLocation() {
                     <Image source={icons.searchIcon} style={styles.searchIcon} />
                 </View>
                 <View style={{ width: '100%' }}>
-                    <Formik
-                        validationSchema={schema}
-                        initialValues={{
-                            search: '',
-                        }}
-                        onSubmit={values => search(values)}
-                    >
-                        {({
-                            handleChange,
-                            handleBlur,
-                            handleSubmit,
-                            values,
-                            errors,
-                            touched,
-                        }) => (
-                            <>
-                                <GooglePlacesAutocomplete
-                                    placeholder="Search your address"
-                                    fetchDetails={true}
-                                    query={{
-                                        key: GOOGLE_PLACES_API_KEY,
-                                        language: 'en', // language of the results
-                                    }}
-                                    onPress={(data, details = null) => {
-                                        console.log(data)
-                                    }}
-                                    styles={{
-                                        textInputContainer: {
-                                            paddingTop: 20,
-                                            backgroundColor: 'transparent',
-                                        },
-                                        poweredContainer: {
-                                            display: 'none'
-                                        },
-                                        row:{
-                                            backgroundColor:'#0E142E'
-                                        },
-                                        description: { fontSize: 12, color:'white' },
-                                        textInput: {
-                                            backgroundColor: '#EAEAEA',
-                                            color: '#282828',
-                                            height: 45,
-                                            borderRadius: 5,
-                                            paddingVertical: 5,
-                                            paddingHorizontal: 10,
-                                            fontSize: 14,
-                                            flex: 1,
-                                        },
-                                    }}
-                                />
 
-                                {/* <TextInput
+                    <GooglePlacesAutocomplete
+                        placeholder="Search your address"
+                        fetchDetails={true}
+                        query={{
+                            key: GOOGLE_PLACES_API_KEY,
+                            language: 'en', // language of the results
+                        }}
+                        onPress={(data, details = null) => {
+                            console.log(data)
+                            setCurrentLocation(data);
+                            navigation.navigate('Home',(data))
+                        }}
+                        styles={{
+                            textInputContainer: {
+                                paddingTop: 20,
+                                backgroundColor: 'transparent',
+                            },
+                            poweredContainer: {
+                                display: 'none'
+                            },
+                            row: {
+                                backgroundColor: '#0E142E'
+                            },
+                            description: { fontSize: 12, color: 'white' },
+                            textInput: {
+                                backgroundColor: '#EAEAEA',
+                                color: '#282828',
+                                height: 45,
+                                borderRadius: 5,
+                                paddingVertical: 5,
+                                paddingHorizontal: 10,
+                                fontSize: 14,
+                                flex: 1,
+                            },
+                        }}
+                    />
+
+                    {/* <TextInput
                                     name="search"
                                     style={styles.searchInput}
                                     onChangeText={handleChange('search')}
@@ -108,9 +98,6 @@ export default function SearchLocation() {
                                     maxLength={10}
                                     returnKeyType="search"
                                 /> */}
-                            </>
-                        )}
-                    </Formik>
                     {/* <TouchableOpacity style={{ flexDirection: 'row', marginTop: 50, alignItems: 'center' }}>
                         <Image source={icons.useCurrentLocation} style={styles.searchIcon} />
                         <Text style={{ marginLeft: 15, color: '#DB3E6F', fontSize: 18, fontFamily: FONTS.satoshi700 }}>

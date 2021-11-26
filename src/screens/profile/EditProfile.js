@@ -18,56 +18,48 @@ import * as yup from 'yup';
 import CommonButton from '../../components/CommonGradientButton';
 import { icons, images } from '../../../constants';
 import CommonLoading from '../../components/CommonLoading';
-import { AuthActions } from '../../persistence/actions/AuthActions';
 import { useDispatch } from 'react-redux';
 import Icons from '../../../constants/Icons';
-import { Icon } from 'react-native-elements/dist/icons/Icon';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import BouncyCheckboxGroup, {
-    ICheckboxButton,
-} from "react-native-bouncy-checkbox-group";
+import BouncyCheckboxGroup, { ICheckboxButton } from "react-native-bouncy-checkbox-group";
+import DatePicker from 'react-native-date-picker'
+import { format } from 'date-fns';
+import { useMutation, useQuery } from '@apollo/client';
+import { GQLMutation } from '../../persistence/mutation/Mutation';
 
 export default function EditProfile() {
     const navigation = useNavigation();
     const dispatch = useDispatch();
 
+    const [showModal, setShowModal] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
+    const [date, setDate] = useState(new Date());
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+    const [firstName, setFirstName] = useState(null)
+    const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+
     const schema = yup.object().shape({
-        firstName: yup.string().required('First Name' + ' ' + 'is required'),
-        lastName: yup.string().required('Last Name' + ' ' + 'is required'),
-        email: yup.string().required('Email' + ' ' + 'is required'),
-        phone: yup.number().required('Date of Birth' + ' ' + 'is required'),
+        firstName: yup
+            .string()
+            .required('First Name' + ' ' + 'is required'),
+        lastName: yup
+            .string()
+            .required('Last Name' + ' ' + 'is required'),
+        email: yup
+            .string()
+            .required('Email' + ' ' + 'is required')
+            .matches(emailRegExp, 'Enter a valid email id.'),
         phone: yup
             .string()
             .required('This field is' + ' ' + 'required.')
             .matches(/(\d){10}\b/, 'Enter a valid phone number'),
     });
 
-    const signup = data => {
-        CommonLoading.show();
-        const editProfileData = {
-            FirstName: data.firstName,
-            LastName: data.lastName,
-            Email: data.email,
-            MobileNumber: data.phone,
-        };
-        console.log(editProfileData);
-        // dispatch(
-        //     AuthActions.signup('Account/RegisterCustomerStart', editProfileData),
-        // ).then((response) => {
-        //     CommonLoading.hide();
-        //     if (response && response.success === false) { console.log('uh') } else {
-        //         setShowSuccessModal(true);
-        //         setTimeout(function () {
-        //             navigation.navigate('OtpScreen', {
-        //                 editProfileData,
-        //             });
-        //             setShowSuccessModal(false)
-        //         }, 1000);
-        //     }
-        // });
+    const formatedDate = (date) => {
+        var formattedDate = format(date, 'dd MMMM yyyy');
+        return formattedDate;
     };
-
-    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     const stylesCheckbox = {
         container: {
@@ -77,6 +69,25 @@ export default function EditProfile() {
         textStyle: { color: 'white', fontFamily: FONTS.satoshi500, textDecorationLine: "none" },
         iconStyle: { height: 12, width: 12 },
     };
+
+    // PROFILE UPDATE MUTATION
+    const [updateProfile, { data: profileUpdateResponse, error: profileUpdateError, loading }] = useMutation(GQLMutation.PROFILE_UPDATE);
+
+    const submitProfile = () => {
+        updateProfile({
+            variables: {
+                FirstName: firstName,
+                LastName: lastName,
+                DateOfBirth: date.toISOString(),
+                Email: email,
+                PhoneNumber: phone,
+                Gender: selectedItem.text,
+            }
+
+        });
+        console.log(FirstName)
+    }
+
 
     const staticData =
         [
@@ -106,27 +117,21 @@ export default function EditProfile() {
 
 
     return (
-        <ScrollView
-            contentContainerStyle={{ paddingBottom: 40, flex: 1, justifyContent: 'space-between', backgroundColor: COLORS.background }}
-            showsVerticalScrollIndicator={false}
-        // style={styles.container}
-        >
-            <StatusBar hidden={false} backgroundColor={COLORS.background} barStyle={'light-content'} />
 
-            <View style={{ paddingHorizontal: 16, paddingVertical: 20, paddingBottom:0 }}>
+        <ScrollView
+            contentContainerStyle={{ paddingBottom: 40, backgroundColor: COLORS.background }}
+            showsVerticalScrollIndicator={false}>
+            <StatusBar hidden={false} backgroundColor={COLORS.background} barStyle={'light-content'} />
+            <View style={{ paddingHorizontal: 16, paddingVertical: 20, paddingBottom: 0 }}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Image source={Icons.backIcon} style={{ width: 25, height: 25, resizeMode: 'contain' }} />
                 </TouchableOpacity>
             </View>
-
             <View style={styles.body}>
-
                 <View style={{ alignItems: 'center', paddingTop: SIZES.padding2 }}>
                     <Image source={Icons.pfp} style={styles.profilePicture} />
                 </View>
-
                 <View style={styles.loginContainer}>
-
                     <Formik
                         validationSchema={schema}
                         initialValues={{
@@ -135,8 +140,7 @@ export default function EditProfile() {
                             email: '',
                             phone: '',
                         }}
-                        onSubmit={values => signup(values)}
-                    >
+                        onSubmit={values => submitProfile(values)}>
                         {({
                             handleChange,
                             handleBlur,
@@ -147,6 +151,8 @@ export default function EditProfile() {
                         }) => (
                             <>
                                 <View style={{ paddingHorizontal: SIZES.paddingExtraLarge }}>
+
+                                    {/* FIRST NAME INPUT FIELD */}
                                     <View>
                                         <Text style={styles.textInputTitleFirstName}>
                                             First Name
@@ -172,6 +178,8 @@ export default function EditProfile() {
                                         </View>
                                     )}
 
+
+                                    {/* LAST NAME INPUT FIELD */}
                                     <View style={styles.textInputTitleContainer}>
                                         <Text style={styles.textInputTitle}>
                                             Last Name
@@ -197,8 +205,48 @@ export default function EditProfile() {
                                         </View>
                                     )}
 
+
+                                    {/* DATE OF BIRTH INPUT FIELD */}
                                     <View style={styles.textInputTitleContainer}>
                                         <Text style={styles.textInputTitle}>
+                                            Date of Birth
+                                        </Text>
+                                    </View>
+                                    <TouchableOpacity onPress={() => setShowModal(true)}>
+                                        <View style={styles.dobContainer}>
+                                            <Text style={styles.dobText}>{formatedDate(date)}</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                    {showModal && (
+                                        <Modal
+                                            animationType="fade"
+                                            transparent={true}
+                                            showModal={showModal}
+                                            backgroundColor="white"
+                                            onRequestClose={() => setShowModal(false)}>
+                                            <DatePicker
+                                                date={date}
+                                                onDateChange={setDate}
+                                                mode="date"
+                                                maximumDate={new Date()}
+                                                style={styles.datePicker} />
+                                            <View style={styles.dateSubmitContainer}>
+                                                <TouchableOpacity
+                                                    onPress={() => setShowModal(false)}>
+                                                    <Text style={styles.submitDateButtonText}>Done</Text>
+                                                </TouchableOpacity>
+                                            </View>
+                                        </Modal>
+                                    )}
+                                    {errors.dateOfBirth && touched.dateOfBirth && (
+                                        <View style={styles.errorContainer}>
+                                            <Text style={[styles.error, { marginTop: -15 }]}>{errors.dateOfBirth}</Text>
+                                        </View>
+                                    )}
+
+                                    {/* EMAIL INPUT FIELD */}
+                                    <View style={[styles.textInputTitleContainer, { paddingTop: 0 }]}>
+                                        <Text style={[styles.textInputTitle, { paddingTop: 5 }]}>
                                             Email
                                         </Text>
                                     </View>
@@ -219,9 +267,10 @@ export default function EditProfile() {
                                         <View style={styles.errorContainer}>
                                             <Text style={styles.error}>{errors.email}</Text>
                                         </View>
-
                                     )}
 
+
+                                    {/* PHONE NUMBER INPUT FIELD */}
                                     <View style={styles.textInputTitleContainer}>
                                         <Text style={styles.textInputTitle}>
                                             Phone Number
@@ -248,26 +297,21 @@ export default function EditProfile() {
                                         </View>
                                     )}
                                 </View>
-
                                 <View style={{ alignItems: 'center', marginTop: 60 }}>
                                     <BouncyCheckboxGroup
                                         data={staticData}
                                         onChange={(selectedItem: ICheckboxButton) => {
+                                            setSelectedItem(selectedItem)
                                             console.log("SelectedItem: ", JSON.stringify(selectedItem));
                                         }}
                                         style={{ width: '100%', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 30 }}
                                     />
                                 </View>
-
-
-
-                                <View style={{ marginTop: 60, paddingHorizontal: 34 }}>
+                                <View style={{ marginTop: 40, paddingHorizontal: 34 }}>
                                     <CommonButton
                                         onPress={handleSubmit}
                                         children="Save" />
                                 </View>
-
-
                             </>
                         )}
                     </Formik>
@@ -280,8 +324,7 @@ export default function EditProfile() {
                     showModal={showSuccessModal}
                     backgroundColor="black"
                     onRequestClose={() => setShowSuccessModal(false)}
-                    statusBarTranslucent
-                >
+                    statusBarTranslucent>
                     <View style={styles.modalContainer}>
                         <View style={styles.modalBody}>
                             <View>
@@ -368,6 +411,7 @@ const styles = StyleSheet.create({
         width: '100%',
         borderBottomWidth: 1,
         borderBottomColor: COLORS.white,
+        paddingBottom: 0,
     },
 
     checkMarkContainer: {
@@ -436,7 +480,7 @@ const styles = StyleSheet.create({
     modalBody: {
         backgroundColor: COLORS.background,
         alignItems: 'center',
-        paddingHorizontal: 26,
+        paddingHorizontal: 25,
         paddingVertical: 50,
         borderRadius: 15,
         justifyContent: 'space-between',
@@ -454,5 +498,47 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         resizeMode: 'contain',
+    },
+    dobContainer: {
+        backgroundColor: 'transparent',
+        height: 45,
+        borderBottomColor: 'white',
+        borderBottomWidth: 1,
+        borderColor: '#444B65',
+        justifyContent: 'center',
+    },
+
+    dobText: {
+        marginLeft: 0,
+        fontSize: 16,
+        color: '#fff',
+    },
+
+    datePicker: {
+        backgroundColor: '#EAEAEA',
+        marginTop: 230,
+        alignSelf: 'center',
+        marginHorizontal: 10,
+        width: 320,
+        height: 260,
+        display: 'flex',
+    },
+
+    dateSubmitContainer: {
+        alignItems: 'center',
+        marginTop: 10,
+        justifyContent: 'center'
+    },
+
+    submitDateButtonText: {
+        fontSize: 20,
+        backgroundColor: 'white',
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        borderRadius: 10,
+        margin: 10,
+        height: 40,
+        width: 100,
+        color: 'black',
     },
 });

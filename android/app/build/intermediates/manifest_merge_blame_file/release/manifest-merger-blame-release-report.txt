@@ -5,7 +5,7 @@
 5    android:versionName="1.0" >
 6
 7    <uses-sdk
-8        android:minSdkVersion="21"
+8        android:minSdkVersion="27"
 8-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="30" />
 9-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml
@@ -13,52 +13,157 @@
 11    <uses-permission android:name="android.permission.INTERNET" />
 11-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:4:5-67
 11-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:4:22-64
-12    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
-12-->[:react-native-keychain] D:\ReactProjects\Gallant\GallantSports\node_modules\react-native-keychain\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-72
-12-->[:react-native-keychain] D:\ReactProjects\Gallant\GallantSports\node_modules\react-native-keychain\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:9:22-69
-13    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
-13-->[:react-native-keychain] D:\ReactProjects\Gallant\GallantSports\node_modules\react-native-keychain\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:10:5-74
-13-->[:react-native-keychain] D:\ReactProjects\Gallant\GallantSports\node_modules\react-native-keychain\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:10:22-71
+12    <!-- Define ACCESS_FINE_LOCATION if you will use enableHighAccuracy=true -->
+13    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+13-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:6:5-78
+13-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:6:22-76
 14
-15    <application
-15-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:6:5-24:19
-16        android:name="com.gallantsports.MainApplication"
-16-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:7:7-38
-17        android:allowBackup="false"
-17-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:11:7-34
-18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-18-->[androidx.core:core:1.6.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\d9b71328e8ba86dc125344804cb6eb44\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
-19        android:icon="@mipmap/ic_launcher"
-19-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:9:7-41
-20        android:label="@string/app_name"
-20-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:8:7-39
-21        android:roundIcon="@mipmap/ic_launcher_round"
-21-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:10:7-52
-22        android:theme="@style/AppTheme" >
-22-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:12:7-38
-23        <activity
-23-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:13:7-23:18
-24            android:name="com.gallantsports.MainActivity"
-24-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:14:9-37
-25            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-25-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:16:9-86
-26            android:label="@string/app_name"
-26-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:15:9-41
-27            android:launchMode="singleTask"
-27-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:17:9-40
-28            android:windowSoftInputMode="adjustResize" >
-28-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:18:9-51
-29            <intent-filter>
-29-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:19:9-22:25
-30                <action android:name="android.intent.action.MAIN" />
-30-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:20:13-65
-30-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:20:21-62
-31
-32                <category android:name="android.intent.category.LAUNCHER" />
-32-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:21:13-73
-32-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:21:23-70
-33            </intent-filter>
-34        </activity>
-35    </application>
-36
-37</manifest>
+15    <!-- Define ACCESS_COARSE_LOCATION if you will use enableHighAccuracy=false -->
+16    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+16-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:9:5-80
+16-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:9:22-78
+17    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+17-->[:react-native-keychain] D:\ReactProjects\Gallant\GallantSports\node_modules\react-native-keychain\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-72
+17-->[:react-native-keychain] D:\ReactProjects\Gallant\GallantSports\node_modules\react-native-keychain\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:9:22-69
+18    <uses-permission android:name="android.permission.USE_FINGERPRINT" /> <!-- Include required permissions for Google Maps API to run. -->
+18-->[:react-native-keychain] D:\ReactProjects\Gallant\GallantSports\node_modules\react-native-keychain\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:10:5-74
+18-->[:react-native-keychain] D:\ReactProjects\Gallant\GallantSports\node_modules\react-native-keychain\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:10:22-71
+19    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+19-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\a200cf77db3a5c88e1dfdbfa31b5050b\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
+19-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\a200cf77db3a5c88e1dfdbfa31b5050b\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:22-76
+20
+21    <uses-feature
+21-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\a200cf77db3a5c88e1dfdbfa31b5050b\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35
+22        android:glEsVersion="0x00020000"
+22-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\a200cf77db3a5c88e1dfdbfa31b5050b\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:27:9-41
+23        android:required="true" />
+23-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\a200cf77db3a5c88e1dfdbfa31b5050b\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
+24
+25    <application
+25-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:11:5-29:19
+26        android:name="com.gallantsports.MainApplication"
+26-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:12:7-38
+27        android:allowBackup="false"
+27-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:16:7-34
+28        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+28-->[androidx.core:core:1.6.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\d9b71328e8ba86dc125344804cb6eb44\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
+29        android:extractNativeLibs="false"
+30        android:icon="@mipmap/ic_launcher"
+30-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:14:7-41
+31        android:label="@string/app_name"
+31-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:13:7-39
+32        android:roundIcon="@mipmap/ic_launcher_round"
+32-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:15:7-52
+33        android:theme="@style/AppTheme" >
+33-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:17:7-38
+34        <activity
+34-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:18:7-28:18
+35            android:name="com.gallantsports.MainActivity"
+35-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:19:9-37
+36            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+36-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:21:9-86
+37            android:label="@string/app_name"
+37-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:20:9-41
+38            android:launchMode="singleTask"
+38-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:22:9-40
+39            android:windowSoftInputMode="adjustResize" >
+39-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:23:9-51
+40            <intent-filter>
+40-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:24:9-27:25
+41                <action android:name="android.intent.action.MAIN" />
+41-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:25:13-65
+41-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:25:21-62
+42
+43                <category android:name="android.intent.category.LAUNCHER" />
+43-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:26:13-73
+43-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:26:23-70
+44            </intent-filter>
+45        </activity>
+46        <activity
+46-->[:react-native-razorpay] D:\ReactProjects\Gallant\GallantSports\node_modules\react-native-razorpay\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:10:9-12:86
+47            android:name="com.razorpay.CheckoutActivity"
+47-->[:react-native-razorpay] D:\ReactProjects\Gallant\GallantSports\node_modules\react-native-razorpay\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:11:13-57
+48            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+48-->[:react-native-razorpay] D:\ReactProjects\Gallant\GallantSports\node_modules\react-native-razorpay\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:12:13-83
+49            android:theme="@style/CheckoutTheme" >
+49-->[com.razorpay:checkout:1.6.15] C:\Users\DEEP RAO\.gradle\caches\transforms-3\4b849d2dc274b56956f61d31fb18b68e\transformed\jetified-checkout-1.6.15\AndroidManifest.xml:21:13-49
+50            <intent-filter>
+50-->[com.razorpay:checkout:1.6.15] C:\Users\DEEP RAO\.gradle\caches\transforms-3\4b849d2dc274b56956f61d31fb18b68e\transformed\jetified-checkout-1.6.15\AndroidManifest.xml:22:13-28:29
+51                <action android:name="android.intent.action.MAIN" />
+51-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:25:13-65
+51-->D:\ReactProjects\Gallant\GallantSports\android\app\src\main\AndroidManifest.xml:25:21-62
+52
+53                <data
+53-->[com.razorpay:checkout:1.6.15] C:\Users\DEEP RAO\.gradle\caches\transforms-3\4b849d2dc274b56956f61d31fb18b68e\transformed\jetified-checkout-1.6.15\AndroidManifest.xml:25:17-27:47
+54                    android:host="rzp.io"
+54-->[com.razorpay:checkout:1.6.15] C:\Users\DEEP RAO\.gradle\caches\transforms-3\4b849d2dc274b56956f61d31fb18b68e\transformed\jetified-checkout-1.6.15\AndroidManifest.xml:26:21-42
+55                    android:scheme="io.rzp" />
+55-->[com.razorpay:checkout:1.6.15] C:\Users\DEEP RAO\.gradle\caches\transforms-3\4b849d2dc274b56956f61d31fb18b68e\transformed\jetified-checkout-1.6.15\AndroidManifest.xml:27:21-44
+56            </intent-filter>
+57        </activity>
+58
+59        <receiver android:name="com.razorpay.RzpTokenReceiver" >
+59-->[com.razorpay:checkout:1.6.15] C:\Users\DEEP RAO\.gradle\caches\transforms-3\4b849d2dc274b56956f61d31fb18b68e\transformed\jetified-checkout-1.6.15\AndroidManifest.xml:12:9-16:20
+59-->[com.razorpay:checkout:1.6.15] C:\Users\DEEP RAO\.gradle\caches\transforms-3\4b849d2dc274b56956f61d31fb18b68e\transformed\jetified-checkout-1.6.15\AndroidManifest.xml:12:19-63
+60            <intent-filter>
+60-->[com.razorpay:checkout:1.6.15] C:\Users\DEEP RAO\.gradle\caches\transforms-3\4b849d2dc274b56956f61d31fb18b68e\transformed\jetified-checkout-1.6.15\AndroidManifest.xml:13:13-15:29
+61                <action android:name="rzp.device_token.share" />
+61-->[com.razorpay:checkout:1.6.15] C:\Users\DEEP RAO\.gradle\caches\transforms-3\4b849d2dc274b56956f61d31fb18b68e\transformed\jetified-checkout-1.6.15\AndroidManifest.xml:14:17-65
+61-->[com.razorpay:checkout:1.6.15] C:\Users\DEEP RAO\.gradle\caches\transforms-3\4b849d2dc274b56956f61d31fb18b68e\transformed\jetified-checkout-1.6.15\AndroidManifest.xml:14:25-62
+62            </intent-filter>
+63        </receiver>
+64
+65        <meta-data
+65-->[com.razorpay:checkout:1.6.15] C:\Users\DEEP RAO\.gradle\caches\transforms-3\4b849d2dc274b56956f61d31fb18b68e\transformed\jetified-checkout-1.6.15\AndroidManifest.xml:31:9-33:58
+66            android:name="com.razorpay.plugin.googlepay_all"
+66-->[com.razorpay:checkout:1.6.15] C:\Users\DEEP RAO\.gradle\caches\transforms-3\4b849d2dc274b56956f61d31fb18b68e\transformed\jetified-checkout-1.6.15\AndroidManifest.xml:32:13-61
+67            android:value="com.razorpay.RzpGpayMerged" />
+67-->[com.razorpay:checkout:1.6.15] C:\Users\DEEP RAO\.gradle\caches\transforms-3\4b849d2dc274b56956f61d31fb18b68e\transformed\jetified-checkout-1.6.15\AndroidManifest.xml:33:13-55
+68
+69        <activity
+69-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\68dc87b5788d787c91621a826ff18816\transformed\jetified-play-services-auth-17.0.0\AndroidManifest.xml:23:9-27:75
+70            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+70-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\68dc87b5788d787c91621a826ff18816\transformed\jetified-play-services-auth-17.0.0\AndroidManifest.xml:24:13-93
+71            android:excludeFromRecents="true"
+71-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\68dc87b5788d787c91621a826ff18816\transformed\jetified-play-services-auth-17.0.0\AndroidManifest.xml:25:13-46
+72            android:exported="false"
+72-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\68dc87b5788d787c91621a826ff18816\transformed\jetified-play-services-auth-17.0.0\AndroidManifest.xml:26:13-37
+73            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+73-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\68dc87b5788d787c91621a826ff18816\transformed\jetified-play-services-auth-17.0.0\AndroidManifest.xml:27:13-72
+74        <!--
+75            Service handling Google Sign-In user revocation. For apps that do not integrate with
+76            Google Sign-In, this service will never be started.
+77        -->
+78        <service
+78-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\68dc87b5788d787c91621a826ff18816\transformed\jetified-play-services-auth-17.0.0\AndroidManifest.xml:33:9-36:110
+79            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+79-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\68dc87b5788d787c91621a826ff18816\transformed\jetified-play-services-auth-17.0.0\AndroidManifest.xml:34:13-89
+80            android:exported="true"
+80-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\68dc87b5788d787c91621a826ff18816\transformed\jetified-play-services-auth-17.0.0\AndroidManifest.xml:35:13-36
+81            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" /> <!-- Needs to be explicitly declared on P+ -->
+81-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\68dc87b5788d787c91621a826ff18816\transformed\jetified-play-services-auth-17.0.0\AndroidManifest.xml:36:13-107
+82        <uses-library
+82-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\a200cf77db3a5c88e1dfdbfa31b5050b\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
+83            android:name="org.apache.http.legacy"
+83-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\a200cf77db3a5c88e1dfdbfa31b5050b\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
+84            android:required="false" />
+84-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\a200cf77db3a5c88e1dfdbfa31b5050b\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
+85
+86        <activity
+86-->[com.google.android.gms:play-services-base:17.5.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\a601e5ad579c1edc69ea679a99634264\transformed\jetified-play-services-base-17.5.0\AndroidManifest.xml:23:9-26:75
+87            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+87-->[com.google.android.gms:play-services-base:17.5.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\a601e5ad579c1edc69ea679a99634264\transformed\jetified-play-services-base-17.5.0\AndroidManifest.xml:24:13-79
+88            android:exported="false"
+88-->[com.google.android.gms:play-services-base:17.5.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\a601e5ad579c1edc69ea679a99634264\transformed\jetified-play-services-base-17.5.0\AndroidManifest.xml:25:13-37
+89            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+89-->[com.google.android.gms:play-services-base:17.5.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\a601e5ad579c1edc69ea679a99634264\transformed\jetified-play-services-base-17.5.0\AndroidManifest.xml:26:13-72
+90
+91        <meta-data
+91-->[com.google.android.gms:play-services-basement:17.6.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\aa76189210186514cdca35b858e4e43c\transformed\jetified-play-services-basement-17.6.0\AndroidManifest.xml:23:9-25:69
+92            android:name="com.google.android.gms.version"
+92-->[com.google.android.gms:play-services-basement:17.6.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\aa76189210186514cdca35b858e4e43c\transformed\jetified-play-services-basement-17.6.0\AndroidManifest.xml:24:13-58
+93            android:value="@integer/google_play_services_version" />
+93-->[com.google.android.gms:play-services-basement:17.6.0] C:\Users\DEEP RAO\.gradle\caches\transforms-3\aa76189210186514cdca35b858e4e43c\transformed\jetified-play-services-basement-17.6.0\AndroidManifest.xml:25:13-66
+94    </application>
+95
+96</manifest>
