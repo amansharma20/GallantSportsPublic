@@ -83,6 +83,7 @@ export default function OtpScreen(props) {
     };
 
     const [otpTimer, setOtpTimer] = useState(30);
+    
     useEffect(() => {
         let interval = setInterval(() => {
             setOtpTimer(oldValue => {

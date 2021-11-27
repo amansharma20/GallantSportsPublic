@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
     Text,
     View,
@@ -17,26 +17,26 @@ import { useNavigation } from '@react-navigation/core';
 import * as yup from 'yup';
 import CommonButton from '../../components/CommonGradientButton';
 import { icons, images } from '../../../constants';
-import CommonLoading from '../../components/CommonLoading';
 import { useDispatch } from 'react-redux';
 import Icons from '../../../constants/Icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import BouncyCheckboxGroup, { ICheckboxButton } from "react-native-bouncy-checkbox-group";
-import DatePicker from 'react-native-date-picker'
-import { format } from 'date-fns';
 import { useMutation, useQuery } from '@apollo/client';
 import { GQLMutation } from '../../persistence/mutation/Mutation';
+import DatePicker from 'react-native-datepicker'
+import CommonLoading from '../../components/CommonLoading';
 
 export default function EditProfile() {
     const navigation = useNavigation();
     const dispatch = useDispatch();
 
-    const [showModal, setShowModal] = useState(false);
-    const [selectedItem, setSelectedItem] = useState(null);
-    const [date, setDate] = useState(new Date());
     const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-    const [firstName, setFirstName] = useState(null)
+    const [showModal, setShowModal] = useState(false);
+
+    const [selectedItem, setSelectedItem] = useState(null);
+    const [dateOfBirth, setDateOfBirth] = useState();
+
     const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
 
     const schema = yup.object().shape({
@@ -50,16 +50,11 @@ export default function EditProfile() {
             .string()
             .required('Email' + ' ' + 'is required')
             .matches(emailRegExp, 'Enter a valid email id.'),
-        phone: yup
+        phoneNumber: yup
             .string()
             .required('This field is' + ' ' + 'required.')
             .matches(/(\d){10}\b/, 'Enter a valid phone number'),
     });
-
-    const formatedDate = (date) => {
-        var formattedDate = format(date, 'dd MMMM yyyy');
-        return formattedDate;
-    };
 
     const stylesCheckbox = {
         container: {
@@ -73,20 +68,26 @@ export default function EditProfile() {
     // PROFILE UPDATE MUTATION
     const [updateProfile, { data: profileUpdateResponse, error: profileUpdateError, loading }] = useMutation(GQLMutation.PROFILE_UPDATE);
 
-    const submitProfile = () => {
+    const submitProfile = (values) => {
+        CommonLoading.show();
         updateProfile({
             variables: {
-                FirstName: firstName,
-                LastName: lastName,
-                DateOfBirth: date.toISOString(),
-                Email: email,
-                PhoneNumber: phone,
+                FirstName: values.firstName,
+                LastName: values.lastName,
+                DateOfBirth: dateOfBirth,
+                Email: values.email,
+                PhoneNumber: values.phoneNumber,
                 Gender: selectedItem.text,
             }
-
         });
-        console.log(FirstName)
     }
+
+    useEffect(() => {
+        if (!loading && profileUpdateResponse) {
+            setShowSuccessModal(true)
+            CommonLoading.hide()
+        }
+    }, [loading, profileUpdateResponse])
 
 
     const staticData =
@@ -138,7 +139,7 @@ export default function EditProfile() {
                             firstName: '',
                             lastName: '',
                             email: '',
-                            phone: '',
+                            phoneNumber: '',
                         }}
                         onSubmit={values => submitProfile(values)}>
                         {({
@@ -208,41 +209,46 @@ export default function EditProfile() {
 
                                     {/* DATE OF BIRTH INPUT FIELD */}
                                     <View style={styles.textInputTitleContainer}>
-                                        <Text style={styles.textInputTitle}>
-                                            Date of Birth
-                                        </Text>
-                                    </View>
-                                    <TouchableOpacity onPress={() => setShowModal(true)}>
-                                        <View style={styles.dobContainer}>
-                                            <Text style={styles.dobText}>{formatedDate(date)}</Text>
-                                        </View>
-                                    </TouchableOpacity>
-                                    {showModal && (
-                                        <Modal
-                                            animationType="fade"
-                                            transparent={true}
-                                            showModal={showModal}
-                                            backgroundColor="white"
-                                            onRequestClose={() => setShowModal(false)}>
+                                        <View>
+                                            <Text style={styles.textInputTitle}>
+                                                Date of Birth
+                                            </Text>
                                             <DatePicker
-                                                date={date}
-                                                onDateChange={setDate}
+                                                date={dateOfBirth}
+                                                onDateChange={setDateOfBirth}
                                                 mode="date"
-                                                maximumDate={new Date()}
-                                                style={styles.datePicker} />
-                                            <View style={styles.dateSubmitContainer}>
-                                                <TouchableOpacity
-                                                    onPress={() => setShowModal(false)}>
-                                                    <Text style={styles.submitDateButtonText}>Done</Text>
-                                                </TouchableOpacity>
-                                            </View>
-                                        </Modal>
-                                    )}
-                                    {errors.dateOfBirth && touched.dateOfBirth && (
-                                        <View style={styles.errorContainer}>
-                                            <Text style={[styles.error, { marginTop: -15 }]}>{errors.dateOfBirth}</Text>
+                                                showIcon={false}
+                                                format="YYYY-MM-DD"
+                                                placeholder={" "}
+                                                style={{
+                                                    paddingTop: 0, width: '100%', borderWidth: 0,
+                                                    borderBottomWidth: 1,
+                                                    borderBottomColor: 'white',
+                                                    // borderColor: COLORS.background
+                                                }}
+                                                customStyles={{
+                                                    dateInput: {
+                                                        alignSelf: 'flex-start',
+                                                        borderLeftWidth: 0,
+                                                        borderRightWidth: 0,
+                                                        borderTopWidth: 0,
+                                                    },
+                                                    dateText: {
+                                                        color: '#FFFFFF',
+                                                        alignSelf: 'flex-start',
+                                                        paddingLeft: 0,
+                                                        fontSize: 18
+                                                    },
+                                                    placeholderText: {
+                                                        color: '#FFFFFF',
+                                                        alignSelf: 'flex-start',
+                                                        paddingLeft: 14,
+                                                    }
+                                                    // ... You can check the source to find the other keys.
+                                                }} />
                                         </View>
-                                    )}
+                                    </View>
+
 
                                     {/* EMAIL INPUT FIELD */}
                                     <View style={[styles.textInputTitleContainer, { paddingTop: 0 }]}>
@@ -278,22 +284,22 @@ export default function EditProfile() {
                                     </View>
                                     <View style={styles.checkMarkContainer}>
                                         <TextInput
-                                            name="phone"
+                                            name="phoneNumber"
                                             style={styles.textInput}
-                                            onChangeText={handleChange('phone')}
-                                            onBlur={handleBlur('phone')}
-                                            value={values.phone}
+                                            onChangeText={handleChange('phoneNumber')}
+                                            onBlur={handleBlur('phoneNumber')}
+                                            value={values.phoneNumber}
                                             keyboardType="numeric"
                                             placeholderTextColor="#B4B4B4"
                                             maxLength={10}
                                         />
-                                        {!errors.phone && touched.phone && (
+                                        {!errors.phoneNumber && touched.phoneNumber && (
                                             <Image source={icons.tick} style={styles.checkMarkIcon} />
                                         )}
                                     </View>
-                                    {errors.phone && touched.phone && (
+                                    {errors.phoneNumber && touched.phoneNumber && (
                                         <View style={styles.errorContainer}>
-                                            <Text style={styles.error}>{errors.phone}</Text>
+                                            <Text style={styles.error}>{errors.phoneNumber}</Text>
                                         </View>
                                     )}
                                 </View>
@@ -308,9 +314,7 @@ export default function EditProfile() {
                                     />
                                 </View>
                                 <View style={{ marginTop: 40, paddingHorizontal: 34 }}>
-                                    <CommonButton
-                                        onPress={handleSubmit}
-                                        children="Save" />
+                                    <CommonButton onPress={handleSubmit} children="Save" />
                                 </View>
                             </>
                         )}
@@ -337,9 +341,12 @@ export default function EditProfile() {
                             </View>
                             <View>
                                 <Text style={styles.successSubText}>
-                                    Your account has been created
+                                    Your profile has been updated.
                                 </Text>
                             </View>
+                            <View style={{ marginTop: 0, paddingHorizontal: 34 , width:200}}>
+                                    <CommonButton onPress={() => navigation.navigate('Home')} children="Done" />
+                                </View>
                         </View>
                     </View>
                 </Modal>

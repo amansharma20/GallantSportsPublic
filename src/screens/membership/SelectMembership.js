@@ -20,7 +20,6 @@ export default function SelectMembership() {
     const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     const Item = ({ item, onPress, backgroundColor, textColor }) => (
-        
         console.log('selectedIdForThreeDays'),
         console.log(onPress),
         console.log('selectedIdForThreeDays'),

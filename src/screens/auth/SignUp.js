@@ -98,7 +98,6 @@ export default function SignUp() {
                                 Premium Arena's
                             </Text>
                         </View>
-
                     </View>
 
                     <View style={styles.headerMain}>

@@ -48,7 +48,7 @@ const ScheduleFlatlistItem = (props) => {
                     <LinearGradient
                         start={{ x: 0, y: 0 }} colors={[leftBackgroundColor, rightBackgroundColor]} style={styles.linearGradient}>
                         <View style={styles.leftContainer}>
-                            <View>
+                            {/* <View>
                                 {
                                     isToday === true
                                         ?
@@ -61,7 +61,7 @@ const ScheduleFlatlistItem = (props) => {
                                         </Text>
                                 }
 
-                            </View>
+                            </View> */}
                             <View>
                                 <Text style={styles.venueText}>
                                     {Bookings.item.ActivityArena.Arena.Name}

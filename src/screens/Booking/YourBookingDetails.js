@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Button, Text, StyleSheet, Image, TouchableOpacity, Dimensions, ScrollView, Linking, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, FONTS, icons, images, SIZES } from '../../../constants';
@@ -13,6 +13,7 @@ import { format } from "date-fns";
 import CommonButton from '../../components/CommonGradientButton';
 import { GQLMutation } from '../../persistence/mutation/Mutation';
 import { useMutation, useQuery } from '@apollo/client';
+import CommonLoading from '../../components/CommonLoading';
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 // const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
@@ -30,19 +31,21 @@ export default function YourBookingDetails(props) {
     const [bookingCancel, { data: cancelBookingResponse, error: cancelBookingError, loading }] = useMutation(GQLMutation.CANCEL_BOOKING);
 
     const cancelBooking = () => {
+        CommonLoading.show()
         bookingCancel({
             variables: {
                 BookingId: bookingDetail.item.Id,
             }
         });
-        console.log('booking cancel failed')
-        if (cancelBookingResponse == null) {
-            console.log('uh')
-        }
-        else {
-            setShowCancelledModal(true);
-        }
     }
+
+    useEffect(() => {
+        if (!loading && cancelBookingResponse) {
+            showCancelledModal(true)
+            CommonLoading.hide()
+        }
+    }, [loading, cancelBookingResponse])
+
 
     const renderImageFlatlist = (item) => (
         <BookingImagesFlatlist item={item} key={item.index} />
@@ -262,7 +265,7 @@ export default function YourBookingDetails(props) {
                             </View>
                             <View style={{ paddingVertical: 20 }}>
                                 <Text style={styles.successText}>
-                                    Success!
+                                  Cancelled !
                                 </Text>
                             </View>
                             <View>
@@ -388,7 +391,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     activityBookedLeftContainer: {
-        width: 69,
+        width: 70,
         height: 87,
         backgroundColor: '#444B65',
         borderRadius: 15,
@@ -398,8 +401,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
     },
     activityIconSize: {
-        width: 48,
-        height: 48,
+        width: 35,
+        height: 35,
         resizeMode: 'contain',
     },
     activityText: {

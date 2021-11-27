@@ -20,6 +20,8 @@ import TermsOfUse from '../screens/profile/TermsOfUse';
 import Support from '../screens/profile/Support';
 import FAQ from '../screens/profile/FAQ';
 import ExpolreArenaDetailsScreen from '../screens/exploreBookingFlow/ExploreArenaDetailsScreen';
+import PrivacyPolicy from '../screens/profile/PrivacyPolicy';
+import YourBookings from '../screens/profile/YourBookings';
 
 const Stack = createNativeStackNavigator();
 
@@ -47,6 +49,8 @@ export default function StackNavigator() {
             <Stack.Screen name="TermsOfUse" component={TermsOfUse} />
             <Stack.Screen name="Support" component={Support} />
             <Stack.Screen name="FAQ" component={FAQ} />
+            <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+            <Stack.Screen name="YourBookings" component={YourBookings} />
         </Stack.Navigator>
     );
 }

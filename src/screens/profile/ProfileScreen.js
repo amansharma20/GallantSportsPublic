@@ -59,59 +59,72 @@ export default function ProfileScreen() {
                     </LinearGradient>
                 </TouchableOpacity>
 
-                <View style={[styles.mainContainerBody, { marginTop: 20 }]}>
-                    <Text style={styles.itemText}>
-                        Your Bookings
-                    </Text>
-                    <TouchableOpacity>
-                        <Image source={icons.profileNext} style={styles.nextButton} />
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity onPress={() => navigation.navigate('YourBookings')}>
+                    <View style={[styles.mainContainerBody, { marginTop: 20 }]}>
+                        <Text style={styles.itemText}>
+                            Your Bookings
+                        </Text>
+                        <TouchableOpacity>
+                            <Image source={icons.profileNext} style={styles.nextButton} />
+                        </TouchableOpacity>
+                    </View>
+                </TouchableOpacity>
 
-                <View style={styles.mainContainerBody}>
-                    <Text style={styles.itemText}>
-                        Membership
-                    </Text>
-                    <TouchableOpacity>
-                        <Image source={icons.profileNext} style={styles.nextButton} />
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity >
+                    <View style={styles.mainContainerBody}>
+                        <Text style={styles.itemText}>
+                            Membership
+                        </Text>
+                        <TouchableOpacity>
+                            <Image source={icons.profileNext} style={styles.nextButton} />
+                        </TouchableOpacity>
+                    </View>
+                </TouchableOpacity>
 
-                <View onStartShouldSetResponder={() => navigation.navigate('Support')} style={styles.mainContainerBody}>
-                    <Text style={styles.itemText}>
-                        Support
-                    </Text>
-                    <TouchableOpacity>
-                        <Image source={icons.profileNext} style={styles.nextButton} />
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity onPress={() => navigation.navigate('Support')}>
+                    <View style={styles.mainContainerBody}>
+                        <Text style={styles.itemText}>
+                            Support
+                        </Text>
+                        <TouchableOpacity>
+                            <Image source={icons.profileNext} style={styles.nextButton} />
+                        </TouchableOpacity>
+                    </View>
+                </TouchableOpacity>
 
-                <View onStartShouldSetResponder={() => navigation.navigate('FAQ')}  style={styles.mainContainerBody}>
-                    <Text style={styles.itemText}>
-                        FAQ’s
-                    </Text>
-                    <TouchableOpacity>
-                        <Image source={icons.profileNext} style={styles.nextButton} />
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity onPress={() => navigation.navigate('FAQ')}>
+                    <View style={styles.mainContainerBody}>
+                        <Text style={styles.itemText}>
+                            FAQ’s
+                        </Text>
+                        <TouchableOpacity>
+                            <Image source={icons.profileNext} style={styles.nextButton} />
+                        </TouchableOpacity>
+                    </View>
+                </TouchableOpacity>
 
-                <View onStartShouldSetResponder={() => navigation.navigate('TermsOfUse')} style={styles.mainContainerBody}>
-                    <Text style={styles.itemText}>
-                        Terms of use
-                    </Text>
-                    <TouchableOpacity>
-                        <Image source={icons.profileNext} style={styles.nextButton} />
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity onPress={() => navigation.navigate('TermsOfUse')}>
+                    <View style={styles.mainContainerBody}>
+                        <Text style={styles.itemText}>
+                            Terms of use
+                        </Text>
+                        <TouchableOpacity>
+                            <Image source={icons.profileNext} style={styles.nextButton} />
+                        </TouchableOpacity>
+                    </View>
+                </TouchableOpacity>
 
-                <View style={styles.mainContainerBody}>
-                    <Text style={styles.itemText}>
-                        Privacy Policy
-                    </Text>
-                    <TouchableOpacity>
-                        <Image source={icons.profileNext} style={styles.nextButton} />
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity onPress={() => navigation.navigate('PrivacyPolicy')}>
+                    <View style={styles.mainContainerBody}>
+                        <Text style={styles.itemText}>
+                            Privacy Policy
+                        </Text>
+                        <TouchableOpacity>
+                            <Image source={icons.profileNext} style={styles.nextButton} />
+                        </TouchableOpacity>
+                    </View>
+                </TouchableOpacity>
+
             </View>
             <View style={styles.footerContainer}>
                 <TouchableOpacity>

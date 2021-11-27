@@ -93,7 +93,6 @@ export const GQLMutation = {
               Gender: $Gender,
             )
           }
-        }
-        `
+        }`
 
 };

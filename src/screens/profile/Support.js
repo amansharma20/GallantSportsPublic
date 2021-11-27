@@ -7,6 +7,9 @@ import { COLORS, FONTS, icons, SIZES } from '../../../constants';
 import { Responsive } from '../../../constants/Layout';
 import LinearGradient from 'react-native-linear-gradient';
 import CommonButton from '../../components/CommonGradientButton';
+import { Formik } from 'formik';
+import { ValuesOfCorrectTypeRule } from 'graphql';
+import * as yup from 'yup';
 
 
 export default function Support() {
@@ -14,69 +17,99 @@ export default function Support() {
 
     const descriptionRef = useRef();
 
+    const schema = yup.object().shape({
+        description: yup
+            .string()
+            .required('description' + ' ' + 'is required'),
+        email: yup
+            .string()
+            .required('This field is' + ' ' + 'required.')
+            .matches(emailRegExp, 'Enter a valid email id.'),
+    });
+
+    const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+
+
     return (
         <View showsVerticalScrollIndicator={false}
             style={styles.container}>
+            <Formik
+                validationSchema={schema}
+                initialValues={{
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    phone: '',
+                }}
+                onSubmit={values => signup(values)}>
+                {({
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                    values,
+                    errors,
+                    touched,
+                }) => (
+                    <>
+                        <View style={{ justifyContent: 'space-between', flex: 1 }}>
+                            <View>
+                                <View style={styles.headerContainer}>
+                                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                                        <Image source={icons.backIcon} style={styles.backIcon} />
+                                    </TouchableOpacity>
+                                    <Text style={styles.headerText}>
+                                        Support
+                                    </Text>
+                                    <View>
+                                    </View>
+                                </View>
+                                <View>
+                                    <Text style={{ color: 'white', fontSize: 20, paddingHorizontal: 20 }}>
+                                        Please tell us about the issue{'\n'} you require support with
+                                    </Text>
+                                </View>
+                                <View style={{ paddingHorizontal: 20 }}>
+                                    <Text style={styles.textInputTitleFirstName}>
+                                        Email
+                                    </Text>
+                                    <View>
+                                        <TextInput
+                                            name="Email"
+                                            style={styles.textInput}
+                                            onSubmitEditing={() => {
+                                                description.current.focus();
+                                            }}
+                                            keyboardType='default'
+                                            maxLength={20}
+                                        />
+                                        <Text style={{ color: '#DB3E6F' }}>
+                                            Given email ID will be used for further communication
+                                        </Text>
+                                    </View>
 
-            <ScrollView keyboardShouldPersistTaps='always'>
-                <View>
-                    <View style={styles.headerContainer}>
-                        <TouchableOpacity onPress={() => navigation.goBack()}>
-                            <Image source={icons.backIcon} style={styles.backIcon} />
-                        </TouchableOpacity>
-                        <Text style={styles.headerText}>
-                            Support
-                        </Text>
-                        <View>
+                                    <View style={{ paddingTop: 20 }}>
+                                        <Text style={styles.textInputTitleFirstName}>
+                                            Description
+                                        </Text>
+                                        <TextInput
+                                            name="Description"
+                                            placeholder="Please mention issue you faced"
+                                            placeholderTextColor="#FFF"
+                                            style={styles.textInput}
+                                            value={values.description}
+                                            ref={descriptionRef}
+                                            keyboardType='default'
+                                            maxLength={300} />
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={styles.buttonContainer}>
+                                <CommonButton onPress={handleSubmit} children="Submit support ticket" />
+                            </View>
                         </View>
-                    </View>
-                    <View>
-                        <Text style={{ color: 'white', fontSize: 20, paddingHorizontal: 20 }}>
-                            Please tell us about the issue{'\n'} you require support with
-                        </Text>
-
-                    </View>
-                    <View style={{ paddingHorizontal: 20 }}>
-                        <Text style={styles.textInputTitleFirstName}>
-                            Email
-                        </Text>
-                        <View>
-                            <TextInput
-                                name="Email"
-                                style={styles.textInput}
-                                onSubmitEditing={() => {
-                                    description.current.focus();
-                                }}
-                                keyboardType='default'
-                                maxLength={20}
-                            />
-                            <Text style={{ color: '#DB3E6F' }}>
-                                Given email ID will be used for further communication
-                            </Text>
-                        </View>
-
-                        <View style={{ paddingTop: 20 }}>
-                            <Text style={styles.textInputTitleFirstName}>
-                                Description
-                            </Text>
-                            <TextInput
-                                name="Description"
-                                placeholder="Please mention issue you faced"
-                                placeholderTextColor="#FFF"
-                                style={styles.textInput}
-                                ref={descriptionRef}
-                                keyboardType='default'
-                                maxLength={300}
-                            />
-                        </View>
-                    </View>
-                </View>
-            </ScrollView>
-
-            <View style={styles.buttonContainer}>
-                <CommonButton onPress={() => navigation.navigate('BookingSummary')} children="Submit support ticket" />
-            </View>
-
+                    </>
+                )}
+            </Formik>
         </View>
     );
 }

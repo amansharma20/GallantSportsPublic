@@ -11,12 +11,12 @@ import { useQuery } from '@apollo/client';
 
 
 export default function AllSessions() {
+    const navigation = useNavigation();
 
     // GET CUSTOMER ALL BOOKINGS
     const { data: customerAllBookingData, error: customerAllBookingError } = useQuery(GQLQuery.GET_CUSTOMER_ALL_BOOKINGS);
     const customerAllBookings = customerAllBookingData && customerAllBookingData.BookingQuery && customerAllBookingData.BookingQuery.GetCustomerAllBookings;
-
-    const navigation = useNavigation();
+  
     return (
         <View style={styles.container}>
             <View style={{ paddingTop: SIZES.padding6 }}>

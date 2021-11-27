@@ -63,9 +63,7 @@ export default function BookingSummary(props) {
         });
     }
 
-
     const [startPaymentMutation, { data: paymentResponse, error: paymentError }] = useMutation(GQLMutation.START_PAYMENT);
-
 
 
     const [completePaymentMutation, { data: completResponse, error: completeError }] = useMutation(GQLMutation.COMPLETE_PAYMENT);
@@ -91,12 +89,6 @@ export default function BookingSummary(props) {
             { cancelable: false }
         )
     }
-
-    console.log(paymentResponse)
-    console.log('paymentError')
-    console.log(paymentError)
-    console.log('paymentError')
-
 
     if (paymentResponse != null) {
         console.log(paymentResponse && paymentResponse.BookingMutation && paymentResponse.BookingMutation.StartBookingPayment)
@@ -172,9 +164,6 @@ export default function BookingSummary(props) {
             //alert(`Error: ${error} | ${error.description}`);
         });
     }
-
-    console.log(completResponse)
-    console.log(completeError)
 
     return (
         <View style={styles.container}>
