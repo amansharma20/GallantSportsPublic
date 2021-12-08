@@ -6,8 +6,10 @@ import {AuthReducer} from '../reducers/AuthReducer';
 const allReducers = combineReducers({
   AuthReducer
 });
+
 const applicationStore = createStore(
   allReducers,
   applyMiddleware(thunkMiddleware),
 );
+
 export default applicationStore;

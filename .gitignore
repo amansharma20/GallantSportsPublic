@@ -79,3 +79,6 @@ node_modules
 # Android memory profiler files
 *.hprof
 node_modules
+android/java_pid22576.hprof
+android/app/release/app-release.apk
+android/app/build/outputs/apk/debug/app-debug.apk

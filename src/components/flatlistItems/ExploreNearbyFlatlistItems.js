@@ -26,7 +26,7 @@ const ITEM_WIDTH = SLIDER_WIDTH;
 const ExploreNearbyFlatlistItems = (props) => {
     const navigation = useNavigation();
 
-
+    console.log(applicationProperties.imageUrl + NeraByArenaData.item.ArenaImageStoragePath)
     const NeraByArenaData = props.nearArenas
 
     console.log('nearByArenas')
