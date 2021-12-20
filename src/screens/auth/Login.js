@@ -15,6 +15,7 @@ import CommonLoading from '../../components/CommonLoading';
 import { AuthActions } from '../../persistence/actions/AuthActions';
 
 export default function Login() {
+
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -110,7 +111,7 @@ export default function Login() {
                     <Image source={icons.tick} style={styles.checkMarkIcon} />
                   )} */}
                   </View>
-                  <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: -35, }}>
+                  <View style={styles.dividerContainer}>
                     <Divider orientation="horizontal" style={{ width: '85%' }} />
                   </View>
 
@@ -228,6 +229,8 @@ const styles = StyleSheet.create({
     paddingLeft: 25,
     color: '#FFFFFF',
   },
+
+  dividerContainer: { alignItems: 'center', justifyContent: 'center', marginTop: -35, },
 
   redirectToSignUpContainer: {
     flexDirection: 'row',

@@ -21,6 +21,7 @@ export default function ExploreActivity(props) {
     const arenaList = data2 && data2.ActivityArenaQuery && data2.ActivityArenaQuery.GetArenaByActivityId && data2.ActivityArenaQuery.GetArenaByActivityId;
 
     const navigation = useNavigation();
+    
     return (
         <View
             showsVerticalScrollIndicator={false}

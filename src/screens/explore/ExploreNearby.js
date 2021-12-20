@@ -50,8 +50,8 @@ export default function ExploreNearby(props) {
                     data={nearByArenas}
                     showsVerticalScrollIndicator={false}
                     renderItem={(item, index) => (
-                        <ExploreNearbyFlatlistItems 
-                        nearArenas={item}/>
+                        <ExploreNearbyFlatlistItems
+                            nearArenas={item} />
                     )}
                 />
             </View>

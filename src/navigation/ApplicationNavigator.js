@@ -4,7 +4,6 @@ import {
   CardStyleInterpolators,
   createStackNavigator,
 } from '@react-navigation/stack';
-import StackNavigator from './StackNavigator';
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
 import {applicationProperties} from '../application.properties';
 import Splash from '../screens/onBoarding/Splash';

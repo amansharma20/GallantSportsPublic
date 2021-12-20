@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import SignUp from '../screens/auth/SignUp';
 import BottomTabBarNavigator from './BottomTabBarNavigator';
 import ArenaDetailsScreen from '../screens/activityBookingFlow/ArenaDetailsScreen';
 import ExploreNearby from '../screens/explore/ExploreNearby';
